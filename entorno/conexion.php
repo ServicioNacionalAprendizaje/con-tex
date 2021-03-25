@@ -9,41 +9,42 @@ class Conexion{
     private $message = null;
     
     function __construct() {        
-         /* Connect using Windows Authentication. */        
-        $this->conn = mysqli(SERVERNAME, array( "Database"=>DATABASE, "UID"=>USER, "PWD"=>PASSWORD) );
+        /* Connect using Windows Authentication. */        
+        $this->conn = mysqli_connect(SERVERNAME, USER, PASSWORD, DATABASE);
         if (!$this->conn) {
             $this->message = connect_error();        
             $error = $this->obtenerError();			
-        throw new Exception('No fué posible conectar a la base de datos: ', E_USER_ERROR);
+            throw new Exception('No fué posible conectar a la base de datos: '.$error);
+        }
     }
     
-    public function preparar($sentenciaSql){
+    public function Preparar($sentenciaSql){
         $this->sentenciaSql = $sentenciaSql;
     }
 
-    public function ejecutar() {
-        $this->recordSet = mysqli_query($this->conn, $this->sentenciaSql, array(), array('Scrollable' => SQLSRV_CURSOR_KEYSET) );        
+    public function Ejecutar() {
+        $this->recordSet = mysqli_query($this->conn, $this->sentenciaSql, MYSQLI_STORE_RESULT);        
         if(!$this->recordSet){            
-            $error = $this->obtenerError();
+            $error = $this->ObtenerError();
             throw new Exception('No fué posible guardar la información. '.$error['message'], E_USER_ERROR);
         }
     }
     
-    public function obtenerObjeto() {
+    public function ObtenerObjeto() {
         return mysqli_fetch_object($this->recordSet);
     }
     
-    public function obtenerArray() {
+    public function ObtenerArray() {
         return mysqli_fetch_array($this->recordSet);
     }
     
-    public function obtenerRow() {
+    public function ObtenerRow() {
         return mysqli_fetch_row($this->recordSet);
     }
-    public function obtenerNumeroRegistros(){
+    public function ObtenerNumeroRegistros(){
         return mysqli_num_rows($this->recordSet);
     }
-    public function obtenerNombreColumnas(){
+    public function ObtenerNombreColumnas(){
         $arrNombreColumnas = array();
         foreach(sqlsrv_field_metadata($this->recordSet) as $fieldData) {
             $nombreColumna = $fieldData['Name'];
@@ -51,22 +52,21 @@ class Conexion{
         }
         return $arrNombreColumnas;
     }
-    private function obtenerError(){
+    private function ObtenerError(){
         $resultado = array();
-        if( ($errors = mysqli_errors() ) != null){
+        if( $errors = mysqli_error_list($this->conn)){
             foreach( $errors as $error){
-                $resultado['SQLSTATE'] = $error[ 'SQLSTATE'];
-                $resultado['code'] = $error[ 'code'];
-                $resultado['message'] = $error[ 'message'];
+                $resultado['SQLSTATE'] = $error['sqlstate'];
+                $resultado['code'] = $error['errno'];
+                $resultado['message'] = $error['error'];
             }
         }
         return $resultado;
     }
-    function __destruct() {
-        
-        if ($this->recordSet)
-            mysqli_free_stmt($this->recordSet);
-        
+    function __destruct() {        
+        // if ($this->recordSet)                           
+        //     mysqli_stmt_free_result($this->recordSet);
+
         if ($this->conn)
             mysqli_close($this->conn);
     }

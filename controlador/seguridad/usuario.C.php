@@ -14,9 +14,10 @@ if (isset ($accion)){
                 $usuario= new Usuario();
                 $usuario->setUsuario('admin');
                 $usuario->setContrasenia('abcd1234');
-                $usuario->setFechaActivacion('21-03-2021');
-                $usuario->setFechaExpiracion('21-10-2021');
-                
+                $usuario->setFechaActivacion('CURDATE()');
+                $usuario->setFechaExpiracion('CURDATE()');
+                $usuario->setidPersona(1);
+                $usuario->setEstado(1);
                 $resultado = $usuario->Agregar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){

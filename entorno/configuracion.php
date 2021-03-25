@@ -2,7 +2,7 @@
 
 define('DATABASE', 'contex');
 define('PASSWORD', '');
-define('SERVERNAME', 'root');
-define('USER', 'sa');
+define('SERVERNAME', 'localhost');
+define('USER', 'root');
 
 ?>

@@ -1,5 +1,4 @@
 <?php
-//esneider
 // $ubicacionFormulario =  substr($_SERVER["SCRIPT_NAME"], 17);
 include '../../entorno/conexion.php';
 require '../../modelo/seguridad/usuario.M.php';
@@ -34,13 +33,11 @@ if (isset ($accion)){
                 $usuario->setFechaActivacion($_POST['fechaActivacion']);
                 $usuario->setFechaExpiracion($_POST['fechaExpiracion']);
                 $usuario->setIdPersona($_POST['idPersona']);
-                $usuario->setEstado($_POST['estado']);
-                $usuario->setFechaCreacion($_POST['fechaCreacion']);
+                $usuario->setEstado($_POST['estado']);               
                 $usuario->setFechaModificacion($_POST['fechaModificacion']);
-                $usuario->setIdUsuarioCreacion($_POST['idUsuarioCreacion']);
                 $usuario->setIdUsuarioModificacion($_POST['idUsuarioModificacion']);
 
-                $resultado = $orden->Modificar();
+                $resultado = $usuario->Modificar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible modificar la información, consulte con el administrador.";

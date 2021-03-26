@@ -1,5 +1,4 @@
 <?php
-//esneider
 class Usuario{
     private $idUsuario;
     private $usuario;
@@ -102,9 +101,7 @@ class Usuario{
             ,fecha_expiracion = '$this->fechaExpiracion'
             ,id_persona = '$this->idPersona'
             ,estado = '$this->estado'
-            ,fecha_creacion = '$this->fechaCreacion'
             ,fecha_modificacion = '$this->fechaModificacion'
-            ,id_usuario_creacion = '$this->idUsuarioCreacion'
             ,id_usuario_modificacion = '$this->idUsuarioModificacion' 
         WHERE id_usuario = $this->idUsuario ";
 

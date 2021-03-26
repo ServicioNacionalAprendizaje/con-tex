@@ -115,3 +115,6 @@ select{
 .switch > input:checked + label:before {
 	left:56px;
 }
+
+/* Login */
+

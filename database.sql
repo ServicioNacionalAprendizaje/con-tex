@@ -1,6 +1,6 @@
-CREATE DATABASE `proyecto_contex`;
+CREATE DATABASE `contex`;
 
-USE `proyecto_contex`;
+USE `contex`;
 
 CREATE TABLE `persona`(
     `id_persona` INT NOT NULL ,

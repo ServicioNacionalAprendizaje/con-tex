@@ -53,19 +53,66 @@ class Formulario{
     public function __construct() {$this->conn = new Conexion();}
 
     public function Agregar(){
-       
+        $sentenciaSql = "INSERT INTO formulario(
+            descripcion
+            ,etiqueta
+            ,ubicacion
+            ,estado
+            ,fechaCreacion
+            ,fechaModificacion
+            ,idUsuarioCreacion
+            ,idUsuarioModificacion
+            ) 
+        VALUES (
+            '$this->descripcion',
+            '$this->etiqueta', 
+            '$this->ubicacion',
+            '$this->estado',
+            '$this->fechaCreacion',
+            '$this->fechaModificacion',
+            '$this->idUsuarioCreacion',
+            '$this->idUsuarioModificacion'
+            )";
+
+    $this->conn->preparar($sentenciaSql);
+    $this->conn->ejecutar();
+    return true;
     }
 
     public function Modificar(){
-       
+        $sentenciaSql = "UPDATE formulario SET 
+        descripcion = '$this->descripcion', 
+        etiqueta = '$this->etiqueta',
+        ubicacion = '$this->ubicacion',
+        estado = '$this->estado'
+        fechaCreacion = '$this->fechaCreacion'
+        fechaModificacion = '$this->fechaModificacion'
+        idUsuarioCreacion = '$this->idUsuarioCreacion'
+        idUsuarioModificacion = '$this->idUsuarioModificacion'  
+        WHERE id_formulario = $this->idOrden ";        
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
     }
 
     public function Eliminar(){
-       
+        $sentenciaSql = "DELETE FROM 
+        formulario 
+    WHERE 
+        id_formulario = $this->idOrden";        
+    $this->conn->preparar($sentenciaSql);
+    $this->conn->ejecutar();
     }
 
     public function Consultar(){
-       
+        $condicion = $this->obtenerCondicion();
+        $sentenciaSql = "SELECT
+           *
+        FROM
+            formulario $condicion";        		
+        
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+        return true;
     }
     private function obtenerCondicion(){
      
@@ -74,7 +121,16 @@ class Formulario{
 
 
     public function __destruct() {
-       
+        unset($this->formulario);
+        unset($this->descripcion);
+        unset($this->etiqueta);
+        unset($this->ubicacion);
+        unset($this->estado);
+        unset($this->fechaCreacion);
+        unset($this->fechaModificacion);
+        unset($this->idUsuarioCreacion);
+        unset($this->idUsuarioModificacion);
+        unset($this->conn);
     }       
 }
 ?>

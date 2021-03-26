@@ -41,9 +41,9 @@ class Rol{
     //conexion
     public function __construct() {$this->conn = new Conexion();}
 
-    $sentenciaSql = "INSERT INTO pago_dia(
-        id_empleado
-        ,pago_dia
+    public function Agregar(){
+    $sentenciaSql = "INSERT INTO rol(
+        descripcion
         ,estado
         ,fecha_creacion
         ,fecha_modificacion
@@ -51,13 +51,12 @@ class Rol{
         ,id_usuario_modificacion
         ) 
     VALUES (
-        $this->idEmpleado,
-        '$this->pagoDia',
-        '$this->estado',
-        '$this->fechaCreacion',
-        '$this->fechaModificacion',
-        '$this->idUsuarioCreacion',
-        '$this->idUsuarioModificacion'
+        $this->descripcion
+        ,$this->estado
+        ,CURDATE()
+        ,CURDATE()
+        ,1
+        ,1
         )";
 
 $this->conn->preparar($sentenciaSql);
@@ -66,24 +65,22 @@ return true;
 }
 
 public function Modificar(){
-    $sentenciaSql = "UPDATE pago_dia SET 
-    id_empleado = '$this->idEmpleado'
-    pago_dia = '$this->pagoDia'
-    estado = '$this->estado'
-    fecha_creacion = '$this->fechaCreacion'
-    fecha_modificacion = '$this->fechaModificacion'
-    id_usuario_creacion = '$this->idUsuarioCreacion'
-    id_usuario_modificacion = '$this->idUsuarioModificacion' 
-    WHERE id_pago_dia = $this->idPagoDia ";        
+    $sentenciaSql = "UPDATE rol SET 
+    descripcion = '$this->descripcion'
+        ,estado = '$this->estado'
+        ,fecha_modificacion = '$this->fechaModificacion'
+        ,id_usuario_modificacion = '$this->idUsuarioModificacion' 
+    WHERE id_rol = $this->idRol ";
+
     $this->conn->preparar($sentenciaSql);
     $this->conn->ejecutar();
 }
 
 public function Eliminar(){
     $sentenciaSql = "DELETE FROM 
-        pago_dia 
+        rol 
     WHERE 
-        id_pago_dia = $this->idPagoDia";        
+        id_rol = $this->idRol";        
     $this->conn->preparar($sentenciaSql);
     $this->conn->ejecutar();
 }
@@ -93,7 +90,7 @@ public function Consultar(){
     $sentenciaSql = "SELECT
        *
     FROM
-        pago_dia $condicion";        		
+        rol $condicion";        		
     
     $this->conn->preparar($sentenciaSql);
     $this->conn->ejecutar();
@@ -107,8 +104,8 @@ private function obtenerCondicion(){
 
 public function __destruct() {
     
-    unset($this->idEmpleado);
-    unset($this->pagoDia);
+    unset($this->idRol);
+    unset($this->descripcion);
     unset($this->estado);
     unset($this->fechaCreacion);
     unset($this->fechaModificacion);

@@ -4,7 +4,7 @@ class UsuarioRol{
     private $idUsuarioRol;
     private $idRol;
     private $estado;
-    private $fechaCreacion
+    private $fechaCreacion;
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;

@@ -9,16 +9,16 @@ class persona{
     private $estado;
     private $fechaCreacion;
     private $fechaModificacion;
-    private $idUsuarioCreacion
-    private $idUsuarioModificacion
+    private $idUsuarioCreacion;
+    private $idUsuarioModificacion;
 
     //idpersona
     public function getIdPersona(){return $this->idPersona;}
-    public function setIdPersona($idpersona){$this->idPersona = $idPersona;}
+    public function setIdPersona($idPersona){$this->idPersona = $idPersona;}
 
     //nombre
     public function getNombre(){return $this->nombre;}
-    public function setNombre(nombre){$this->nombrer = nombre;}
+    public function setNombre($nombre){$this->nombre = $nombre;}
 
     //apellido
     public function getApellido(){return $this->apellido;}
@@ -26,7 +26,7 @@ class persona{
 
     //edad
     public function getEdad(){ return $this->edad;}
-    public function setEdad($fechaCreacion) { $this->edad =$edad}
+    public function setEdad($edad) { $this->edad = $edad;}
     
      //genero
     public function getGenero(){ return $this->genero;}
@@ -34,16 +34,16 @@ class persona{
 
     //estado
     public function getEstado(){ return $this->estado;}
-    public function setEstado($estado) { $this->estado =$estado}
+    public function setEstado($estado) { $this->estado =$estado;}
 
 
     //fechaCreacion
     public function getfechaCreacion(){ return $this->fechaCreacion;}
-    public function setfechaCreacion($fechaCreacion) { $this->fechaCreacion =$fechaCreacion}
+    public function setfechaCreacion($fechaCreacion) { $this->fechaCreacion =$fechaCreacion;}
 
     //fechaModificacion
     public function getfechaModificacion(){ return $this->fechaModificacion;}
-    public function setfechaModificacion($fechaModificacion) { $this->fechaModificacion =$fechaModificacion}
+    public function setfechaModificacion($fechaModificacion) { $this->fechaModificacion =$fechaModificacion;}
 
 
     //idUsuarioCreacion

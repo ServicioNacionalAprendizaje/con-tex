@@ -1,4 +1,5 @@
 <?php
+//esneider
 class Usuario{
     private $idUsuario;
     private $usuario;
@@ -61,7 +62,6 @@ class Usuario{
     //conexion
     public function __construct() {$this->conn = new Conexion();}
 
-
     public function Agregar(){
         $sentenciaSql = "INSERT INTO usuario(
             usuario
@@ -76,49 +76,47 @@ class Usuario{
             ,id_usuario_modificacion
             ) 
         VALUES (
-            '$this->usuario'
-            ,'$this->contrasenia'
-            ,$this->fechaActivacion
-            ,$this->fechaExpiracion
-            ,$this->idPersona
-            ,$this->estado
-            ,CURDATE()
-            ,CURDATE()
-            ,1
-            ,1          
+            '$this->usuario',
+            '$this->contrasenia', 
+            '$this->fechaActivacion',
+            $this->fechaExpiracion,
+            $this->idPersona,
+            '$this->estado',
+            '$this->fechaCreacion',
+            '$this->fechaModificacion',
+            '$this->idUsuarioCreacion',
+            '$this->idUsuarioModificacion'
             )";
-        
-        $this->conn->Preparar($sentenciaSql);
-        $this->conn->Ejecutar();
-        return true;
+
+    $this->conn->preparar($sentenciaSql);
+    $this->conn->ejecutar();
+    return true;
     }
 
     public function Modificar(){
         $sentenciaSql = "UPDATE usuario SET 
-        usuario = '$this->usuario'
-            ,contrasenia = '$this->contrasenia'
-            ,fecha_activacion = '$this->fechaActivacion'
-            ,fecha_expiracion = '$this->fechaExpiracion'
-            ,id_persona = '$this->idPersona'
-            ,estado = '$this->estado'
-            ,fecha_modificacion = '$this->fechaModificacion'
-            ,id_usuario_modificacion = '$this->idUsuarioModificacion' 
-        WHERE id_usuario = $this->idUsuario ";
-
-        $this->conn->Preparar($sentenciaSql);
-        $this->conn->Ejecutar();
-        return true;
+        usuario = '$this->usuario', 
+        contrasenia = '$this->contrasenia',
+        fecha_activacion = '$this->fechaActivacion', 
+        fecha_expiracion = '$this->fechaExpiracion',
+        id_persona = '$this->idPersona'
+        estado = '$this->estado'
+        fecha_creacion = '$this->fechaCreacion'
+        fecha_modificacion = '$this->fechaModificacion'
+        id_usuario_creacion = '$this->idUsuarioCreacion'
+        id_usuario_modificacion = '$this->idUsuarioModificacion' 
+        WHERE id_usuario = $this->idUsuario ";        
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
     }
 
     public function Eliminar(){
         $sentenciaSql = "DELETE FROM 
             usuario 
         WHERE 
-            id_usuario = $this->idUsuario";   
-
-        $this->conn->Preparar($sentenciaSql);
-        $this->conn->Ejecutar();
-        return true;
+            id_usuario = $this->idUsuario";        
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
     }
 
     public function Consultar(){
@@ -128,8 +126,8 @@ class Usuario{
         FROM
             usuario $condicion";        		
         
-        $this->conn->Preparar($sentenciaSql);
-        $this->conn->Ejecutar();
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
         return true;
     }
     private function obtenerCondicion(){
@@ -138,7 +136,8 @@ class Usuario{
     }
 
 
-    public function __destruct() {        
+    public function __destruct() {
+        
         unset($this->idUsuario);
         unset($this->usuario);
         unset($this->contrasenia);

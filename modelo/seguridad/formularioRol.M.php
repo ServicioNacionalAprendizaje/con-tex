@@ -48,19 +48,63 @@ class FormularioRol{
     public function __construct() {$this->conn = new Conexion();}
 
     public function Agregar(){
-       
+        $sentenciaSql = "INSERT INTO formularioRol(
+            idRol
+            ,idFormulario
+            ,estado
+            ,fechaCreacion
+            ,fechaModificacion
+            ,idUsuarioCreacion
+            ,idUsuarioModificacion
+            )
+        VALUES (
+            '$this->idRol',
+            '$this->idFormulario', 
+            '$this->estado',
+            '$this->fechaCreacion',
+            '$this->fechaModificacion',
+            '$this->idUsuarioCreacion',
+            '$this->idUsuarioModificacion'
+            )";
+
+    $this->conn->preparar($sentenciaSql);
+    $this->conn->ejecutar();
+    return true;     
     }
 
     public function Modificar(){
-       
+        $sentenciaSql = "UPDATE formularioRol SET 
+        idRol = '$this->idRol', 
+        idFormulario = '$this->idFormulario',
+        estado = '$this->estado'
+        fechaCreacion = '$this->fechaCreacion'
+        fechaModificacion = '$this->fechaModificacion'
+        idUsuarioCreacion = '$this->idUsuarioCreacion'
+        idUsuarioModificacion = '$this->idUsuarioModificacion'  
+        WHERE id_orden = $this->idOrden ";        
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
     }
 
     public function Eliminar(){
-       
+        $sentenciaSql = "DELETE FROM 
+        formularioRol 
+    WHERE 
+        id_Formulario_Rol = $this->idOrden";        
+    $this->conn->preparar($sentenciaSql);
+    $this->conn->ejecutar();
     }
 
     public function Consultar(){
-       
+        $condicion = $this->obtenerCondicion();
+        $sentenciaSql = "SELECT
+           *
+        FROM
+            formularioRol $condicion";        		
+        
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+        return true;
     }
     private function obtenerCondicion(){
      
@@ -69,6 +113,15 @@ class FormularioRol{
 
 
     public function __destruct() {
+        unset($this->idFormularioRol);
+        unset($this->idRol);
+        unset($this->idFormulario);
+        unset($this->estado);
+        unset($this->fechaCreacion);
+        unset($this->fechaModificacion);
+        unset($this->idUsuarioCreacion);
+        unset($this->idUsuarioModificacion);
+        unset($this->conn);
        
     }       
 }

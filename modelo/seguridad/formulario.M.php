@@ -53,15 +53,57 @@ class Formulario{
     public function __construct() {$this->conn = new Conexion();}
 
     public function Agregar(){
-       
+        $sentenciaSql = "INSERT INTO formulario(
+            descripcion
+            ,etiqueta
+            ,ubicacion
+            ,estado
+            ,fecha_creacion
+            ,fecha_modificacion
+            ,id_usuario_creacion
+            ,id_usuario_modificacion
+            ) 
+        VALUES (
+            '$this->descripcion'
+            ,'$this->etiqueta'
+            ,'$this->ubicacion'
+            ,$this->estado
+            ,CURDATE()
+            ,CURDATE()
+            ,1
+            ,1          
+            )";
+        
+        $this->conn->Preparar($sentenciaSql);
+        $this->conn->Ejecutar();
+        return true;
     }
 
     public function Modificar(){
-       
+        $sentenciaSql = "UPDATE formulario 
+        SET 
+            descripccion = '$this->descripcion'
+            ,etiqueta = '$this->etiqueta'
+            ,ubicacion = '$this->ubicacion'
+            ,estado = $this->estado
+            ,fecha_modificacion = $this->fechaModificacion
+            ,id_usuario_modificacion = $this->id_usuario_modificacion
+        WHERE id_usuario = $this->idUsuario ";
+
+        $this->conn->Preparar($sentenciaSql);
+        $this->conn->Ejecutar();
+        return true;
     }
 
     public function Eliminar(){
-       
+        $sentenciaSql = "DELETE FROM 
+            formulario 
+        WHERE 
+            id_usuario = $this->idUsuario";   
+
+        $this->conn->Preparar($sentenciaSql);
+        $this->conn->Ejecutar();
+        return true;
     }
 
     public function Consultar(){

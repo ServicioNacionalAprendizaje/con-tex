@@ -58,6 +58,7 @@ class Formulario{
             ,etiqueta
             ,ubicacion
             ,estado
+<<<<<<< HEAD
             ,fechaCreacion
             ,fechaModificacion
             ,idUsuarioCreacion
@@ -92,15 +93,62 @@ class Formulario{
         WHERE id_formulario = $this->idOrden ";        
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
+=======
+            ,fecha_creacion
+            ,fecha_modificacion
+            ,id_usuario_creacion
+            ,id_usuario_modificacion
+            ) 
+        VALUES (
+            '$this->descripcion'
+            ,'$this->etiqueta'
+            ,'$this->ubicacion'
+            ,$this->estado
+            ,CURDATE()
+            ,CURDATE()
+            ,1
+            ,1          
+            )";
+        
+        $this->conn->Preparar($sentenciaSql);
+        $this->conn->Ejecutar();
+        return true;
+    }
+
+    public function Modificar(){
+        $sentenciaSql = "UPDATE formulario 
+        SET 
+            descripccion = '$this->descripcion'
+            ,etiqueta = '$this->etiqueta'
+            ,ubicacion = '$this->ubicacion'
+            ,estado = $this->estado
+            ,fecha_modificacion = $this->fechaModificacion
+            ,id_usuario_modificacion = $this->id_usuario_modificacion
+        WHERE id_usuario = $this->idUsuario ";
+
+        $this->conn->Preparar($sentenciaSql);
+        $this->conn->Ejecutar();
+        return true;
+>>>>>>> 12ac78cdfdb1d274877375513be8b1a1de91f9bc
     }
 
     public function Eliminar(){
         $sentenciaSql = "DELETE FROM 
+<<<<<<< HEAD
         formulario 
     WHERE 
         id_formulario = $this->idOrden";        
     $this->conn->preparar($sentenciaSql);
     $this->conn->ejecutar();
+=======
+            formulario 
+        WHERE 
+            id_usuario = $this->idUsuario";   
+
+        $this->conn->Preparar($sentenciaSql);
+        $this->conn->Ejecutar();
+        return true;
+>>>>>>> 12ac78cdfdb1d274877375513be8b1a1de91f9bc
     }
 
     public function Consultar(){

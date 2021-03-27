@@ -74,7 +74,7 @@ select{
     background-color: #fff;
 }
 
-/* Interructor */
+/* Interructor hecho por Wilmer */
 
 .switch > input {
 	display:none;
@@ -85,7 +85,7 @@ select{
 	position:relative;
 	background:#d1dae3;
 	width:92px;
-	height:35px;
+	height:37px;
 	border-radius:30px;
 	border:2px solid #cad3dc;
 	box-shadow: -8px -8px 15px rgba(255,255,255,0.5),
@@ -115,6 +115,3 @@ select{
 .switch > input:checked + label:before {
 	left:56px;
 }
-
-/* Login */
-

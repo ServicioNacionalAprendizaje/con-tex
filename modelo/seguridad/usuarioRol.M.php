@@ -11,17 +11,13 @@ class UsuarioRol{
    
     public $conn=null;
 
-    //IdUsuarioRol
-    public function getIdUsuarioRol(){return $this->idUsuarioRol;}
-    public function setIdUsuarioRol($idUsuarioRol){$this->idUsuarioRol = $idUsuarioRol;}
-
     //IdRol
     public function getIdRol(){return $this->idRol;}
     public function setIdRol($idRol){$this->idRol = $idRol;}
 
     //Estado
     public function getEstado(){return $this->estado;}
-    public function setEstado($estado){$this->estado = $estado;} 
+    public function setEstado($estado){$this->estado = $estado;}
 
     //FechaCreacion
     public function getFechaCreacion(){ return $this->fechaCreacion;}

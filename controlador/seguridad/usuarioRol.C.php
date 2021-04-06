@@ -10,10 +10,10 @@ if (isset ($accion)){
     switch($accion){
         case 'ADICIONAR':
             try{
-                $rol= new UsuarioRol();
-                $rol->setIdRol('vendedor');
-                $rol->setEstado(1);
-                $rol = $rol->Agregar();
+                $usuarioRol= new UsuarioRol();
+                $usuarioRol->setIdRol('vendedor');
+                $usuarioRol->setEstado(1);
+                $usuarioRol = $usuarioRol->Agregar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible adicionar la información, consulte con el administrador.";
@@ -22,7 +22,8 @@ if (isset ($accion)){
         break;
         case 'MODIFICAR':
             try{
-                $rol = new Rol();
+                $rol = new UsuarioRol();
+                $
                 $rol->setIdRol($_POST['idRol']);
                 $rol->setDescripcion($_POST['descripcion']);
                 $rol->setEstado($_POST['estado']);               

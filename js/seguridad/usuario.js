@@ -2,14 +2,13 @@ function Enviar(accion,id){
     if(id==null){
         id=$('#hidIdFuncionario').val();
     }
+    var datos = $("form").serialize();
+    datos = datos.split('&');
+
     var parametros = {
-        "idFuncionario" :id,
-        "accion" : accion,
-        "identificacion": $('#txtIdentificacion').val(),
-        "nombres": $('#txtNombres').val(),
-        "apellidos": $('#txtApellidos').val(),
-        "correo": $('#txtCorreo').val(),
-        "cargo": $('#txtCargo').val()
+        "accion":accion
+        ,"datos" :datos,
+        
     };
 
      $.ajax({

@@ -4,7 +4,7 @@ include '../../entorno/conexion.php';
 require '../../modelo/seguridad/usuario.M.php';
 
 $respuesta = array();
-// $_POST['accion'] --- $accion
+
 $accion = 'ADICIONAR';
 if (isset ($accion)){
     switch($accion){

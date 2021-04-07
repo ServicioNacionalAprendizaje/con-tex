@@ -53,62 +53,10 @@ class Formulario{
     public function __construct() {$this->conn = new Conexion();}
 
     public function Agregar(){
-        $sentenciaSql = "INSERT INTO formulario(
-            descripcion
-            ,etiqueta
-            ,ubicacion
-            ,estado
-<<<<<<< HEAD
-            ,fechaCreacion
-            ,fechaModificacion
-            ,idUsuarioCreacion
-            ,idUsuarioModificacion
-            ) 
-        VALUES (
-            '$this->descripcion',
-            '$this->etiqueta', 
-            '$this->ubicacion',
-            '$this->estado',
-            '$this->fechaCreacion',
-            '$this->fechaModificacion',
-            '$this->idUsuarioCreacion',
-            '$this->idUsuarioModificacion'
-            )";
-
-    $this->conn->preparar($sentenciaSql);
-    $this->conn->ejecutar();
-    return true;
-    }
-
-    public function Modificar(){
-        $sentenciaSql = "UPDATE formulario SET 
-        descripcion = '$this->descripcion', 
-        etiqueta = '$this->etiqueta',
-        ubicacion = '$this->ubicacion',
-        estado = '$this->estado'
-        fechaCreacion = '$this->fechaCreacion'
-        fechaModificacion = '$this->fechaModificacion'
-        idUsuarioCreacion = '$this->idUsuarioCreacion'
-        idUsuarioModificacion = '$this->idUsuarioModificacion'  
-        WHERE id_formulario = $this->idOrden ";        
-        $this->conn->preparar($sentenciaSql);
-        $this->conn->ejecutar();
-=======
-            ,fecha_creacion
-            ,fecha_modificacion
-            ,id_usuario_creacion
-            ,id_usuario_modificacion
-            ) 
-        VALUES (
-            '$this->descripcion'
-            ,'$this->etiqueta'
-            ,'$this->ubicacion'
-            ,$this->estado
-            ,CURDATE()
-            ,CURDATE()
-            ,1
-            ,1          
-            )";
+        $sentenciaSql = "CALL Agregar('$this->descripcion'
+        ,'$this->etiqueta'
+        ,'$this->ubicacion'
+        ,$this->estado)";
         
         $this->conn->Preparar($sentenciaSql);
         $this->conn->Ejecutar();
@@ -129,18 +77,10 @@ class Formulario{
         $this->conn->Preparar($sentenciaSql);
         $this->conn->Ejecutar();
         return true;
->>>>>>> 12ac78cdfdb1d274877375513be8b1a1de91f9bc
     }
 
     public function Eliminar(){
         $sentenciaSql = "DELETE FROM 
-<<<<<<< HEAD
-        formulario 
-    WHERE 
-        id_formulario = $this->idOrden";        
-    $this->conn->preparar($sentenciaSql);
-    $this->conn->ejecutar();
-=======
             formulario 
         WHERE 
             id_usuario = $this->idUsuario";   
@@ -148,7 +88,6 @@ class Formulario{
         $this->conn->Preparar($sentenciaSql);
         $this->conn->Ejecutar();
         return true;
->>>>>>> 12ac78cdfdb1d274877375513be8b1a1de91f9bc
     }
 
     public function Consultar(){

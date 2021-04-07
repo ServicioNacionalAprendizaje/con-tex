@@ -296,3 +296,41 @@ DEFAULT CHARACTER SET = utf8mb4;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+DELIMITER $$
+CREATE PROCEDURE Agregar(IN descripcion Varchar(50), IN etiqueta Varchar(30), IN ubicacion Varchar(100), IN estado Bit(1))
+BEGIN
+	INSERT INTO formulario(
+            descripcion
+            ,etiqueta
+            ,ubicacion
+            ,estado
+            ,fecha_creacion
+            ,fecha_modificacion
+            ,id_usuario_creacion
+            ,id_usuario_modificacion
+            ) 
+        VALUES (
+            descripcion
+            ,etiqueta
+            ,ubicacion
+            ,estado
+            ,CURDATE()
+            ,CURDATE()
+            ,1
+            ,1          
+            );
+END$$
+
+DELIMITER $$
+CREATE PROCEDURE Modificar(IN descripcion Varchar(50), IN etiqueta Varchar(30), IN ubicacion Varchar(100), IN estado Bit(1), IN id_usuario_modificacion INT(11), IN idUsuario INT(11))
+BEGIN
+	UPDATE formulario 
+    SET descripccion = descripcion
+		,etiqueta = etiqueta
+		,ubicacion = ubicacion
+        ,estado = estado
+        ,fecha_modificacion = CURDATE()
+        ,id_usuario_modificacion = id_usuario_modificacion
+        WHERE id_usuario = idUsuario;
+END$$

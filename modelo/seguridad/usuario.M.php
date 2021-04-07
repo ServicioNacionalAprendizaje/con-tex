@@ -76,16 +76,16 @@ class Usuario{
             ,id_usuario_modificacion
             ) 
         VALUES (
-            '$this->usuario',
-            '$this->contrasenia', 
-            '$this->fechaActivacion',
-            $this->fechaExpiracion,
-            $this->idPersona,
-            '$this->estado',
-            '$this->fechaCreacion',
-            '$this->fechaModificacion',
-            '$this->idUsuarioCreacion',
-            '$this->idUsuarioModificacion'
+            '$this->usuario'
+            ,'$this->contrasenia' 
+            ,'$this->fechaActivacion'
+            ,'$this->fechaExpiracion'
+            ,'$this->idPersona'
+            ,'$this->estado'
+            ,'$this->fechaCreacion'
+            ,'$this->fechaModificacion'
+            ,'$this->idUsuarioCreacion'
+            ,'$this->idUsuarioModificacion'
             )";
 
     $this->conn->preparar($sentenciaSql);

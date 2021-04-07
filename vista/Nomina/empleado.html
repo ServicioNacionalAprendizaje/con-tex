@@ -12,6 +12,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+    <form name="frmEmpleado">
     <div class="margen" align="center">
         <label>
             <h1>Empleado</h1>
@@ -19,9 +20,9 @@
         <div class="container form-group">
             <div class="row">
                 <div class="col-12 col-sm-6">
-                    <label class="col-form-label">id Cargo</label>
-                    <input type="number" name="numCargo" id="numCargo" value="" class="caja form-control"
-                        placeholder="Cargo">
+                    <label class="col-form-label">Cargo</label>
+                    <input type="hidden" name="hidIdCargo" id="hidIdCargo" value=""><br>
+                    <input type="text" name="txtCargo" id="txtCargo" value="" class="caja form-control" placeholder="Cargo">
                 </div>
                 <div class="col-12 col-sm-6">
                     <label class="col-form-label">Correo institucional</label>
@@ -45,13 +46,13 @@
                 </div>
                 <div class="col-12 col-sm-6">
                     <label class="col-form-label">Pensión</label>
-                    <input type="text" name="txtPesion" id="txtPesion" value="" class="caja form-control"
+                    <input type="text" name="txtPension" id="txtPension" value="" class="caja form-control"
                         placeholder="Pensión">
                 </div>
                 <div class="col-12 col-sm-6">
-                    <label class="col-form-label">Id persona</label>
-                    <input type="text" name="txtIdPersona" id="txtIdPersona" value="" class="caja form-control"
-                        placeholder="Id pesona">
+                    <label class="col-form-label">Persona</label>
+                    <input type="hidden" name="hidIdPersona" id="hidIdPersona" value=""><br>
+                    <input type="text" name="txtPersona" id="txtPersona" value="" class="caja form-control" placeholder="Persona">
                 </div>
                 <div class="col-12 col-sm-6">
                     <label class="col-form-label">Estado</label>
@@ -80,15 +81,25 @@
                         <table class="table table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <td align="center">Descripción</td>
-                                    <td align="center">Etiqueta</td>
-                                    <td align="center">Ubicación</td>
+                                    <td align="center">id Cargo</td>
+                                    <td align="center">Correo institucional</td>
+                                    <td align="center">Fecha ingreso</td>
+                                    <td align="center">ARL</td>
+                                    <td align="center">Salud</td>
+                                    <td align="center">Pensión</td>
+                                    <td align="center">id Persona</td>
+                                    <td align="center">Estado</td>
                                     <td align="center">Modificar</td>
                                     <td align="center">Eliminar</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -104,5 +115,6 @@
             </div>
         </div>
     </div>
+</form>
 </body>
 </html>

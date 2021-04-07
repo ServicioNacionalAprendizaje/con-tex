@@ -23,7 +23,6 @@ if (isset ($accion)){
         case 'MODIFICAR':
             try{
                 $rol = new UsuarioRol();
-                $
                 $rol->setIdRol($_POST['idRol']);
                 $rol->setDescripcion($_POST['descripcion']);
                 $rol->setEstado($_POST['estado']);               

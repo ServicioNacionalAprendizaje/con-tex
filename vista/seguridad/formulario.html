@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Formulario</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='../../componente/css/goblal.css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+        integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="margen" align="center">
+        <label>
+            <h1>Formulario</h1>
+        </label><br>
+        <div class="container form-group">
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <label class="col-form-label">Descripción</label>
+                    <input type="text" name="txtDescripcion" id="txtDescripcion" value="" class="caja form-control"
+                        placeholder="Descripción">
+                </div>
+                <div class="col-12 col-sm-6">
+                    <label class="col-form-label">Etiqueta</label>
+                    <input type="text" name="txtEtiqueta" id="txtEtiqueta" value="" class="caja form-control"
+                        placeholder="Etiqueta">
+                </div>
+                <div class="col-12 col-sm-6">
+                    <label class="col-form-label">Ubicación</label>
+                    <input type="text" name="txtUbicacion" id="txtUbicacion" value="" class="caja form-control"
+                        placeholder="Ubicación">
+                </div>
+                <div class="col-12 col-sm-6">
+                    <label class="col-form-label">Estado</label>
+                    <form action="">
+                        <div class="switch">                  
+                        <input type="checkbox" id="check">
+                        <label for="check"></label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-6">
+                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado">
+            </div>
+            <div class="col-12 col-sm-6">
+                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción">
+            </div>
+        </div>
+        <br></br>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <td align="center">Descripción</td>
+                                    <td align="center">Etiqueta</td>
+                                    <td align="center">Ubicación</td>
+                                    <td align="center">Modificar</td>
+                                    <td align="center">Eliminar</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td align="center"><a href="#" class="btn btn-warning"><i
+                                                class="fas fa-edit"></i></a></td>
+                                    <td align="center"><a href="#" class="btn btn-danger"><i
+                                                class="fas fa-trash"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

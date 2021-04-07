@@ -1,7 +1,7 @@
 <?php
 // $ubicacionFormulario =  substr($_SERVER["SCRIPT_NAME"], 17);
 include '../../entorno/conexion.php';
-require '../../modelo/seguridad/usuario.M.php';
+require '../../modelo/seguridad/persona.M.php';
 
 $respuesta = array();
 // $_POST['accion'] --- $accion
@@ -10,14 +10,14 @@ if (isset ($accion)){
     switch($accion){
         case 'ADICIONAR':
             try{
-                $usuario= new Usuario();
-                $usuario->setUsuario('admin');
-                $usuario->setContrasenia('abcd1234');
-                $usuario->setFechaActivacion('CURDATE()');
-                $usuario->setFechaExpiracion('CURDATE()');
-                $usuario->setidPersona(1);
-                $usuario->setEstado(1);
-                $resultado = $usuario->Agregar();
+                $persona= new Persona();
+                $persona->setIdPersona('12345');
+                $persona->setNombre('abcd');
+                $persona->setApellido('abcd');
+                $persona->setEdad('26');
+                $persona->setGenero('M');
+                $persona->setEstado(1);
+                $resultado = $persona->Agregar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible adicionar la información, consulte con el administrador.";
@@ -26,16 +26,16 @@ if (isset ($accion)){
         break;
         case 'MODIFICAR':
             try{
-                $usuario = new Usuario();
-                $usuario->setIdUsuario($_POST['idUsuario']);
-                $usuario->setUsuario($_POST['usuario']);
-                $usuario->setContrasenia($_POST['contrasenia']);
-                $usuario->setFechaActivacion($_POST['fechaActivacion']);
-                $usuario->setFechaExpiracion($_POST['fechaExpiracion']);
-                $usuario->setIdPersona($_POST['idPersona']);
-                $usuario->setEstado($_POST['estado']);               
-                $usuario->setFechaModificacion($_POST['fechaModificacion']);
-                $usuario->setIdUsuarioModificacion($_POST['idUsuarioModificacion']);
+                $persona = new Persona();
+                $persona->setIdPersona($_POST['idPersona']);
+                $persona->setNombre($_POST['nombre']);
+                $persona->setApellido($_POST['apellido']);
+                $persona->setEdad($_POST['edad']);
+                $persona->setGenero($_POST['genero']);
+                $persona->setEstado($_POST['estado']);
+                $persona->setFechaCreacion($_POST['fechaCreacion']);
+                $persona->setIdUsuarioCreacion($_POST['idUsuarioCreacion']);
+                $persona->setIdUsuarioModificacion($_POST['idUsuarioModiificacion']);
 
                 $resultado = $usuario->Modificar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
@@ -46,9 +46,9 @@ if (isset ($accion)){
         break;
         case 'ELIMINAR':
             try{
-                $usuario = new Usuario();
-                $usuario->setIdUsuario($_POST['idUsuario']);
-                $resultado = $usuario->Eliminar();
+                $persona = new Usuario();
+                $persona->setIdPersona($_POST['idPersona']);
+                $resultado = $persona->Eliminar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible eliminar la información, consulte con el administrador.";
@@ -57,32 +57,27 @@ if (isset ($accion)){
         break;
         case 'CONSULTAR':
             try{
-                $usuario = new Usuario();
-                $usuario->setIdUsuario($_POST['idUsuario']);
-                $usuario->setUsuario($_POST['usuario']);
-                $usuario->setContrasenia($_POST['contrasenia']);
-                $usuario->setFechaActivacion($_POST['fechaActivacion']);
-                $usuario->setFechaExpiracion($_POST['fechaExpiracion']);
-                $usuario->setIdPersona($_POST['idPersona']);
-                $usuario->setEstado($_POST['estado']);
-                $usuario->setFechaCreacion($_POST['fechaCreacion']);
-                $usuario->setFechaModificacion($_POST['fechaModificacion']);
-                $usuario->setIdUsuarioCreacion($_POST['idUsuarioCreacion']);
-                $usuario->setIdUsuarioModificacion($_POST['idUsuarioModificacion']);
-                $resultado = $usuario->consultar();
+                $persona = new Persona();
+                $persona->setIdPersona($_POST['idPersona']);
+                $persona->setNombre($_POST['nombre']);
+                $persona->setApellido($_POST['apellido']);
+                $persona->setEdad($_POST['edad']);
+                $persona->setGenero($_POST['genero']);
+                $persona->setEstado($_POST['fechaCreacion']);
+                $persona->setIdUsuarioCreacion($_POST['idUsuarioCreacion']);
+                $persona->setIdUsuarioModificacion($_POST['idUsuarioModificacion']);
+                $resultado = $persona->consultar();
 
-                $numeroRegistros = $usuario->conn->obtenerNumeroRegistros();
+                $numeroRegistros = $persona->conn->obtenerNumeroRegistros();
                 if($numeroRegistros === 1){
-                    if ($rowBuscar = $usuario->conn->obtenerObjeto()){
-                        $_POST['idUsuario'] = $rowBuscar->id_usuario;
-                        $_POST['usuario'] = $rowBuscar->usuario;
-                        $_POST['contrasenia'] = $rowBuscar->contrasena;
-                        $_POST['fechaActivacion'] = $rowBuscar->fecha_activacion;
-                        $_POST['fechaExpiracion'] = $rowBuscar->fecha_expiracion;
+                    if ($rowBuscar = $persona->conn->obtenerObjeto()){
                         $_POST['idPersona'] = $rowBuscar->id_persona;
+                        $_POST['nombre'] = $rowBuscar->nombre;
+                        $_POST['apellido'] = $rowBuscar->apellido;
+                        $_POST['edad'] = $rowBuscar->edad;
+                        $_POST['genero'] = $rowBuscar->genero;
                         $_POST['estado'] = $rowBuscar->estado;
                         $_POST['fechaCreacion'] = $rowBuscar->fecha_creacion;
-                        $_POST['fechaModificacion'] = $rowBuscar->fecha_modificacion;
                         $_POST['idUsuarioCreacion'] = $rowBuscar->id_usuario_creacion;
                         $_POST['idUsuarioModificacion'] = $rowBuscar->id_usuario_modificacion;
                     }

@@ -47,5 +47,87 @@ class Empleado{
     //estado
     public function getEstado(){return $this->estado;}
     public function setEstado($estado){$this->estado = $estado;}
+
+    //conexion
+    public function __construct() {$this->conn = new Conexion();}
+
+    public function Agregar(){
+        $sentenciaSql = "INSERT INTO empleado(
+            id_cargo
+            ,correo_institucional
+            ,fecha_ingreso
+            ,arl
+            ,salud
+            ,pension
+            ,id_persona
+            ,estado
+            ) 
+        VALUES (
+            '$this->idCargo'
+            ,'$this->correoInstitucional' 
+            ,'$this->fechaIngreso'
+            ,'$this->arl'
+            ,'$this->salud'
+            ,'$this->pension'
+            ,'$this->idPersona'
+            ,'$estado'
+            )";
+
+    $this->conn->preparar($sentenciaSql);
+    $this->conn->ejecutar();
+    return true;
+    }
+
+    public function Modificar(){
+        $sentenciaSql = "UPDATE empleado SET 
+        id_cargo = '$this->idCargo',
+        ,correo_institucional = '$this->correoInstitucional'
+        ,fecha_ingreso = '$this->fechaIngreso'
+        ,arl = '$this->arl'
+        ,salud = '$this->salud'
+        ,pension = '$this->pension'
+        ,id_persona = '$this->idPersona'
+        ,estado = '$this->estado' 
+        WHERE id_empleado = $this->idEmpleado ";        
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+    }
+
+    public function Eliminar(){
+        $sentenciaSql = "DELETE FROM 
+            empleado 
+        WHERE 
+            id_empleado = $this->idEmpleado";        
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+    }
+
+    public function Consultar(){
+        $condicion = $this->obtenerCondicion();
+        $sentenciaSql = "SELECT
+           *
+        FROM
+            empleado $condicion";        		
+        
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+        return true;
+    }
+    private function obtenerCondicion(){}
+
+    public function __destruct() {
+        
+        unset($this->idEmpleado);
+        unset($this->idCargo);
+        unset($this->correoInstitucional);
+        unset($this->fechaIngreso);
+        unset($this->arl);
+        unset($this->salud);
+        unset($this->pension);
+        unset($this->idPersona);
+        unset($this->estado);
+        unset($this->conn);
+    }
+
 }
 ?>

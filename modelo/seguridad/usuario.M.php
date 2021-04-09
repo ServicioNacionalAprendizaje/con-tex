@@ -58,7 +58,6 @@ class Usuario{
     public function getIdUsuarioModificacion(){ return $this->idUsuarioModificacion;}
     public function setIdUsuarioModificacion($idUsuarioModificacion = 1) { $this->idUsuarioModificacion =$idUsuarioModificacion;}
 
-
     //conexion
     public function __construct() {$this->conn = new Conexion();}
 
@@ -130,11 +129,7 @@ class Usuario{
         $this->conn->ejecutar();
         return true;
     }
-    private function obtenerCondicion(){
-        
-        
-    }
-
+    private function obtenerCondicion(){}
 
     public function __destruct() {
         

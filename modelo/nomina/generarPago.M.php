@@ -54,7 +54,56 @@ class GenerarPago{
             ,'$this->fechaFin'
             ,'$this->idEmpleado'
         )";
+
+    $this->conn->preparar($sentenciaSql);
+    $this->conn->ejecutar();
+    return true;
+    }
+
+    public function Modificar(){
+        $sentenciaSql = "UPDATE generar_pago SET
+        valor_pago = '$this->usuario',
+        deduccion = '$this->deduccion',
+        fecha_inicio = '$this->fechaInicio',
+        fecha_fin = '$this->fechaFin',
+        id_empleado = '$this->idEmpleado'
+        WHERE id_generar_pago = $this->getIdGenerarPago";
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+    }
+
+    public function Eliminar(){
+        $sentenciaSql = "DELETE FROM
+            generar_pago
+        WHERE
+            id_generar_pago = $this->idGenerarPago";
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejectutar();
+    }
+
+    public function Consultar(){
+        $condicion = $this->obtenerCondicion();
+        $sentenciaSql = "SELECT
+            *
+        FROM
+            generar_pago $condicion"; 
+            
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+        return true;
+    }
+
+    private function obtenerCondicion(){}
+
+    public function __destruct(){
+
+        unset($this->idGenerarPago);
+        unset($this->valorPago);
+        unset($this->deduccion);
+        unset($this->fechaInicio);
+        unset($this->fechaFin);
+        unset($this->idEmpleado);
+        unset($this->conn);
     }
 }
-
 ?>

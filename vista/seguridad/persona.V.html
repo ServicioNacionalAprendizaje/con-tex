@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset='utf-8'>
     <title>Registro</title>
@@ -11,11 +10,11 @@
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <script src="../../js/seguridad/persona.js"></script>
 </head>
 
 <body>
-    <form name="frmPersona"> 
+    <form name="frmPersona" id="frmPersona"> 
     <div class="margen" align="center">
         <label>
             <h1>Persona</h1>
@@ -23,12 +22,13 @@
         <div class="container form-group">
             <div class="row">
                 <div class="col-12 col-sm-6">
+                    <input type="hidden" name="hidIdPersona" id="hidIdPersona" value="">
                     <label class="col-form-label">Nombre</label>
                     <input type="text" name="txtNombre" id="txtNombre" value="" class="caja form-control"
                         placeholder="Nombre">
                 </div>
                 <div class="col-12 col-sm-6">
-                    <label class="col-form-label">Apellido</label>
+                    <label class="col-form-label">Apellido</label>                    
                     <input type="text" name="txtApellido" id="txtApellido" value="" class="caja form-control"
                         placeholder="Apellido">
                 </div>
@@ -45,6 +45,14 @@
                     <label class="col-form-label">Femenino</label>
                     <input type="radio" name="radGenero" id="radGenero" value="F" class="caja form-control">
                 </div>
+                <div class="col-12 col-sm-6">
+                    <label for="cmbEstado">Estado</label>
+                    <select class="lista form-control" id="cmbEstado">
+                        <option value="" selected="selected">--Seleccione--</option>
+                        <option value="0">Activo</option>
+                        <option value="1">Inactivo</option>
+                    </select>
+                </div>               
             </div>
         </div>
         <div class="row">
@@ -52,7 +60,7 @@
                 <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado">
             </div>
             <div class="col-12 col-sm-6">
-                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción">
+                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick="Enviar('ADICIONAR',null);">
             </div>
         </div>
         <br></br>

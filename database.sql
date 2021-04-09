@@ -39,12 +39,14 @@ DEFAULT CHARACTER SET = utf8mb4;
 -- Table `contex`.`persona`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `contex`.`persona` (
-  `id_persona` INT NOT NULL,
-  `nombre_completo` VARCHAR(100) NOT NULL,
+  `id_persona` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(100) NOT NULL,
+  `apellido` VARCHAR(100) NOT NULL,
   `edad` INT NOT NULL,
   `genero` ENUM('Masculino', 'Femenino', 'Otro') NOT NULL,
   `estado` BIT(1) NOT NULL,
   `fecha_creacion` DATETIME NOT NULL,
+  `fecha_modificacion` DATETIME NOT NULL,
   `id_usuario_creacion` INT NOT NULL,
   `id_usuario_modificacion` INT NOT NULL,
   PRIMARY KEY (`id_persona`))
@@ -80,7 +82,7 @@ DEFAULT CHARACTER SET = utf8mb4;
 -- Table `contex`.`compra_venta`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `contex`.`compra_venta` (
-  `id_compra_venta` INT NOT NULL,
+  `id_compra_venta` INT NOT NULL AUTO_INCREMENT,
   `control` ENUM('Compra', 'Venta', 'Cotizacion') NOT NULL,
   `fecha` DATETIME NOT NULL,
   `descuento` DOUBLE NULL,
@@ -102,7 +104,7 @@ DEFAULT CHARACTER SET = utf8mb4;
 -- Table `contex`.`empleado`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `contex`.`empleado`(
-  `id_empleado` INT NOT NULL,
+  `id_empleado` INT NOT NULL AUTO_INCREMENT,
   `id_cargo` INT NOT NULL,
   `correo_institucional` VARCHAR(50) NOT NULL,
   `fecha_ingreso` VARCHAR(50) NOT NULL,
@@ -142,7 +144,7 @@ DEFAULT CHARACTER SET = utf8mb4;
 -- Table `contex`.`rol`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `contex`.`rol` (
-  `id_rol` INT NOT NULL,
+  `id_rol` INT NOT NULL AUTO_INCREMENT,
   `descripcion` VARCHAR(50) NOT NULL,
   `estado` BIT(1) NOT NULL,
   `fecha_creacion` DATETIME NOT NULL,
@@ -298,39 +300,46 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 DELIMITER $$
-CREATE PROCEDURE Agregar(IN descripcion Varchar(50), IN etiqueta Varchar(30), IN ubicacion Varchar(100), IN estado Bit(1))
+CREATE PROCEDURE Agregar_formulario(IN descripcion Varchar(50),
+					IN etiqueta Varchar(30),
+                    IN ubicacion Varchar(100),
+                    IN estado Bit(1),
+                    IN idUsuarioCreacion INT(11))
 BEGIN
 	INSERT INTO formulario(
-            descripcion
-            ,etiqueta
-            ,ubicacion
-            ,estado
-            ,fecha_creacion
-            ,fecha_modificacion
-            ,id_usuario_creacion
-            ,id_usuario_modificacion
-            ) 
-        VALUES (
-            descripcion
-            ,etiqueta
-            ,ubicacion
-            ,estado
-            ,CURDATE()
-            ,CURDATE()
-            ,1
-            ,1          
-            );
+					descripcion,
+                    etiqueta,
+                    ubicacion,
+                    estado,
+                    fecha_creacion,
+                    fecha_modificacion,
+                    id_usuario_creacion,
+                    id_usuario_modificacion) 
+			VALUES (
+				descripcion,
+				etiqueta,
+				ubicacion,
+				estado,
+				CURDATE(),
+				CURDATE(),
+				idUsuarioCreacion,
+				idUsuarioCreacion);
 END$$
 
 DELIMITER $$
-CREATE PROCEDURE Modificar(IN descripcion Varchar(50), IN etiqueta Varchar(30), IN ubicacion Varchar(100), IN estado Bit(1), IN id_usuario_modificacion INT(11), IN idUsuario INT(11))
+CREATE PROCEDURE Modificar_formulario(IN descripcion Varchar(50),
+					IN etiqueta Varchar(30),
+                    IN ubicacion Varchar(100),
+                    IN estado Bit(1),
+                    IN id_usuario_modificacion INT(11),
+                    IN idFormulario INT(11))
 BEGIN
 	UPDATE formulario 
-    SET descripccion = descripcion
-		,etiqueta = etiqueta
-		,ubicacion = ubicacion
-        ,estado = estado
-        ,fecha_modificacion = CURDATE()
-        ,id_usuario_modificacion = id_usuario_modificacion
-        WHERE id_usuario = idUsuario;
+    SET descripcion = descripcion,
+		etiqueta = etiqueta,
+		ubicacion = ubicacion,
+		estado = estado,
+		fecha_modificacion = NOW(),
+		id_usuario_modificacion = id_usuario_modificacion 
+	WHERE id_formulario = idFormulario;
 END$$

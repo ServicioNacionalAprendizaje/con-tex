@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Tarea</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='../../componente/css/goblal.css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+        integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <form name="frmTarea">
+        <div class="margen" align="center">
+            <h1><label>Tarea</label></h1>
+            <div class="container form-group">
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <label class="col-form-label">Nombre empleado</label>
+                        <input type="hidden" name="hidIdEmpleado" id="hidIdEmpleado" value=""><br>
+                        <input type="text" name="txtEmpleado" id="txtEmpleado" value="" class="caja form-control"
+                            placeholder="Empleado">
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <label class="col-form-label">Valor unitario</label>
+                        <input type="number" class="caja form-control" name="numValorUnita" value="" id="numValorUnita"
+                            placeholder="Valor unitario">
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <label class="col-form-label">Fecha</label>
+                            <input type="date" name="datFecha" id="datFecha" value=""
+                                class="caja form-control" placeholder="Fecha">
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <label class="col-form-label">Cantidad</label>
+                            <input type="number" class="caja form-control" name="numCantidad" value="" id="numCantidad"
+                                placeholder="Cantidad">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <label class="col-form-label">Estado pago</label>
+                            <input type="text" class="caja form-control" name="txtEstadoPago" value=""
+                                id="txtEstadoPago" placeholder="Estado pago">
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <label class="col-form-label">Descripción</label>
+                            <input type="text" class="caja form-control" name="txtDescripcion" value=""
+                                id="txtDescripcion" placeholder="Descripción">
+                        </div>
+                    </div>
+                        <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <label class="col-form-label">Estado</label>
+                            <form action="">
+                                <div class="switch">
+                                    <input type="checkbox" id="check">
+                                    <label for="check"></label>
+                                </div>
+                        </div>
+                    </div>
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar"
+                            id="btnBuscar" value="BUSCAR" placeholder="Código del empleado">
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <input type="button" class="boton form-control btn-light btn-outline-primary"
+                            name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción">
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <td align="center">Id empleado</td>
+                                            <td align="center">Valor unitario</td>
+                                            <td align="center">Fecha</td>
+                                            <td align="center">Cantidad</td>
+                                            <td align="center">Estado pago</td>
+                                            <td align="center">Descripción</td>
+                                            <td align="center">Estado</td>
+                                            <td align="center">Modificar</td>
+                                            <td align="center">Eliminar</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td align="center"><a href="#" class="btn btn-warning"><i
+                                                        class="fas fa-edit"></i></a>
+                                            </td>
+                                            <td align="center"><a href="#" class="btn btn-danger"><i
+                                                        class="fas fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </form>
+</body>
+
+</html>

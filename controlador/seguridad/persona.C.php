@@ -4,19 +4,18 @@ include '../../entorno/conexion.php';
 require '../../modelo/seguridad/persona.M.php';
 
 $respuesta = array();
-// $_POST['accion'] --- $accion
-$accion = 'ADICIONAR';
+
+$accion = $_POST['accion'];
 if (isset ($accion)){
     switch($accion){
         case 'ADICIONAR':
             try{
                 $persona= new Persona();
-                $persona->setIdPersona('12345');
-                $persona->setNombre('abcd');
-                $persona->setApellido('abcd');
-                $persona->setEdad('26');
-                $persona->setGenero('M');
-                $persona->setEstado(1);
+                $persona->setNombre($_POST['nombre']);
+                $persona->setApellido($_POST['apellido']);
+                $persona->setEdad($_POST['edad']);
+                $persona->setGenero($_POST['genero']);
+                $persona->setEstado($_POST['estado']);
                 $resultado = $persona->Agregar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){

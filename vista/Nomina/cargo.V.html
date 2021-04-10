@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
-    <title>Rol</title>
+    <title>Cargo</title>
     <link rel='stylesheet' type='text/css' media='screen' href='../../componente/css/goblal.css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
@@ -11,27 +12,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-    <form name="frmRol" id="frmRol"> 
+    <form name="frmCargo" id="frmCargo"> 
     <div class="margen" align="center">
-        <label>
-            <h1>Rol</h1>
-        </label><br>
+        <h1><label> Cargo</label></h1>
         <div class="container form-group">
             <div class="row">
                 <div class="col-12 col-sm-6">
-                    <label class="col-form-label">Descripción</label>
-                    <input type="text" name="txtDescripcion" id="txtDescripcion" value="" class="caja form-control"
-                        placeholder="Descripción del rol">
+                    <label class="col-form-label">Código empleado</label>
+                    <input type="number" class="caja form-control" name="numCodigo" id="numCodigo" value=""
+                        placeholder="Código del empleado">
                 </div>
                 <div class="col-12 col-sm-6">
-                    <label lass="col-form-label">Estado</label>
-                    <form action="">
-                        <div class="switch">
-                            <input type="checkbox" id="check">
-                            <label for="check"></label>
-                        </div>
-                    </form>
+                    <label class="col-form-label">Descripción</label>
+                    <input type="password" class="caja form-control" name="passContrasena" value="" id="passContrasena"
+                        placeholder="Descripción">
                 </div>
             </div>
             <div class="row">
@@ -52,8 +48,8 @@
                         <table class="table table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
+                                    <td align="center">Código empleado</td>
                                     <td align="center">Descripción</td>
-                                    <td align="center">Estado</td>
                                     <td align="center">Modificar</td>
                                     <td align="center">Eliminar</td>
                                 </tr>
@@ -76,19 +72,5 @@
     </div>
     </form>
 </body>
-<script type="text/javascript">
-
-    var check;
-    $("#check").on("click", function(){
-        check = $("#check").prop("checked");
-        if(check) {
-             alert("Activo");
-            //  check = $("#check").prop("checked",true);
-        } else {
-            alert("No activo");
-            // check = $("#check").prop("checked",false);
-        }
-    }); 
-    </script>
 
 </html>

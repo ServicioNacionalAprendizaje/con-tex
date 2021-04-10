@@ -58,7 +58,6 @@ class Usuario{
     public function getIdUsuarioModificacion(){ return $this->idUsuarioModificacion;}
     public function setIdUsuarioModificacion($idUsuarioModificacion = 1) { $this->idUsuarioModificacion =$idUsuarioModificacion;}
 
-
     //conexion
     public function __construct() {$this->conn = new Conexion();}
 
@@ -76,16 +75,16 @@ class Usuario{
             ,id_usuario_modificacion
             ) 
         VALUES (
-            '$this->usuario',
-            '$this->contrasenia', 
-            '$this->fechaActivacion',
-            $this->fechaExpiracion,
-            $this->idPersona,
-            '$this->estado',
-            '$this->fechaCreacion',
-            '$this->fechaModificacion',
-            '$this->idUsuarioCreacion',
-            '$this->idUsuarioModificacion'
+            '$this->usuario'
+            ,'$this->contrasenia' 
+            ,'$this->fechaActivacion'
+            ,'$this->fechaExpiracion'
+            ,'$this->idPersona'
+            ,'$this->estado'
+            ,'$this->fechaCreacion'
+            ,'$this->fechaModificacion'
+            ,'$this->idUsuarioCreacion'
+            ,'$this->idUsuarioModificacion'
             )";
 
     $this->conn->preparar($sentenciaSql);
@@ -130,11 +129,7 @@ class Usuario{
         $this->conn->ejecutar();
         return true;
     }
-    private function obtenerCondicion(){
-        
-        
-    }
-
+    private function obtenerCondicion(){}
 
     public function __destruct() {
         

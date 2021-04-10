@@ -59,7 +59,6 @@ class Persona{
 
     public function Agregar(){
         $sentenciaSql = "INSERT INTO persona(
-            id_persona
             ,nombre
             ,apellido
             ,edad
@@ -70,17 +69,16 @@ class Persona{
             ,id_usuario_creacion
             ,id_usuario_modificacion
             ) 
-        VALUES (
-            $this->idPersona,
-            '$this->nombre',
-            '$this->apellido',
-            '$this->edad',
-            '$this->genero',
-            '$this->estado',
-            '$this->fechaCreacion',
-            '$this->fechaModificacion',
-            '$this->idUsuarioCreacion',
-            '$this->idUsuarioModificacion'
+        VALUES (            
+            ,'$this->nombre'
+            ,'$this->apellido'
+            , $this->edad
+            ,'$this->genero'
+            ,'$this->estado'
+            ,'TIMESTAMP()
+            ,'TIMESTAMP()
+            , 1
+            , 1
             )";
 
     $this->conn->preparar($sentenciaSql);

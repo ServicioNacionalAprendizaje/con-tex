@@ -12,6 +12,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+    <form name="frmFormulario" id="frmFormulario">
     <div class="margen" align="center">
         <label>
             <h1>Formulario</h1>
@@ -36,9 +37,9 @@
                 <div class="col-12 col-sm-6">
                     <label class="col-form-label">Estado</label>
                     <form action="">
-                        <div class="switch">                  
-                        <input type="checkbox" id="check">
-                        <label for="check"></label>
+                        <div class="switch">
+                            <input type="checkbox" id="check">
+                            <label for="check"></label>
                         </div>
                     </form>
                 </div>
@@ -84,5 +85,20 @@
             </div>
         </div>
     </div>
+</form>
 </body>
+<script type="text/javascript">
+
+    var check;
+    $("#check").on("click", function(){
+        check = $("#check").prop("checked");
+        if(check) {
+             alert("Activo");
+            //  check = $("#check").prop("checked",true);
+        } else {
+            alert("No activo");
+            // check = $("#check").prop("checked",false);
+        }
+    }); 
+    </script>
 </html>

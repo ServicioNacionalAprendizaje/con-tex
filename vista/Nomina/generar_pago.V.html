@@ -56,6 +56,7 @@
                                     <input type="checkbox" id="check">
                                     <label for="check"></label>
                                 </div>
+                            </form>
                         </div>
                     </div>
                 <div class="row">
@@ -109,5 +110,18 @@
             </div>
     </form>
 </body>
+<script type="text/javascript">
 
+    var check;
+    $("#check").on("click", function(){
+        check = $("#check").prop("checked");
+        if(check) {
+             alert("Activo");
+            //  check = $("#check").prop("checked",true);
+        } else {
+            alert("No activo");
+            // check = $("#check").prop("checked",false);
+        }
+    }); 
+    </script>
 </html>

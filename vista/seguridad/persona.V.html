@@ -46,13 +46,14 @@
                     <input type="radio" name="radGenero" id="radGenero" value="F" class="caja form-control">
                 </div>
                 <div class="col-12 col-sm-6">
-                    <label for="cmbEstado">Estado</label>
-                    <select class="lista form-control" id="cmbEstado">
-                        <option value="" selected="selected">--Seleccione--</option>
-                        <option value="0">Activo</option>
-                        <option value="1">Inactivo</option>
-                    </select>
-                </div>               
+                    <label class="col-form-label">Estado</label>
+                    <form action="">
+                        <div class="switch">
+                            <input type="checkbox" id="check">
+                            <label for="check"></label>
+                        </div>
+                    </form>
+                </div>             
             </div>
         </div>
         <div class="row">
@@ -99,5 +100,18 @@
     </div>
 </form>
 </body>
+<script type="text/javascript">
 
+    var check;
+    $("#check").on("click", function(){
+        check = $("#check").prop("checked");
+        if(check) {
+             alert("Activo");
+            //  check = $("#check").prop("checked",true);
+        } else {
+            alert("No activo");
+            // check = $("#check").prop("checked",false);
+        }
+    }); 
+    </script>
 </html>

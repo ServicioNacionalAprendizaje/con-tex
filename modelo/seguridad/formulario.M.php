@@ -53,10 +53,10 @@ class Formulario{
     public function __construct() {$this->conn = new Conexion();}
 
     public function Agregar(){
-        $sentenciaSql = "CALL Agregar('$this->descripcion'
-        ,'$this->etiqueta'
-        ,'$this->ubicacion'
-        ,$this->estado)";
+        $sentenciaSql = "CALL Agregar_formulario('$this->descripcion'
+                        ,'$this->etiqueta'
+                        ,'$this->ubicacion'
+                        ,$this->estado)";
         
         $this->conn->Preparar($sentenciaSql);
         $this->conn->Ejecutar();
@@ -64,15 +64,12 @@ class Formulario{
     }
 
     public function Modificar(){
-        $sentenciaSql = "UPDATE formulario 
-        SET 
-            descripccion = '$this->descripcion'
-            ,etiqueta = '$this->etiqueta'
-            ,ubicacion = '$this->ubicacion'
-            ,estado = $this->estado
-            ,fecha_modificacion = $this->fechaModificacion
-            ,id_usuario_modificacion = $this->id_usuario_modificacion
-        WHERE id_usuario = $this->idUsuario ";
+        $sentencuaSql = "CALL Modificar_formulario('$this->descripcion'
+                        ,'$this->etiqueta'
+                        ,'$this->ubicacion'
+                        ,'$this->estado'
+                        ,'$this->idUsuarioModificacion'
+                        ,'$this->idFormulario')";
 
         $this->conn->Preparar($sentenciaSql);
         $this->conn->Ejecutar();

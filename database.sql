@@ -331,7 +331,7 @@ CREATE PROCEDURE Modificar_formulario(IN descripcion Varchar(50),
 					IN etiqueta Varchar(30),
                     IN ubicacion Varchar(100),
                     IN estado Bit(1),
-                    IN id_usuario_modificacion INT(11),
+                    IN idUsuarioModificacion INT(11),
                     IN idFormulario INT(11))
 BEGIN
 	UPDATE formulario 
@@ -340,6 +340,6 @@ BEGIN
 		ubicacion = ubicacion,
 		estado = estado,
 		fecha_modificacion = NOW(),
-		id_usuario_modificacion = id_usuario_modificacion 
+		id_usuario_modificacion = idUsuarioModificacion 
 	WHERE id_formulario = idFormulario;
 END$$

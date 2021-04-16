@@ -59,7 +59,7 @@ class Persona{
 
     public function Agregar(){
         $sentenciaSql = "INSERT INTO persona(
-            ,nombre
+            nombre
             ,apellido
             ,edad
             ,genero
@@ -70,13 +70,13 @@ class Persona{
             ,id_usuario_modificacion
             ) 
         VALUES (            
-            ,'$this->nombre'
+            '$this->nombre'
             ,'$this->apellido'
             , $this->edad
             ,'$this->genero'
             ,'$this->estado'
-            ,'TIMESTAMP()
-            ,'TIMESTAMP()
+            ,NOW()
+            ,NOW()
             , 1
             , 1
             )";

@@ -80,8 +80,7 @@ public function Consultar(){
     return true;
 }
 private function obtenerCondicion(){
-    
-    
+ 
 }
 
 

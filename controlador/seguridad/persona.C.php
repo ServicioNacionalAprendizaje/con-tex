@@ -21,7 +21,8 @@ if (isset ($accion)){
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible adicionar la información, consulte con el administrador.";
             }
-            json_encode($respuesta);
+            $respuesta['accion']='ADICIONAR'; 
+            echo json_encode($respuesta);
         break;
         case 'MODIFICAR':
             try{
@@ -63,28 +64,55 @@ if (isset ($accion)){
                 $persona->setEdad($_POST['edad']);
                 $persona->setGenero($_POST['genero']);
                 $persona->setEstado($_POST['fechaCreacion']);
+                $persona->setEstado($_POST['fechaModificacion']);
                 $persona->setIdUsuarioCreacion($_POST['idUsuarioCreacion']);
                 $persona->setIdUsuarioModificacion($_POST['idUsuarioModificacion']);
                 $resultado = $persona->consultar();
 
-                $numeroRegistros = $persona->conn->obtenerNumeroRegistros();
+                $numeroRegistros = $persona->conn->ObtenerNumeroRegistros();
                 if($numeroRegistros === 1){
-                    if ($rowBuscar = $persona->conn->obtenerObjeto()){
-                        $_POST['idPersona'] = $rowBuscar->id_persona;
-                        $_POST['nombre'] = $rowBuscar->nombre;
-                        $_POST['apellido'] = $rowBuscar->apellido;
-                        $_POST['edad'] = $rowBuscar->edad;
-                        $_POST['genero'] = $rowBuscar->genero;
-                        $_POST['estado'] = $rowBuscar->estado;
-                        $_POST['fechaCreacion'] = $rowBuscar->fecha_creacion;
-                        $_POST['idUsuarioCreacion'] = $rowBuscar->id_usuario_creacion;
-                        $_POST['idUsuarioModificacion'] = $rowBuscar->id_usuario_modificacion;
+                    if ($rowBuscar = $persona->conn->ObtenerObjeto()){
+                        $respuesta['id'] = $rowBuscar->id_persona;
+                        $respuesta['nombre'] = $rowBuscar->nombre;
+                        $respuesta['apellido'] = $rowBuscar->apellido;
+                        $respuesta['edad'] = $rowBuscar->edad;                           
+                        $respuesta['genero'] = $rowBuscar->genero;
+                        $respuesta['estado'] = $rowBuscar->estado;
+                        $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_persona.")'>";
                     }
-                }
+                }else{
+                    if(isset($resultado)){
+                        $retorno="<table>";
+                        foreach($persona->conn->ObtenerRegistros() AS $rowConsulta){
+                            $retorno .= "<tr>
+                                        <td><label>".$rowConsulta[0]."</label></td>     
+                                        <td><label>".$rowConsulta[1]."</label></td>                                             
+                                        <td><label>".$rowConsulta[2]."</label></td>                                        
+                                        <td><label>".$rowConsulta[3]."</label></td>                                                                                               
+                                        <td><label>".$rowConsulta[4]."</label></td>
+                                        <td><label>".$rowConsulta[5]."</label></td> 
+                                        <td><label>".$rowConsulta[8]."</label></td>
+                                        <td><label>".$rowConsulta[9]."</label></td>                                          
+                                        <td>
+                                            <input type='button' name='editar' value='Editar' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'>
+                                            <input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'>
+                                        </td>
+                                    </tr>";
+                        }  
+                        $retorno .= "</table>";
+                        $respuesta['tablaRegistro']=$retorno;
+                    
+                    }else{                                         
+                        $respuesta['tablaRegistro']='No existen datos!!!';
+                    }
+                }                                        
+               
+                
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible consultar la información, consulte con el administrador.";
             }
-            json_encode($respuesta);
+            $respuesta['accion']='CONSULTAR'; 
+            echo json_encode($respuesta);           
         break;
     }
 }

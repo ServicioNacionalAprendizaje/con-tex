@@ -23,7 +23,7 @@ class Conexion{
     }
 
     public function Ejecutar() {
-        $this->recordSet = mysqli_query($this->conn, $this->sentenciaSql, MYSQLI_STORE_RESULT);        
+        $this->recordSet = mysqli_query($this->conn, $this->sentenciaSql);        
         if(!$this->recordSet){            
             $error = $this->ObtenerError();
             throw new Exception('No fué posible guardar la información. '.$error['message'], E_USER_ERROR);
@@ -43,6 +43,9 @@ class Conexion{
     }
     public function ObtenerNumeroRegistros(){
         return mysqli_num_rows($this->recordSet);
+    }
+    public function ObtenerRegistros(){
+        return mysqli_fetch_all($this->recordSet);
     }
     public function ObtenerNombreColumnas(){
         $arrNombreColumnas = array();

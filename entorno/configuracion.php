@@ -1,5 +1,5 @@
 <?php
-define('DATABASE', 'proyecto_contex');
+define('DATABASE', 'contex');
 define('PASSWORD', '');
 define('SERVERNAME', 'localhost');
 define('USER', 'root');

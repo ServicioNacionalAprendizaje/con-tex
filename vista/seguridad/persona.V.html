@@ -53,12 +53,20 @@
                             <label for="check"></label>
                         </div>
                     </form>
-                </div>             
+                </div>  
+                <div class="col-lg-4 form-group">
+                    <label for="cmbEstado">Estado</label>
+                    <select class="lista form-control" id="cmbEstado">
+                        <option value="" selected="selected">--Seleccione--</option>
+                        <option value="0">Activo</option>
+                        <option value="1">Inactivo</option>
+                    </select>
+                </div>   
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-sm-6">
-                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado">
+                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado" onclick="Enviar('CONSULTAR',null);">
             </div>
             <div class="col-12 col-sm-6">
                 <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick="Enviar('ADICIONAR',null);">
@@ -80,7 +88,7 @@
                                     <td align="center">Eliminar</td>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="tablaRegistro">
                                 <tr>
                                     <td></td>
                                     <td></td>

@@ -99,7 +99,6 @@ class Formulario{
         return true;
     }
     private function obtenerCondicion(){
-     
         
     }
 

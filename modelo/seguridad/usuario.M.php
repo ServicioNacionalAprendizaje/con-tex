@@ -62,49 +62,27 @@ class Usuario{
     public function __construct() {$this->conn = new Conexion();}
 
     public function Agregar(){
-        $sentenciaSql = "INSERT INTO usuario(
-            usuario
-            ,contrasenia
-            ,fecha_activacion
-            ,fecha_expiracion
-            ,id_persona
-            ,estado
-            ,fecha_creacion
-            ,fecha_modificacion
-            ,id_usuario_creacion
-            ,id_usuario_modificacion
-            ) 
-        VALUES (
-            '$this->usuario'
-            ,'$this->contrasenia' 
-            ,'$this->fechaActivacion'
-            ,'$this->fechaExpiracion'
-            ,'$this->idPersona'
-            ,'$this->estado'
-            ,'$this->fechaCreacion'
-            ,'$this->fechaModificacion'
-            ,'$this->idUsuarioCreacion'
-            ,'$this->idUsuarioModificacion'
-            )";
-
+        $sentenciaSql = "CALL Agregar_usuario('$this->usuario'
+                            ,'$this->contrasenia'
+                            ,'$this->fechaActivacion'
+                            ,'$this->fechaExpiracion'
+                            ,'$this->idPersona'
+                            ,'$this->estado'
+                            ,'$this->idUsuarioCreacion')"
     $this->conn->preparar($sentenciaSql);
     $this->conn->ejecutar();
     return true;
     }
 
     public function Modificar(){
-        $sentenciaSql = "UPDATE usuario SET 
-        usuario = '$this->usuario', 
-        contrasenia = '$this->contrasenia',
-        fecha_activacion = '$this->fechaActivacion', 
-        fecha_expiracion = '$this->fechaExpiracion',
-        id_persona = '$this->idPersona'
-        estado = '$this->estado'
-        fecha_creacion = '$this->fechaCreacion'
-        fecha_modificacion = '$this->fechaModificacion'
-        id_usuario_creacion = '$this->idUsuarioCreacion'
-        id_usuario_modificacion = '$this->idUsuarioModificacion' 
-        WHERE id_usuario = $this->idUsuario ";        
+        $sentenciaSql = "CALL Modificar_usuario('$this->usuario'
+                            ,'$this->contrasenia'
+                            ,'$this->fechaActivacion'
+                            ,'$this->fechaExpiracion'
+                            ,'$this->idPersona'
+                            ,'$this->estado'
+                            ,'$this->idUsuarioModificacion'
+                            ,'$this->idUsuario')"       
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }

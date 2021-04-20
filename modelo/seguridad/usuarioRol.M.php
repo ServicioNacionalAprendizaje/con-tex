@@ -2,6 +2,7 @@
 
 class UsuarioRol{
     private $idUsuarioRol;
+    private $idUsuario;
     private $idRol;
     private $estado;
     private $fechaCreacion;
@@ -10,6 +11,10 @@ class UsuarioRol{
     private $idUsuarioModificacion;
    
     public $conn=null;
+
+    //IdUsuario
+    public function getIdUsuario(){return $this->idUsuario;}
+    public function setIdUsuario($idUsuario){$this->idUsuario = $idUsuario}
 
     //IdRol
     public function getIdRol(){return $this->idRol;}
@@ -39,34 +44,21 @@ class UsuarioRol{
     public function __construct() {$this->conn = new Conexion();}
 
     public function Agregar(){
-        $sentenciaSql = "INSERT INTO orden(
-             estado
-            ,fechaCreacion
-            ,fechaModificacion
-            ,idUsuarioCreacion
-            ,idUsuarioModificacion
-            ) 
-        VALUES (
-            '$this->estado',
-            '$this->fechaCreacion',
-            '$this->fechaModificacion',
-            '$this->idUsuarioCreacion',
-            '$this->idUsuarioModificacion'
-            )";
-
+        $sentenciaSql = "CALL Agregar_usuario_rol('$this->idUsuario'
+                            ,'$this->idRol'
+                            ,'$this->estado'
+                            ,'$this->idUsuarioCreacion')"
     $this->conn->preparar($sentenciaSql);
     $this->conn->ejecutar();
     return true; 
     }
 
     public function Modificar(){
-        $sentenciaSql = "UPDATE orden SET 
-        Estado = '$this->estado', 
-        fecha_creacion = '$this->fechaCreacion'
-        fecha_modificacion = '$this->fechaModificacion'
-        id_usuario_creacion = '$this->idUsuarioCreacion'
-        id_usuario_modificacion = '$this->idUsuarioModificacion' 
-        WHERE id_orden = $this->idOrden ";        
+        $sentenciaSql = "CALL Modificar_usuario_rol('$this->idUsuario'
+                            ,'$this->idRol'
+                            ,'$this->estado'
+                            ,'$this->idUsuarioModificacion'
+                            ,'$this->idUsuarioRol')"       
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
        

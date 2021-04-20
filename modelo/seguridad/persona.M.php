@@ -58,47 +58,25 @@ class Persona{
     public function __construct() {$this->conn = new Conexion();}
 
     public function Agregar(){
-        $sentenciaSql = "INSERT INTO persona(
-            ,nombre
-            ,apellido
-            ,edad
-            ,genero
-            ,estado
-            ,fecha_creacion
-            ,fecha_modificacion
-            ,id_usuario_creacion
-            ,id_usuario_modificacion
-            ) 
-        VALUES (            
-            ,'$this->nombre'
-            ,'$this->apellido'
-            , $this->edad
-            ,'$this->genero'
-            ,'$this->estado'
-            ,'TIMESTAMP()
-            ,'TIMESTAMP()
-            , 1
-            , 1
-            )";
-
+        $sentenciaSql = "CALL Agregar_persona('$this->nombre'
+                            ,'$this->apellido'
+                            ,'$this->edad'
+                            ,'$this->genero'
+                            ,'$this->estado'
+                            ,'$this->idUsuarioCreacion')"
     $this->conn->preparar($sentenciaSql);
     $this->conn->ejecutar();
     return true;
     }
 
     public function Modificar(){
-        $sentenciaSql = "UPDATE persona SET 
-        id_persona = '$this->idPersona'
-        nombre = '$this->nombre'
-        apellido = '$this->apellido'
-        edad = '$this->edad'
-        genero = '$this->genero'
-        estado = '$this->estado'
-        fecha_creacion = '$this->fechaCreacion'
-        fecha_modificacion = '$this->fechaModificacion'
-        id_usuario_creacion = '$this->idUsuarioCreacion'
-        id_usuario_modificacion = '$this->idUsuarioModificacion' 
-        WHERE id_persona = $this->idPersona ";        
+        $sentenciaSql = "CALL Modificar_persona('$this->nombre'
+                            ,'$this->apellido'
+                            ,'$this->edad'
+                            ,'$this->genero'
+                            ,'$this->estado'
+                            ,'$this->idUsuarioModificacion'
+                            ,'$this->idPersona')"      
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }

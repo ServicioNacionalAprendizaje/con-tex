@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `contex`.`empleado`(
   `id_empleado` INT NOT NULL AUTO_INCREMENT,
   `id_cargo` INT NOT NULL,
   `correo_institucional` VARCHAR(50) NOT NULL,
-  `fecha_ingreso` VARCHAR(50) NOT NULL,
+  `fecha_ingreso` DATETIME NOT NULL,
   `arl` ENUM('ARL1', 'ARL2', 'ARL3') NOT NULL,
   `salud` ENUM('salud1', 'salud2', 'salud3') NOT NULL,
   `pension` ENUM('pension1', 'pension2', 'pension3') NOT NULL,
@@ -300,10 +300,10 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 DELIMITER $$
-CREATE PROCEDURE Agregar_formulario(IN descripcion Varchar(50),
-					IN etiqueta Varchar(30),
-                    IN ubicacion Varchar(100),
-                    IN estado Bit(1),
+CREATE PROCEDURE Agregar_formulario(IN descripcion VARCHAR(50),
+					IN etiqueta VARCHAR(30),
+                    IN ubicacion VARCHAR(100),
+                    IN estado BIT(1),
                     IN idUsuarioCreacion INT(11))
 BEGIN
 	INSERT INTO formulario(
@@ -327,10 +327,10 @@ BEGIN
 END$$
 
 DELIMITER $$
-CREATE PROCEDURE Modificar_formulario(IN descripcion Varchar(50),
-					IN etiqueta Varchar(30),
-                    IN ubicacion Varchar(100),
-                    IN estado Bit(1),
+CREATE PROCEDURE Modificar_formulario(IN descripcion VARCHAR(50),
+					IN etiqueta VARCHAR(30),
+                    IN ubicacion VARCHAR(100),
+                    IN estado BIT(1),
                     IN idUsuarioModificacion INT(11),
                     IN idFormulario INT(11))
 BEGIN
@@ -342,4 +342,269 @@ BEGIN
 		fecha_modificacion = NOW(),
 		id_usuario_modificacion = idUsuarioModificacion 
 	WHERE id_formulario = idFormulario;
+END$$
+
+DELIMITER $$
+CREATE PROCEDURE Agregar_formulario_rol(IN idRol INT(11),
+					IN idFormulario INT(11),
+                    IN estado BIT(1),
+                    IN idUsuarioCreacion INT(11))
+BEGIN
+	INSERT INTO formulario_rol(
+					id_rol,
+                    id_formulario,
+                    estado,
+                    fecha_creacion,
+                    fecha_modificacion,
+                    id_usuario_creacion,
+                    id_usuario_modificacion) 
+			VALUES (
+				idRol,
+				idFormulario,
+				estado,
+				CURDATE(),
+				CURDATE(),
+				idUsuarioCreacion,
+				idUsuarioCreacion);
+END$$
+
+DELIMITER $$
+CREATE PROCEDURE Modificar_formulario_rol(IN idRol INT(11),
+					IN idFormulario INT(11),
+                    IN estado BIT(1),
+                    IN idUsuarioModificacion INT(11),
+                    IN idFormularioRol INT(11))
+BEGIN
+	UPDATE formulario_rol 
+    SET id_rol = idRol,
+		id_formulario = idFormulario,
+		estado = estado,
+		fecha_modificacion = NOW(),
+		id_usuario_modificacion = idUsuarioModificacion 
+	WHERE id_formulario_rol = idFormularioRol;
+END$$
+
+DELIMITER $$
+CREATE PROCEDURE Agregar_persona(IN nombre VARCHAR(100),
+					IN apellido VARCHAR(100),
+                    IN edad INT(11),
+                    IN genero ENUM('Masculino','Femenino','Otro'),
+                    IN estado BIT(1),
+                    IN idUsuarioCreacion INT(11))
+BEGIN
+	INSERT INTO persona(
+					nombre,
+                    apellido,
+                    edad,
+                    genero,
+                    estado,
+                    fecha_creacion,
+                    fecha_modificacion,
+                    id_usuario_creacion,
+                    id_usuario_modificacion) 
+			VALUES (
+				nombre,
+				apellido,
+                edad,
+                genero,
+				estado,
+				CURDATE(),
+				CURDATE(),
+				idUsuarioCreacion,
+				idUsuarioCreacion);
+END$$
+
+DELIMITER $$
+CREATE PROCEDURE Modificar_persona(IN nombre VARCHAR(100),
+                    IN apellido VARCHAR(100),
+                    IN edad INT(11),
+                    IN genero ENUM('Masculino','Femenino','Otro'),
+                    IN estado BIT(1),
+                    IN idUsuarioModificacion INT(11),
+                    IN idPersona INT(11))
+BEGIN
+	UPDATE persona 
+    SET nombre = nombre,
+		apellido = apellido,
+        edad = edad,
+        genero = genero,
+		estado = estado,
+		fecha_modificacion = NOW(),
+		id_usuario_modificacion = idUsuarioModificacion 
+	WHERE id_persona = idPersona;
+END$$
+
+DELIMITER $$
+CREATE PROCEDURE Agregar_rol(IN descripcion VARCHAR(50),
+					IN estado BIT(1),
+                    IN idUsuarioCreacion INT(11))
+BEGIN
+	INSERT INTO rol(
+					descripcion,
+                    estado,
+                    fecha_creacion,
+                    fecha_modificacion,
+                    id_usuario_creacion,
+                    id_usuario_modificacion) 
+			VALUES (
+				descripcion,
+				estado,
+				CURDATE(),
+				CURDATE(),
+				idUsuarioCreacion,
+				idUsuarioCreacion);
+END$$
+
+DELIMITER $$
+CREATE PROCEDURE Modificar_rol(IN descripcion VARCHAR(50),
+					IN estado BIT(1),
+                    IN idUsuarioModificacion INT(11),
+                    IN idRol INT(11))
+BEGIN
+	UPDATE rol 
+    SET descripcion = descripcion,
+		estado = estado,
+		fecha_modificacion = NOW(),
+		id_usuario_modificacion = idUsuarioModificacion 
+	WHERE id_rol = idRol;
+END$$
+
+DELIMITER $$
+CREATE PROCEDURE Agregar_usuario(IN usuario VARCHAR(50),
+					IN contrasenia VARCHAR(50),
+                    IN fechaActivacion DATETIME,
+                    IN fechaExpiracion DATETIME,
+                    IN idPersona INT(11),
+					IN estado BIT(1),
+                    IN idUsuarioCreacion INT(11))
+BEGIN
+	INSERT INTO usuario(
+					usuario,
+                    contrasenia,
+                    fecha_activacion,
+                    fecha_expiracion,
+                    id_persona,
+                    estado,
+                    fecha_creacion,
+                    fecha_modificacion,
+                    id_usuario_creacion,
+                    id_usuario_modificacion) 
+			VALUES (
+				usuario,
+                contrasenia,
+                fechaActivacion,
+                fechaExpiracion,
+                idPersona,
+				estado,
+				CURDATE(),
+				CURDATE(),
+				idUsuarioCreacion,
+				idUsuarioCreacion);
+END$$
+
+DELIMITER $$
+CREATE PROCEDURE Modificar_usuario(IN usuario VARCHAR(50),
+					IN contrasenia VARCHAR(50),
+                    IN fechaActivacion DATETIME,
+                    IN fechaExpiracion DATETIME,
+                    IN idPersona INT(11),
+					IN estado BIT(1),
+                    IN idUsuarioModificacion INT(11),
+                    IN idUsuario INT(11))
+BEGIN
+	UPDATE usuario 
+    SET usuario = usuario,
+		contrasenia = contrasenia,
+        fecha_activacion = fechaActivacion,
+        fecha_expiracion = fechaExpiracion,
+        id_persona = idPersona,
+		estado = estado,
+		fecha_modificacion = NOW(),
+		id_usuario_modificacion = idUsuarioModificacion 
+	WHERE id_usuario = idUsuario;
+END$$
+
+DELIMITER $$
+CREATE PROCEDURE Agregar_usuario_rol(IN idUsuario INT(11),
+					IN idRol INT(11),
+					IN estado BIT(1),
+                    IN idUsuarioCreacion INT(11))
+BEGIN
+	INSERT INTO usuario_rol(
+					id_usuario,
+                    id_rol,
+                    estado,
+                    fecha_creacion,
+                    fecha_modificacion,
+                    id_usuario_creacion,
+                    id_usuario_modificacion) 
+			VALUES (
+				idUsuario,
+                idRol,
+				estado,
+				CURDATE(),
+				CURDATE(),
+				idUsuarioCreacion,
+				idUsuarioCreacion);
+END$$
+
+DELIMITER $$
+CREATE PROCEDURE Modificar_usuario_rol(IN idUsuario INT(11),
+					IN idRol INT(11),
+					IN estado BIT(1),
+                    IN idUsuarioModificacion INT(11),
+                    IN idUsuarioRol INT(11))
+BEGIN
+	UPDATE usuario_rol 
+    SET id_usuario = idUsuario,
+		id_rol = idRol,
+		estado = estado,
+		fecha_modificacion = NOW(),
+		id_usuario_modificacion = idUsuarioModificacion 
+	WHERE id_usuario_rol = idUsuarioRol;
+END$$
+
+DELIMITER $$
+CREATE PROCEDURE Agregar_empleado(IN idCargo INT(11),
+					IN correoInstitucional VARCHAR(50),
+                    IN fechaIngreso DATETIME,
+                    IN arl ENUM('ARL1','ARL2','ARL3'),
+                    IN salud ENUM('salud1','salud2','salud3'),
+                    IN pension ENUM('pension1','pension2','pension3'),
+                    IN idPersona
+					IN estado BIT(1),
+                    IN idUsuarioCreacion INT(11))
+BEGIN
+	INSERT INTO empleado(
+					id_usuario,
+                    id_rol,
+                    estado,
+                    fecha_creacion,
+                    fecha_modificacion,
+                    id_usuario_creacion,
+                    id_usuario_modificacion) 
+			VALUES (
+				idUsuario,
+                idRol,
+				estado,
+				CURDATE(),
+				CURDATE(),
+				idUsuarioCreacion,
+				idUsuarioCreacion);
+END$$
+
+DELIMITER $$
+CREATE PROCEDURE Modificar_empleado(IN idUsuario INT(11),
+					IN idRol INT(11),
+					IN estado BIT(1),
+                    IN idUsuarioModificacion INT(11),
+                    IN idEmpleado INT(11))
+BEGIN
+	UPDATE empleado 
+    SET id_usuario = idUsuario,
+		id_rol = idRol,
+		estado = estado,
+		fecha_modificacion = NOW(),
+		id_usuario_modificacion = idUsuarioModificacion 
+	WHERE id_empleado = idEmpleado;
 END$$

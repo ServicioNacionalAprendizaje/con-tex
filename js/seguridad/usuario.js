@@ -1,54 +1,58 @@
 function Enviar(accion,id){
     if(id==null){
-        id=$('#hidIdFuncionario').val();
+        id=$('#hidIdPersona').val();
     }
-    var datos = $("form").serialize();
-    datos = datos.split('&');
-
     var parametros = {
+        "id":id,
+        "usuario" :$('#txtUsuario').val(),
+        "contrasena" : $('#passContrasena').val(),
+        "fechaCreacion":$('#datCreacion').val(),
+        "fechaModificacion":$('#datModificacion').val(),
+        "idPersona":$('#hidIdPersona').val(),
+        "estado":$('#cmbEstado').val(),
         "accion":accion
-        ,"datos" :datos,
-        
     };
 
      $.ajax({
             data:  parametros, //datos que se van a enviar al ajax
-            url:   '../controlador/funcionario.C.php', //archivo php que recibe los datos
+            url:   '../../controlador/seguridad/usuario.C.php', //archivo php que recibe los datos
             type:  'post', //método para enviar los datos
             dataType: 'json',//Recibe el array desde php
            
-            success:  function (data) { //procesa y devuelve la respuesta
+            success:  function (respuesta) { //procesa y devuelve la respuesta
                 
-                if(data['accion']=='ADICIONAR'){
-                    alert(data['respuesta']);
+                //respuesta adicionar
+                if(respuesta['accion']=='ADICIONAR'){
+                    alert(respuesta['respuesta']);
                 }
                 
-                if(data['accion']=='CONSULTAR' && data['numeroRegistros']>1){
-                        $("#resultado").html(data['tablaRegistro']);
-                }else{
-                    $('#hidIdFuncionario').val(data['id']);
-                    $('#txtIdentificacion').val(data['identificacion']);
-                    $('#txtNombres').val(data['nombres']);
-                    $('#txtApellidos').val(data['apellidos']);
-                    $('#txtCorreo').val(data['correo']);
-                    $('#txtCargo').val(data['cargo']);
+                //Respuesta muchos registros
+                if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']>1){
+                    $("#resultado").html(respuesta['tablaRegistro']);
+                    $('#divEliminar').html(respuesta['eliminar']).hide();
                 }
-                if(data['accion']=='MODIFICAR'){
-                    alert(data['respuesta']);
+
+                //Respuesta un registro
+                if(respuesta['accion']=='CONSULTAR'){
+                    $('#hidIdUsuario').val(respuesta['id']);
+                    $('#txtUsuario').val(respuesta['usuario']);
+                    $('#passContrasena').val(respuesta['contrasena']);
+                    $('#datCreacion').val(respuesta['fechaCreacion']);
+                    $('#datModificacion').val(respuesta['fechaModificacion']);
+                    $('#hidIdPersona').val(respuesta['idPersona']);
+                    $('#cmbEstado').html(respuesta['estado']);
+                    $('#divEliminar').html(respuesta['eliminar']);
                 }
-                if(data['accion']=='ELIMINAR'){
-                    alert(data['respuesta']);
+
+                //Respuesta modificar
+                if(respuesta['accion']=='MODIFICAR'){
+                    alert(respuesta['respuesta']);
+                }
+                
+                //Respuesta eliminar
+                if(respuesta['accion']=='ELIMINAR'){
+                    alert(respuesta['respuesta']);
                 }
             }
     });
-    
-}
-
-function Limpiar(){
-    $('#hidIdFuncionario').val("");
-    $('#txtIdentificacion').val("");
-    $('#txtNombres').val("");
-    $('#txtApellidos').val("");
-    $('#txtCorreo').val("");
-    $('#txtCargo').val("");
 }

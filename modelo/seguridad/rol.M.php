@@ -97,8 +97,7 @@ public function Consultar(){
     return true;
 }
 private function obtenerCondicion(){
-    
-    
+ 
 }
 
 
@@ -113,5 +112,4 @@ public function __destruct() {
     unset($this->idUsuarioModificacion);
     unset($this->conn);
 }       
-}
 ?>

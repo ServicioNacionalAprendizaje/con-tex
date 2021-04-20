@@ -31,12 +31,9 @@ function Enviar(accion,id){
 
                 //Respuesta un registro
                 if(respuesta['accion']=='CONSULTAR'){
-                    $('#hidIdPersona').val(respuesta['id']);
-                    $('#txtNombre').val(respuesta['nombre']);
-                    $('#txtApellido').val(respuesta['apellido']);
-                    $('#numEdad').val(respuesta['edad']);
-                    $('#radGenero').val(respuesta['genero']);
-                    $('#cmbEstado').val(respuesta['estado']);
+                    $('#hidIdRol').val(respuesta['id']);
+                    $('#txtDescripcion').val(respuesta['descripcion']);
+                    $('#cmbEstado').html(respuesta['estado']);
                     $('#divEliminar').html(respuesta['eliminar']);
                 }
 

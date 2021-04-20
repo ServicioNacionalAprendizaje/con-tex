@@ -48,40 +48,22 @@ class FormularioRol{
     public function __construct() {$this->conn = new Conexion();}
 
     public function Agregar(){
-        $sentenciaSql = "INSERT INTO formularioRol(
-            idRol
-            ,idFormulario
-            ,estado
-            ,fechaCreacion
-            ,fechaModificacion
-            ,idUsuarioCreacion
-            ,idUsuarioModificacion
-            )
-        VALUES (
-            '$this->idRol',
-            '$this->idFormulario', 
-            '$this->estado',
-            '$this->fechaCreacion',
-            '$this->fechaModificacion',
-            '$this->idUsuarioCreacion',
-            '$this->idUsuarioModificacion'
-            )";
-
+        $sentenciaSql = "CALL Agregar_formulario_rol('$this->idRol'
+                            ,'$this->idFormulario'
+                            ,'$this->estado'
+                            ,'$this->idUsuarioModificacion'
+                            ,'$this->idFormularioRol')"
     $this->conn->preparar($sentenciaSql);
     $this->conn->ejecutar();
     return true;     
     }
 
     public function Modificar(){
-        $sentenciaSql = "UPDATE formularioRol SET 
-        idRol = '$this->idRol', 
-        idFormulario = '$this->idFormulario',
-        estado = '$this->estado'
-        fechaCreacion = '$this->fechaCreacion'
-        fechaModificacion = '$this->fechaModificacion'
-        idUsuarioCreacion = '$this->idUsuarioCreacion'
-        idUsuarioModificacion = '$this->idUsuarioModificacion'  
-        WHERE id_orden = $this->idOrden ";        
+        $sentenciaSql = "Call Modificar_formulario_rol('$this->idRol'
+                            ,'$this->idFormulario'
+                            ,'$this->estado'
+                            ,'$this->idUsuarioModificacion'
+                            ,'$this->idFormularioRol')"
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }

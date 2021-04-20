@@ -53,8 +53,8 @@ class Rol{
     VALUES (
         $this->descripcion
         ,$this->estado
-        ,CURDATE()
-        ,CURDATE()
+        ,NOW()
+        ,NOW()
         ,1
         ,1
         )";
@@ -66,7 +66,7 @@ return true;
 
 public function Modificar(){
     $sentenciaSql = "UPDATE rol SET 
-    descripcion = '$this->descripcion'
+        descripcion = '$this->descripcion'
         ,estado = '$this->estado'
         ,fecha_modificacion = '$this->fechaModificacion'
         ,id_usuario_modificacion = '$this->idUsuarioModificacion' 

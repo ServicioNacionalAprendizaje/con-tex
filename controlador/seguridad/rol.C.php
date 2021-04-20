@@ -4,21 +4,22 @@ include '../../entorno/conexion.php';
 require '../../modelo/seguridad/rol.M.php';
 
 $respuesta = array();
-// $_POST['accion'] --- $accion
-$accion = 'ADICIONAR';
+
+$accion = $_POST['accion'];
 if (isset ($accion)){
     switch($accion){
         case 'ADICIONAR':
             try{
                 $rol= new Rol();
-                $rol->setDescripcion('vendedor');
-                $rol->setEstado(1);
+                $rol->setDescripcion($_POST['descripcion']);
+                $rol->setEstado($_POST['estado']);
                 $rol = $rol->Agregar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible adicionar la información, consulte con el administrador.";
             }
-            json_encode($respuesta);
+            $respuesta['accion']='ADICIONAR';
+            echo json_encode($respuesta);
         break;
         case 'MODIFICAR':
             try{
@@ -62,19 +63,38 @@ if (isset ($accion)){
                 $numeroRegistros = $rol->conn->obtenerNumeroRegistros();
                 if($numeroRegistros === 1){
                     if ($rowBuscar = $rol->conn->obtenerObjeto()){
-                        $_POST['idRol'] = $rowBuscar->id_rol;
-                        $_POST['descripcion'] = $rowBuscar->descripcion;
-                        $_POST['estado'] = $rowBuscar->estado;
-                        $_POST['fechaCreacion'] = $rowBuscar->fecha_creacion;
-                        $_POST['fechaModificacion'] = $rowBuscar->fecha_modificacion;
-                        $_POST['idUsuarioCreacion'] = $rowBuscar->id_usuario_creacion;
-                        $_POST['idUsuarioModificacion'] = $rowBuscar->id_usuario_modificacion;
+                        $respuesta['idRol'] = $rowBuscar->id_rol;
+                        $respuesta['descripcion'] = $rowBuscar->descripcion;
+                        $respuesta['estado'] = $rowBuscar->estado;
+                        $respuesta['fechaCreacion'] = $rowBuscar->fecha_creacion;
+                        $respuesta['fechaModificacion'] = $rowBuscar->fecha_modificacion;
+                        $respuesta['idUsuarioCreacion'] = $rowBuscar->id_usuario_creacion;
+                        $respuesta['idUsuarioModificacion'] = $rowBuscar->id_usuario_modificacion;
+                    }
+                }else{
+                    if(isset($resultado)){
+                        $retorno="<table>";
+                        foreach($persona->conn->ObtenerRegistros() AS $rowConsulta){
+                            $retorno .= "<tr>
+                                        <td><label>".$rowConsulta[0]."</label></td>     
+                                        <td><label>".$rowConsulta[1]."</label></td>                                            
+                                        <td>
+                                            <input type='button' name='editar' value='Editar' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'>
+                                            <input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'>
+                                        </td>
+                                    </tr>";
+                        }  
+                        $retorno .= "</table>";
+                        $respuesta['tablaRegistro']=$retorno;
+                    }else{
+                        $respuesta['tablaRegistro']='No existen datos!!!';
                     }
                 }
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible consultar la información, consulte con el administrador.";
             }
-            json_encode($respuesta);
+            $respuesta['accion']='CONSULTAR'; 
+            echo json_encode($respuesta);
         break;
     }
 }

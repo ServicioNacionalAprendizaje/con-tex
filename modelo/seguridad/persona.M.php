@@ -127,8 +127,7 @@ class Persona{
         
         
     }
-
-
+    
     public function __destruct() {
         
         unset($this->idPersona);

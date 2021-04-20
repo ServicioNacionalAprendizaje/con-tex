@@ -1,5 +1,4 @@
 <?php
-    //Eduardo A. Peña
 
 class Formulario{
     private $idFormulario;

@@ -571,7 +571,7 @@ CREATE PROCEDURE Agregar_empleado(IN idCargo INT(11),
                     IN arl ENUM('ARL1','ARL2','ARL3'),
                     IN salud ENUM('salud1','salud2','salud3'),
                     IN pension ENUM('pension1','pension2','pension3'),
-                    IN idPersona
+                    IN idPersona INT(11),
 					IN estado BIT(1),
                     IN idUsuarioCreacion INT(11))
 BEGIN

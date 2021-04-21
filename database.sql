@@ -560,24 +560,66 @@ BEGIN
 END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `Agregar_empleado` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Agregar_empleado` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_empleado`(IN idCargo INT(11),
+					IN correoInstitucional VARCHAR(50),
+                    IN fechaIngreso DATETIME,
+                    IN arl ENUM('ARL1','ARL2','ARL3'),
+                    IN salud ENUM('salud1','salud2','salud3'),
+                    IN pension ENUM('pension1','pension2','pension3'),
+					IN idPersona INT(11),
+                    IN estado BIT(1))
+BEGIN
+	INSERT INTO empleado(
+					id_cargo,
+                    correo_institucional,
+                    fecha_ingreso,
+                    arl,
+                    salud,
+                    pension,
+                    id_persona,
+                    estado) 
+			VALUES (
+				idCargo,
+                correoInstitucional,
+				fechaIngreso,
+				arl,
+                salud,
+                pension,
+				idPersona,
+				estado);
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `Modificar_empleado` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `Modificar_empleado` */;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_empleado`(IN idUsuario INT(11),
-					IN idRol INT(11),
-					IN estado BIT(1),
-                    IN idUsuarioModificacion INT(11),
-                    IN idEmpleado INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_empleado`(IN idCargo INT(11),
+					IN correoInstitucional VARCHAR(50),
+                    IN fechaIngreso DATETIME,
+                    IN arl ENUM('ARL1','ARL2','ARL3'),
+                    IN salud ENUM('salud1','salud2','salud3'),
+                    IN pension ENUM('pension1','pension2','pension3'),
+					IN idPersona INT(11),
+                    IN estado BIT(1))
 BEGIN
 	UPDATE empleado 
-    SET id_usuario = idUsuario,
-		id_rol = idRol,
-		estado = estado,
-		fecha_modificacion = NOW(),
-		id_usuario_modificacion = idUsuarioModificacion 
+    SET id_cargo = idCargo,
+		correo_institucional = correoInstitucional,
+		fecha_ingreso = fechaIngreso,
+		arl = arl,
+        salud = salud,
+        pension = pension,
+		id_persona = idPersona,
+        estado = estado 
 	WHERE id_empleado = idEmpleado;
 END */$$
 DELIMITER ;

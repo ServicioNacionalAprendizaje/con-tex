@@ -114,8 +114,8 @@ class UsuarioRol
 
     public function Eliminar()
     {
-        $sentenciaSql = "DELETE FROM orden 
-                            WHERE id_orden = $this->idOrden";
+        $sentenciaSql = "DELETE FROM usuario_rol 
+                            WHERE id_usuario_rol = $this->idUsuarioRol";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -125,7 +125,7 @@ class UsuarioRol
     {
         $condicion = $this->obtenerCondicion();
         $sentenciaSql = "SELECT * 
-                            FROM orden $condicion";
+                            FROM usuario_rol $condicion";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;

@@ -88,7 +88,7 @@ class Formulario
     {
         return $this->idUsuarioCreacion;
     }
-    public function setIdUsuarioCreacion($idUsuarioCreacion)
+    public function setIdUsuarioCreacion($idUsuarioCreacion = 1)
     {
         $this->idUsuarioCreacion = $idUsuarioCreacion;
     }
@@ -98,7 +98,7 @@ class Formulario
     {
         return $this->idUsuarioModificacion;
     }
-    public function setIdUsuarioModificacion($idUsuarioModificacion)
+    public function setIdUsuarioModificacion($idUsuarioModificacion = 1)
     {
         $this->idUsuarioModificacion = $idUsuarioModificacion;
     }

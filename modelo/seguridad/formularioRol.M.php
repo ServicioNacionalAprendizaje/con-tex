@@ -78,7 +78,7 @@ class FormularioRol
     {
         return $this->idUsuarioCreacion;
     }
-    public function setIdUsuarioCreacion($idUsuarioCreacion)
+    public function setIdUsuarioCreacion($idUsuarioCreacion = 1)
     {
         $this->idUsuarioCreacion = $idUsuarioCreacion;
     }
@@ -88,7 +88,7 @@ class FormularioRol
     {
         return $this->idUsuarioModificacion;
     }
-    public function setIdUsuarioModificacion($idUsuarioModificacion)
+    public function setIdUsuarioModificacion($idUsuarioModificacion = 1)
     {
         $this->idUsuarioModificacion = $idUsuarioModificacion;
     }
@@ -125,8 +125,8 @@ class FormularioRol
 
     public function Eliminar()
     {
-        $sentenciaSql = "DELETE FROM formularioRol 
-                            WHERE id_Formulario_Rol = $this->idOrden";
+        $sentenciaSql = "DELETE FROM formulario_rol 
+                            WHERE id_formulario_rol = $this->idFormularioRol";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -136,7 +136,7 @@ class FormularioRol
     {
         $condicion = $this->obtenerCondicion();
         $sentenciaSql = "SELECT * 
-                            FROM formularioRol $condicion";
+                            FROM formulario_rol $condicion";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;

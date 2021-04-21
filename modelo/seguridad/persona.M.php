@@ -63,7 +63,7 @@ class Persona{
                             ,'$this->edad'
                             ,'$this->genero'
                             ,'$this->estado'
-                            ,'$this->idUsuarioCreacion')"
+                            ,'$this->idUsuarioCreacion')";
     $this->conn->preparar($sentenciaSql);
     $this->conn->ejecutar();
     return true;
@@ -76,7 +76,7 @@ class Persona{
                             ,'$this->genero'
                             ,'$this->estado'
                             ,'$this->idUsuarioModificacion'
-                            ,'$this->idPersona')"      
+                            ,'$this->idPersona')";     
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }

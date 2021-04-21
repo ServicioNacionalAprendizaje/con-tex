@@ -1,4 +1,4 @@
-dIdfunction Enviar(accion,id){
+function Enviar(accion,id){
     if(id===null){
         id=$('#hidIdPersona').val();
     }

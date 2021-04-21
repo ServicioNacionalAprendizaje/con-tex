@@ -52,45 +52,31 @@ class Empleado{
     public function __construct() {$this->conn = new Conexion();}
 
     public function Agregar(){
-        $sentenciaSql = "INSERT INTO empleado(
-            id_cargo
-            ,correo_institucional
-            ,fecha_ingreso
-            ,arl
-            ,salud
-            ,pension
-            ,id_persona
-            ,estado
-            ) 
-        VALUES (
-            '$this->idCargo'
-            ,'$this->correoInstitucional' 
-            ,'$this->fechaIngreso'
-            ,'$this->arl'
-            ,'$this->salud'
-            ,'$this->pension'
-            ,'$this->idPersona'
-            ,'$estado'
-            )";
-
+        $sentenciaSql = "CALL Agregar_empleado('$this->idCargo'
+                            ,'$this->correoInstitucional'
+                            ,'$this->fechaIngreso'
+                            ,'$this->arl'
+                            ,'$this->salud'
+                            ,'$this->pension'
+                            ,'$this->idPersona'
+                            ,'$this->estado')";
     $this->conn->preparar($sentenciaSql);
     $this->conn->ejecutar();
     return true;
     }
 
     public function Modificar(){
-        $sentenciaSql = "UPDATE empleado SET 
-        id_cargo = '$this->idCargo',
-        ,correo_institucional = '$this->correoInstitucional'
-        ,fecha_ingreso = '$this->fechaIngreso'
-        ,arl = '$this->arl'
-        ,salud = '$this->salud'
-        ,pension = '$this->pension'
-        ,id_persona = '$this->idPersona'
-        ,estado = '$this->estado' 
-        WHERE id_empleado = $this->idEmpleado ";        
+        $sentenciaSql = "CALL Modificar_empleado('$this->idCargo'
+                            ,'$this->correoInstitucional'
+                            ,'$this->fechaIngreso'
+                            ,'$this->arl'
+                            ,'$this->salud'
+                            ,'$this->pension'
+                            ,'$this->idPersona'
+                            ,'$this->estado')";       
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
+        return true;
     }
 
     public function Eliminar(){
@@ -100,6 +86,7 @@ class Empleado{
             id_empleado = $this->idEmpleado";        
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
+        return true;
     }
 
     public function Consultar(){
@@ -130,4 +117,3 @@ class Empleado{
     }
 
 }
-?>

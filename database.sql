@@ -246,7 +246,7 @@ CREATE TABLE `persona` (
 
 LOCK TABLES `persona` WRITE;
 
-insert  into `persona`(`id_persona`,`nombre`,`apellido`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'Jesus','ArieÃ±',29,'','','2021-04-20 00:00:00','2021-04-20 00:00:00',0,0);
+-- insert  into `persona`(`id_persona`,`nombre`,`apellido`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'Jesus','ArieÃ±',29,'','','2021-04-20 00:00:00','2021-04-20 00:00:00',0,0);
 
 UNLOCK TABLES;
 

@@ -10,7 +10,7 @@ if (isset ($accion)){
     switch($accion){
         case 'ADICIONAR':
             try{
-                $rol= new Rol();
+                $rol = new Rol();
                 $rol->setDescripcion($_POST['descripcion']);
                 $rol->setEstado($_POST['estado']);
                 $rol = $rol->Agregar();
@@ -26,8 +26,9 @@ if (isset ($accion)){
                 $rol = new Rol();
                 $rol->setIdRol($_POST['idRol']);
                 $rol->setDescripcion($_POST['descripcion']);
-                $rol->setEstado($_POST['estado']);               
+                $rol->setEstado($_POST['estado']);
                 $rol->setFechaModificacion($_POST['fechaModificacion']);
+                $rol->setIdUsuarioCreacion($_POST['idUsuarioCreacion']);
                 $rol->setIdUsuarioModificacion($_POST['idUsuarioModificacion']);
 
                 $resultado = $rol->Modificar();
@@ -57,27 +58,28 @@ if (isset ($accion)){
                 $rol->setFechaCreacion($_POST['fechaCreacion']);
                 $rol->setFechaModificacion($_POST['fechaModificacion']);
                 $rol->setIdUsuarioCreacion($_POST['idUsuarioCreacion']);
-                $usurolario->setIdUsuarioModificacion($_POST['idUsuarioModificacion']);
+                $rol->setIdUsuarioModificacion($_POST['idUsuarioModificacion']);
                 $resultado = $rol->consultar();
 
                 $numeroRegistros = $rol->conn->obtenerNumeroRegistros();
                 if($numeroRegistros === 1){
                     if ($rowBuscar = $rol->conn->obtenerObjeto()){
-                        $respuesta['idRol'] = $rowBuscar->id_rol;
+                        $respuesta['id'] = $rowBuscar->id_rol;
                         $respuesta['descripcion'] = $rowBuscar->descripcion;
                         $respuesta['estado'] = $rowBuscar->estado;
-                        $respuesta['fechaCreacion'] = $rowBuscar->fecha_creacion;
-                        $respuesta['fechaModificacion'] = $rowBuscar->fecha_modificacion;
-                        $respuesta['idUsuarioCreacion'] = $rowBuscar->id_usuario_creacion;
-                        $respuesta['idUsuarioModificacion'] = $rowBuscar->id_usuario_modificacion;
-                    }
+                        $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_rol.")'>";
+                     }
                 }else{
                     if(isset($resultado)){
                         $retorno="<table>";
                         foreach($persona->conn->ObtenerRegistros() AS $rowConsulta){
                             $retorno .= "<tr>
                                         <td><label>".$rowConsulta[0]."</label></td>     
-                                        <td><label>".$rowConsulta[1]."</label></td>                                            
+                                        <td><label>".$rowConsulta[1]."</label></td>
+                                        <td><label>".$rowConsulta[2]."</label></td>
+                                        <td><label>".$rowConsulta[3]."</label></td>
+                                        <td><label>".$rowConsulta[4]."</label></td>
+                                        <td><label>".$rowConsulta[5]."</label></td>                                            
                                         <td>
                                             <input type='button' name='editar' value='Editar' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'>
                                             <input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'>

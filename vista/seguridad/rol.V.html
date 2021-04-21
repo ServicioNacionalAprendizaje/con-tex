@@ -10,6 +10,7 @@
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../../js/seguridad/rol.js"></script>
 </head>
 <body>
     <form name="frmRol" id="frmRol"> 
@@ -43,17 +44,16 @@
                     </select>
                 </div> 
             </div>
-            <div class="row">
-                <div class="col-12 col-sm-6">
-                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar"
-                        id="btnBuscar" value="BUSCAR" placeholder="Código del empleado" onclick="Enviar('CONSULTAR',null);">
-                </div>
-                <div class="col-12 col-sm-6">
-                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar"
-                        value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick="Enviar('ADICIONAR',null);">
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-6">
+                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado" onclick="Enviar('CONSULTAR',null);">
+            </div>
+            <div class="col-12 col-sm-6">
+                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick="Enviar('ADICIONAR',null);">
             </div>
         </div>
+        <br></br>
         <div class="container">
             <div class="row">
                 <div class="col">

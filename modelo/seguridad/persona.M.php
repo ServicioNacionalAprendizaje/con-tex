@@ -64,9 +64,9 @@ class Persona{
                             ,'$this->genero'
                             ,'$this->estado'
                             ,'$this->idUsuarioCreacion')";
-    $this->conn->preparar($sentenciaSql);
-    $this->conn->ejecutar();
-    return true;
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+        return true;
     }
 
     public function Modificar(){

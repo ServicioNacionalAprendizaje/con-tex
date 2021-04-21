@@ -42,36 +42,22 @@ class Rol{
     public function __construct() {$this->conn = new Conexion();}
 
     public function Agregar(){
-    $sentenciaSql = "INSERT INTO rol(
-        descripcion
-        ,estado
-        ,fecha_creacion
-        ,fecha_modificacion
-        ,id_usuario_creacion
-        ,id_usuario_modificacion
-        ) 
-    VALUES (
-        $this->descripcion
-        ,$this->estado
-        ,NOW()
-        ,NOW()
-        ,1
-        ,1
-        )";
-
-$this->conn->preparar($sentenciaSql);
-$this->conn->ejecutar();
-return true;
-}
+        $sentenciaSql = "CALL Agregar_persona('$this->descripcion'
+        ,'$this->estado'
+        ,'$this->idUsuarioCreacion')";
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+        return true;
+    }
 
 public function Modificar(){
-    $sentenciaSql = "UPDATE rol SET 
-        descripcion = '$this->descripcion'
-        ,estado = '$this->estado'
-        ,fecha_modificacion = '$this->fechaModificacion'
-        ,id_usuario_modificacion = '$this->idUsuarioModificacion' 
-    WHERE id_rol = $this->idRol ";
-
+    $sentenciaSql = "CALL Modificar_persona('$this->nombre'
+    ,'$this->apellido'
+    ,'$this->edad'
+    ,'$this->genero'
+    ,'$this->estado'
+    ,'$this->idUsuarioModificacion'
+    ,'$this->idPersona')";     
     $this->conn->preparar($sentenciaSql);
     $this->conn->ejecutar();
 }

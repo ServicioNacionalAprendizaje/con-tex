@@ -585,7 +585,8 @@ DELIMITER $$
                     IN salud ENUM('salud1','salud2','salud3'),
                     IN pension ENUM('pension1','pension2','pension3'),
 					IN idPersona INT(11),
-                    IN estado BIT(1))
+                    IN estado BIT(1),
+                    IN idUsuarioCreacion INT(11))
 BEGIN
 	INSERT INTO empleado(
 					id_cargo,
@@ -595,7 +596,11 @@ BEGIN
                     salud,
                     pension,
                     id_persona,
-                    estado) 
+                    estado,
+                    fecha_creacion,
+                    fecha_modificacion,
+                    id_usuario_creacion,
+                    id_usuario_modificacion) 
 			VALUES (
 				idCargo,
                 correoInstitucional,
@@ -604,7 +609,11 @@ BEGIN
                 salud,
                 pension,
 				idPersona,
-				estado);
+				estado,
+        CURDATE(),
+        CURDATE(),
+        idUsuarioCreacion,
+        idUsuarioCreacion);
 END */$$
 DELIMITER ;
 
@@ -621,7 +630,8 @@ DELIMITER $$
                     IN salud ENUM('salud1','salud2','salud3'),
                     IN pension ENUM('pension1','pension2','pension3'),
 					IN idPersona INT(11),
-                    IN estado BIT(1))
+                    IN estado BIT(1),
+                    IN idUsuarioModificacion INT(11))
 BEGIN
 	UPDATE empleado 
     SET id_cargo = idCargo,
@@ -631,7 +641,9 @@ BEGIN
         salud = salud,
         pension = pension,
 		id_persona = idPersona,
-        estado = estado 
+        estado = estado,
+        fecha_modificacion = CURDATE(),
+        id_usuario_modificacion = idUsuarioModificacion 
 	WHERE id_empleado = idEmpleado;
 END */$$
 DELIMITER ;

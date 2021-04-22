@@ -95,7 +95,8 @@ class Empleado{
                             ,'$this->pension'
                             ,'$this->idPersona'
                             ,'$this->estado'
-                            ,'$this->idUsuarioModificacion')";       
+                            ,'$this->idUsuarioModificacion'
+                            ,'$this->idEmpleado')";       
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;

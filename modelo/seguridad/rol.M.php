@@ -89,7 +89,7 @@ class Rol
 
     public function Agregar()
     {
-        $sentenciaSql = "CALL Agregar_persona('$this->descripcion'
+        $sentenciaSql = "CALL Agregar_rol('$this->descripcion'
                             ,'$this->estado'
                             ,'$this->idUsuarioCreacion')";
         $this->conn->preparar($sentenciaSql);
@@ -99,13 +99,10 @@ class Rol
 
     public function Modificar()
     {
-        $sentenciaSql = "CALL Modificar_persona('$this->nombre'
-                            ,'$this->apellido'
-                            ,'$this->edad'
-                            ,'$this->genero'
+        $sentenciaSql = "CALL Modificar_rol('$this->descripcion'
                             ,'$this->estado'
                             ,'$this->idUsuarioModificacion'
-                            ,'$this->idPersona')";
+                            ,'$this->idRol')";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }

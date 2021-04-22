@@ -617,6 +617,113 @@ BEGIN
 END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `Agregar_generar_pago` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Agregar_generar_pago` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_generar_pago`(IN valorPago DOUBLE, 
+	IN deduccion DOUBLE, 
+    IN fechaInicio DATETIME, 
+    IN fechaFin DATETIME, 
+    IN idEmpleado INT(11),
+    IN idUsuarioCreacion INT(11))
+BEGIN
+	INSERT INTO generar_pago(
+					valor_pago,
+                    deduccion,
+                    fecha_inicio,
+                    fecha_fin,
+                    id_empleado,
+                    fecha_creacion,
+                    fecha_modificacion,
+                    id_usuario_creacion,
+                    id_usuario_modificacion) 
+			VALUES (
+				valorPago,
+                deduccion,
+                fechaInicio,
+				fechaFin,
+                idEmpleado,
+				CURDATE(),
+				CURDATE(),
+				idUsuarioCreacion,
+				idUsuarioCreacion);
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `Agregar_pago_dia` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Agregar_pago_dia` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_pago_dia`(IN idEmpleado INT(11), 
+	IN pagoDia DOUBLE,
+    IN idUsuarioCreacion INT(11))
+BEGIN
+	INSERT INTO pago_dia(
+					id_empleado,
+                    pago_dia,
+                    fecha_creacion,
+                    fecha_modificacion,
+                    id_usuario_creacion,
+                    id_usuario_modificacion) 
+			VALUES (
+				idEmpleado,
+                pagoDia,
+				CURDATE(),
+				CURDATE(),
+				idUsuarioCreacion,
+				idUsuarioCreacion);
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `Modificar_pago_dia` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Modificar_pago_dia` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_pago_dia`(IN idEmpleado INT(11),
+					IN pagoDia DOUBLE,
+                    IN idUsuarioModificacion INT(11),
+                    IN idPagoDia INT(11))
+BEGIN
+	UPDATE pago_dia 
+    SET id_empleado = idEmpleado,
+		pago_dia = pagoDia,
+        id_usuario_modificacion = idUsuarioModificacion 
+	WHERE id_pago_dia = idPagoDia;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `Modificar_generar_pago` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Modificar_generar_pago` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_generar_pago`(IN valorPago DOUBLE,
+					IN deduccion DOUBLE,
+                    IN fechaInicio DATETIME,
+                    IN fechaFin DATETIME,
+                    IN idEmpleado INT(11),
+                    IN idUsuarioModificacion INT(11),
+                    IN idGenerarPago INT(11))
+BEGIN
+	UPDATE generar_pago 
+    SET valor_pago = valorPago,
+		deduccion = deduccion,
+		fechaInicio = fechaInicio,
+		fechaFin = fechaFin,
+        idEmpleado = idEmpleado,
+        id_usuario_modificacion = idUsuarioModificacion 
+	WHERE id_generar_pago = idGenerarPago;
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `Modificar_empleado` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `Modificar_empleado` */;
@@ -631,7 +738,8 @@ DELIMITER $$
                     IN pension ENUM('pension1','pension2','pension3'),
 					IN idPersona INT(11),
                     IN estado BIT(1),
-                    IN idUsuarioModificacion INT(11))
+                    IN idUsuarioModificacion INT(11),
+                    IN idEmpleado INT(11))
 BEGIN
 	UPDATE empleado 
     SET id_cargo = idCargo,

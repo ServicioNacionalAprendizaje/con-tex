@@ -1,6 +1,7 @@
 <?php
 
-class GenerarPago{
+class GenerarPago
+{
 
     private $idGenerarPago;
     private $valorPago;
@@ -14,50 +15,114 @@ class GenerarPago{
     private $idUsuarioModificacion;
 
     //idGenerarPago
-    public function getIdGenerarPago(){return $this->iddGenerarPago;}
-    public function setIdGenerarPago($idGenerarPago){$this->idGenerarPago = $idGenerarPago;}
+    public function getIdGenerarPago()
+    {
+        return $this->iddGenerarPago;
+    }
+    public function setIdGenerarPago($idGenerarPago)
+    {
+        $this->idGenerarPago = $idGenerarPago;
+    }
 
     //valorPago
-    public function getValorPago(){return $this->valorPago;}
-    public function setValorPago($valorPago){$this->valorPago = $valorPago;}
+    public function getValorPago()
+    {
+        return $this->valorPago;
+    }
+    public function setValorPago($valorPago)
+    {
+        $this->valorPago = $valorPago;
+    }
 
     //deduccion
-    public function getDeduccion(){return $this->deduccion;}
-    public function setDeduccion($deduccion){$this->deduccion = $deduccion;}
+    public function getDeduccion()
+    {
+        return $this->deduccion;
+    }
+    public function setDeduccion($deduccion)
+    {
+        $this->deduccion = $deduccion;
+    }
 
     //fechaInicio
-    public function getFechaInicio(){return $this->fechaInicio;}
-    public function setFechaInicio($fechaInicio){$this->fechaInicio = $fechaInicio;}
+    public function getFechaInicio()
+    {
+        return $this->fechaInicio;
+    }
+    public function setFechaInicio($fechaInicio)
+    {
+        $this->fechaInicio = $fechaInicio;
+    }
 
     //fechaFin
-    public function getFechaFin(){return $this->fechaFin;}
-    public function setFechaFin($fechaFin){$this->fechaFin = $fechaFin;}
+    public function getFechaFin()
+    {
+        return $this->fechaFin;
+    }
+    public function setFechaFin($fechaFin)
+    {
+        $this->fechaFin = $fechaFin;
+    }
 
     //idEmpleado
-    public function getIdEmpleado(){return $this->IdEmpleado;}
-    public function setIdEmpleado($idEmpleado){$this->idEmpleado = $idEmpleado;}
+    public function getIdEmpleado()
+    {
+        return $this->IdEmpleado;
+    }
+    public function setIdEmpleado($idEmpleado)
+    {
+        $this->idEmpleado = $idEmpleado;
+    }
 
     //fechaCreacion
-    public function getFechaCreacion(){return $this->fechaCreacion;}
-    public function setFechaCreacion($fechaCreacion){$this->fechaCreacion = $fechaCreacion;}
+    public function getFechaCreacion()
+    {
+        return $this->fechaCreacion;
+    }
+    public function setFechaCreacion($fechaCreacion)
+    {
+        $this->fechaCreacion = $fechaCreacion;
+    }
 
     //fechaModificacion
-    public function getFechaModificacion(){return $this->fechaModificacion;}
-    public function setFechaModificacion($fechaModificacion){$this->fechaModificacion = $fechaModificacion;}
+    public function getFechaModificacion()
+    {
+        return $this->fechaModificacion;
+    }
+    public function setFechaModificacion($fechaModificacion)
+    {
+        $this->fechaModificacion = $fechaModificacion;
+    }
 
     //idUsuarioCreacion
-    public function getIdUsuarioCreacion(){return $this->idUsuarioCreacion;}
-    public function setIdUsuarioCreacion($idUsuarioCreacion){$this->idUsuarioCreacion = $idUsuarioCreacion;}
+    public function getIdUsuarioCreacion()
+    {
+        return $this->idUsuarioCreacion;
+    }
+    public function setIdUsuarioCreacion($idUsuarioCreacion)
+    {
+        $this->idUsuarioCreacion = $idUsuarioCreacion;
+    }
 
     //idUsuarioModificacion
-    public function getIdUsuarioModificacion(){return $this->idUsuarioModificacion;}
-    public function setIdUsuarioModificacion($idUsuarioModificacion){$this->idUsuarioModificacion = $idUsuarioModificacion;}
+    public function getIdUsuarioModificacion()
+    {
+        return $this->idUsuarioModificacion;
+    }
+    public function setIdUsuarioModificacion($idUsuarioModificacion)
+    {
+        $this->idUsuarioModificacion = $idUsuarioModificacion;
+    }
 
     //conexion
-    public function __contruct() {$this->conn = new Conexion();}
+    public function __contruct()
+    {
+        $this->conn = new Conexion();
+    }
 
     //Agregar
-    public function Agregar(){
+    public function Agregar()
+    {
         $sentenciaSql = "CALL Agregar_generar_pago('$this->valorPago'
                             ,'$this->deduccion'
                             ,'$this->fechaInicio'
@@ -69,7 +134,8 @@ class GenerarPago{
         return true;
     }
 
-    public function Modificar(){
+    public function Modificar()
+    {
         $sentenciaSql = "CALL Modificar_generar_pago('$this->valorPago'
                             ,'$this->deduccion'
                             ,'$this->fechaInicio'
@@ -81,30 +147,30 @@ class GenerarPago{
         $this->conn->ejecutar();
     }
 
-    public function Eliminar(){
-        $sentenciaSql = "DELETE FROM
-            generar_pago
-        WHERE
-            id_generar_pago = $this->idGenerarPago";
+    public function Eliminar()
+    {
+        $sentenciaSql = "DELETE FROM generar_pago
+                            WHERE id_generar_pago = $this->idGenerarPago";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejectutar();
     }
 
-    public function Consultar(){
+    public function Consultar()
+    {
         $condicion = $this->obtenerCondicion();
-        $sentenciaSql = "SELECT
-            *
-        FROM
-            generar_pago $condicion"; 
-            
+        $sentenciaSql = "SELECT * 
+                            FROM generar_pago $condicion";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
     }
 
-    private function obtenerCondicion(){}
+    private function obtenerCondicion()
+    {
+    }
 
-    public function __destruct(){
+    public function __destruct()
+    {
 
         unset($this->idGenerarPago);
         unset($this->valorPago);
@@ -115,4 +181,3 @@ class GenerarPago{
         unset($this->conn);
     }
 }
-?>

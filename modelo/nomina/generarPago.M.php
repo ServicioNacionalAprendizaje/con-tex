@@ -8,6 +8,10 @@ class GenerarPago{
     private $fechaInicio;
     private $fechaFin;
     private $idEmpleado;
+    private $fechaCreacion;
+    private $fechaModificacion;
+    private $idUsuarioCreacion;
+    private $idUsuarioModificacion;
 
     //idGenerarPago
     public function getIdGenerarPago(){return $this->iddGenerarPago;}
@@ -32,6 +36,22 @@ class GenerarPago{
     //idEmpleado
     public function getIdEmpleado(){return $this->IdEmpleado;}
     public function setIdEmpleado($idEmpleado){$this->idEmpleado = $idEmpleado;}
+
+    //fechaCreacion
+    public function getFechaCreacion(){return $this->fechaCreacion;}
+    public function setFechaCreacion($fechaCreacion){$this->fechaCreacion = $fechaCreacion;}
+
+    //fechaModificacion
+    public function getFechaModificacion(){return $this->fechaModificacion;}
+    public function setFechaModificacion($fechaModificacion){$this->fechaModificacion = $fechaModificacion;}
+
+    //idUsuarioCreacion
+    public function getIdUsuarioCreacion(){return $this->idUsuarioCreacion;}
+    public function setIdUsuarioCreacion($idUsuarioCreacion){$this->idUsuarioCreacion = $idUsuarioCreacion;}
+
+    //idUsuarioModificacion
+    public function getIdUsuarioModificacion(){return $this->idUsuarioModificacion;}
+    public function setIdUsuarioModificacion($idUsuarioModificacion){$this->idUsuarioModificacion = $idUsuarioModificacion;}
 
     //conexion
     public function __contruct() {$this->conn = new Conexion();}

@@ -104,7 +104,7 @@ class FormularioRol
         $sentenciaSql = "CALL Agregar_formulario_rol('$this->idRol'
                             ,'$this->idFormulario'
                             ,'$this->estado'
-                            ,'$this->idUsuarioModificacion'
+                            ,'$this->idUsuarioCreacion'
                             ,'$this->idFormularioRol')";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();

@@ -114,7 +114,8 @@ class Formulario
         $sentenciaSql = "CALL Agregar_formulario('$this->descripcion'
                             ,'$this->etiqueta'
                             ,'$this->ubicacion'
-                            ,$this->estado)";
+                            ,'$this->estado'
+                            ,'$this->idUsuarioCreacion')";
         $this->conn->Preparar($sentenciaSql);
         $this->conn->Ejecutar();
         return true;

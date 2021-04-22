@@ -58,36 +58,25 @@ class GenerarPago{
 
     //Agregar
     public function Agregar(){
-        $sentenciaSql = "INSERT INTO generar_pago(
-            id_generar_pago
-            ,valor_pago
-            ,deduccion
-            ,fecha_inicio
-            ,fecha_fin
-            ,id_empleado
-        )
-        VALUES (
-            '$this->idGenerarPago'
-            ,'$this->valorPago'
-            ,'$this->deduccion'
-            ,'$this->fechaInicio'
-            ,'$this->fechaFin'
-            ,'$this->idEmpleado'
-        )";
-
-    $this->conn->preparar($sentenciaSql);
-    $this->conn->ejecutar();
-    return true;
+        $sentenciaSql = "CALL Agregar_generar_pago('$this->valorPago'
+                            ,'$this->deduccion'
+                            ,'$this->fechaInicio'
+                            ,'$this->fechaFin'
+                            ,'$this->idEmpleado'
+                            ,'$this->idUsuarioCreacion')";
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+        return true;
     }
 
     public function Modificar(){
-        $sentenciaSql = "UPDATE generar_pago SET
-        valor_pago = '$this->usuario',
-        deduccion = '$this->deduccion',
-        fecha_inicio = '$this->fechaInicio',
-        fecha_fin = '$this->fechaFin',
-        id_empleado = '$this->idEmpleado'
-        WHERE id_generar_pago = $this->getIdGenerarPago";
+        $sentenciaSql = "CALL Modificar_generar_pago('$this->valorPago'
+                            ,'$this->deduccion'
+                            ,'$this->fechaInicio'
+                            ,'$this->fechaFin'
+                            ,'$this->idEmpleado'
+                            ,'$this->idUsuarioModificacion'
+                            ,'$this->idGenerarPago')";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }

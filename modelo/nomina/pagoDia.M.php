@@ -42,25 +42,19 @@ class pagoDia{
     public function __construct() {$this->conn = new Conexion();}
 
     public function Agregar(){
-        $sentenciaSql = "INSERT INTO pagoDia(
-            id_empleado
-            ,pago_dia
-            ) 
-        VALUES (
-            '$this->usuario'
-            ,'$this->contrasenia' 
-            )";
-
-    $this->conn->preparar($sentenciaSql);
-    $this->conn->ejecutar();
-    return true;
+        $sentenciaSql = "CALL Agregar_pago_dia('$this->idEmpleado'
+                            ,'$this->pagoDia'
+                            ,'$this->idUsuarioCreacion')";
+            $this->conn->preparar($sentenciaSql);
+            $this->conn->ejecutar();
+            return true;
     }
 
     public function Modificar(){
-        $sentenciaSql = "UPDATE pagoDia SET 
-        id_empleado = '$this->idEmpleado',
-        pago_dia = '$this->pagoDia',
-        WHERE id_usuario = $this->idUsuario ";        
+        $sentenciaSql = "CALL Modificar_pago_dia('$this->idEmpleado'
+                            ,'$this->pagoDia'
+                            ,'$this->idUsuarioModificacion'
+                            ,'$this->idPagoDia')";       
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }

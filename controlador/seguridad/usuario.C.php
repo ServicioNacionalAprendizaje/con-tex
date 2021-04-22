@@ -5,24 +5,25 @@ require '../../modelo/seguridad/usuario.M.php';
 
 $respuesta = array();
 
-$accion = 'ADICIONAR';
+$accion = $_POST['accion'];
 if (isset ($accion)){
     switch($accion){
         case 'ADICIONAR':
             try{
                 $usuario= new Usuario();
-                $usuario->setUsuario('admin');
-                $usuario->setContrasenia('abcd1234');
-                $usuario->setFechaActivacion('CURDATE()');
-                $usuario->setFechaExpiracion('CURDATE()');
-                $usuario->setidPersona(1);
-                $usuario->setEstado(1);
+                $usuario->setUsuario($_POST['usuario']);
+                $usuario->setContrasenia($_POST['contrasenia']);
+                $usuario->setFechaActivacion($_POST['fechaActivacion']);
+                $usuario->setFechaExpiracion($_POST['fechaExpiracion']);
+                $usuario->setIdPersona($_POST['idPersona']);
+                $usuario->setEstado($_POST['estado']);
                 $resultado = $usuario->Agregar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible adicionar la información, consulte con el administrador.";
             }
-            json_encode($respuesta);
+            $respuesta['accion']='ADICIONAR'; 
+            echo json_encode($respuesta);
         break;
         case 'MODIFICAR':
             try{

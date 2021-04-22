@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <title>Usuario</title>
@@ -10,31 +11,34 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="../../js/seguridad/usuario.js"></script>
-</head> 
+</head>
+
 <body>
     <form name="frmUsuario" id="frmUsuario">
-        <div class="margen" align="center"> 
-            <h1><label> Usuario</label></h1>
+        <div class="margen" align="center">
+            <label> 
+                <h1>Usuario</h1>
+            </label>
             <div class="container form-group">
                 <div class="row">
                     <div class="col-12 col-sm-6">
                         <input type="hidden" name="hidIdUsuario" id="hidIdUsuario" value="">
                         <label class="col-form-label">Usuario</label>
-                        <input type="text" class="caja form-control" name="txtUsuario" id="txtUsuario" value="" placeholder="Nombre de usuario">
+                        <input type="text" name="txtUsuario" id="txtUsuario" value="" placeholder="Nombre de usuario" class="caja form-control">
                     </div>
                     <div class="col-12 col-sm-6">
                         <label class="col-form-label">Contraseña</label>
-                        <input type="password" class="caja form-control" name="passContrasena" value="" id="passContrasena" placeholder="Contraseña">
+                        <input type="password" class="caja form-control" name="passContrasenia" value="" id="passContrasenia" placeholder="Contraseña">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 col-sm-6">
-                        <label class="col-form-label">Fecha creación</label>
-                        <input type="date" name="datCreacion" id="datCreacion" value="" class="caja form-control">
+                        <label class="col-form-label">Fecha Activacion</label>
+                        <input type="date" name="datFechaActivacion" id="datFechaActivacion" value="" class="caja form-control">
                     </div>
                     <div class="col-12 col-sm-6">
-                        <label class="col-form-label">Fecha modificación</label>
-                        <input type="date" name="datModificacion" id="datModificacion" value="" class="caja form-control">
+                        <label class="col-form-label">Fecha Expiracion</label>
+                        <input type="date" name="datFechaExpiracion" id="datFechaExpiracion" value="" class="caja form-control">
                     </div>
                 </div>
                 <div class="row">
@@ -46,9 +50,9 @@
                     <div class="col-12 col-sm-6">
                         <label class="col-form-label">Estado</label>
                         <form action="">
-                            <div class="switch">                  
+                            <div class="switch">
                                 <input type="checkbox" id="check">
-                                <label for="check" ></label>
+                                <label for="check"></label>
                             </div>
                         </form>
                     </div>
@@ -64,10 +68,10 @@
             </div>
             <div class="row">
                 <div class="col-12 col-sm-6">
-                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado">
+                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado" onclick="Enviar('CONSULTAR',null);">
                 </div>
                 <div class="col-12 col-sm-6">
-                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick="Enviar();">
+                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick="Enviar('ADICIONAR',null);">
                 </div>
             </div>
             <br></br>
@@ -76,8 +80,8 @@
                     <thead>
                         <tr>
                             <td align="center">Usuario</td>
-                            <td align="center">Fecha creación</td>
-                            <td align="center">Fecha modificación</td>
+                            <td align="center">Fecha Activacion</td>
+                            <td align="center">Fecha Expiracion</td>
                             <td align="center">Estado</td>
                             <td align="center">Modificar</td>
                             <td align="center">Eliminar</td>
@@ -97,22 +101,22 @@
                     </tbody>
                 </table>
             </div>
-                    
+
         </div>
     </form>
 </body>
 <script type="text/javascript">
-
     var check;
-    $("#check").on("click", function(){
+    $("#check").on("click", function() {
         check = $("#check").prop("checked");
-        if(check) {
-             alert("Activo");
+        if (check) {
+            alert("Activo");
             //  check = $("#check").prop("checked",true);
         } else {
             alert("No activo");
             // check = $("#check").prop("checked",false);
         }
-    }); 
-    </script>
+    });
+</script>
+
 </html>

@@ -13,7 +13,7 @@ class Usuario
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
-    public $conn = null;
+    
 
     //idUsuario
     public function getIdUsuario()
@@ -80,7 +80,7 @@ class Usuario
     {
         return $this->estado;
     }
-    public function setEstado($estado = 1)
+    public function setEstado($estado)
     {
         $this->estado = $estado;
     }
@@ -90,7 +90,7 @@ class Usuario
     {
         return $this->fechaCreacion;
     }
-    public function setFechaCreacion($fechaCreacion = 1)
+    public function setFechaCreacion($fechaCreacion)
     {
         $this->fechaCreacion = $fechaCreacion;
     }
@@ -100,7 +100,7 @@ class Usuario
     {
         return $this->fechaModificacion;
     }
-    public function setFechaModificacion($fechaModificacion = 1)
+    public function setFechaModificacion($fechaModificacion)
     {
         $this->fechaModificacion = $fechaModificacion;
     }
@@ -110,7 +110,7 @@ class Usuario
     {
         return $this->idUsuarioCreacion;
     }
-    public function setIdUsuarioCreacion($idUsuarioCreacion = 1)
+    public function setIdUsuarioCreacion($idUsuarioCreacion =1)
     {
         $this->idUsuarioCreacion = $idUsuarioCreacion;
     }
@@ -120,7 +120,7 @@ class Usuario
     {
         return $this->idUsuarioModificacion;
     }
-    public function setIdUsuarioModificacion($idUsuarioModificacion = 1)
+    public function setIdUsuarioModificacion($idUsuarioModificacion=1)
     {
         $this->idUsuarioModificacion = $idUsuarioModificacion;
     }

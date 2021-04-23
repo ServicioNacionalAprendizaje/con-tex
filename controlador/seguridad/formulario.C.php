@@ -11,17 +11,17 @@ if (isset ($accion)){
         case 'ADICIONAR':
             try{
                 $formulario = new Formulario();
-                $formulario->setIdFormulario('321');
-                $formulario->setDescripcion('abcd1234');
-                $formulario->setEtiqueta('abc123');
-                $formulario->setUbicacion('abc123');
-                $formulario->setEstado(1);
+                $formulario->setDescripcion($_POST['descripcion']);
+                $formulario->setEtiqueta($_POST['etiqueta']);
+                $formulario->setUbicacion($_POST['ubicacion']);
+                $formulario->setEstado($_POST['estado']);
                 $resultado = $formulario->Agregar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible adicionar la información, consulte con el administrador.";
             }
-            json_encode($respuesta);
+            $respuesta['accion']='ADICIONAR';
+            echo json_encode($respuesta);
         break;
         case 'MODIFICAR':
             try{

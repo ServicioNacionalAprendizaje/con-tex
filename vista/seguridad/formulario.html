@@ -10,6 +10,7 @@
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../../js/seguridad/formulario.js"></script>
 </head>
 <body>
     <form name="frmFormulario" id="frmFormulario">
@@ -20,6 +21,7 @@
         <div class="container form-group">
             <div class="row">
                 <div class="col-12 col-sm-6">
+                    <input type="hidden" name="hidIdFormulario" id="hidIdFormulario" value="">
                     <label class="col-form-label">Descripción</label>
                     <input type="text" name="txtDescripcion" id="txtDescripcion" value="" class="caja form-control"
                         placeholder="Descripción">
@@ -43,14 +45,22 @@
                         </div>
                     </form>
                 </div>
+                <div class="col-lg-4 form-group">
+                    <label for="cmbEstado">Estado</label>
+                    <select class="lista form-control" id="cmbEstado">
+                        <option value="" selected="selected">--Seleccione--</option>
+                        <option value="0">Activo</option>
+                        <option value="1">Inactivo</option>
+                    </select>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-sm-6">
-                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado">
+                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado" onclick="Enviar('CONSULTAR',null);">
             </div>
             <div class="col-12 col-sm-6">
-                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción">
+                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick="Enviar('ADICIONAR',null);">
             </div>
         </div>
         <br></br>

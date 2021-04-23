@@ -123,12 +123,14 @@ class Persona
 
     public function Agregar()
     {
-        $sentenciaSql = "CALL Agregar_persona('$this->nombre'
+        $sentenciaSql = "CALL Agregar_persona(
+                             '$this->nombre'
                             ,'$this->apellido'
-                            ,'$this->edad'
+                            , $this->edad
                             ,'$this->genero'
                             ,'$this->estado'
-                            ,'$this->idUsuarioCreacion')";
+                            , $this->idUsuarioCreacion
+                            , $this->idUsuarioModificacion)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -160,8 +162,7 @@ class Persona
     public function Consultar()
     {
         $condicion = $this->obtenerCondicion();
-        $sentenciaSql = "SELECT * 
-                            FROM persona $condicion";
+        $sentenciaSql = "SELECT * FROM persona $condicion";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -169,6 +170,36 @@ class Persona
     
     private function obtenerCondicion()
     {
+        $whereAnd = " WHERE ";
+        $condicion = " ";
+
+        if($this->idPersona !=''){
+            $condicion=$whereAnd.$condicion." id_persona  = $this->idPersona";
+            $whereAnd = ' AND ';
+        }
+        if($this->nombre !=''){
+                $condicion=$condicion.$whereAnd." nombre LIKE '%$this->nombre%' ";
+                $whereAnd = ' AND ';
+        }        
+        // if($this->estado!=''){
+        //         if ($whereAnd == ' AND '){
+        //         $condicion=$condicion.$whereAnd." seg_usu.estado = '$this->estado'";
+        //         $whereAnd = ' AND ';
+        //         }
+        //         else{
+        //         $condicion=$whereAnd.$condicion." seg_usu.estado = '$this->estado'";
+        //         $whereAnd = ' AND ';
+        //         }
+        //     }
+        // if($this->fechaActivacion!=''){
+        //         $condicion=$condicion.$whereAnd." seg_usu.fecha_activacion = '$this->fechaActivacion' ";
+        //         $whereAnd = ' AND ';
+        // }
+        // if($this->fechaExpiracion!=''){
+        //         $condicion=$condicion.$whereAnd." seg_usu.fecha_expiracion = '$this->fechaExpiracion' ";
+        //         $whereAnd = ' AND ';
+        // }
+        return $condicion;
     }
 
     public function __destruct()

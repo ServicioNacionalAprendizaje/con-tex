@@ -16,6 +16,8 @@ if (isset ($accion)){
                 $persona->setEdad($_POST['edad']);
                 $persona->setGenero($_POST['genero']);
                 $persona->setEstado($_POST['estado']);
+                $persona->setIdUsuarioCreacion(1); // Obtener id de la persona con la variable session
+                $persona->setIdUsuarioModificacion(1); // Obtener id de la persona con la variable session
                 $resultado = $persona->Agregar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){
@@ -58,15 +60,11 @@ if (isset ($accion)){
         case 'CONSULTAR':
             try{
                 $persona = new Persona();
-                $persona->setIdPersona($_POST['idPersona']);
+                $persona->setIdPersona($_POST['id']);
                 $persona->setNombre($_POST['nombre']);
                 $persona->setApellido($_POST['apellido']);
                 $persona->setEdad($_POST['edad']);
-                $persona->setGenero($_POST['genero']);
-                $persona->setEstado($_POST['fechaCreacion']);
-                $persona->setEstado($_POST['fechaModificacion']);
-                $persona->setIdUsuarioCreacion($_POST['idUsuarioCreacion']);
-                $persona->setIdUsuarioModificacion($_POST['idUsuarioModificacion']);
+                $persona->setGenero($_POST['genero']);                              
                 $resultado = $persona->consultar();
 
                 $numeroRegistros = $persona->conn->ObtenerNumeroRegistros();
@@ -84,24 +82,23 @@ if (isset ($accion)){
                     if(isset($resultado)){
                         $retorno="<table>";
                         foreach($persona->conn->ObtenerRegistros() AS $rowConsulta){
-                            $retorno .= "<tr>
-                                        <td><label>".$rowConsulta[0]."</label></td>     
+                            $retorno .= "<tr>                                          
                                         <td><label>".$rowConsulta[1]."</label></td>                                             
                                         <td><label>".$rowConsulta[2]."</label></td>                                        
                                         <td><label>".$rowConsulta[3]."</label></td>                                                                                               
                                         <td><label>".$rowConsulta[4]."</label></td>
-                                        <td><label>".$rowConsulta[5]."</label></td> 
-                                        <td><label>".$rowConsulta[8]."</label></td>
-                                        <td><label>".$rowConsulta[9]."</label></td>                                          
-                                        <td>
-                                            <input type='button' name='editar' value='Editar' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'>
-                                            <input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'>
-                                        </td>
+                                        <td><label>".$rowConsulta[9]."</label></td>
+                                        <td align='center'><a href='#' class='btn btn-warning'><i class='fas fa-edit' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></i></a></td>
+                                        <td align='center'><a href='#' class='btn btn-danger'><i class='fas fa-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></i></a></td>                                         
+                                       
                                     </tr>";
                         }  
+                            //     <td>
+                            //     <input type='button' name='editar' value='Editar' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'>
+                            //     <input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'>
+                            // </td>
                         $retorno .= "</table>";
                         $respuesta['tablaRegistro']=$retorno;
-                    
                     }else{                                         
                         $respuesta['tablaRegistro']='No existen datos!!!';
                     }
@@ -111,6 +108,7 @@ if (isset ($accion)){
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible consultar la información, consulte con el administrador.";
             }
+            $respuesta['numeroRegistros']=$numeroRegistros;
             $respuesta['accion']='CONSULTAR'; 
             echo json_encode($respuesta);           
         break;

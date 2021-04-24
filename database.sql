@@ -756,7 +756,8 @@ DELIMITER $$
  id_usuario_modificacion = idUsuarioModificacion 
  WHERE id_usuario_rol = idUsuarioRol;
  END */
-$$ DELIMITER;
+-- $$ DELIMITER
+;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */
 ;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */

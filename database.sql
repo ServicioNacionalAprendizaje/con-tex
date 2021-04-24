@@ -575,6 +575,52 @@ DELIMITER $$
  idUsuarioModificacion);
  END */
 $$ DELIMITER;
+/* Procedure structure for procedure `Agregar_cargo` */
+/*!50003 DROP PROCEDURE IF EXISTS  `Agregar_cargo` */
+;
+DELIMITER $$
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_cargo`(IN codigoCargo int(11),
+ IN descripcion varchar(50),
+ IN estado enum('0','1'),
+ IN idUsuarioCreacion int(11),
+ IN idUsuarioModificacion int(11))
+ BEGIN
+ INSERT INTO cargo(
+ codigo_cargo,
+ descripcion,
+ estado,
+ fecha_creacion,
+ fecha_modificacion,
+ id_usuario_creacion,
+ id_usuario_modificacion) 
+ VALUES (
+ codigoCargo,
+ descripcion,
+ estado,
+ CURDATE(),
+ CURDATE(),
+ idUsuarioCreacion,
+ idUsuarioModificacion);
+ END */
+$$ DELIMITER;
+/* Procedure structure for procedure `Modificar_cargo` */
+/*!50003 DROP PROCEDURE IF EXISTS  `Modificar_cargo` */
+;
+DELIMITER $$
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_cargo`(IN idCargo int(11),
+ IN codigoCargo int(11),
+ IN descripcion varchar(50),
+ IN estado enum('0','1'),
+ IN idUsuarioModificacion int(11))
+ BEGIN
+ UPDATE cargo 
+ SET codigo_cargo = codigoCargo,
+ descripcion = descripcion,
+ estado = estado,
+ id_usuario_modificacion = idUsuarioModificacion
+ WHERE id_cargo = idCargo;
+ END */
+$$ DELIMITER;
 /* Procedure structure for procedure `Modificar_pago_dia` */
 /*!50003 DROP PROCEDURE IF EXISTS  `Modificar_pago_dia` */
 ;

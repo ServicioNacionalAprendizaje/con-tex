@@ -298,7 +298,8 @@ DELIMITER $$
  IN etiqueta varchar(30),
  IN ubicacion varchar(100),
  IN estado enum('0','1'),
- IN idUsuarioCreacion int(11))
+ IN idUsuarioCreacion int(11),
+ IN idUsuarioModificacion int(11))
  BEGIN
  INSERT INTO formulario(
  descripcion,
@@ -317,7 +318,7 @@ DELIMITER $$
  CURDATE(),
  CURDATE(),
  idUsuarioCreacion,
- idUsuarioCreacion);
+ idUsuarioModificacion);
  END */
 $$ DELIMITER;
 /* Procedure structure for procedure `Agregar_formulario_rol` */
@@ -327,7 +328,8 @@ DELIMITER $$
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_formulario_rol`(IN idRol int(11),
  IN idFormulario int(11),
  IN estado enum('0','1'),
- IN idUsuarioCreacion int(11))
+ IN idUsuarioCreacion int(11),
+ IN idUsuarioModificacion int(11))
  BEGIN
  INSERT INTO formulario_rol(
  id_rol,
@@ -344,7 +346,7 @@ DELIMITER $$
  CURDATE(),
  CURDATE(),
  idUsuarioCreacion,
- idUsuarioCreacion);
+ idUsuarioModificacion);
  END */
 $$ DELIMITER;
 /* Procedure structure for procedure `Agregar_persona` */
@@ -356,7 +358,8 @@ DELIMITER $$
  IN edad int(11),
  IN genero enum('M','F'),
  IN estado enum('0','1'),
- IN idUsuarioCreacion int(11))
+ IN idUsuarioCreacion int(11),
+ IN idUsuarioModificacion int(11))
  BEGIN
  INSERT INTO persona(
  nombre,
@@ -377,7 +380,7 @@ DELIMITER $$
  CURDATE(),
  CURDATE(),
  idUsuarioCreacion,
- idUsuarioCreacion);
+ idUsuarioModificacion);
  END */
 $$ DELIMITER;
 /* Procedure structure for procedure `Agregar_rol` */
@@ -386,7 +389,8 @@ $$ DELIMITER;
 DELIMITER $$
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_rol`(IN descripcion varchar(50),
  IN estado enum('0','1'),
- IN idUsuarioCreacion int(11))
+ IN idUsuarioCreacion int(11),
+ IN idUsuarioModificacion int(11))
  BEGIN
  INSERT INTO rol(
  descripcion,
@@ -401,7 +405,7 @@ DELIMITER $$
  CURDATE(),
  CURDATE(),
  idUsuarioCreacion,
- idUsuarioCreacion);
+ idUsuarioModificacion);
  END */
 $$ DELIMITER;
 /* Procedure structure for procedure `Agregar_usuario` */
@@ -414,7 +418,8 @@ DELIMITER $$
  IN fechaExpiracion datetime,
  IN idPersona int(11),
  IN estado enum('0','1'),
- IN idUsuarioCreacion int(11))
+ IN idUsuarioCreacion int(11),
+ IN idUsuarioModificacion int(11))
  BEGIN
  INSERT INTO usuario(
  usuario,
@@ -437,7 +442,7 @@ DELIMITER $$
  CURDATE(),
  CURDATE(),
  idUsuarioCreacion,
- idUsuarioCreacion);
+ idUsuarioModificacion);
  END */
 $$ DELIMITER;
 /* Procedure structure for procedure `Agregar_usuario_rol` */
@@ -447,7 +452,8 @@ DELIMITER $$
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_usuario_rol`(IN idUsuario int(11),
  IN idRol int(11),
  IN estado enum('0','1'),
- IN idUsuarioCreacion int(11))
+ IN idUsuarioCreacion int(11),
+ IN idUsuarioModificacion int(11))
  BEGIN
  INSERT INTO usuario_rol(
  id_usuario,
@@ -464,7 +470,7 @@ DELIMITER $$
  CURDATE(),
  CURDATE(),
  idUsuarioCreacion,
- idUsuarioCreacion);
+ idUsuarioModificacion);
  END */
 $$ DELIMITER;
 /* Procedure structure for procedure `Agregar_empleado` */
@@ -479,7 +485,8 @@ DELIMITER $$
  IN pension enum('pension1','pension2','pension3'),
  IN idPersona int(11),
  IN estado enum('0','1'),
- IN idUsuarioCreacion int(11))
+ IN idUsuarioCreacion int(11),
+ IN idUsuarioModificacion int(11))
  BEGIN
  INSERT INTO empleado(
  id_cargo,
@@ -506,7 +513,7 @@ DELIMITER $$
  CURDATE(),
  CURDATE(),
  idUsuarioCreacion,
- idUsuarioCreacion);
+ idUsuarioModificacion);
  END */
 $$ DELIMITER;
 /* Procedure structure for procedure `Agregar_generar_pago` */
@@ -518,7 +525,8 @@ DELIMITER $$
  IN fechaInicio datetime, 
  IN fechaFin datetime, 
  IN idEmpleado int(11),
- IN idUsuarioCreacion int(11))
+ IN idUsuarioCreacion int(11),
+ IN idUsuarioModificacion int(11))
  BEGIN
  INSERT INTO generar_pago(
  valor_pago,
@@ -539,7 +547,7 @@ DELIMITER $$
  CURDATE(),
  CURDATE(),
  idUsuarioCreacion,
- idUsuarioCreacion);
+ idUsuarioModificacion);
  END */
 $$ DELIMITER;
 /* Procedure structure for procedure `Agregar_pago_dia` */
@@ -548,7 +556,8 @@ $$ DELIMITER;
 DELIMITER $$
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_pago_dia`(IN idEmpleado int(11), 
  IN pagoDia double,
- IN idUsuarioCreacion int(11))
+ IN idUsuarioCreacion int(11),
+ IN idUsuarioModificacion int(11))
  BEGIN
  INSERT INTO pago_dia(
  id_empleado,
@@ -563,7 +572,7 @@ DELIMITER $$
  CURDATE(),
  CURDATE(),
  idUsuarioCreacion,
- idUsuarioCreacion);
+ idUsuarioModificacion);
  END */
 $$ DELIMITER;
 /* Procedure structure for procedure `Modificar_pago_dia` */

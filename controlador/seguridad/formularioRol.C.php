@@ -58,8 +58,8 @@ if (isset ($accion)){
                 $formularioRol->setEstado($_POST['estado']);
                 $formularioRol->setFechaCreacion($_POST['fechaCreacion']);
                 $formularioRol->setFechaModificacion($_POST['fechaModificacion']);
-                $formularioRol->setIdUsuarioCreacion($_POST['idUsuarioCreacion']);
-                $formularioRol->setIdUsuarioModificacion($_POST['idUsuarioModificacion']);
+                //$formularioRol->setIdUsuarioCreacion($_POST['idUsuarioCreacion']);
+                //$formularioRol->setIdUsuarioModificacion($_POST['idUsuarioModificacion']);
                 $resultado = $formularioRol->consultar();
 
                 $numeroRegistros = $formularioRol->conn->obtenerNumeroRegistros();

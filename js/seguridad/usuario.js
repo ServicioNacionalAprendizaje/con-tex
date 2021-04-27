@@ -1,3 +1,25 @@
+$(function(){
+    //se carga el autocompleta del contratista
+     $("#txtPersona").autocomplete({
+        source:'../../busqueda/persona.B.php',
+        select:function(event, ui){
+            $("#hidIdPersona").val(ui.item.id);
+        }
+     }); 
+});
+
+// Para consultar combox
+// $.post('../../busqueda/persona.B.php', {accion: 'MOSTRAR'}, function (respuesta) {
+//     let datos = JSON.parse(respuesta);
+//     datos.forEach(dato => {
+//         option = document.createElement("option");
+//         option.value = dato[1];  
+//         option.setAttribute('data-index-number',dato[0]);
+//         document.getElementById('roles').append(option); 
+//     });
+// })
+
+
 function Enviar(accion, id) {
     if (id === null) {
         id = $('#hidIdUsuario').val();

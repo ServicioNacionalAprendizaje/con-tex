@@ -29,33 +29,31 @@ if (isset ($accion)){
         case 'MODIFICAR':
             try{
                 $persona = new Persona();
-                $persona->setIdPersona($_POST['idPersona']);
+                $persona->setIdPersona($_POST['id']);
                 $persona->setNombre($_POST['nombre']);
                 $persona->setApellido($_POST['apellido']);
                 $persona->setEdad($_POST['edad']);
                 $persona->setGenero($_POST['genero']);
                 $persona->setEstado($_POST['estado']);
-                $persona->setFechaCreacion($_POST['fechaCreacion']);
-                $persona->setIdUsuarioCreacion($_POST['idUsuarioCreacion']);
-                $persona->setIdUsuarioModificacion($_POST['idUsuarioModiificacion']);
-
-                $resultado = $usuario->Modificar();
-                $respuesta['respuesta']="La información se adicionó correctamente.";
+                $resultado = $persona->Modificar();
+                $respuesta['respuesta']="La información se modificó correctamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible modificar la información, consulte con el administrador.";
             }
-            json_encode($respuesta);
+            $respuesta['accion']='MODIFICAR';
+            echo json_encode($respuesta);
         break;
         case 'ELIMINAR':
             try{
-                $persona = new Usuario();
-                $persona->setIdPersona($_POST['idPersona']);
+                $persona = new Persona();
+                $persona->setIdPersona($_POST['id']);
                 $resultado = $persona->Eliminar();
-                $respuesta['respuesta']="La información se adicionó correctamente.";
+                $respuesta['respuesta']="La información se eliminó correctamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible eliminar la información, consulte con el administrador.";
             }
-            json_encode($respuesta);
+            $respuesta['accion']='ELIMINAR';
+            echo json_encode($respuesta);
         break;
         case 'CONSULTAR':
             try{
@@ -74,8 +72,8 @@ if (isset ($accion)){
                         $respuesta['nombre'] = $rowBuscar->nombre;
                         $respuesta['apellido'] = $rowBuscar->apellido;
                         $respuesta['edad'] = $rowBuscar->edad;                           
-                        $respuesta['genero'] = $rowBuscar->genero;
-                        $respuesta['estado'] = $rowBuscar->estado;
+                        $respuesta['genero'] = $rowBuscar->genero == 'M' ? 'Masculino':'Femenino';
+                        $respuesta['estado'] = $rowBuscar->estado == 1 ? 'Activo':'Inactivo';
                         $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_persona.")'>";
                     }
                 }else{
@@ -86,11 +84,10 @@ if (isset ($accion)){
                                         <td><label>".$rowConsulta[1]."</label></td>                                             
                                         <td><label>".$rowConsulta[2]."</label></td>                                        
                                         <td><label>".$rowConsulta[3]."</label></td>                                                                                               
-                                        <td><label>".$rowConsulta[4]."</label></td>
-                                        <td><label>".$rowConsulta[9]."</label></td>
+                                        <td><label>".($rowConsulta[4]== 'M' ? 'Masculino':'Femenino')."</label></td>
+                                        <td><label>".($rowConsulta[9]== 1 ? 'Activo':'Inactivo')."</label></td>
                                         <td align='center'><a href='#' class='btn btn-warning'><i class='fas fa-edit' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></i></a></td>
-                                        <td align='center'><a href='#' class='btn btn-danger'><i class='fas fa-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></i></a></td>                                         
-                                       
+                                        <td align='center'><a href='#' class='btn btn-danger'><i class='fas fa-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></i></a></td>                                                                                
                                     </tr>";
                         }  
                             //     <td>

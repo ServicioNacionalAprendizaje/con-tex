@@ -138,13 +138,14 @@ class Persona
 
     public function Modificar()
     {
-        $sentenciaSql = "CALL Modificar_persona('$this->nombre'
+        $sentenciaSql = "CALL Modificar_persona(
+                             '$this->nombre'
                             ,'$this->apellido'
                             ,'$this->edad'
                             ,'$this->genero'
                             ,'$this->estado'
                             ,'$this->idUsuarioModificacion'
-                            ,'$this->idPersona')";
+                            , $this->idPersona)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -153,7 +154,7 @@ class Persona
     public function Eliminar()
     {
         $sentenciaSql = "DELETE FROM persona 
-                            WHERE persona = $this->persona";
+                            WHERE id_persona = $this->idPersona";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;

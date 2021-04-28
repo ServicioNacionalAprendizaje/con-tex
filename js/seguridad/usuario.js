@@ -20,9 +20,10 @@ function Enviar(accion, id) {
         dataType: 'json', //Recibe el array desde php
 
         success: function(respuesta) { //procesa y devuelve la respuesta
+            //console.log(respuesta)
 
             //respuesta adicionar
-            if (respuesta['accion'] == 'ADICIONAR') {
+            if(respuesta['accion']=='ADICIONAR'){
                 alert(respuesta['respuesta']);
             }
 

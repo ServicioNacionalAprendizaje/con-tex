@@ -70,7 +70,7 @@ class Usuario
     {
         return $this->idPersona;
     }
-    public function setIdPersona($idPersona = 1)
+    public function setIdPersona($idPersona=1)
     {
         $this->idPersona = $idPersona;
     }
@@ -90,7 +90,7 @@ class Usuario
     {
         return $this->fechaCreacion;
     }
-    public function setFechaCreacion($fechaCreacion)
+    public function setFechaCreacion($fechaCreacion=1)
     {
         $this->fechaCreacion = $fechaCreacion;
     }
@@ -100,7 +100,7 @@ class Usuario
     {
         return $this->fechaModificacion;
     }
-    public function setFechaModificacion($fechaModificacion)
+    public function setFechaModificacion($fechaModificacion=1)
     {
         $this->fechaModificacion = $fechaModificacion;
     }

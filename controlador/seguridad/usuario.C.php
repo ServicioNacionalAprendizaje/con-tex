@@ -16,7 +16,7 @@ if (isset ($accion)){
                 $usuario->setFechaActivacion($_POST['fechaActivacion']);
                 $usuario->setFechaExpiracion($_POST['fechaExpiracion']);
                 $usuario->setIdPersona($_POST['idPersona']);
-                $usuario->setEstado($_POST['estado']);
+                $usuario->setEstado($_POST['estado']);                
                 $resultado = $usuario->Agregar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){

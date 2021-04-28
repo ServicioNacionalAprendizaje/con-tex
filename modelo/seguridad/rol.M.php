@@ -127,6 +127,36 @@ class Rol
 
     private function obtenerCondicion()
     {
+        $whereAnd = " WHERE ";
+        $condicion = " ";
+
+        if($this->idRol !=''){
+            $condicion=$whereAnd.$condicion." id_rol  = $this->idRol";
+            $whereAnd = ' AND ';
+        }
+        if($this->descripcion !=''){
+                $condicion=$condicion.$whereAnd." nombre LIKE '%$this->descripcion%' ";
+                $whereAnd = ' AND ';
+        }        
+        // if($this->estado!=''){
+        //         if ($whereAnd == ' AND '){
+        //         $condicion=$condicion.$whereAnd." seg_usu.estado = '$this->estado'";
+        //         $whereAnd = ' AND ';
+        //         }
+        //         else{
+        //         $condicion=$whereAnd.$condicion." seg_usu.estado = '$this->estado'";
+        //         $whereAnd = ' AND ';
+        //         }
+        //     }
+        // if($this->fechaActivacion!=''){
+        //         $condicion=$condicion.$whereAnd." seg_usu.fecha_activacion = '$this->fechaActivacion' ";
+        //         $whereAnd = ' AND ';
+        // }
+        // if($this->fechaExpiracion!=''){
+        //         $condicion=$condicion.$whereAnd." seg_usu.fecha_expiracion = '$this->fechaExpiracion' ";
+        //         $whereAnd = ' AND ';
+        // }
+        return $condicion;
     }
 
     public function __destruct()

@@ -85,7 +85,7 @@ if (isset ($accion)){
                                         <td><label>".$rowConsulta[2]."</label></td>                                        
                                         <td><label>".$rowConsulta[3]."</label></td>                                                                                               
                                         <td><label>".($rowConsulta[4]== 'M' ? 'Masculino':'Femenino')."</label></td>
-                                        <td><label>".($rowConsulta[9]== 1 ? 'Activo':'Inactivo')."</label></td>
+                                        <td><label>".($rowConsulta[9]== 1 ? 'Activo' : 'Inactivo')."</label></td>
                                         <td align='center'><a href='#' class='btn btn-warning'><i class='fas fa-edit' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></i></a></td>
                                         <td align='center'><a href='#' class='btn btn-danger'><i class='fas fa-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></i></a></td>                                                                                
                                     </tr>";
@@ -99,9 +99,7 @@ if (isset ($accion)){
                     }else{                                         
                         $respuesta['tablaRegistro']='No existen datos!!!';
                     }
-                }                                        
-               
-                
+                }                                                     
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible consultar la información, consulte con el administrador.";
             }

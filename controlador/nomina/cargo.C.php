@@ -40,7 +40,8 @@ if (isset ($accion)){
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible modificar la información, consulte con el administrador.";
             }
-            json_encode($respuesta);
+            $respuesta['accion']='MODIFICAR';
+            echo json_encode($respuesta);
         break;
         case 'ELIMINAR':
             try{
@@ -51,7 +52,8 @@ if (isset ($accion)){
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible eliminar la información, consulte con el administrador.";
             }
-            json_encode($respuesta);
+            $respuesta['accion']='ELIMINAR';
+            echo json_encode($respuesta);
         break;
         case 'CONSULTAR':
             try{
@@ -65,9 +67,9 @@ if (isset ($accion)){
                 if($numeroRegistros === 1){
                     if ($rowBuscar = $cargo->conn->ObtenerObjeto()){
                         $respuesta['id'] = $rowBuscar->id_cargo;
-                        $respuesta['codigoCargo'] = $rowBuscar->nombre;
-                        $respuesta['descripcion'] = $rowBuscar->apellido;
-                        $respuesta['estado'] = $rowBuscar->estado;
+                        $respuesta['codigoCargo'] = $rowBuscar->codigoCargo;
+                        $respuesta['descripcion'] = $rowBuscar->descripcion;
+                        $respuesta['estado'] = $rowBuscar->estado == 1 ? 'Activo':'Inactivo';
                         $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_cargo.")'>";
                     }
                 }else{
@@ -77,7 +79,7 @@ if (isset ($accion)){
                             $retorno .= "<tr>                                          
                                         <td><label>".$rowConsulta[1]."</label></td>                                             
                                         <td><label>".$rowConsulta[2]."</label></td>                                        
-                                        <td><label>".$rowConsulta[3]."</label></td>                                                                                               
+                                        <td><label>".$rowConsulta[9]== 1 ? 'Activo':'Inactivo')."</label></td>                                                                                              
                                         <td align='center'><a href='#' class='btn btn-warning'><i class='fas fa-edit' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></i></a></td>
                                         <td align='center'><a href='#' class='btn btn-danger'><i class='fas fa-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></i></a></td>                                         
                                        

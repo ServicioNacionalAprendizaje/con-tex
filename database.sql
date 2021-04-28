@@ -25,7 +25,7 @@ CREATE TABLE `cargo` (
   `id_cargo` int(11) NOT NULL AUTO_INCREMENT,
   `codigo_cargo` int(11) NOT NULL,
   `descripcion` varchar(50) DEFAULT NULL,
-  `estado` bit(1) NOT NULL,
+  `estado` enum('0','1') NOT NULL,
   `fecha_creacion` datetime NOT NULL,
   `fecha_modificacion` datetime NOT NULL,
   `id_usuario_creacion` int(11) NOT NULL,

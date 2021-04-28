@@ -2,7 +2,8 @@
 SQLyog Ultimate v11.11 (64 bit)
 MySQL - 5.5.5-10.4.18-MariaDB : Database - contex
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -684,6 +685,36 @@ BEGIN
 END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `Agregar_cargo` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Agregar_cargo` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_cargo`(IN codigoCargo INT(11),
+					IN descripcion VARCHAR(50),
+					IN estado ENUM('0','1'),
+                    IN idUsuarioCreacion INT(11))
+BEGIN
+	INSERT INTO cargo(
+					codigo_cargo,
+                    descripcion,
+                    estado,
+                    fecha_creacion,
+                    fecha_modificacion,
+                    id_usuario_creacion,
+                    id_usuario_modificacion) 
+			VALUES (
+				codigoCargo,
+                descripcion,
+				estado,
+				CURDATE(),
+				CURDATE(),
+				idUsuarioCreacion,
+				idUsuarioCreacion);
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `Modificar_empleado` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `Modificar_empleado` */;
@@ -899,6 +930,28 @@ BEGIN
 		fecha_modificacion = NOW(),
 		id_usuario_modificacion = idUsuarioModificacion 
 	WHERE id_usuario_rol = idUsuarioRol;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `Modificar_cargo` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Modificar_cargo` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_cargo`(IN codigoCargo INT(11),
+					IN descripcion VARCHAR(50),
+					IN estado ENUM('0','1'),
+                    IN idUsuarioModificacion INT(11),
+                    IN idCargo INT(11))
+BEGIN
+	UPDATE cargo 
+    SET codigo_cargo = codigoCargo,
+		descripcion = descripcion,
+		estado = estado,
+		fecha_modificacion = NOW(),
+		id_usuario_modificacion = idUsuarioModificacion 
+	WHERE id_cargo = idCargo;
 END */$$
 DELIMITER ;
 

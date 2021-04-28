@@ -35,7 +35,7 @@ if (isset ($accion)){
                 $cargo->setIdUsuarioCreacion($_POST['idUsuarioCreacion']);
                 $cargo->setIdUsuarioModificacion($_POST['idUsuarioModiificacion']);
 
-                $resultado = $usuario->Modificar();
+                $resultado = $cargo->Modificar();
                 $respuesta['respuesta']="La información se modificó correctamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible modificar la información, consulte con el administrador.";

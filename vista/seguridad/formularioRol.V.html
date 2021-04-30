@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
 <head>
     <meta charset='utf-8'>
@@ -21,23 +21,24 @@
 </head>
 
 <body>
-    <form name="formularioRol" id="frmformularioRol"> 
+    <form name="fmrFormularioRol" id="frmFormularioRol"> 
     <div class="margen" align="center">
         <label>
             <h1>Formulario Rol</h1>
         </label>
-                <div class="col-12 col-sm-6">
+        <div class="container form-group">
+            <div class="row">
+                        <div class="col-12 col-sm-6">
                     <input type="hidden" name="hidIdRol" id="hidIdRol" value="">
                     <label class="col-form-label">Rol</label>
-                    <input type="text" name="txtRol" id="Rol" value="" placeholder="Nombre de Rol" class="caja form-control">
+                    <input type="text" name="txtRol" id="txtRol" value="" placeholder=" Rol" class="caja form-control">
                 </div>
                 <div class="col-12 col-sm-6">
                     <input type="hidden" name="hidIdFormulario" id="hidIdFormulario" value="">
                     <label class="col-form-label">Formulario</label>
-                    <input type="text" name="txtFormulario" id="txtFormulario" value="" placeholder="Nombre de Formulario" class="caja form-control">
+                    <input type="text" name="txtFormulario" id="txtFormulario" value="" placeholder=" Formulario" class="caja form-control">
                 </div>
 
-            <div class="row">
                 <div class="col-12 col-sm-6">
                     <label class="col-form-label">Fecha Creacion</label>
                     <input type="date" name="datFechaCreacion" id="datFechaCreacion" value="" class="caja form-control">
@@ -56,7 +57,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-lg-4 form-group">
+                <div class="col-12 col-sm-6">
                     <label for="cmbEstado">Estado</label>
                     <select class="lista form-control" id="cmbEstado">
                         <option value="" selected="selected">--Seleccione--</option>
@@ -66,15 +67,23 @@
                 </div>
             </div>
         </div>
+        
         <div class="row">
-            <div class="col-12 col-sm-6">
+            <div class="col-12 col-sm-4">
                 <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado" onclick="Enviar('CONSULTAR',null);">
             </div>
-            <div class="col-12 col-sm-6">
-                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick="Enviar('ADICIONAR',null);">
+            <div class="col-12 col-sm-4">
+                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick=" Enviar('ADICIONAR',null);">
+            </div>
+            <div class="col-12 col-sm-4">
+                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnModificar" value="MODIFICAR" id="btnModificar" placeholder="Descripción" onclick=" Enviar('MODIFICAR',null);">
             </div>
         </div>
+    
         <br></br>
+        <div class="container">
+            <div class="row">
+                <div class="col">
         <div class="table-responsive">
             <table class="table table-striped table-bordered table-hover">
                 <thead>
@@ -87,9 +96,9 @@
                         <td align="center">Eliminar</td>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="resultado">
                     <tr>
-                        <td></td>
+                        <!-- <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -97,11 +106,13 @@
                                     class="fas fa-edit"></i></a></td>
                         <td align="center"><a href="#" class="btn btn-danger"><i
                                     class="fas fa-trash"></i></a></td>
-                    </tr>
+                    </tr>-->
                 </tbody>
             </table>
-        </div>
-
+           </div>
+      </div>
+      </div>
+</div>
     </div>
 </form>
 </body>

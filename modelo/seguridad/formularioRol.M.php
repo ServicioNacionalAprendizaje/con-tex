@@ -11,7 +11,7 @@ class FormularioRol
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
-    public $conn = null;
+   
 
     //idFormularioRol
     public function getIdFormularioRol()
@@ -78,7 +78,7 @@ class FormularioRol
     {
         return $this->idUsuarioCreacion;
     }
-    public function setIdUsuarioCreacion($idUsuarioCreacion = 1)
+    public function setIdUsuarioCreacion($idUsuarioCreacion =1)
     {
         $this->idUsuarioCreacion = $idUsuarioCreacion;
     }
@@ -88,7 +88,7 @@ class FormularioRol
     {
         return $this->idUsuarioModificacion;
     }
-    public function setIdUsuarioModificacion($idUsuarioModificacion = 1)
+    public function setIdUsuarioModificacion($idUsuarioModificacion=1)
     {
         $this->idUsuarioModificacion = $idUsuarioModificacion;
     }
@@ -113,7 +113,7 @@ class FormularioRol
 
     public function Modificar()
     {
-        $sentenciaSql = "Call Modificar_formulario_rol('$this->idRol'
+        $sentenciaSql = "CALL Modificar_formulario_rol('$this->idRol'
                             ,'$this->idFormulario'
                             ,'$this->estado'
                             ,'$this->idUsuarioModificacion'
@@ -151,8 +151,8 @@ class FormularioRol
             $condicion=$whereAnd.$condicion." id_FormularioRol  = $this->idFormularioRol";
             $whereAnd = ' AND ';
         }
-        if($this->nombre !=''){
-                $condicion=$condicion.$whereAnd." nombre LIKE '%$this->nombre%' ";
+        if($this->formularioRol !=''){
+                $condicion=$condicion.$whereAnd." formularioRol LIKE '%$this->formularioRol%' ";
                 $whereAnd = ' AND ';
                 return $condicion;
     }

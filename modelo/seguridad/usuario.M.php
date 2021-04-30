@@ -70,7 +70,7 @@ class Usuario
     {
         return $this->idPersona;
     }
-    public function setIdPersona($idPersona = 1)
+    public function setIdPersona($idPersona=1)
     {
         $this->idPersona = $idPersona;
     }
@@ -151,10 +151,10 @@ class Usuario
                             ,'$this->contrasenia'
                             ,'$this->fechaActivacion'
                             ,'$this->fechaExpiracion'
-                            ,'$this->idPersona'
+                            ,$this->idPersona
                             ,'$this->estado'
                             ,'$this->idUsuarioModificacion'
-                            ,'$this->idUsuario')";
+                            ,$this->idUsuario)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -172,8 +172,7 @@ class Usuario
     public function Consultar()
     {
         $condicion = $this->obtenerCondicion();
-        $sentenciaSql = "SELECT * 
-                            FROM usuario $condicion";
+        $sentenciaSql = "SELECT * FROM usuario $condicion";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -181,6 +180,19 @@ class Usuario
     
     private function obtenerCondicion()
     {
+        $whereAnd = " WHERE ";
+        $condicion = " ";
+
+        if($this->idUsuario !=''){
+            $condicion=$whereAnd.$condicion." id_usuario  = $this->idUsuario";
+            $whereAnd = ' AND ';
+        }
+        if($this->usuario !=''){
+                $condicion=$condicion.$whereAnd." usuario LIKE '%$this->usuario%' ";
+                $whereAnd = ' AND ';
+        }
+
+        return $condicion;
     }
 
     public function __destruct()

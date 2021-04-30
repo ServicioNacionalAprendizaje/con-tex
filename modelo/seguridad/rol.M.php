@@ -99,12 +99,14 @@ class Rol
 
     public function Modificar()
     {
-        $sentenciaSql = "CALL Modificar_rol('$this->descripcion'
+        $sentenciaSql = "CALL Modificar_rol(
+                            '$this->descripcion'
                             ,'$this->estado'
                             ,'$this->idUsuarioModificacion'
                             ,'$this->idRol')";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
+        return true;
     }
 
     public function Eliminar()

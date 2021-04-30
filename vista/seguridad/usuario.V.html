@@ -73,42 +73,51 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <class class="row">
                 <div class="col-12 col-sm-6">
                     <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado" onclick="Enviar('CONSULTAR',null);">
                 </div>
                 <div class="col-12 col-sm-6">
                     <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick="Enviar('ADICIONAR',null);">
                 </div>
+                <div class="col-12 col-sm-6">
+                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnModificar" value="MODIFICAR" id="btnModificar" placeholder="Descripción" onclick="Enviar('MODIFICAR',null);">
+                </div>
             </div>
             <br></br>
-            <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <td align="center">Usuario</td>
-                            <td align="center">Fecha Activacion</td>
-                            <td align="center">Fecha Expiracion</td>
-                            <td align="center">Estado</td>
-                            <td align="center">Modificar</td>
-                            <td align="center">Eliminar</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td align="center"><a href="#" class="btn btn-warning"><i
-                                        class="fas fa-edit"></i></a></td>
-                            <td align="center"><a href="#" class="btn btn-danger"><i
-                                        class="fas fa-trash"></i></a></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <td align="center">Usuario</td>
+                                        <td align="center">Contraseña</td>
+                                        <td align="center">Fecha Activacion</td>
+                                        <td align="center">Fecha Expiracion</td>
+                                        <td align="center">Estado</td>
+                                        <td align="center">Modificar</td>
+                                        <td align="center">Eliminar</td>
+                                    </tr>
+                                </thead>
+                                <tbody id="resultado">
+                                    <!--<tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td align="center"><a href="#" class="btn btn-warning"><i
+                                                    class="fas fa-edit"></i></a></td>
+                                        <td align="center"><a href="#" class="btn btn-danger"><i
+                                                    class="fas fa-trash"></i></a></td>
+                                    </tr>-->
+                                </tbody>
+                            </table>
+                        </div>   
+                    </div>
+                </div>
             </div>
-
         </div>
     </form>
 </body>

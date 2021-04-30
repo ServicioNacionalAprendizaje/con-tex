@@ -42,16 +42,17 @@ function Enviar(accion, id) {
         dataType: 'json', //Recibe el array desde php
 
         success: function(respuesta) { //procesa y devuelve la respuesta
+            //console.log(respuesta)
 
             //respuesta adicionar
-            if (respuesta['accion'] == 'ADICIONAR') {
+            if(respuesta['accion']=='ADICIONAR'){
                 alert(respuesta['respuesta']);
             }
 
             //Respuesta muchos registros
             if (respuesta['accion'] == 'CONSULTAR' && respuesta['numeroRegistros'] > 1) {
                 $("#resultado").html(respuesta['tablaRegistro']);
-                $('#divEliminar').html(respuesta['eliminar']).hide();
+                //$('#divEliminar').html(respuesta['eliminar']).hide();
             }
 
             //Respuesta un registro
@@ -60,7 +61,7 @@ function Enviar(accion, id) {
                 $('#txtUsuario').val(respuesta['usuario']);
                 $('#passContrasenia').val(respuesta['contrasenia']);
                 $('#fechaActivacion').val(respuesta['fechaActivacion']);
-                $('#datExpiracion').val(respuesta['datExpiracion']);
+                $('#datFechaExpiracion').val(respuesta['datFechaExpiracion']);
                 $('#hidIdPersona').val(respuesta['idPersona']);
                 $('#cmbEstado').html(respuesta['estado']);
                 $('#divEliminar').html(respuesta['eliminar']);

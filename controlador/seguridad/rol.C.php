@@ -26,7 +26,7 @@ if (isset ($accion)){
         case 'MODIFICAR':
             try{
                 $rol = new Rol();
-                $rol->setIdRol($_POST['idRol']);
+                $rol->setIdRol($_POST['id']);
                 $rol->setDescripcion($_POST['descripcion']);
                 $rol->setEstado($_POST['estado']);
                 $resultado = $rol->Modificar();
@@ -40,7 +40,7 @@ if (isset ($accion)){
         case 'ELIMINAR':
             try{
                 $rol = new Rol();
-                $rol->setIdRol($_POST['idRol']);
+                $rol->setIdRol($_POST['id']);
                 $rol = $usuario->Eliminar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){
@@ -54,7 +54,7 @@ if (isset ($accion)){
                 $rol = new Rol();
                 $rol->setIdRol($_POST['id']);
                 $rol->setDescripcion($_POST['descripcion']);
-                $rol->setEstado($_POST['estado']);
+                //$rol->setEstado($_POST['estado']);
                 $resultado = $rol->consultar();
 
                 $numeroRegistros = $rol->conn->obtenerNumeroRegistros();
@@ -62,8 +62,8 @@ if (isset ($accion)){
                     if ($rowBuscar = $rol->conn->obtenerObjeto()){
                         $respuesta['id'] = $rowBuscar->id_rol;
                         $respuesta['descripcion'] = $rowBuscar->descripcion;
-                        $respuesta['estado'] = $rowBuscar->estado == 1 ? 'Activo':'Inactivo';
-                        $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_rol.")'>";
+                        $respuesta['estado'] = $rowBuscar->estado;
+                        //$respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_rol.")'>";
                      }
                 }else{
                     if(isset($resultado)){

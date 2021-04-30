@@ -694,7 +694,8 @@ DELIMITER $$
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_cargo`(IN codigoCargo INT(11),
 					IN descripcion VARCHAR(50),
 					IN estado ENUM('0','1'),
-                    IN idUsuarioCreacion INT(11))
+                    IN idUsuarioCreacion INT(11),
+                    IN idUsuarioModificacion INT(11))
 BEGIN
 	INSERT INTO cargo(
 					codigo_cargo,
@@ -711,7 +712,7 @@ BEGIN
 				CURDATE(),
 				CURDATE(),
 				idUsuarioCreacion,
-				idUsuarioCreacion);
+				idUsuarioModificacion);
 END */$$
 DELIMITER ;
 

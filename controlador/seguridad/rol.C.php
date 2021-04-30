@@ -13,6 +13,8 @@ if (isset ($accion)){
                 $rol = new Rol();
                 $rol->setDescripcion($_POST['descripcion']);
                 $rol->setEstado($_POST['estado']);
+                $rol->setIdUsuarioCreacion(1);
+                $rol->setIdUsuarioModificacion(1);
                 $rol = $rol->Agregar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){
@@ -27,16 +29,13 @@ if (isset ($accion)){
                 $rol->setIdRol($_POST['idRol']);
                 $rol->setDescripcion($_POST['descripcion']);
                 $rol->setEstado($_POST['estado']);
-                $rol->setFechaModificacion($_POST['fechaModificacion']);
-                $rol->setIdUsuarioCreacion($_POST['idUsuarioCreacion']);
-                $rol->setIdUsuarioModificacion($_POST['idUsuarioModificacion']);
-
                 $resultado = $rol->Modificar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible modificar la información, consulte con el administrador.";
             }
-            json_encode($respuesta);
+            $respuesta['accion']='MODIFICAR';
+            echo json_encode($respuesta);
         break;
         case 'ELIMINAR':
             try{
@@ -47,18 +46,15 @@ if (isset ($accion)){
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible eliminar la información, consulte con el administrador.";
             }
-            json_encode($respuesta);
+            $respuesta['accion']='ELIMINAR';
+            echo json_encode($respuesta);
         break;
         case 'CONSULTAR':
             try{
                 $rol = new Rol();
-                $rol->setIdRol($_POST['idRol']);
+                $rol->setIdRol($_POST['id']);
                 $rol->setDescripcion($_POST['descripcion']);
                 $rol->setEstado($_POST['estado']);
-                $rol->setFechaCreacion($_POST['fechaCreacion']);
-                $rol->setFechaModificacion($_POST['fechaModificacion']);
-                $rol->setIdUsuarioCreacion($_POST['idUsuarioCreacion']);
-                $rol->setIdUsuarioModificacion($_POST['idUsuarioModificacion']);
                 $resultado = $rol->consultar();
 
                 $numeroRegistros = $rol->conn->obtenerNumeroRegistros();
@@ -72,18 +68,14 @@ if (isset ($accion)){
                 }else{
                     if(isset($resultado)){
                         $retorno="<table>";
-                        foreach($persona->conn->ObtenerRegistros() AS $rowConsulta){
+                        foreach($rol->conn->ObtenerRegistros() AS $rowConsulta){
                             $retorno .= "<tr>
-                                        <td><label>".$rowConsulta[0]."</label></td>     
-                                        <td><label>".$rowConsulta[1]."</label></td>
-                                        <td><label>".$rowConsulta[2]."</label></td>
-                                        <td><label>".$rowConsulta[3]."</label></td>
-                                        <td><label>".$rowConsulta[4]."</label></td>
-                                        <td><label>".$rowConsulta[5]."</label></td>                                            
+                                        <td><label>".$rowConsulta[1]."</label></td>     
+                                        <td><label>".($rowConsulta[2] == 1 ? 'Activo' : 'Inactivo')."</label></td>                                           
                                         <td align='center'><a href='#' class='btn btn-warning'><i class='fas fa-edit' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></i></a></td>
                                         <td align='center'><a href='#' class='btn btn-danger'><i class='fas fa-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></i></a></td>
                                     </tr>";
-                        }  
+                        }
                         $retorno .= "</table>";
                         $respuesta['tablaRegistro']=$retorno;
                     }else{
@@ -93,7 +85,8 @@ if (isset ($accion)){
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible consultar la información, consulte con el administrador.";
             }
-            $respuesta['accion']='CONSULTAR'; 
+            $respuesta['numeroRegistros']=$numeroRegistros;
+            $respuesta['accion']='CONSULTAR';
             echo json_encode($respuesta);
         break;
     }

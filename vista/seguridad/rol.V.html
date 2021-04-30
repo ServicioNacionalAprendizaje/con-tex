@@ -39,8 +39,8 @@
                     <label for="cmbEstado">Estado</label>
                     <select class="lista form-control" id="cmbEstado">
                         <option value="" selected="selected">--Seleccione--</option>
-                        <option value="0">Activo</option>
-                        <option value="1">Inactivo</option>
+                        <option value="1">Activo</option>
+                        <option value="0">Inactivo</option>
                     </select>
                 </div> 
             </div>
@@ -51,6 +51,9 @@
             </div>
             <div class="col-12 col-sm-6">
                 <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick="Enviar('ADICIONAR',null);">
+            </div>
+            <div class="col-12 col-sm-6">
+                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnModificar" value="MODIFICAR" id="btnModificar" placeholder="Descripción" onclick="Enviar('MODIFICAR',null);">
             </div>
         </div>
         <br></br>
@@ -67,15 +70,13 @@
                                     <td align="center">Eliminar</td>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
+                            <tbody id = "resultado">
+                                <!-- <tr>
                                     <td></td>
                                     <td></td>
-                                    <td align="center"><a href="#" class="btn btn-warning"><i
-                                                class="fas fa-edit"></i></a></td>
-                                    <td align="center"><a href="#" class="btn btn-danger"><i
-                                                class="fas fa-trash"></i></a></td>
-                                </tr>
+                                    <td align="center"><a href="#" class="btn btn-warning"><i class="fas fa-edit"></i></a></td>
+                                    <td align="center"><a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>

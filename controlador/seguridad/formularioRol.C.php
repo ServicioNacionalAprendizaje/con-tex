@@ -4,7 +4,7 @@ include '../../entorno/conexion.php';
 require '../../modelo/seguridad/formularioRol.M.php';
 
 $respuesta = array();
-// $_POST['accion'] --- $accion
+ $_POST['accion'] --- $accion
 $accion = 'ADICIONAR';
 if (isset ($accion)){
     switch($accion){
@@ -13,8 +13,8 @@ if (isset ($accion)){
                 $formularioRol= new FormularioRol();
                 $formularioRol->setIdFormularioRol('12345');
                 $formularioRol->setIdRol('12345');
-                $formularioRol->setEstado(1);
-                $resultado = $usuario->Agregar();
+                $formularioRol->setEstado($_POST['estado']);
+                $resultado = $formularioRol->Agregar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible adicionar la información, consulte con el administrador.";
@@ -31,7 +31,7 @@ if (isset ($accion)){
                 $formularioRol->setFechaModificacion($_POST['fechaModificacion']);
                 $formularioRol->setIdUsuarioModificacion($_POST['idUsuarioModificacion']);
 
-                $resultado = $usuario->Modificar();
+                $resultado = $formularioRol->Modificar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible modificar la información, consulte con el administrador.";
@@ -40,7 +40,7 @@ if (isset ($accion)){
         break;
         case 'ELIMINAR':
             try{
-                $formularioRol = new Usuario();
+                $formularioRol = new FormularioRol();
                 $formularioRol->setIdFormularioRol($_POST['idFormularioRol']);
                 $resultado = $formularioRol->Eliminar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";

@@ -144,6 +144,17 @@ class FormularioRol
 
     private function obtenerCondicion()
     {
+        $whereAnd = " WHERE ";
+        $condicion = " ";
+
+        if($this->IdFormularioRol !=''){
+            $condicion=$whereAnd.$condicion." id_FormularioRol  = $this->idFormularioRol";
+            $whereAnd = ' AND ';
+        }
+        if($this->nombre !=''){
+                $condicion=$condicion.$whereAnd." nombre LIKE '%$this->nombre%' ";
+                $whereAnd = ' AND ';
+                return $condicion;
     }
 
     public function __destruct()

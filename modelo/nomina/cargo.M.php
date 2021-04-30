@@ -126,7 +126,7 @@ class Cargo
     public function Eliminar()
     {
         $sentenciaSql = "DELETE FROM cargo 
-                            WHERE cargo = $this->cargo";
+                            WHERE id_cargo = $this->idCargo";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;

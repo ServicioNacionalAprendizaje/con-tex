@@ -64,7 +64,7 @@ if (isset ($accion)){
                 $usuario->setFechaActivacion($_POST['fechaActivacion']);
                 $usuario->setFechaExpiracion($_POST['fechaExpiracion']);
                 $usuario->setIdPersona($_POST['idPersona']);
-                $usuario->setEstado($_POST['estado']);
+                //$usuario->setEstado($_POST['estado']);
                 $resultado = $usuario->consultar();
 
                 $numeroRegistros = $usuario->conn->obtenerNumeroRegistros();

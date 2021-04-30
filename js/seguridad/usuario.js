@@ -61,7 +61,7 @@ function Enviar(accion, id) {
                 $('#txtUsuario').val(respuesta['usuario']);
                 $('#passContrasenia').val(respuesta['contrasenia']);
                 $('#fechaActivacion').val(respuesta['fechaActivacion']);
-                $('#datExpiracion').val(respuesta['datExpiracion']);
+                $('#datFechaExpiracion').val(respuesta['datFechaExpiracion']);
                 $('#hidIdPersona').val(respuesta['idPersona']);
                 $('#cmbEstado').html(respuesta['estado']);
                 $('#divEliminar').html(respuesta['eliminar']);

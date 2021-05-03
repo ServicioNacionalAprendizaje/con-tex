@@ -31,9 +31,6 @@ if (isset ($accion)){
                 $cargo->setCodigoCargo($_POST['codigoCargo']);
                 $cargo->setDescripcion($_POST['descripcion']);
                 $cargo->setEstado($_POST['estado']);
-                $cargo->setFechaCreacion($_POST['fechaCreacion']);
-                $cargo->setIdUsuarioCreacion($_POST['idUsuarioCreacion']);
-                $cargo->setIdUsuarioModificacion($_POST['idUsuarioModiificacion']);
 
                 $resultado = $cargo->Modificar();
                 $respuesta['respuesta']="La información se modificó correctamente.";
@@ -67,7 +64,7 @@ if (isset ($accion)){
                 if($numeroRegistros === 1){
                     if ($rowBuscar = $cargo->conn->ObtenerObjeto()){
                         $respuesta['id'] = $rowBuscar->id_cargo;
-                        $respuesta['codigoCargo'] = $rowBuscar->codigoCargo;
+                        $respuesta['codigoCargo'] = $rowBuscar->codigo_cargo;
                         $respuesta['descripcion'] = $rowBuscar->descripcion;
                         $respuesta['estado'] = $rowBuscar->estado == 1 ? 'Activo':'Inactivo';
                         $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_cargo.")'>";

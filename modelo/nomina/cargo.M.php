@@ -113,11 +113,12 @@ class Cargo
 
     public function Modificar()
     {
-        $sentenciaSql = "CALL Modificar_cargo('$this->idCargo',
-                            '$this->codigoCargo',
+        $sentenciaSql = "CALL Modificar_cargo('$this->codigoCargo',
                             '$this->descripcion',
                             '$this->estado',
-                            $this->idUsuarioModificacion)";
+                            '$this->idUsuarioModificacion',
+                            $this->idCargo)";
+                            // $this->idUsuarioModificacion)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;

@@ -6,10 +6,10 @@ Software de Gestión para la Empresa Textil Confecciones Sofi
 - Tener en cuenta los comandos Git para la manipulacion del proyecto, POR FAVOR.
 
 - git status -> Para listar todos los archivos modificados localmente. (para revisar que se va a modificar antes de subirlo.)
-- git clone *enlace* -> Para clonar el repositorio. (Util cuando se presentan problemas con el proyecto, se elimina la carpeta en el pc y se ejecuta el comando.)
+- git clone **enlace del proyecto GitHub** -> Para clonar el repositorio. (Util cuando se presentan problemas con el proyecto, se elimina la carpeta en el pc y se ejecuta el comando.)
 - git add -A -> Para agregar todos los cambios de todos los archivos a git.
-- git add *nombre y ruta del archivo (se pueden ver en la lista por git status)* -> Para agregat todos los cambios del archivo en particular a git.
-- git commit -m '*mensaje*' -> Para comentar los archivos agregados con git add.
+- git add ***nombre y ruta del archivo (se pueden ver en la lista por git status)** -> Para agregat todos los cambios del archivo en particular a git.
+- git commit -m '**mensaje**' -> Para comentar los archivos agregados con git add.
 - git pull -> Para actualizar todos los archivos a su ultima version antes de subir algun cambio.
 - git push -> Para subir todas las modificaciones agregadas y comentadas en git a la carpeta del proyecto en GitHub.
 

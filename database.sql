@@ -95,7 +95,7 @@ CREATE TABLE `empleado` (
   `salud` enum('salud1','salud2','salud3') NOT NULL,
   `pension` enum('pension1','pension2','pension3') NOT NULL,
   `id_persona` int(11) NOT NULL,
-  `estado` bit(1) NOT NULL,
+  `estado` enum('0','1') NOT NULL,
   `fecha_creacion` datetime NOT NULL,
   `fecha_modificacion` datetime NOT NULL,
   `id_usuario_creacion` int(11) NOT NULL,
@@ -122,7 +122,7 @@ CREATE TABLE `formulario` (
   `descripcion` varchar(50) NOT NULL,
   `etiqueta` varchar(30) NOT NULL,
   `ubicacion` varchar(100) NOT NULL,
-  `estado` bit(1) NOT NULL,
+  `estado` enum('0','1') NOT NULL,
   `fecha_creacion` datetime NOT NULL,
   `fecha_modificacion` datetime NOT NULL,
   `id_usuario_creacion` int(11) NOT NULL,
@@ -144,7 +144,7 @@ CREATE TABLE `formulario_rol` (
   `id_formulario_rol` int(11) NOT NULL AUTO_INCREMENT,
   `id_rol` int(11) NOT NULL,
   `id_formulario` int(11) NOT NULL,
-  `estado` bit(1) NOT NULL,
+  `estado` enum('0','1') NOT NULL,
   `fecha_creacion` datetime NOT NULL,
   `fecha_modificacion` datetime NOT NULL,
   `id_usuario_creacion` int(11) NOT NULL,
@@ -199,7 +199,7 @@ CREATE TABLE `orden` (
   `descripcion` varchar(100) NOT NULL,
   `id_persona` int(11) NOT NULL,
   `id_empleado` int(11) NOT NULL,
-  `estado` bit(1) NOT NULL,
+  `estado` enum('0','1') NOT NULL,
   PRIMARY KEY (`id_orden`),
   KEY `id_persona` (`id_persona`),
   KEY `id_empleado` (`id_empleado`),
@@ -287,7 +287,7 @@ DROP TABLE IF EXISTS `rol`;
 CREATE TABLE `rol` (
   `id_rol` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(50) NOT NULL,
-  `estado` bit(1) NOT NULL,
+  `estado` enum('0','1') NOT NULL,
   `fecha_creacion` datetime NOT NULL,
   `fecha_modificacion` datetime NOT NULL,
   `id_usuario_creacion` int(11) NOT NULL,
@@ -335,7 +335,7 @@ CREATE TABLE `usuario` (
   `fecha_activacion` datetime NOT NULL,
   `fecha_expiracion` datetime NOT NULL,
   `id_persona` int(11) NOT NULL,
-  `estado` bit(1) NOT NULL,
+  `estado` enum('0','1') NOT NULL,
   `fecha_creacion` datetime NOT NULL,
   `fecha_modificacion` datetime NOT NULL,
   `id_usuario_creacion` int(11) NOT NULL,
@@ -359,7 +359,7 @@ CREATE TABLE `usuario_rol` (
   `id_usuario_rol` int(11) NOT NULL AUTO_INCREMENT,
   `id_usuario` int(11) NOT NULL,
   `id_rol` int(11) NOT NULL,
-  `estado` bit(1) NOT NULL,
+  `estado` enum('0','1') NOT NULL,
   `fecha_creacion` datetime NOT NULL,
   `fehca_modificacion` datetime NOT NULL,
   `id_usuario_creacion` int(11) NOT NULL,
@@ -390,7 +390,7 @@ DELIMITER $$
                     IN salud ENUM('salud1','salud2','salud3'),
                     IN pension ENUM('pension1','pension2','pension3'),
 					IN idPersona INT(11),
-                    IN estado BIT(1),
+                    IN estado enum('0','1'),
                     IN idUsuarioCreacion INT(11))
 BEGIN
 	INSERT INTO empleado(
@@ -431,7 +431,7 @@ DELIMITER $$
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_formulario`(IN descripcion VARCHAR(50),
 					IN etiqueta VARCHAR(30),
                     IN ubicacion VARCHAR(100),
-                    IN estado BIT(1),
+                    IN estado enum('0','1'),
                     IN idUsuarioCreacion INT(11))
 BEGIN
 	INSERT INTO formulario(
@@ -463,7 +463,7 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_formulario_rol`(IN idRol INT(11),
 					IN idFormulario INT(11),
-                    IN estado BIT(1),
+                    IN estado enum('0','1'),
                     IN idUsuarioCreacion INT(11))
 BEGIN
 	INSERT INTO formulario_rol(
@@ -596,7 +596,7 @@ DELIMITER ;
 DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_rol`(IN descripcion VARCHAR(50),
-					IN estado BIT(1),
+					IN estado enum('0','1'),
                     IN idUsuarioCreacion INT(11))
 BEGIN
 	INSERT INTO rol(
@@ -627,7 +627,7 @@ DELIMITER $$
                     IN fechaActivacion DATETIME,
                     IN fechaExpiracion DATETIME,
                     IN idPersona INT(11),
-					IN estado BIT(1),
+					IN estado enum('0','1'),
                     IN idUsuarioCreacion INT(11))
 BEGIN
 	INSERT INTO usuario(
@@ -663,7 +663,7 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_usuario_rol`(IN idUsuario INT(11),
 					IN idRol INT(11),
-					IN estado BIT(1),
+					IN estado enum('0','1'),
                     IN idUsuarioCreacion INT(11))
 BEGIN
 	INSERT INTO usuario_rol(
@@ -729,7 +729,7 @@ DELIMITER $$
                     IN salud ENUM('salud1','salud2','salud3'),
                     IN pension ENUM('pension1','pension2','pension3'),
 					IN idPersona INT(11),
-                    IN estado BIT(1),
+                    IN estado enum('0','1'),
                     IN idUsuarioModificacion INT(11),
                     IN idEmpleado INT(11))
 BEGIN
@@ -757,7 +757,7 @@ DELIMITER $$
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_formulario`(IN descripcion VARCHAR(50),
 					IN etiqueta VARCHAR(30),
                     IN ubicacion VARCHAR(100),
-                    IN estado BIT(1),
+                    IN estado enum('0','1'),
                     IN idUsuarioModificacion INT(11),
                     IN idFormulario INT(11))
 BEGIN
@@ -780,7 +780,7 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_formulario_rol`(IN idRol INT(11),
 					IN idFormulario INT(11),
-                    IN estado BIT(1),
+                    IN estado enum('0','1'),
                     IN idUsuarioModificacion INT(11),
                     IN idFormularioRol INT(11))
 BEGIN
@@ -848,7 +848,7 @@ DELIMITER $$
                     IN apellido VARCHAR(100),
                     IN edad INT(11),
                     IN genero ENUM('Masculino','Femenino','Otro'),
-                    IN estado BIT(1),
+                    IN estado enum('0','1'),
                     IN idUsuarioModificacion INT(11),
                     IN idPersona INT(11))
 BEGIN
@@ -871,7 +871,7 @@ DELIMITER ;
 DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_rol`(IN descripcion VARCHAR(50),
-					IN estado BIT(1),
+					IN estado enum('0','1'),
                     IN idUsuarioModificacion INT(11),
                     IN idRol INT(11))
 BEGIN
@@ -895,7 +895,7 @@ DELIMITER $$
                     IN fechaActivacion DATETIME,
                     IN fechaExpiracion DATETIME,
                     IN idPersona INT(11),
-					IN estado BIT(1),
+					IN estado enum('0','1'),
                     IN idUsuarioModificacion INT(11),
                     IN idUsuario INT(11))
 BEGIN
@@ -920,7 +920,7 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_usuario_rol`(IN idUsuario INT(11),
 					IN idRol INT(11),
-					IN estado BIT(1),
+					IN estado enum('0','1'),
                     IN idUsuarioModificacion INT(11),
                     IN idUsuarioRol INT(11))
 BEGIN

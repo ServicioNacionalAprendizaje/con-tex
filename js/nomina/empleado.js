@@ -10,14 +10,14 @@ function Enviar(accion,id){
         "arl":$('#txtArl').val(), 
         "salud":$('#txtSalud').val(), 
         "pension":$('#txtPension').val(), 
-        "persoa":$('#txtPersona').val(),     
+        "persona":$('#txtPersona').val(),     
         "estado":$('#cmbEstado').val(),
         "accion" : accion
     }; 
 
     $.ajax({
             data: parametros, //datos que se van a enviar al ajax
-            url: '../../controlador/nomina/empleadoC.php', //archivo php que recibe los datos
+            url: '../../controlador/nomina/empleado.C.php', //archivo php que recibe los datos
             type: 'post', //método para enviar los datos
             dataType: 'json',//Recibe el array desde php
            

@@ -1,7 +1,7 @@
 <?php
 // $ubicacionFormulario =  substr($_SERVER["SCRIPT_NAME"], 17);
 include '../../entorno/conexion.php';
-require '../../modelo/seguridad/empleado.M.php';
+require '../../modelo/nomina/empleado.M.php';
 
 $respuesta = array();
 
@@ -18,7 +18,7 @@ if (isset ($accion)){
                 $empleado->setSalud($_POST['salud']);
                 $empleado->setPension($_POST['pension']);
                 $empleado->setIdPersona($_POST['persona']);
-                $empleado->setEstado($_POST['estado']);
+                $empleado->setEstado(1);
                 $empleado->setIdUsuarioCreacion(1); // Obtener id de la persona con la variable session
                 $empleado->setIdUsuarioModificacion(1); // Obtener id de la persona con la variable session
                 $resultado = $empleado->Agregar();

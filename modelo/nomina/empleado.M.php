@@ -92,7 +92,7 @@ class Empleado
     {
         return $this->idPersona;
     }
-    public function setIdPension($idPersona)
+    public function setIdPersona($idPersona)
     {
         $this->idPersona = $idPersona;
     }

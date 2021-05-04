@@ -18,7 +18,7 @@ if (isset ($accion)){
                 $empleado->setSalud($_POST['salud']);
                 $empleado->setPension($_POST['pension']);
                 $empleado->setIdPersona($_POST['persona']);
-                $empleado->setEstado(1);
+                $empleado->setEstado($_POST['estado']);
                 $empleado->setIdUsuarioCreacion(1); // Obtener id de la persona con la variable session
                 $empleado->setIdUsuarioModificacion(1); // Obtener id de la persona con la variable session
                 $resultado = $empleado->Agregar();

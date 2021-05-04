@@ -137,7 +137,7 @@ class Rol
             $whereAnd = ' AND ';
         }
         if($this->descripcion !=''){
-                $condicion=$condicion.$whereAnd." nombre LIKE '%$this->descripcion%' ";
+                $condicion=$condicion.$whereAnd." descripcion LIKE '%$this->descripcion%' ";
                 $whereAnd = ' AND ';
         }        
         // if($this->estado!=''){

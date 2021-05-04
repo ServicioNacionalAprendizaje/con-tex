@@ -33,7 +33,9 @@
                     <input type="text" class="caja form-control" name="txtDescripcion" value="" id="txtDescripcion"
                         placeholder="Descripción">
                 </div>
-                <div class="col-lg-4 form-group">
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6">
                     <label for="cmbEstado">Estado</label>
                     <select class="lista form-control" id="cmbEstado">
                         <option value="" selected="selected">--Seleccione--</option>
@@ -43,17 +45,21 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-sm-6">
+                <div class="col-12 col-sm-3">
                     <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar"
-                        id="btnBuscar" value="BUSCAR" placeholder="Código del cargo" onclick="Enviar('CONSULTAR',null);">
+                        id="btnBuscar" value="BUSCAR" placeholder="Buscar" onclick="Enviar('CONSULTAR',null);">
                 </div>
-                <div class="col-12 col-sm-6">
+                <div class="col-12 col-sm-3">
                     <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar"
-                        value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick="Enviar('ADICIONAR',null);">
+                        value="REGISTRAR" id="btnRegistrar" placeholder="Registrar" onclick="Enviar('ADICIONAR',null);">
                 </div>
-                <div class="col-12 col-sm-6">
-                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnModificar" 
-                        value="MODIFICAR" id="btnModificar" placeholder="Descripción" onclick="Enviar('MODIFICAR',null);">
+                <div class="col-12 col-sm-3">
+                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnActualizar" 
+                        value="ACTUALIZAR" id="btnActualizar" placeholder="Actualizar" onclick="Enviar('MODIFICAR',null);">
+                </div>
+                <div class="col-12 col-sm-3">
+                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnLimpiar" 
+                        value="LIMPIAR" id="btnLimpiar" placeholder="limpiar" onclick="Limpiar();">
                 </div>
             </div>
         </div>

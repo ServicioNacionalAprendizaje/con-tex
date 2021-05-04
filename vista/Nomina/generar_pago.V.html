@@ -11,6 +11,7 @@
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../../js/nomina/generarPago.js"></script>
 </head>
 
 <body>
@@ -20,7 +21,7 @@
             <div class="container form-group">
                 <div class="row">
                     <div class="col-12 col-sm-6">
-                        <label class="col-form-label">Nombre empleado</label>
+                        <label class="col-form-label">Empleado</label>
                         <input type="hidden" name="hidIdEmpleado" id="hidIdEmpleado" value=""><br>
                         <input type="text" name="txtEmpleado" id="txtEmpleado" value="" class="caja form-control"
                             placeholder="Empleado">
@@ -59,14 +60,32 @@
                             </form>
                         </div>
                     </div>
-                <div class="row">
-                    <div class="col-12 col-sm-6">
-                        <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar"
-                            id="btnBuscar" value="BUSCAR" placeholder="Código del empleado">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 form-group">
+                            <label for="cmbEstado">Estado</label>
+                            <select class="lista form-control" id="cmbEstado">
+                                <option value="" selected="selected">--Seleccione--</option>
+                                <option value="1">Activo</option>
+                                <option value="0">Inactivo</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="col-12 col-sm-6">
+                <div class="row">
+                    <div class="col-12 col-sm-3">
+                        <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar"
+                            id="btnBuscar" value="BUSCAR" placeholder="consultar" onclick="Enviar('CONSULTAR',null);">
+                    </div>
+                    <div class="col-12 col-sm-3">
                         <input type="button" class="boton form-control btn-light btn-outline-primary"
-                            name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción">
+                            name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="registrar" onclick="Enviar('ADICIONAR',null);">
+                    </div>
+                    <div class="col-12 col-sm-3">
+                        <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnModificar" 
+                            value="ACTUALIZAR" id="btnModificar" placeholder="modificar" onclick="Enviar('MODIFICAR',null);">
+                    </div>
+                    <div class="col-12 col-sm-3">
+                        <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnLimpiar" 
+                            value="LIMPIAR" id="btnModificar" placeholder="limpiar">
                     </div>
                 </div>
                 <div class="container">

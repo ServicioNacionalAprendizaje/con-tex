@@ -17,7 +17,7 @@ class GenerarPago
     //idGenerarPago
     public function getIdGenerarPago()
     {
-        return $this->iddGenerarPago;
+        return $this->idGenerarPago;
     }
     public function setIdGenerarPago($idGenerarPago)
     {
@@ -67,7 +67,7 @@ class GenerarPago
     //idEmpleado
     public function getIdEmpleado()
     {
-        return $this->IdEmpleado;
+        return $this->idEmpleado;
     }
     public function setIdEmpleado($idEmpleado)
     {

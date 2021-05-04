@@ -179,7 +179,7 @@ class Tarea{
         $sentenciaSql = "DELETE FROM 
             tarea 
         WHERE 
-            id_tarea = $this->idOrden";        
+            id_tarea = $this->idTarea";        
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }

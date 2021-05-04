@@ -1,6 +1,6 @@
 
             $(function(){
-                //se carga el autocompleta del contratista
+                //se carga el autocompleta d
                 $("#txtRol").autocomplete({
                     source:'../../busqueda/rol.B.php',
                     select:function(event, ui){
@@ -10,7 +10,7 @@
             });
             //
             $(function(){
-                //se carga el autocompleta del contratista
+                //se carga el autocompleta 
                 $("#txtFormulario").autocomplete({
                     source:'../../busqueda/formulario.B.php',
                     select:function(event, ui){
@@ -29,8 +29,6 @@ function Enviar(accion,id){
         "idRol": $('#hidIdRol').val(),
         "idFormulario": $('#hidIdFormulario').val(),
         "estado":$('#cmbEstado').val(),
-        "fechaCreacion": $('#datFechaCreacion').val(),
-        "fechaModificacion": $('#datFechaModificacion').val(),
         "accion" : accion
     }; 
 

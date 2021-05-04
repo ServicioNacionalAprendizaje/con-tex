@@ -105,7 +105,7 @@ class FormularioRol
                             ,'$this->idFormulario'
                             ,'$this->estado'
                             ,'$this->idUsuarioCreacion'
-                            ,'$this->idFormularioRol')";
+                            ,'$this->idUsuarioModificacion')";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -152,9 +152,10 @@ class FormularioRol
             $whereAnd = ' AND ';
         }
         if($this->formularioRol !=''){
-                $condicion=$condicion.$whereAnd." formularioRol LIKE '%$this->formularioRol%' ";
-                $whereAnd = ' AND ';
-                return $condicion;
+            $condicion=$condicion.$whereAnd." formularioRol LIKE '%$this->formularioRol%' ";
+            $whereAnd = ' AND ';
+            return $condicion;
+        }
     }
 
     public function __destruct()

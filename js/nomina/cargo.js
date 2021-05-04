@@ -51,3 +51,9 @@ function Enviar(accion,id){
             }
     });
 }
+
+function Limpiar() {
+    document.getElementById('numCodigo').value = '';
+    document.getElementById('txtDescripcion').value = '';
+    document.getElementById('cmbEstado').value = '';
+}

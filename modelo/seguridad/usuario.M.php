@@ -133,13 +133,15 @@ class Usuario
 
     public function Agregar()
     {
-        $sentenciaSql = "CALL Agregar_usuario('$this->usuario'
+        $sentenciaSql = "CALL Agregar_usuario(
+                             '$this->usuario'
                             ,'$this->contrasenia'
                             ,'$this->fechaActivacion'
                             ,'$this->fechaExpiracion'
-                            ,'$this->idPersona'
+                            , $this->idPersona
                             ,'$this->estado'
-                            ,'$this->idUsuarioCreacion')";
+                            , $this->idUsuarioCreacion
+                            , $this->getIdUsuarioModificacion)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -147,7 +149,8 @@ class Usuario
 
     public function Modificar()
     {
-        $sentenciaSql = "CALL Modificar_usuario('$this->usuario'
+        $sentenciaSql = "CALL Modificar_usuario(
+                             '$this->usuario'
                             ,'$this->contrasenia'
                             ,'$this->fechaActivacion'
                             ,'$this->fechaExpiracion'

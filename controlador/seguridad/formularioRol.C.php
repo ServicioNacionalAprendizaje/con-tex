@@ -58,7 +58,7 @@ if (isset ($accion)){
                 $formularioRol = new FormularioRol();
                 $formularioRol->setIdFormularioRol($_POST['idFormularioRol']);
                 $formularioRol->setIdRol($_POST['idRol']);
-                $formularioRol->setIdFormulariol($_POST['idFormulario']);
+                $formularioRol->setIdFormulario($_POST['idFormulario']);
                 $formularioRol->setEstado($_POST['estado']);
                 $formularioRol->setFechaCreacion($_POST['fechaCreacion']);
                 $formularioRol->setFechaModificacion($_POST['fechaModificacion']);

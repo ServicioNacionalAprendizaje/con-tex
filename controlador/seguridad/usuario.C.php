@@ -64,19 +64,19 @@ if (isset ($accion)){
                 $usuario->setFechaActivacion($_POST['fechaActivacion']);
                 $usuario->setFechaExpiracion($_POST['fechaExpiracion']);
                 $usuario->setIdPersona($_POST['idPersona']);
-                //$usuario->setEstado($_POST['estado']);
+                $usuario->setEstado($_POST['estado']);
                 $resultado = $usuario->consultar();
 
                 $numeroRegistros = $usuario->conn->obtenerNumeroRegistros();
                 if($numeroRegistros === 1){
                     if ($rowBuscar = $usuario->conn->obtenerObjeto()){
-                        $_POST['id'] = $rowBuscar->id_usuario;
-                        $_POST['usuario'] = $rowBuscar->usuario;
-                        $_POST['contrasenia'] = $rowBuscar->contrasenia;
-                        $_POST['fechaActivacion'] = $rowBuscar->fecha_activacion;
-                        $_POST['fechaExpiracion'] = $rowBuscar->fecha_expiracion;
-                        $_POST['idPersona'] = $rowBuscar->id_persona;
-                        $_POST['estado'] = $rowBuscar->estado == 1 ? 'Activo':'Inactivo';
+                        $respuesta['id'] = $rowBuscar->id_usuario;
+                        $respuesta['usuario'] = $rowBuscar->usuario;
+                        $respuesta['contrasenia'] = $rowBuscar->contrasenia;
+                        $respuesta['fechaActivacion'] = $rowBuscar->fecha_activacion;
+                        $respuesta['fechaExpiracion'] = $rowBuscar->fecha_expiracion;
+                        $respuesta['idPersona'] = $rowBuscar->id_persona;
+                        $respuesta['estado'] = $rowBuscar->estado == 1 ? 'Activo':'Inactivo';
                         $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_usuario.")'>";
                         
                     }

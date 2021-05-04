@@ -207,6 +207,36 @@ class Empleado
     
     private function obtenerCondicion()
     {
+        $whereAnd = " WHERE ";
+        $condicion = " ";
+
+        if($this->idPersona !=''){
+            $condicion=$whereAnd.$condicion." id_cargo  = $this->idPersona";
+            $whereAnd = ' AND ';
+        }
+        if($this->nombre !=''){
+                $condicion=$condicion.$whereAnd." descripcion LIKE '%$this->nombre%' ";
+                $whereAnd = ' AND ';
+        }        
+        // if($this->estado!=''){
+        //         if ($whereAnd == ' AND '){
+        //         $condicion=$condicion.$whereAnd." seg_usu.estado = '$this->estado'";
+        //         $whereAnd = ' AND ';
+        //         }
+        //         else{
+        //         $condicion=$whereAnd.$condicion." seg_usu.estado = '$this->estado'";
+        //         $whereAnd = ' AND ';
+        //         }
+        //     }
+        // if($this->fechaActivacion!=''){
+        //         $condicion=$condicion.$whereAnd." seg_usu.fecha_activacion = '$this->fechaActivacion' ";
+        //         $whereAnd = ' AND ';
+        // }
+        // if($this->fechaExpiracion!=''){
+        //         $condicion=$condicion.$whereAnd." seg_usu.fecha_expiracion = '$this->fechaExpiracion' ";
+        //         $whereAnd = ' AND ';
+        // }
+        return $condicion;
     }
 
     public function __destruct()

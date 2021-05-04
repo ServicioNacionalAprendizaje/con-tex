@@ -462,12 +462,13 @@ DELIMITER ;
 DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_formulario_rol`(IN idRol INT(11),
-					IN idFormulario INT(11),
+				          	IN idFormulario INT(11),
                     IN estado enum('0','1'),
-                    IN idUsuarioCreacion INT(11))
+                    IN idUsuarioCreacion INT(11),
+                    IN idUsuarioModificacion INT(11))
 BEGIN
 	INSERT INTO formulario_rol(
-					id_rol,
+				          	id_rol,
                     id_formulario,
                     estado,
                     fecha_creacion,
@@ -481,7 +482,7 @@ BEGIN
 				CURDATE(),
 				CURDATE(),
 				idUsuarioCreacion,
-				idUsuarioCreacion);
+				idUsuarioModificacion);
 END */$$
 DELIMITER ;
 

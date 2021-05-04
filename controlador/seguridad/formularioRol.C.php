@@ -12,9 +12,11 @@ if (isset ($accion)){
         case 'ADICIONAR':
             try{
                 $formularioRol= new FormularioRol();
-                $formularioRol->setIdFormularioRol($_POST['idFormularioRol']);
                 $formularioRol->setIdRol($_POST['idRol']);
+                $formularioRol->setIdFormulario($_POST['idFormulario']);
                 $formularioRol->setEstado($_POST['estado']);
+                $formularioRol->setIdUsuarioCreacion(1);
+                $formularioRol->setIdUsuarioModificacion(1);
                 $resultado = $formularioRol->Agregar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){

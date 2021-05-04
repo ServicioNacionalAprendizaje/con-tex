@@ -155,6 +155,19 @@ class Formulario
 
     private function obtenerCondicion()
     {
+        $whereAnd = " WHERE ";
+        $condicion = " ";
+
+        if($this->idFormulario !=''){
+            $condicion=$whereAnd.$condicion." id_formulario  = $this->idFormulario";
+            $whereAnd = ' AND ';
+        }
+        if($this->descripcion !=''){
+                $condicion=$condicion.$whereAnd." descripcion LIKE '%$this->descripcion%' ";
+                $whereAnd = ' AND ';
+        }        
+        
+        return $condicion;
     }
 
     public function __destruct()

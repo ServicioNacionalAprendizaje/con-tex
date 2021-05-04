@@ -61,55 +61,45 @@ class Orden{
     public function setIdUsuarioModificacion($idUsuarioModificacion = 1) { $this->idUsuarioModificacion =$idUsuarioModificacion;}
 
     //conexion
-    public function __construct() {$this->conn = new Conexion;}
-    
-    public function Agregar(){
-        $sentenciaSql = "INSERT INTO orden(
-            fecha_orden
-            ,fecha_entrega
-            ,descripcion
-            ,id_cliente
-            ,id_empleado
-            ,estado
-            ,fecha_creacion
-            ,fecha_modificacion
-            ,id_usuario_creacion
-            ,id_usuario_modificacion
-        )
-        VALUES(
-            '$this->fechaOrden'
-            ,'$this->fechaEntrega'
-            ,'$this->descripcion'
-            ,$this->idCliente
-            ,$this->idEmpleado
-            ,'$this->estado'
-            ,'$this->fechaCreacion'
-            ,'$this->fechaModificacion'
-            ,$this->idUsuarioCreacion
-            ,$this->idUsuarioModificacion
-            )";
-
-    $this->conn->preparar($sentenciaSql);
-    $this->conn->ejecutar();
-    return true;
+    public function __construct() 
+    {
+        $this->conn = new Conexion;
     }
 
-    public function Modificar(){
-        $sentenciaSql = "UPDATE orden SET 
-        fecha_orden = '$this->fechaOrden', 
-        fecha_entrega = '$this->fechaEmtrega',
-        descripcion = '$this->descripcion', 
-        id_cliente = '$this->idCliente',
-        id_empleado = '$this->idEmpleado'
-        estado = '$this->estado'
-        fecha_creacion = '$this->fechaCreacion'
-        fecha_modificacion = '$this->fechaModificacion'
-        id_usuario_creacion = '$this->idUsuarioCreacion'
-        id_usuario_modificacion = '$this->idUsuarioModificacion' 
-        WHERE id_orden = $this->idOrden ";        
+    public function Agregar()
+    {
+        $sentenciaSql = "CALL Agregar_orden(
+                            '$this->fechaOrden'
+                            ,'$this->fechaEntrega'
+                            ,'$this->descripcion'
+                            ,'$this->idCliente'
+                            ,'$this->idEmpleado'
+                            ,'$this->estado'
+                            ,'$this->idUsuarioCreacion'
+                            , $this->idUsuarioModificacion)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
+        return true;
     }
+
+    
+    public function Modificar()
+    {
+        $sentenciaSql = "CALL Modificar_orden(
+                            '$this->fechaOrden'
+                            ,'$this->fechaEntrega'
+                            ,'$this->descripcion'
+                            ,'$this->idCliente'
+                            ,'$this->idEmpleado'
+                            ,'$this->estado'
+                            ,'$this->idUsuarioCreacion'
+                            , $this->idUsuarioModificacion
+                            , $this->idOrden)";
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+        return true;
+    }
+    
 
     public function Eliminar(){
         $sentenciaSql = "DELETE FROM 

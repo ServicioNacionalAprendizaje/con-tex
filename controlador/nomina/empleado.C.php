@@ -11,8 +11,13 @@ if (isset ($accion)){
         case 'ADICIONAR':
             try{
                 $empleado = new Empleado();
+<<<<<<< HEAD
                 $empleado->setIdCargo($_POST['id']);
                 $empleado->setCorreoInstitucional($_POST['correo']);
+=======
+                $empleado->setIdCargo($_POST['idCargo']);
+                $empleado->setCorreoInstitucional($_POST['correoInstitucional']);
+>>>>>>> e48e42f7df4a7fb945825dc6d5adce7a114bbe74
                 $empleado->setFechaIngreso($_POST['fechaIngreso']);
                 $empleado->setArl($_POST['arl']);
                 $empleado->setSalud($_POST['salud']);

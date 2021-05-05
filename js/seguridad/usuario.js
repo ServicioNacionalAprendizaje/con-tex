@@ -19,7 +19,6 @@ $(function(){
 //     });
 // })
 
-
 function Enviar(accion, id) {
     if (id === null) {
         id = $('#hidIdUsuario').val();

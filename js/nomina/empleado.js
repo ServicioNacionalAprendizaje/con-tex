@@ -7,9 +7,9 @@ id=$('#hidIdEmpleado').val();
         "idCargo":$('#hidIdCargo').val(),
         "correoInstitucional":$('#txtCorreoInstitucional').val(),   
         "fechaIngreso":$('#datFechaIngreso').val(), 
-        "arl":$('#txtArl').val(), 
-        "salud":$('#txtSalud').val(), 
-        "pension":$('#txtPension').val(),
+        "arl":$('#cmbArl').val(), 
+        "salud":$('#cmbSalud').val(), 
+        "pension":$('#cmbPension').val(),
         "idPersona":$('#hidIdPersona').val(),     
         "estado":$('#cmbEstado').val(),
         "accion" : accion
@@ -37,11 +37,11 @@ id=$('#hidIdEmpleado').val();
                 if(respuesta['accion']=='CONSULTAR'){
                     $('#hidIdCargo').val(respuesta['id']);
                     $('#txtCargo').val(respuesta['cargo']);
-                    $('#txtCorreo').val(respuesta['correo']);
-                    $('#txtFechaIngreso').val(respuesta['fechaIngreso']);
-                    $('#txtArl').val(respuesta['arl']);
-                    $('#txtSalud').val(respuesta['salud']);
-                    $('#txtPension').val(respuesta['pension']);
+                    $('#txtCorreo').val(respuesta['correoInstitucional']);
+                    $('#datFechaIngreso').val(respuesta['fechaIngreso']);
+                    $('#cmbArl').val(respuesta['arl']);
+                    $('#cmbSalud').val(respuesta['salud']);
+                    $('#cmbPension').val(respuesta['pension']);
                     $('#hidIdPersona').val(respuesta['idPersona']);
                     $('#cmbEstado').val(respuesta['estado']);
                     $('#divEliminar').html(respuesta['eliminar']);
@@ -82,9 +82,9 @@ function Limpiar(){
     $('#txtCargo').val("");    
     $('#txtCorreoInstitucional').val("");
     $('#datFechaIngreso').val("");
-    $('#txtArl').val("");    
-    $('#txtSalud').val("");
-    $('#txtPension').val("");
+    $('#cmbArl').val("");    
+    $('#cmbSalud').val("");
+    $('#cmbPension').val("");
     $('#txtPersona').val("");
     $('#cmbEstado').val("");
 }

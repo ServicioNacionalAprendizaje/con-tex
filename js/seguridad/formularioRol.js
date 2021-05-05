@@ -25,7 +25,7 @@ function Enviar(accion,id){
         id =  $('#hidIdFormularioRol').val();
     }
     var parametros = {
-        "id" : id,
+        "idFormularioRol" : id,
         "idRol": $('#hidIdRol').val(),
         "idFormulario": $('#hidIdFormulario').val(),
         "estado":$('#cmbEstado').val(),

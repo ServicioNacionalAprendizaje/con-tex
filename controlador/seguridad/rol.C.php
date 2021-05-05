@@ -55,15 +55,15 @@ if (isset ($accion)){
                 $rol->setIdRol($_POST['id']);
                 $rol->setDescripcion($_POST['descripcion']);
                 $rol->setEstado($_POST['estado']);
-                $resultado = $rol->consultar();
+                $resultado = $rol->Consultar();
 
                 $numeroRegistros = $rol->conn->obtenerNumeroRegistros();
                 if($numeroRegistros === 1){
                     if ($rowBuscar = $rol->conn->obtenerObjeto()){
                         $respuesta['id'] = $rowBuscar->id_rol;
                         $respuesta['descripcion'] = $rowBuscar->descripcion;
-                        //$respuesta['estado'] = $rowBuscar->estado;
-                        //$respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_rol.")'>";
+                        //$respuesta['estado'] = $rowBuscar->estado == 1 ? 'Activo':'Inactivo';
+                        $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_rol.")'>";
                      }
                 }else{
                     if(isset($resultado)){

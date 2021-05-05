@@ -147,15 +147,16 @@ class FormularioRol
         $whereAnd = " WHERE ";
         $condicion = " ";
 
-        if($this->IdFormularioRol !=''){
-            $condicion=$whereAnd.$condicion." id_FormularioRol  = $this->idFormularioRol";
+        if($this->idFormularioRol !=''){
+            $condicion=$whereAnd.$condicion." id_formulario_rol  = $this->idFormularioRol";
             $whereAnd = ' AND ';
         }
-        if($this->formularioRol !=''){
-            $condicion=$condicion.$whereAnd." formularioRol LIKE '%$this->formularioRol%' ";
-            $whereAnd = ' AND ';
-            return $condicion;
-        }
+        // if($this->formularioRol !=''){
+        //     $condicion=$condicion.$whereAnd." formularioRol LIKE '%$this->formularioRol%' ";
+        //     $whereAnd = ' AND ';
+        //     return $condicion;
+        // }
+        return $condicion;
     }
 
     public function __destruct()

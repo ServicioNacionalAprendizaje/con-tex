@@ -62,8 +62,8 @@ if (isset ($accion)){
                 $formularioRol->setIdRol($_POST['idRol']);
                 $formularioRol->setIdFormulario($_POST['idFormulario']);
                 $formularioRol->setEstado($_POST['estado']);
-                $formularioRol->setFechaCreacion($_POST['fechaCreacion']);
-                $formularioRol->setFechaModificacion($_POST['fechaModificacion']);
+                // $formularioRol->setFechaCreacion($_POST['fechaCreacion']);
+                // $formularioRol->setFechaModificacion($_POST['fechaModificacion']);
                 //$formularioRol->setIdUsuarioCreacion($_POST['idUsuarioCreacion']);
                 //$formularioRol->setIdUsuarioModificacion($_POST['idUsuarioModificacion']);
                 $resultado = $formularioRol->consultar();
@@ -83,7 +83,7 @@ if (isset ($accion)){
                }else{
                         if(isset($resultado)){
                             $retorno="<table>";
-                            foreach($usuario->conn->ObtenerRegistros()AS $rowConsulta){
+                            foreach($formularioRol->conn->ObtenerRegistros()AS $rowConsulta){
                                 $retorno .= "<tr>                                          
                                             <td><label>".$rowConsulta[0]."</label></td>                                             
                                             <td><label>".$rowConsulta[4]."</label></td>                                        
@@ -98,13 +98,13 @@ if (isset ($accion)){
                             $retorno.="</table>";
                             $respuesta['tablaRegistro']=$retorno;
                         }else{
-                        $respuesta['tablaRegistros']='No existen datos!!';
+                        $respuesta['tablaRegistro']='No existen datos!!';
                         }
                 }
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible consultar la información, consulte con el administrador.";
             }
-            json_encode($respuesta);
+            // json_encode($respuesta);
             $respuesta['numeroRegistros']=$numeroRegistros;
             $respuesta['accion']='CONSULTAR';
             echo json_encode($respuesta);

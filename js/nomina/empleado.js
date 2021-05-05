@@ -1,6 +1,6 @@
 function Enviar(accion,id){
     if(id===null){
-        id=$('#hidIdEmpleado').val();
+id=$('#hidIdEmpleado').val();
     }
     var parametros = {
         "id" : id,
@@ -9,12 +9,11 @@ function Enviar(accion,id){
         "fechaIngreso":$('#datFechaIngreso').val(), 
         "arl":$('#txtArl').val(), 
         "salud":$('#txtSalud').val(), 
-        "pension":$('#txtPension').val(), 
+        "pension":$('#txtPension').val(),
         "idPersona":$('#hidIdPersona').val(),     
         "estado":$('#cmbEstado').val(),
         "accion" : accion
     }; 
-
     $.ajax({
             data: parametros, //datos que se van a enviar al ajax
             url: '../../controlador/nomina/empleado.C.php', //archivo php que recibe los datos
@@ -34,7 +33,6 @@ function Enviar(accion,id){
                     $("#resultado").html(respuesta['tablaRegistro']);
                     //$('#divEliminar').html(respuesta['eliminar']).hide();
                 }
-
                 //Respuesta un registro
                 if(respuesta['accion']=='CONSULTAR'){
                     $('#hidIdCargo').val(respuesta['id']);
@@ -44,11 +42,10 @@ function Enviar(accion,id){
                     $('#txtArl').val(respuesta['arl']);
                     $('#txtSalud').val(respuesta['salud']);
                     $('#txtPension').val(respuesta['pension']);
-                    $('#txtPersona').val(respuesta['persona']);
+                    $('#hidIdPersona').val(respuesta['idPersona']);
                     $('#cmbEstado').val(respuesta['estado']);
                     $('#divEliminar').html(respuesta['eliminar']);
                 }
-
                 //Respuesta modificar
                 if(respuesta['accion']=='MODIFICAR'){
                     alert(respuesta['respuesta']);
@@ -79,4 +76,15 @@ $(function(){
             $("#hidIdCargo").val(ui.item.id);
         }
      }); 
-});
+}); 
+
+function Limpiar(){
+    $('#txtCargo').val("");    
+    $('#txtCorreoInstitucional').val("");
+    $('#datFechaIngreso').val("");
+    $('#txtArl').val("");    
+    $('#txtSalud').val("");
+    $('#txtPension').val("");
+    $('#txtPersona').val("");
+    $('#cmbEstado').val("");
+}

@@ -2,22 +2,15 @@
 // $ubicacionFormulario =  substr($_SERVER["SCRIPT_NAME"], 17);
 include '../../entorno/conexion.php';
 require '../../modelo/nomina/empleado.M.php';
-
 $respuesta = array();
-
 $accion = $_POST['accion'];
 if (isset ($accion)){
     switch($accion){
         case 'ADICIONAR':
             try{
                 $empleado = new Empleado();
-<<<<<<< HEAD
-                $empleado->setIdCargo($_POST['id']);
-                $empleado->setCorreoInstitucional($_POST['correo']);
-=======
                 $empleado->setIdCargo($_POST['idCargo']);
                 $empleado->setCorreoInstitucional($_POST['correoInstitucional']);
->>>>>>> e48e42f7df4a7fb945825dc6d5adce7a114bbe74
                 $empleado->setFechaIngreso($_POST['fechaIngreso']);
                 $empleado->setArl($_POST['arl']);
                 $empleado->setSalud($_POST['salud']);
@@ -37,13 +30,13 @@ if (isset ($accion)){
         case 'MODIFICAR':
             try{
                 $empleado = new Empleado();
-                $empleado->setIdCargo($_POST['id']);
-                $empleado->setCorreoInstitucional($_POST['correo']);
+                $empleado->setIdCargo($_POST['idCargo']);
+                $empleado->setCorreoInstitucional($_POST['correoInstitucional']);
                 $empleado->setFechaIngreso($_POST['fechaIngreso']);
                 $empleado->setArl($_POST['arl']);
                 $empleado->setSalud($_POST['salud']);
                 $empleado->setPension($_POST['pension']);
-                $empleado->setIdPersona($_POST['persona']);
+                $empleado->setIdPersona($_POST['idPersona']);
                 $empleado->setEstado($_POST['estado']);
                 $resultado = $empleado->Modificar();
                 $respuesta['respuesta']="La información se modificó correctamente.";
@@ -56,7 +49,7 @@ if (isset ($accion)){
         case 'ELIMINAR':
             try{
                 $empleado = new Empleado();
-                $empleado->setIdCargo($_POST['id']);
+                $empleado->setIdCargo($_POST['idCargo']);
                 $resultado = $empleado->Eliminar();
                 $respuesta['respuesta']="La información se eliminó correctamente.";
             }catch(Exception $e){
@@ -68,26 +61,25 @@ if (isset ($accion)){
         case 'CONSULTAR':
             try{
                 $empleado = new Empleado();
-                $empleado->setIdCargo($_POST['id']);
-                $empleado->setCorreoInstitucional($_POST['correo']);
+                $empleado->setIdCargo($_POST['idCargo']);
+                $empleado->setCorreoInstitucional($_POST['correoInstitucional']);
                 $empleado->setFechaIngreso($_POST['fechaIngreso']);
                 $empleado->setArl($_POST['arl']);
                 $empleado->setSalud($_POST['salud']);   
                 $empleado->setPension($_POST['pension']);
-                $empleado->setIdPersona($_POST['persona']);                           
+                $empleado->setIdPersona($_POST['idPersona']);                           
                 $resultado = $empleado->consultar();
-
                 $numeroRegistros = $empleado->conn->ObtenerNumeroRegistros();
                 if($numeroRegistros === 1){
                     if ($rowBuscar = $empleado->conn->ObtenerObjeto()){
                         $respuesta['id'] = $rowBuscar->id_cargo;
-                        $respuesta['cargo'] = $rowBuscar->idCargo;
-                        $respuesta['correo'] = $rowBuscar->correo;
+                        $respuesta['idCargo'] = $rowBuscar->idCargo;
+                        $respuesta['correoInstitucional'] = $rowBuscar->correo;
                         $respuesta['fechaIngreso'] = $rowBuscar->fechaIngreso;                           
                         $respuesta['arl'] = $rowBuscar->arl;
                         $respuesta['salud'] = $rowBuscar->salud;                           
                         $respuesta['pension'] = $rowBuscar->pension;
-                        $respuesta['persona'] = $rowBuscar->persona;
+                        $respuesta['idPersona'] = $rowBuscar->persona;
                         $respuesta['estado'] = $rowBuscar->estado == 1 ? 'Activo':'Inactivo';
                         $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_persona.")'>";
                     }

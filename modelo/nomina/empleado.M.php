@@ -1,8 +1,6 @@
 <?php
-
 class Empleado
 {
-
     private $idEmpleado;
     private $idCargo;
     private $correoInstitucional;
@@ -16,7 +14,6 @@ class Empleado
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
-
     //idEmpleado
     public function getIdEmpleado()
     {
@@ -26,7 +23,6 @@ class Empleado
     {
         $this->idEmpleado = $idEmpleado;
     }
-
     //idCargo
     public function getIdCargo()
     {
@@ -36,7 +32,6 @@ class Empleado
     {
         $this->idCargo = $idCargo;
     }
-
     //correoInstitucional
     public function getCorreoInstitucional()
     {
@@ -46,7 +41,6 @@ class Empleado
     {
         $this->correoInstitucional = $correoInstitucional;
     }
-
     //fechaIngreso
     public function getFechaIngreso()
     {
@@ -56,7 +50,6 @@ class Empleado
     {
         $this->fechaIngreso = $fechaIngreso;
     }
-
     //arl
     public function getArl()
     {
@@ -66,7 +59,6 @@ class Empleado
     {
         $this->arl = $arl;
     }
-
     //salud
     public function getSalud()
     {
@@ -76,7 +68,6 @@ class Empleado
     {
         $this->salud = $salud;
     }
-
     //pension
     public function getPension()
     {
@@ -86,7 +77,6 @@ class Empleado
     {
         $this->pension = $pension;
     }
-
     //idPersona
     public function getIdPersona()
     {
@@ -96,7 +86,6 @@ class Empleado
     {
         $this->idPersona = $idPersona;
     }
-
     //estado
     public function getEstado()
     {
@@ -106,7 +95,6 @@ class Empleado
     {
         $this->estado = $estado;
     }
-
     //fechaCreacion
     public function getFechaCreacion()
     {
@@ -116,7 +104,6 @@ class Empleado
     {
         $this->fechaCreacion = $fechaCreacion;
     }
-
     //fechaModificacion
     public function getFechaModificacion()
     {
@@ -126,7 +113,6 @@ class Empleado
     {
         $this->fechaModificacion = $fechaModificacion;
     }
-
     //idUsuarioCreacion
     public function getIdUsuarioCreacion()
     {
@@ -136,7 +122,6 @@ class Empleado
     {
         $this->idUsuarioCreacion = $idUsuarioCreacion;
     }
-
     //idUsuarioModificacion
     public function getIdUsuarioModificacion()
     {
@@ -146,30 +131,28 @@ class Empleado
     {
         $this->idUsuarioModificacion = $idUsuarioModificacion;
     }
-
     //conexion
     public function __construct()
     {
         $this->conn = new Conexion();
     }
 
-    public function Agregar()
+public function Agregar()
     {
-        $sentenciaSql = "CALL Agregar_empleado(
+$sentenciaSql = "CALL Agregar_empleado(
                             $this->idCargo
                             ,'$this->correoInstitucional'
                             ,'$this->fechaIngreso'
                             ,'$this->arl'
                             ,'$this->salud'
                             ,'$this->pension'
-                            ,$this->idPersona
+                             ,$this->idPersona
                             ,'$this->estado'
                             ,$this->idUsuarioCreacion)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
     }
-
     public function Modificar()
     {
         $sentenciaSql = "CALL Modificar_empleado('$this->idCargo'
@@ -178,15 +161,14 @@ class Empleado
                             ,'$this->arl'
                             ,'$this->salud'
                             ,'$this->pension'
-                            ,'$this->idPersona'
+                            ,$this->idPersona
                             ,'$this->estado'
-                            ,'$this->idUsuarioModificacion'
-                            ,'$this->idEmpleado')";
+                            ,$this->idUsuarioModificacion
+                            ,$this->idEmpleado)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
     }
-
     public function Eliminar()
     {
         $sentenciaSql = "DELETE FROM empleado 
@@ -195,7 +177,6 @@ class Empleado
         $this->conn->ejecutar();
         return true;
     }
-
     public function Consultar()
     {
         $condicion = $this->obtenerCondicion();
@@ -210,7 +191,6 @@ class Empleado
     {
         $whereAnd = " WHERE ";
         $condicion = " ";
-
         if($this->idEmpleado !=''){
             $condicion=$whereAnd.$condicion." id_empleado  = $this->idEmpleado";
             $whereAnd = ' AND ';
@@ -239,10 +219,8 @@ class Empleado
         // }
         return $condicion;
     }
-
     public function __destruct()
     {
-
         unset($this->idEmpleado);
         unset($this->idCargo);
         unset($this->correoInstitucional);

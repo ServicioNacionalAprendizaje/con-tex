@@ -54,9 +54,9 @@ function Enviar(accion,id){
 
                 //Respuesta un registro
                 if(respuesta['accion']=='CONSULTAR'){
-                    $('#hidIdFormularioRol').val(respuesta['id']);
-                    $('#hidIdRol').val(respuesta['idRol']);
-                    $('#hidIdFormulario').val(respuesta['idFormulario']);
+                    $('#hidIdFormularioRol').val(respuesta['idFormularioRol']);
+                    $('#txtRol').val(respuesta['idRol']);
+                    $('#txtFormulario').val(respuesta['idFormulario']);
                     $('#cmbEstado').val(respuesta['estado']);
                     $('#datfechaCreacion').val(respuesta['datfechaCreacion']);
                     $('#datModificacion').val(respuesta['datModificacion']);

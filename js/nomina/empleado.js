@@ -79,4 +79,4 @@ $(function(){
             $("#hidIdCargo").val(ui.item.id);
         }
      }); 
-})
+});

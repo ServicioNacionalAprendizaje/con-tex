@@ -11,13 +11,13 @@ if (isset ($accion)){
         case 'ADICIONAR':
             try{
                 $empleado = new Empleado();
-                $empleado->setIdCargo($_POST['cargo']);
+                $empleado->setIdCargo($_POST['id']);
                 $empleado->setCorreoInstitucional($_POST['correo']);
                 $empleado->setFechaIngreso($_POST['fechaIngreso']);
                 $empleado->setArl($_POST['arl']);
                 $empleado->setSalud($_POST['salud']);
                 $empleado->setPension($_POST['pension']);
-                $empleado->setIdPersona($_POST['persona']);
+                $empleado->setIdPersona($_POST['idPersona']);
                 $empleado->setEstado($_POST['estado']);
                 $empleado->setIdUsuarioCreacion(1); // Obtener id de la persona con la variable session
                 $empleado->setIdUsuarioModificacion(1); // Obtener id de la persona con la variable session

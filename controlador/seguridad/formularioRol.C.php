@@ -48,7 +48,7 @@ if (isset ($accion)){
                 $formularioRol = new FormularioRol();
                 $formularioRol->setIdFormularioRol($_POST['idFormularioRol']);
                 $resultado = $formularioRol->Eliminar();
-                $respuesta['respuesta']="La información se adicionó correctamente.";
+                $respuesta['respuesta']="La información se eliminó correctamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible eliminar la información, consulte con el administrador.";
             }
@@ -71,14 +71,15 @@ if (isset ($accion)){
                 $numeroRegistros = $formularioRol->conn->obtenerNumeroRegistros();
                 if($numeroRegistros === 1){
                     if ($rowBuscar = $formularioRol->conn->obtenerObjeto()){
-                        $_POST['idFormularioRol'] = $rowBuscar->id_formulario_rol;
-                        $_POST['idRolol'] = $rowBuscar->id_rol;
-                        $_POST['idFormulario'] = $rowBuscar->id_formulario;
-                        $_POST['estado'] = $rowBuscar->estado;
-                        $_POST['fechaCreacion'] = $rowBuscar->fecha_creacion;
-                        $_POST['fechaModificacion'] = $rowBuscar->fecha_modificacion;
-                        $_POST['idUsuarioCreacion'] = $rowBuscar->id_usuario_creacion;
-                        $_POST['idUsuarioModificacion'] = $rowBuscar->id_usuario_modificacion;
+                        $respuesta['idFormularioRol'] = $rowBuscar->id_formulario_rol;
+                        $respuesta['idRol'] = $rowBuscar->id_rol;
+                        $respuesta['idFormulario'] = $rowBuscar->id_formulario;
+                        $respuesta['estado'] = $rowBuscar->estado == 1 ? 'Activo':'Inactivo';
+                        $respuesta['fechaCreacion'] = $rowBuscar->fecha_creacion;
+                        $respuesta['fechaModificacion'] = $rowBuscar->fecha_modificacion;
+                        $respuesta['idUsuarioCreacion'] = $rowBuscar->id_usuario_creacion;
+                        $respuesta['idUsuarioModificacion'] = $rowBuscar->id_usuario_modificacion;
+                        $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_formulario_rol.")'>";
                     }
                }else{
                         if(isset($resultado)){

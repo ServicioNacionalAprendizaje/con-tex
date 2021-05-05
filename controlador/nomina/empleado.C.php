@@ -72,14 +72,14 @@ if (isset ($accion)){
                 $numeroRegistros = $empleado->conn->ObtenerNumeroRegistros();
                 if($numeroRegistros === 1){
                     if ($rowBuscar = $empleado->conn->ObtenerObjeto()){
-                        $respuesta['id'] = $rowBuscar->id_cargo;
-                        $respuesta['idCargo'] = $rowBuscar->idCargo;
+                        $respuesta['id'] = $rowBuscar->id_empleado;
+                        $respuesta['idCargo'] = $rowBuscar->cargo;
                         $respuesta['correoInstitucional'] = $rowBuscar->correo;
                         $respuesta['fechaIngreso'] = $rowBuscar->fechaIngreso;                           
                         $respuesta['arl'] = $rowBuscar->arl;
                         $respuesta['salud'] = $rowBuscar->salud;                           
                         $respuesta['pension'] = $rowBuscar->pension;
-                        $respuesta['idPersona'] = $rowBuscar->persona;
+                        $respuesta['idPersona'] = $rowBuscar->idPersona;
                         $respuesta['estado'] = $rowBuscar->estado == 1 ? 'Activo':'Inactivo';
                         $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_persona.")'>";
                     }

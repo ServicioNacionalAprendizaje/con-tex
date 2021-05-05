@@ -155,13 +155,14 @@ class Empleado
 
     public function Agregar()
     {
-        $sentenciaSql = "CALL Agregar_empleado('$this->idCargo'
+        $sentenciaSql = "CALL Agregar_empleado(
+                            $this->idCargo
                             ,'$this->correoInstitucional'
                             ,'$this->fechaIngreso'
                             ,'$this->arl'
                             ,'$this->salud'
                             ,'$this->pension'
-                            ,'$this->idPersona'
+                            ,$this->idPersona
                             ,'$this->estado'
                             ,$this->idUsuarioCreacion)";
         $this->conn->preparar($sentenciaSql);

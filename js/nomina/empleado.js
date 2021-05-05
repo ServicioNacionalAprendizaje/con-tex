@@ -1,16 +1,16 @@
 function Enviar(accion,id){
     if(id===null){
-        id=$('#hidIdCargo').val();
+        id=$('#hidIdEmpleado').val();
     }
     var parametros = {
         "id" : id,
-        "cargo":$('#txtCargo').val(),
-        "correo":$('#txtCorreo').val(),   
-        "fechaIngreso":$('#txtFechaIngreso').val(), 
+        "idCargo":$('#hidIdCargo').val(),
+        "correoInstitucional":$('#txtCorreoInstitucional').val(),   
+        "fechaIngreso":$('#datFechaIngreso').val(), 
         "arl":$('#txtArl').val(), 
         "salud":$('#txtSalud').val(), 
         "pension":$('#txtPension').val(), 
-        "persona":$('#txtPersona').val(),     
+        "idPersona":$('#hidIdPersona').val(),     
         "estado":$('#cmbEstado').val(),
         "accion" : accion
     }; 
@@ -79,4 +79,4 @@ $(function(){
             $("#hidIdCargo").val(ui.item.id);
         }
      }); 
-})
+});

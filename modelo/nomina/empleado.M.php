@@ -210,14 +210,14 @@ class Empleado
         $whereAnd = " WHERE ";
         $condicion = " ";
 
-        if($this->idPersona !=''){
-            $condicion=$whereAnd.$condicion." id_cargo  = $this->idPersona";
+        if($this->idEmpleado !=''){
+            $condicion=$whereAnd.$condicion." id_empleado  = $this->idEmpleado";
             $whereAnd = ' AND ';
         }
-        if($this->nombre !=''){
-                $condicion=$condicion.$whereAnd." descripcion LIKE '%$this->nombre%' ";
-                $whereAnd = ' AND ';
-        }        
+        // if($this->idCargo !=''){
+        //         $condicion=$condicion.$whereAnd." descripcion LIKE '%$this->idCargo%' ";
+        //         $whereAnd = ' AND ';
+        // }        
         // if($this->estado!=''){
         //         if ($whereAnd == ' AND '){
         //         $condicion=$condicion.$whereAnd." seg_usu.estado = '$this->estado'";

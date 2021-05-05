@@ -11,6 +11,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="../../js/nomina/empleado.js"></script>
+
+    <!-- Auto complete -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Auto complete -->
 </head>
 <body>
     <form name="frmEmpleado" id="frmEmpleado">
@@ -66,12 +72,16 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-sm-6">
-                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado">
+            <div class="col-12 col-sm-4">
+                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado" onclick="Enviar('CONSULTAR',null);">
             </div>
-            <div class="col-12 col-sm-6">
-                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick="Enviar('ADICIONAR',null);">
+            <div class="col-12 col-sm-4">
+                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick=" Enviar('ADICIONAR',null);">
             </div>
+            <div class="col-12 col-sm-4">
+                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnModificar" value="MODIFICAR" id="btnModificar" placeholder="Descripción" onclick=" Enviar('MODIFICAR',null);">
+            </div>
+        </div>
         </div>
         <br></br>
         <div class="container">
@@ -81,7 +91,7 @@
                         <table class="table table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <td align="center">id Cargo</td>
+                                    <td align="center">Cargo</td>
                                     <td align="center">Correo institucional</td>
                                     <td align="center">Fecha ingreso</td>
                                     <td align="center">ARL</td>

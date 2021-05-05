@@ -89,7 +89,7 @@ if (isset ($accion)){
                 }else{
                     if(isset($resultado)){
                         $retorno="<table>";
-                        foreach($persona->conn->ObtenerRegistros() AS $rowConsulta){
+                        foreach($empleado->conn->ObtenerRegistros() AS $rowConsulta){
                             $retorno .= "<tr>                                          
                                         <td><label>".$rowConsulta[1]."</label></td>                                             
                                         <td><label>".$rowConsulta[2]."</label></td>                                        
@@ -97,7 +97,8 @@ if (isset ($accion)){
                                         <td><label>".$rowConsulta[4]."</label></td>                                             
                                         <td><label>".$rowConsulta[5]."</label></td>                                        
                                         <td><label>".$rowConsulta[6]."</label></td>
-                                        <td><label>".($rowConsulta[7]== 1 ? 'Activo' : 'Inactivo')."</label></td>
+                                        <td><label>".$rowConsulta[7]."</label></td>
+                                        <td><label>".($rowConsulta[8]== 1 ? 'Activo' : 'Inactivo')."</label></td>
                                         <td align='center'><a href='#' class='btn btn-warning'><i class='fas fa-edit' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></i></a></td>
                                         <td align='center'><a href='#' class='btn btn-danger'><i class='fas fa-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></i></a></td>                                                                                
                                     </tr>";

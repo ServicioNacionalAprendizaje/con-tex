@@ -61,3 +61,22 @@ function Enviar(accion,id){
             }
     });
 }
+$(function(){
+    //se carga el autocompleta
+     $("#txtPersona").autocomplete({
+        source:'../../busqueda/persona.B.php',
+        select:function(event, ui){
+            $("#hidIdPersona").val(ui.item.id);
+        }
+     }); 
+});
+
+$(function(){
+    //se carga el autocompleta del cargo
+     $("#txtCargo").autocomplete({
+        source:'../../busqueda/cargo.B.php',
+        select:function(event, ui){
+            $("#hidIdCargo").val(ui.item.id);
+        }
+     }); 
+})

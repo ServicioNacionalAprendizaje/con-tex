@@ -61,6 +61,7 @@ if (isset ($accion)){
         case 'CONSULTAR':
             try{
                 $empleado = new Empleado();
+                $empleado->setIdEmpleado($_POST['id']);
                 $empleado->setIdCargo($_POST['idCargo']);
                 $empleado->setCorreoInstitucional($_POST['correoInstitucional']);
                 $empleado->setFechaIngreso($_POST['fechaIngreso']);
@@ -73,13 +74,13 @@ if (isset ($accion)){
                 if($numeroRegistros === 1){
                     if ($rowBuscar = $empleado->conn->ObtenerObjeto()){
                         $respuesta['id'] = $rowBuscar->id_empleado;
-                        $respuesta['idCargo'] = $rowBuscar->cargo;
-                        $respuesta['correoInstitucional'] = $rowBuscar->correo;
-                        $respuesta['fechaIngreso'] = $rowBuscar->fechaIngreso;                           
+                        $respuesta['idCargo'] = $rowBuscar->id_cargo;
+                        $respuesta['correoInstitucional'] = $rowBuscar->correo_institucional;
+                        $respuesta['fechaIngreso'] = $rowBuscar->fecha_ingreso;                           
                         $respuesta['arl'] = $rowBuscar->arl;
                         $respuesta['salud'] = $rowBuscar->salud;                           
                         $respuesta['pension'] = $rowBuscar->pension;
-                        $respuesta['idPersona'] = $rowBuscar->idPersona;
+                        $respuesta['idPersona'] = $rowBuscar->id_persona;
                         $respuesta['estado'] = $rowBuscar->estado == 1 ? 'Activo':'Inactivo';
                         $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_persona.")'>";
                     }

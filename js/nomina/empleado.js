@@ -36,13 +36,13 @@ id=$('#hidIdEmpleado').val();
                 //Respuesta un registro
                 if(respuesta['accion']=='CONSULTAR'){
                     $('#hidIdCargo').val(respuesta['id']);
-                    $('#txtCargo').val(respuesta['cargo']);
-                    $('#txtCorreo').val(respuesta['correoInstitucional']);
+                    $('#txtCargo').val(respuesta['idCargo']);
+                    $('#txtCorreoInstitucional').val(respuesta['correoInstitucional']);
                     $('#datFechaIngreso').val(respuesta['fechaIngreso']);
                     $('#cmbArl').val(respuesta['arl']);
                     $('#cmbSalud').val(respuesta['salud']);
                     $('#cmbPension').val(respuesta['pension']);
-                    $('#hidIdPersona').val(respuesta['idPersona']);
+                    $('#txtPersona').val(respuesta['idPersona']);
                     $('#cmbEstado').val(respuesta['estado']);
                     $('#divEliminar').html(respuesta['eliminar']);
                 }

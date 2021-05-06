@@ -35,7 +35,7 @@ function Enviar(accion,id){
                     $('#hidIdCargo').val(respuesta['id']);
                     $('#numCodigo').val(respuesta['codigoCargo']);
                     $('#txtDescripcion').val(respuesta['descripcion']);
-                    $('#cmbEstado').val(respuesta['estado']);
+                    $('#cmbEstado').val(respuesta['estado'] == 'Activo' ? 1 : ('Inactivo' ? 0 : ''));
                     $('#divEliminar').html(respuesta['eliminar']);
                 }
 

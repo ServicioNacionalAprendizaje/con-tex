@@ -3,7 +3,6 @@
 class Cargo
 {
     private $idCargo;
-    private $codigoCargo;
     private $descripcion;
     private $estado;
     private $fechaCreacion;
@@ -19,16 +18,6 @@ class Cargo
     public function setIdCargo($idCargo)
     {
         $this->idCargo = $idCargo;
-    }
-
-    //codigoCargo
-    public function getCodigoCargo()
-    {
-        return $this->codigoCargo;
-    }
-    public function setCodigoCargo($codigoCargo)
-    {
-        $this->codigoCargo = $codigoCargo;
     }
 
     //descripcion
@@ -101,11 +90,10 @@ class Cargo
 
     public function Agregar()
     {
-        $sentenciaSql = "CALL Agregar_cargo('$this->codigoCargo',
-                            '$this->descripcion',
-                            '$this->estado',
-                            $this->idUsuarioCreacion,
-                            $this->idUsuarioModificacion)";
+        $sentenciaSql = "CALL Agregar_cargo('$this->descripcion'
+                                            ,'$this->estado'
+                                            ,$this->idUsuarioCreacion
+                                            ,$this->idUsuarioModificacion)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -113,8 +101,7 @@ class Cargo
 
     public function Modificar()
     {
-        $sentenciaSql = "CALL Modificar_cargo('$this->codigoCargo',
-                            '$this->descripcion',
+        $sentenciaSql = "CALL Modificar_cargo('$this->descripcion',
                             '$this->estado',
                             '$this->idUsuarioModificacion',
                             $this->idCargo)";
@@ -151,8 +138,8 @@ class Cargo
             $condicion=$whereAnd.$condicion." id_cargo  = $this->idCargo";
             $whereAnd = ' AND ';
         }
-        if($this->codigoCargo !=''){
-                $condicion=$condicion.$whereAnd." codigoCargo LIKE '%$this->codigoCargo%' ";
+        if($this->descripcion !=''){
+                $condicion=$condicion.$whereAnd." descripcion LIKE '%$this->descripcion%' ";
                 $whereAnd = ' AND ';
         }        
         // if($this->estado!=''){

@@ -11,7 +11,6 @@ if (isset ($accion)){
         case 'ADICIONAR':
             try{
                 $cargo= new Cargo();
-                $cargo->setCodigoCargo($_POST['codigoCargo']);
                 $cargo->setDescripcion($_POST['descripcion']);
                 $cargo->setEstado($_POST['estado']);
                 $cargo->setIdUsuarioCreacion(1); // Obtener id del cargo con la variable session
@@ -28,12 +27,11 @@ if (isset ($accion)){
             try{
                 $cargo = new Cargo();
                 $cargo->setIdCargo($_POST['id']);
-                $cargo->setCodigoCargo($_POST['codigoCargo']);
                 $cargo->setDescripcion($_POST['descripcion']);
                 $cargo->setEstado($_POST['estado']);
-
+                $cargo->setIdUsuarioModificacion(2);
                 $resultado = $cargo->Modificar();
-                $respuesta['respuesta']="La información se modificó correctamente.";
+                $respuesta['respuesta']="La información se modificó correctamente, para refrescar la tabla busque nuevamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible modificar la información, consulte con el administrador.";
             }
@@ -45,7 +43,7 @@ if (isset ($accion)){
                 $cargo = new Cargo();
                 $cargo->setIdCargo($_POST['id']);
                 $resultado = $cargo->Eliminar();
-                $respuesta['respuesta']="La información se eliminó correctamente.";
+                $respuesta['respuesta']="La información se eliminó correctamente, para refrescar la tabla busque nuevamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible eliminar la información, consulte con el administrador.";
             }
@@ -56,17 +54,14 @@ if (isset ($accion)){
             try{
                 $cargo = new Cargo();
                 $cargo->setIdCargo($_POST['id']);
-                $cargo->setCodigoCargo($_POST['codigoCargo']);
                 $cargo->setDescripcion($_POST['descripcion']);                            
                 $resultado = $cargo->consultar();
-
                 $numeroRegistros = $cargo->conn->ObtenerNumeroRegistros();
                 if($numeroRegistros === 1){
                     if ($rowBuscar = $cargo->conn->ObtenerObjeto()){
                         $respuesta['id'] = $rowBuscar->id_cargo;
-                        $respuesta['codigoCargo'] = $rowBuscar->codigo_cargo;
                         $respuesta['descripcion'] = $rowBuscar->descripcion;
-                        $respuesta['estado'] = $rowBuscar->estado == 1 ? 'Activo':'Inactivo';
+                        $respuesta['estado'] = $rowBuscar->estado;
                         $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_cargo.")'>";
                     }
                 }else{
@@ -74,9 +69,8 @@ if (isset ($accion)){
                         $retorno="<table>";
                         foreach($cargo->conn->ObtenerRegistros() AS $rowConsulta){
                             $retorno .= "<tr>                                          
-                                        <td><label>".$rowConsulta[1]."</label></td>                                             
-                                        <td><label>".$rowConsulta[2]."</label></td>                                        
-                                        <td><label>".($rowConsulta[3]== 1 ? 'Activo':'Inactivo')."</label></td>                                                                                              
+                                        <td><label>".$rowConsulta[1]."</label></td>
+                                        <td><label>".($rowConsulta[2]== 1 ? 'Activo':'Inactivo')."</label></td>
                                         <td align='center'><a href='#' class='btn btn-warning'><i class='fas fa-edit' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></i></a></td>
                                         <td align='center'><a href='#' class='btn btn-danger'><i class='fas fa-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></i></a></td>                                         
                                        

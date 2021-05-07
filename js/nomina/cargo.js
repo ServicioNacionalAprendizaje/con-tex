@@ -4,7 +4,6 @@ function Enviar(accion,id){
     }
     var parametros = {
         "id" : id,
-        "codigoCargo":$('#numCodigo').val(),
         "descripcion":$('#txtDescripcion').val(),       
         "estado":$('#cmbEstado').val(),
         "accion" : accion
@@ -22,6 +21,7 @@ function Enviar(accion,id){
                 //Respueta adicionar
                 if(respuesta['accion']=='ADICIONAR'){
                     alert(respuesta['respuesta']);
+                    Limpiar();
                 }
                 
                 //Respuesta muchos registros
@@ -31,17 +31,18 @@ function Enviar(accion,id){
                 }
 
                 //Respuesta un registro
-                if(respuesta['accion']=='CONSULTAR'){
+                if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']==1){
                     $('#hidIdCargo').val(respuesta['id']);
-                    $('#numCodigo').val(respuesta['codigoCargo']);
                     $('#txtDescripcion').val(respuesta['descripcion']);
-                    $('#cmbEstado').val(respuesta['estado'] == 'Activo' ? 1 : ('Inactivo' ? 0 : ''));
+                    $('#cmbEstado').val(respuesta['estado']);
+                    // $('#cmbEstado').val(respuesta['estado'] == 'Activo' ? 1 : ('Inactivo' ? 0 : ''));
                     $('#divEliminar').html(respuesta['eliminar']);
                 }
 
                 //Respuesta modificar
                 if(respuesta['accion']=='MODIFICAR'){
                     alert(respuesta['respuesta']);
+                    Limpiar();
                 }
                 
                 //Respuesta eliminar
@@ -53,7 +54,7 @@ function Enviar(accion,id){
 }
 
 function Limpiar() {
-    document.getElementById('numCodigo').value = '';
+    document.getElementById('hidIdCargo').value = '';
     document.getElementById('txtDescripcion').value = '';
     document.getElementById('cmbEstado').value = '';
 }

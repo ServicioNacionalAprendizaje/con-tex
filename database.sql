@@ -22,15 +22,14 @@ USE `contex`;
 DROP TABLE IF EXISTS `cargo`;
 
 CREATE TABLE `cargo` (
-  `id_cargo` int(11) NOT NULL AUTO_INCREMENT,
-  `codigo_cargo` int(11) NOT NULL,
-  `descripcion` varchar(50) DEFAULT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
-  PRIMARY KEY (`id_cargo`)
+  `id_cargo` int(11) NOT NULL AUTO_INCREMENT
+  ,`descripcion` varchar(50) DEFAULT NULL
+  ,`estado` enum('0','1') NOT NULL
+  ,`fecha_creacion` datetime NOT NULL
+  ,`fecha_modificacion` datetime NOT NULL
+  ,`id_usuario_creacion` int(11) NOT NULL
+  ,`id_usuario_modificacion` int(11) NOT NULL
+  ,PRIMARY KEY (`id_cargo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `cargo` */
@@ -718,28 +717,23 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_cargo`(IN codigoCargo INT(11),
-					IN descripcion VARCHAR(50),
-					IN estado ENUM('0','1'),
-                    IN idUsuarioCreacion INT(11),
-                    IN idUsuarioModificacion INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_cargo`(IN descripcion VARCHAR(50)
+																	,IN estado ENUM('0','1')
+																	,IN idUsuarioCreacion INT(11)
+																	,IN idUsuarioModificacion INT(11))
 BEGIN
-	INSERT INTO cargo(
-					codigo_cargo,
-                    descripcion,
-                    estado,
-                    fecha_creacion,
-                    fecha_modificacion,
-                    id_usuario_creacion,
-                    id_usuario_modificacion) 
-			VALUES (
-				codigoCargo,
-                descripcion,
-				estado,
-				CURDATE(),
-				CURDATE(),
-				idUsuarioCreacion,
-				idUsuarioModificacion);
+	INSERT INTO cargo(descripcion
+					,estado
+                    ,fecha_creacion
+                    ,fecha_modificacion
+                    ,id_usuario_creacion
+                    ,id_usuario_modificacion) 
+				VALUES (descripcion
+                        ,estado
+                        ,CURDATE()
+                        ,CURDATE()
+                        ,idUsuarioCreacion
+                        ,idUsuarioModificacion);
 END */$$
 DELIMITER ;
 
@@ -967,21 +961,64 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_cargo`(IN codigoCargo INT(11),
-					IN descripcion VARCHAR(50),
-					IN estado ENUM('0','1'),
-                    IN idUsuarioModificacion INT(11),
-                    IN idCargo INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_cargo`(IN descripcion VARCHAR(50)
+																		,IN estado ENUM('0','1')
+                                                                        ,IN idUsuarioModificacion INT(11)
+                                                                        ,IN idCargo INT(11))
 BEGIN
 	UPDATE cargo 
-    SET codigo_cargo = codigoCargo,
-		descripcion = descripcion,
-		estado = estado,
-		fecha_modificacion = NOW(),
-		id_usuario_modificacion = idUsuarioModificacion 
+    SET descripcion = descripcion
+        ,estado = estado
+        ,fecha_modificacion = NOW()
+        ,id_usuario_modificacion = idUsuarioModificacion 
 	WHERE id_cargo = idCargo;
 END */$$
 DELIMITER ;
+
+INSERT INTO `cargo`(`id_cargo`
+					,`descripcion`
+					,`estado`
+					,`fecha_creacion`
+					,`fecha_modificacion`
+					,`id_usuario_creacion`
+					,`id_usuario_modificacion`
+                    ) 
+VALUES ('1'
+		,'Administrador'
+		,'1'
+		,'2021-04-05 08:00:00'
+		,'2021-04-05 08:00:00'
+		,1
+		,1
+        ),('2'
+		,'Contador'
+		,'1'
+		,'2021-04-05 08:01:00'
+		,'2021-04-05 08:01:00'
+		,1
+		,1
+        ),('3'
+		,'Vendedor'
+		,'1'
+		,'2021-04-05 08:02:00'
+		,'2021-04-05 08:02:00'
+		,1
+		,1
+        ),('4'
+		,'Operario'
+		,'0'
+		,'2021-04-05 08:03:00'
+		,'2021-04-05 08:03:00'
+		,1
+		,1
+        ),('5'
+		,'Bodeguero'
+		,'0'
+		,'2021-04-05 08:04:00'
+		,'2021-04-05 08:04:00'
+		,1
+		,1
+        );
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

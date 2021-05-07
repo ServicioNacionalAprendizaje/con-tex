@@ -36,6 +36,8 @@ CREATE TABLE `cargo` (
 
 LOCK TABLES `cargo` WRITE;
 
+insert  into `cargo`(`id_cargo`,`codigo_cargo`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,10,'Admin','1','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1);
+
 UNLOCK TABLES;
 
 /*Table structure for table `cliente` */
@@ -99,7 +101,7 @@ CREATE TABLE `empleado` (
   `id_empleado` int(11) NOT NULL AUTO_INCREMENT,
   `id_cargo` int(11) NOT NULL,
   `correo_institucional` varchar(50) NOT NULL,
-  `fecha_ingreso` datetime NOT NULL,
+  `fecha_ingreso` date NOT NULL,
   `arl` varchar(20) NOT NULL,
   `salud` varchar(20) NOT NULL,
   `pension` varchar(20) NOT NULL,
@@ -114,11 +116,13 @@ CREATE TABLE `empleado` (
   KEY `id_cargo` (`id_cargo`),
   CONSTRAINT `empleado_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`),
   CONSTRAINT `empleado_ibfk_2` FOREIGN KEY (`id_cargo`) REFERENCES `cargo` (`id_cargo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `empleado` */
 
 LOCK TABLES `empleado` WRITE;
+
+insert  into `empleado`(`id_empleado`,`id_cargo`,`correo_institucional`,`fecha_ingreso`,`arl`,`salud`,`pension`,`id_persona`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,1,'ariel52','2021-05-19','Equidad Seguros','Comfamiliar','Porvenir',3,'0','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1),(2,1,'ariel5252','2021-05-09','Equidad Seguros','Comfamiliar','Porvenir',3,'1','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1),(4,1,'dfhsajkfgsa','2021-07-09','Equidad Seguros','Sanitas','Proteccion',3,'0','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1);
 
 UNLOCK TABLES;
 
@@ -273,7 +277,7 @@ CREATE TABLE `persona` (
 
 LOCK TABLES `persona` WRITE;
 
-insert  into `persona`(`id_persona`,`nombre`,`apellido`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (2,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',0,0),(3,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',0,0),(4,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),(5,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),(6,'Jesus','Gonzalez',29,'M','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),(7,'Jesus','Gonzalez',29,'M','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1);
+insert  into `persona`(`id_persona`,`nombre`,`apellido`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (2,'Yesica','Gonzalez',26,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',0,0),(3,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',0,0),(4,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),(5,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),(6,'Jesus','Gonzalez',29,'M','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1);
 
 UNLOCK TABLES;
 
@@ -402,48 +406,83 @@ LOCK TABLES `usuario_rol` WRITE;
 
 UNLOCK TABLES;
 
-/* Procedure structure for procedure `Agregar_empleado` */
+/* Procedure structure for procedure `Agregar_cargo` */
 
-/*!50003 DROP PROCEDURE IF EXISTS  `Agregar_empleado` */;
+/*!50003 DROP PROCEDURE IF EXISTS  `Agregar_cargo` */;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_empleado`(IN idCargo INT(11),
-					IN correoInstitucional VARCHAR(50),
-                    IN fechaIngreso DATETIME,
-                    IN arl VARCHAR(20),
-                    IN salud VARCHAR(20),
-                    IN pension VARCHAR(20),
-					IN idPersona INT(11),
-                    IN estado enum('0','1'),
-                    IN idUsuarioCreacion INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_cargo`(IN codigoCargo INT(11),
+					IN descripcion VARCHAR(50),
+					IN estado ENUM('0','1'),
+                    IN idUsuarioCreacion INT(11),
+                    IN idUsuarioModificacion INT(11))
 BEGIN
-	INSERT INTO empleado(
-					id_cargo,
-                    correo_institucional,
-                    fecha_ingreso,
-                    arl,
-                    salud,
-                    pension,
-                    id_persona,
+	INSERT INTO cargo(
+					codigo_cargo,
+                    descripcion,
                     estado,
                     fecha_creacion,
                     fecha_modificacion,
                     id_usuario_creacion,
                     id_usuario_modificacion) 
 			VALUES (
-				idCargo,
-                correoInstitucional,
-				fechaIngreso,
-				arl,
-                salud,
-                pension,
-				idPersona,
+				codigoCargo,
+                descripcion,
 				estado,
-        CURDATE(),
-        CURDATE(),
-        idUsuarioCreacion,
-        idUsuarioCreacion);
+				CURDATE(),
+				CURDATE(),
+				idUsuarioCreacion,
+				idUsuarioModificacion);
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `Agregar_empleado` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Agregar_empleado` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_empleado`(
+						IN idCargo INT(11)
+						,IN correoInstitucional VARCHAR(50)
+						,IN fechaIngreso DATE
+						,IN arl VARCHAR(20)
+						,IN salud VARCHAR(20)
+						,IN pension VARCHAR(20)
+						,IN idPersona INT(11)
+						,iN estado enum('0','1')
+						,IN idUsuarioCreacion INT(11)
+					)
+BEGIN
+	INSERT INTO empleado(
+		id_cargo
+		,correo_institucional
+		,fecha_ingreso
+		,arl
+		,salud
+		,pension
+		,id_persona
+		,estado
+		,fecha_creacion
+		,fecha_modificacion
+		,id_usuario_creacion
+		,id_usuario_modificacion
+	) 
+VALUES(
+		idCargo
+		,correoInstitucional
+		,fechaIngreso
+		,arl
+		,salud
+		,pension
+		,idPersona
+		,estado
+		,CURDATE()
+		,CURDATE()
+		,idUsuarioCreacion
+		,idUsuarioCreacion
+	);
 END */$$
 DELIMITER ;
 
@@ -711,9 +750,9 @@ BEGIN
 END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `Agregar_cargo` */
+/* Procedure structure for procedure `Modificar_cargo` */
 
-/*!50003 DROP PROCEDURE IF EXISTS  `Agregar_cargo` */;
+/*!50003 DROP PROCEDURE IF EXISTS  `Modificar_cargo` */;
 
 DELIMITER $$
 
@@ -743,16 +782,18 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_empleado`(IN idCargo INT(11),
-					IN correoInstitucional VARCHAR(50),
-                    IN fechaIngreso DATETIME,
-                    IN arl ENUM('ARL1','ARL2','ARL3'),
-                    IN salud ENUM('salud1','salud2','salud3'),
-                    IN pension ENUM('pension1','pension2','pension3'),
-					IN idPersona INT(11),
-                    IN estado enum('0','1'),
-                    IN idUsuarioModificacion INT(11),
-                    IN idEmpleado INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_empleado`(
+		IN idCargo INT(11)
+		,IN correoInstitucional VARCHAR(50)
+		,IN fechaIngreso DATETIME
+		,IN arl VARCHAR (20)
+		,IN salud VARCHAR (20)
+		,IN pension VARCHAR (20)
+		,IN idPersona INT(11)
+		,IN estado enum('0','1')
+		,IN idUsuarioModificacion INT(11)
+		,IN idEmpleado INT(11)
+		)
 BEGIN
 	UPDATE empleado 
     SET id_cargo = idCargo,

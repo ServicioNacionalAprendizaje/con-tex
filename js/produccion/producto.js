@@ -33,7 +33,9 @@ function Enviar(accion,id){
 
                 //Respuesta un registro
                 if(respuesta['accion']=='CONSULTAR'){
-                    $('#hidIdRol').val(respuesta['id']);
+                    $('#hidIdProducto').val(respuesta['id']);
+                    $('#txtCategoria').val(respuesta['categoria']);
+                    $('#txtTalla').val(respuesta['talla']);
                     $('#txtDescripcion').val(respuesta['descripcion']);
                     $('#cmbEstado').html(respuesta['estado']);
                     $('#divEliminar').html(respuesta['eliminar']);

@@ -1,8 +1,10 @@
 <?php
 
-class Rol
+class Producto
 {
-    private $idRol;
+    private $idProducto;
+    private $idCategoria
+    private $talla;
     private $descripcion;
     private $estado;
     private $fechaCreacion;
@@ -11,13 +13,23 @@ class Rol
     private $idUsuarioModificacion;
 
     //idRol
-    public function getIdRol()
+    public function getIdProducto()
     {
-        return $this->idRol;
+        return $this->idProducto;
     }
-    public function setIdRol($idRol)
+    public function setIdProducto($idProducto)
     {
-        $this->idRol = $idRol;
+        $this->idProducto = $idProducto;
+    }
+
+    //idCategoria
+    public function getIdProducto()
+    {
+        return $this->idProducto;
+    }
+    public function setIdProducto($idProducto)
+    {
+        $this->idProducto = $idProducto;
     }
 
     //descripcion

@@ -2,7 +2,8 @@
 SQLyog Ultimate v11.11 (64 bit)
 MySQL - 5.5.5-10.4.18-MariaDB : Database - contex
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -277,7 +278,7 @@ CREATE TABLE `persona` (
 
 LOCK TABLES `persona` WRITE;
 
-insert  into `persona`(`id_persona`,`nombre`,`apellido`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (2,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',0,0),(3,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',0,0),(4,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),(5,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),(6,'Jesus','Gonzalez',29,'M','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),(7,'Jesus','Gonzalez',29,'M','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1);
+insert  into `persona`(`id_persona`,`nombre`,`apellido`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (2,'Yesica','Gonzalez',26,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',0,0),(3,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',0,0),(4,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),(5,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),(6,'Jesus','Gonzalez',29,'M','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1);
 
 UNLOCK TABLES;
 

@@ -36,7 +36,7 @@ CREATE TABLE `cargo` (
 
 LOCK TABLES `cargo` WRITE;
 
-insert  into `cargo`(`id_cargo`,`codigo_cargo`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,10,'Admin','1','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1);
+-- insert  into `cargo`(`id_cargo`,`codigo_cargo`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,10,'Admin','1','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1);
 
 UNLOCK TABLES;
 
@@ -405,37 +405,6 @@ CREATE TABLE `usuario_rol` (
 LOCK TABLES `usuario_rol` WRITE;
 
 UNLOCK TABLES;
-
-/* Procedure structure for procedure `Agregar_cargo` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `Agregar_cargo` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_cargo`(IN codigoCargo INT(11),
-					IN descripcion VARCHAR(50),
-					IN estado ENUM('0','1'),
-                    IN idUsuarioCreacion INT(11),
-                    IN idUsuarioModificacion INT(11))
-BEGIN
-	INSERT INTO cargo(
-					codigo_cargo,
-                    descripcion,
-                    estado,
-                    fecha_creacion,
-                    fecha_modificacion,
-                    id_usuario_creacion,
-                    id_usuario_modificacion) 
-			VALUES (
-				codigoCargo,
-                descripcion,
-				estado,
-				CURDATE(),
-				CURDATE(),
-				idUsuarioCreacion,
-				idUsuarioModificacion);
-END */$$
-DELIMITER ;
 
 /* Procedure structure for procedure `Agregar_empleado` */
 

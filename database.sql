@@ -106,6 +106,7 @@ CREATE TABLE `empleado` (
   `salud` varchar(20) NOT NULL,
   `pension` varchar(20) NOT NULL,
   `id_persona` int(11) NOT NULL,
+  `sueldo_basico` double,
   `estado` enum('0','1') NOT NULL,
   `fecha_creacion` datetime NOT NULL,
   `fecha_modificacion` datetime NOT NULL,
@@ -122,7 +123,7 @@ CREATE TABLE `empleado` (
 
 LOCK TABLES `empleado` WRITE;
 
-insert  into `empleado`(`id_empleado`,`id_cargo`,`correo_institucional`,`fecha_ingreso`,`arl`,`salud`,`pension`,`id_persona`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,1,'ariel52','2021-05-19','Equidad Seguros','Comfamiliar','Porvenir',3,'0','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1),(2,1,'ariel5252','2021-05-09','Equidad Seguros','Comfamiliar','Porvenir',3,'1','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1),(4,1,'dfhsajkfgsa','2021-07-09','Equidad Seguros','Sanitas','Proteccion',3,'0','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1);
+insert  into `empleado`(`id_empleado`,`id_cargo`,`correo_institucional`,`fecha_ingreso`,`arl`,`salud`,`pension`,`id_persona`,`sueldo_basico`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,1,'Correo','2021-05-19','Equidad Seguros','Comfamiliar','Porvenir',3,'500000','0','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1),(2,1,'Gmail','2021-05-09','Equidad Seguros','Comfamiliar','Porvenir',3,'700000','1','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1),(4,1,'Outlook','2021-07-09','Equidad Seguros','Sanitas','Proteccion',3,'900000','0','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1);
 
 UNLOCK TABLES;
 
@@ -420,6 +421,7 @@ DELIMITER $$
 						,IN salud VARCHAR(20)
 						,IN pension VARCHAR(20)
 						,IN idPersona INT(11)
+            ,IN sueldoBasico double
 						,iN estado enum('0','1')
 						,IN idUsuarioCreacion INT(11)
 					)
@@ -432,12 +434,13 @@ BEGIN
 		,salud
 		,pension
 		,id_persona
+    ,sueldo_basico
 		,estado
 		,fecha_creacion
 		,fecha_modificacion
 		,id_usuario_creacion
 		,id_usuario_modificacion
-	) 
+	)
 VALUES(
 		idCargo
 		,correoInstitucional
@@ -446,6 +449,7 @@ VALUES(
 		,salud
 		,pension
 		,idPersona
+    ,sueldoBasico
 		,estado
 		,CURDATE()
 		,CURDATE()
@@ -759,6 +763,7 @@ DELIMITER $$
 		,IN salud VARCHAR (20)
 		,IN pension VARCHAR (20)
 		,IN idPersona INT(11)
+    ,IN sueldoBasico double
 		,IN estado enum('0','1')
 		,IN idUsuarioModificacion INT(11)
 		,IN idEmpleado INT(11)
@@ -769,12 +774,13 @@ BEGIN
 		correo_institucional = correoInstitucional,
 		fecha_ingreso = fechaIngreso,
 		arl = arl,
-        salud = salud,
-        pension = pension,
+    salud = salud,	
+    pension = pension,
 		id_persona = idPersona,
-        estado = estado,
-        fecha_modificacion = CURDATE(),
-        id_usuario_modificacion = idUsuarioModificacion 
+    sueldo_basico = sueldoBasico,
+    estado = estado,
+    fecha_modificacion = CURDATE(),
+    id_usuario_modificacion = idUsuarioModificacion 
 	WHERE id_empleado = idEmpleado;
 END */$$
 DELIMITER ;

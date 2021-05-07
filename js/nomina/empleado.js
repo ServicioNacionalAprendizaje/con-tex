@@ -10,7 +10,8 @@ id=$('#hidIdEmpleado').val();
         "arl":$('#cmbArl').val(), 
         "salud":$('#cmbSalud').val(), 
         "pension":$('#cmbPension').val(),
-        "idPersona":$('#hidIdPersona').val(),     
+        "idPersona":$('#hidIdPersona').val(),  
+        "sueldoBasico":$('#numSueldoBasico').val(),   
         "estado":$('#cmbEstado').val(),
         "accion" : accion
     }; 
@@ -26,6 +27,7 @@ id=$('#hidIdEmpleado').val();
                 //Respueta adicionar
                 if(respuesta['accion']=='ADICIONAR'){
                     alert(respuesta['respuesta']);
+                    Limpiar();
                 }
                 
                 //Respuesta muchos registros
@@ -45,12 +47,14 @@ id=$('#hidIdEmpleado').val();
                     $('#cmbPension').val(respuesta['pension']);
                     $('#hidIdPersona').val(respuesta['idPersona']);
                     $('#txtPersona').val(respuesta['persona']);
+                    $('#numSueldoBasico').val(respuesta['sueldoBasico']);
                     $('#cmbEstado').val(respuesta['estado']);
                     $('#divEliminar').html(respuesta['eliminar']);
                 }
                 //Respuesta modificar
                 if(respuesta['accion']=='MODIFICAR'){
                     alert(respuesta['respuesta']);
+                    Limpiar();
                 }
                 
                 //Respuesta eliminar
@@ -91,5 +95,6 @@ function Limpiar(){
     $('#cmbSalud').val("");
     $('#cmbPension').val("");
     $('#txtPersona').val("");
+    $('#numSueldoBasico').val("");
     $('#cmbEstado').val("");
 }

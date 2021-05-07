@@ -180,8 +180,23 @@ $sentenciaSql = "CALL Agregar_empleado(
     public function Consultar()
     {
         $condicion = $this->obtenerCondicion();
-        $sentenciaSql = "SELECT * 
-                            FROM empleado $condicion";
+        $sentenciaSql = "SELECT 
+                            e.id_empleado
+                            ,e.correo_institucional
+                            ,e.fecha_ingreso
+                            ,e.arl
+                            ,e.salud
+                            ,e.pension
+                            ,e.estado
+                            ,c.id_cargo
+                            ,c.descripcion
+                            ,p.id_persona
+                            ,CONCAT(p.nombre,' ',p.apellido) AS nombre
+                        FROM 
+                            empleado AS e
+                            INNER JOIN cargo AS c ON e.id_cargo = c.id_cargo
+                            INNER JOIN persona AS p ON e.id_persona = p.id_persona 
+                        $condicion";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;

@@ -181,7 +181,11 @@ class Persona
         if($this->nombre !=''){
                 $condicion=$condicion.$whereAnd." nombre LIKE '%$this->nombre%' ";
                 $whereAnd = ' AND ';
-        }        
+        }
+        if($this->apellido !=''){
+            $condicion=$condicion.$whereAnd." apellido LIKE '%$this->apellido%' ";
+            $whereAnd = ' AND ';
+    }          
         // if($this->estado!=''){
         //         if ($whereAnd == ' AND '){
         //         $condicion=$condicion.$whereAnd." seg_usu.estado = '$this->estado'";

@@ -34,15 +34,17 @@ id=$('#hidIdEmpleado').val();
                     //$('#divEliminar').html(respuesta['eliminar']).hide();
                 }
                 //Respuesta un registro
-                if(respuesta['accion']=='CONSULTAR'){
-                    $('#hidIdCargo').val(respuesta['id']);
-                    $('#txtCargo').val(respuesta['idCargo']);
+                if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']==1){                    
+                    $('#hidIdEmpleado').val(respuesta['id']);
+                    $('#hidIdCargo').val(respuesta['idCargo']);
+                    $('#txtCargo').val(respuesta['cargo']);
                     $('#txtCorreoInstitucional').val(respuesta['correoInstitucional']);
                     $('#datFechaIngreso').val(respuesta['fechaIngreso']);
                     $('#cmbArl').val(respuesta['arl']);
                     $('#cmbSalud').val(respuesta['salud']);
                     $('#cmbPension').val(respuesta['pension']);
-                    $('#txtPersona').val(respuesta['idPersona']);
+                    $('#hidIdPersona').val(respuesta['idPersona']);
+                    $('#txtPersona').val(respuesta['persona']);
                     $('#cmbEstado').val(respuesta['estado']);
                     $('#divEliminar').html(respuesta['eliminar']);
                 }
@@ -79,6 +81,9 @@ $(function(){
 }); 
 
 function Limpiar(){
+    $('#hidIdEmpleado').val("");  
+    $('#hidIdCargo').val("");  
+    $('#hidIdPersona').val("");      
     $('#txtCargo').val("");    
     $('#txtCorreoInstitucional').val("");
     $('#datFechaIngreso').val("");

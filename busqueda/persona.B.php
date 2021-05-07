@@ -6,6 +6,7 @@ $arrPersona = array();
 $contador = 0;
 $persona = new Persona();
 $persona->setNombre($_REQUEST['term']);
+// $persona->setApellido($_REQUEST['term']);
 
 $persona->Consultar();
 $numeroRegistros = $persona->conn->obtenerNumeroRegistros();

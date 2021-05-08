@@ -68,15 +68,14 @@ class Orden{
 
     public function Agregar()
     {
-        $sentenciaSql = "CALL Agregar_orden(
-                            '$this->fechaOrden'
-                            ,'$this->fechaEntrega'
-                            ,'$this->descripcion'
-                            ,'$this->idCliente'
-                            ,'$this->idEmpleado'
-                            ,'$this->estado'
-                            ,'$this->idUsuarioCreacion'
-                            , $this->idUsuarioModificacion)";
+        $sentenciaSql = "CALL Agregar_orden($this->fechaOrden
+                                            ,$this->fechaEntrega
+                                            ,'$this->descripcion'
+                                            ,$this->idCliente
+                                            ,$this->idEmpleado
+                                            ,'$this->estado'
+                                            ,$this->idUsuarioCreacion
+                                            ,$this->idUsuarioModificacion)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -85,16 +84,14 @@ class Orden{
     
     public function Modificar()
     {
-        $sentenciaSql = "CALL Modificar_orden(
-                            '$this->fechaOrden'
-                            ,'$this->fechaEntrega'
-                            ,'$this->descripcion'
-                            ,'$this->idCliente'
-                            ,'$this->idEmpleado'
-                            ,'$this->estado'
-                            ,'$this->idUsuarioCreacion'
-                            , $this->idUsuarioModificacion
-                            , $this->idOrden)";
+        $sentenciaSql = "CALL Modificar_orden($this->fechaOrden
+                                             ,$this->fechaEntrega
+                                             ,'$this->descripcion'
+                                             ,$this->idCliente
+                                             ,$this->idEmpleado
+                                             ,'$this->estado'
+                                             ,$this->idUsuarioModificacion
+                                             ,$this->idOrden)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;

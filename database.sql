@@ -781,8 +781,8 @@ DELIMITER $$
 BEGIN
 	INSERT INTO categoria(aquiAlgo
                         ,algoMas)
-                         VALUES (campo1
-                                ,campo2);
+   VALUES (campo1
+          ,campo2);
 END */$$
 DELIMITER ;
 

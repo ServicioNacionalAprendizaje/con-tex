@@ -21,16 +21,15 @@ USE `contex`;
 
 DROP TABLE IF EXISTS `cargo`;
 
-CREATE TABLE `cargo` (
-  `id_cargo` int(11) NOT NULL AUTO_INCREMENT
-  ,`descripcion` varchar(50) DEFAULT NULL
-  ,`estado` enum('0','1') NOT NULL
-  ,`fecha_creacion` datetime NOT NULL
-  ,`fecha_modificacion` datetime NOT NULL
-  ,`id_usuario_creacion` int(11) NOT NULL
-  ,`id_usuario_modificacion` int(11) NOT NULL
-  ,PRIMARY KEY (`id_cargo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `cargo` (`id_cargo` int(11) NOT NULL AUTO_INCREMENT
+                      ,`descripcion` varchar(50) DEFAULT NULL
+                      ,`estado` enum('0','1') NOT NULL
+                      ,`fecha_creacion` datetime NOT NULL
+                      ,`fecha_modificacion` datetime NOT NULL
+                      ,`id_usuario_creacion` int(11) NOT NULL
+                      ,`id_usuario_modificacion` int(11) NOT NULL
+                      ,PRIMARY KEY (`id_cargo`)
+                      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `cargo` */
 
@@ -406,6 +405,26 @@ LOCK TABLES `usuario_rol` WRITE;
 
 UNLOCK TABLES;
 
+/*Table structure for table `categoria` */
+
+DROP TABLE IF EXISTS `categoria`;
+
+CREATE TABLE `categoria` (`id_categoria` int(11) NOT NULL AUTO_INCREMENT
+                          ,`descripcion` varchar(50) NOT NULL
+                          ,`estado` enum('0','1') NOT NULL
+                          ,`fecha_creacion` datetime NOT NULL
+                          ,`fecha_modificacion` datetime NOT NULL
+                          ,`id_usuario_creacion` int(11) NOT NULL
+                          ,`id_usuario_modificacion` int(11) NOT NULL
+                          ,PRIMARY KEY (`id_categoria`)
+                          ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `categoria` */
+
+LOCK TABLES `categoria` WRITE;
+
+UNLOCK TABLES;
+
 /* Procedure structure for procedure `Agregar_empleado` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `Agregar_empleado` */;
@@ -742,6 +761,38 @@ BEGIN
                         ,CURDATE()
                         ,idUsuarioCreacion
                         ,idUsuarioModificacion);
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `Agregar_categoria` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Agregar_categoria` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_categoria`(IN aquiAlgo VARCHAR(50)
+                                                                        ,IN algoMas VARCHAR(50))
+BEGIN
+	INSERT INTO categoria(aquiAlgo
+                        ,algoMas)
+                         VALUES (campo1
+                                ,campo2);
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `Modificar_categoria` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Modificar_categoria` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_categoria`(IN aquiAlgo VARCHAR(50)
+                                                                          ,IN algoMas VARCHAR(50))
+BEGIN
+	UPDATE categoria
+   SET aqui_algo = aquiAlgo
+        ,algo_mas = algoMas
+   WHERE id_categoria = idCategoria;
 END */$$
 DELIMITER ;
 

@@ -133,13 +133,6 @@ CREATE TABLE `empleado` (
   CONSTRAINT `empleado_ibfk_2` FOREIGN KEY (`id_cargo`) REFERENCES `cargo` (`id_cargo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
-/*Data for the table `empleado` */
-
-insert  into `empleado`(`id_empleado`,`id_cargo`,`correo_institucional`,`fecha_ingreso`,`arl`,`salud`,`pension`,`id_persona`,`sueldo_basico`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
-(1,1,'Correo','2021-05-19','Equidad Seguros','Comfamiliar','Porvenir',3,500000,'0','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1),
-(2,1,'Gmail','2021-05-09','Equidad Seguros','Comfamiliar','Porvenir',3,700000,'1','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1),
-(4,1,'Outlook','2021-07-09','Equidad Seguros','Sanitas','Proteccion',3,900000,'0','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1);
-
 /*Table structure for table `formulario` */
 
 DROP TABLE IF EXISTS `formulario`;

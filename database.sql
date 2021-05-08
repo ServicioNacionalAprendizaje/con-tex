@@ -31,15 +31,6 @@ CREATE TABLE `cargo` (
   PRIMARY KEY (`id_cargo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
-/*Data for the table `cargo` */
-
-insert  into `cargo`(`id_cargo`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
-(1,'Administrador','1','2021-04-05 08:00:00','2021-04-05 08:00:00',1,1),
-(2,'Contador','1','2021-04-05 08:01:00','2021-04-05 08:01:00',1,1),
-(3,'Vendedor','1','2021-04-05 08:02:00','2021-04-05 08:02:00',1,1),
-(4,'Operario','0','2021-04-05 08:03:00','2021-04-05 08:03:00',1,1),
-(5,'Bodeguero','0','2021-04-05 08:04:00','2021-04-05 08:04:00',1,1);
-
 /*Table structure for table `categoria` */
 
 DROP TABLE IF EXISTS `categoria`;
@@ -53,8 +44,6 @@ CREATE TABLE `categoria` (
   `id_usuario_modificacion` int(11) NOT NULL,
   PRIMARY KEY (`id_categoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-/*Data for the table `categoria` */
 
 /*Table structure for table `cliente` */
 
@@ -72,8 +61,6 @@ CREATE TABLE `cliente` (
   KEY `id_persona` (`id_persona`),
   CONSTRAINT `fk_cliente_persona` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-/*Data for the table `cliente` */
 
 /*Table structure for table `compra_venta` */
 
@@ -99,8 +86,6 @@ CREATE TABLE `compra_venta` (
   CONSTRAINT `compra_venta_ibfk_2` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-/*Data for the table `compra_venta` */
-
 /*Table structure for table `detalle_orden` */
 
 DROP TABLE IF EXISTS `detalle_orden`;
@@ -122,8 +107,6 @@ CREATE TABLE `detalle_orden` (
   CONSTRAINT `fk_detalle_orden_orden` FOREIGN KEY (`id_orden`) REFERENCES `orden` (`id_orden`),
   CONSTRAINT `fk_detalle_orden_producto` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-/*Data for the table `detalle_orden` */
 
 /*Table structure for table `empleado` */
 
@@ -175,8 +158,6 @@ CREATE TABLE `formulario` (
   PRIMARY KEY (`id_formulario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-/*Data for the table `formulario` */
-
 /*Table structure for table `formulario_rol` */
 
 DROP TABLE IF EXISTS `formulario_rol`;
@@ -196,8 +177,6 @@ CREATE TABLE `formulario_rol` (
   CONSTRAINT `formulario_rol_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`),
   CONSTRAINT `formulario_rol_ibfk_2` FOREIGN KEY (`id_formulario`) REFERENCES `formulario` (`id_formulario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-/*Data for the table `formulario_rol` */
 
 /*Table structure for table `generar_pago` */
 
@@ -219,8 +198,6 @@ CREATE TABLE `generar_pago` (
   KEY `id_empleado` (`id_empleado`),
   CONSTRAINT `generar_pago_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-/*Data for the table `generar_pago` */
 
 /*Table structure for table `orden` */
 
@@ -245,8 +222,6 @@ CREATE TABLE `orden` (
   CONSTRAINT `orden_ibfk_2` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-/*Data for the table `orden` */
-
 /*Table structure for table `pago_dia` */
 
 DROP TABLE IF EXISTS `pago_dia`;
@@ -264,8 +239,6 @@ CREATE TABLE `pago_dia` (
   KEY `id_empleado` (`id_empleado`),
   CONSTRAINT `pago_dia_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-/*Data for the table `pago_dia` */
 
 /*Table structure for table `persona` */
 
@@ -285,15 +258,6 @@ CREATE TABLE `persona` (
   PRIMARY KEY (`id_persona`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
-/*Data for the table `persona` */
-
-insert  into `persona`(`id_persona`,`nombre`,`apellido`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
-(2,'Yesica','Gonzalez',26,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',0,0),
-(3,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',0,0),
-(4,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),
-(5,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),
-(6,'Jesus','Gonzalez',29,'M','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1);
-
 /*Table structure for table `producto` */
 
 DROP TABLE IF EXISTS `producto`;
@@ -312,8 +276,6 @@ CREATE TABLE `producto` (
   CONSTRAINT `fk_producto_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-/*Data for the table `producto` */
-
 /*Table structure for table `proveedor` */
 
 DROP TABLE IF EXISTS `proveedor`;
@@ -331,8 +293,6 @@ CREATE TABLE `proveedor` (
   CONSTRAINT `proveedor_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-/*Data for the table `proveedor` */
-
 /*Table structure for table `rol` */
 
 DROP TABLE IF EXISTS `rol`;
@@ -347,8 +307,6 @@ CREATE TABLE `rol` (
   `id_usuario_modificacion` int(11) NOT NULL,
   PRIMARY KEY (`id_rol`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-/*Data for the table `rol` */
 
 /*Table structure for table `tarea` */
 
@@ -372,8 +330,6 @@ CREATE TABLE `tarea` (
   CONSTRAINT `fk_tarea_id_empleado` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-/*Data for the table `tarea` */
-
 /*Table structure for table `tipo_pago` */
 
 DROP TABLE IF EXISTS `tipo_pago`;
@@ -388,8 +344,6 @@ CREATE TABLE `tipo_pago` (
   `id_usuario_modificacion` int(11) NOT NULL,
   PRIMARY KEY (`id_tipo_pago`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-/*Data for the table `tipo_pago` */
 
 /*Table structure for table `usuario` */
 
@@ -412,8 +366,6 @@ CREATE TABLE `usuario` (
   CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-/*Data for the table `usuario` */
-
 /*Table structure for table `usuario_rol` */
 
 DROP TABLE IF EXISTS `usuario_rol`;
@@ -433,8 +385,6 @@ CREATE TABLE `usuario_rol` (
   CONSTRAINT `usuario_rol_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
   CONSTRAINT `usuario_rol_ibfk_2` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-/*Data for the table `usuario_rol` */
 
 /* Procedure structure for procedure `Agregar_cargo` */
 

@@ -185,24 +185,23 @@ CREATE TABLE `generar_pago` (
 
 DROP TABLE IF EXISTS `orden`;
 
-CREATE TABLE `orden` (
-  `id_orden` INT(11) NOT NULL AUTO_INCREMENT,
-  `fecha_orden` DATETIME NOT NULL,
-  `fecha_entrega` DATETIME NOT NULL,
-  `descripcion` VARCHAR(100) NOT NULL,
-  `id_persona` INT(11) NOT NULL,
-  `id_empleado` INT(11) NOT NULL,
-  `estado` ENUM('0','1') NOT NULL,
-  `fecha_creacion` DATETIME NOT NULL,
-  `fecha_modificacion` DATETIME NOT NULL,
-  `id_usuario_creacion` INT(11) NOT NULL,
-  `id_usuario_modificacion` INT(11) NOT NULL,
-  PRIMARY KEY (`id_orden`),
-  KEY `id_persona` (`id_persona`),
-  KEY `id_empleado` (`id_empleado`),
-  CONSTRAINT `orden_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`),
-  CONSTRAINT `orden_ibfk_2` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
-) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `orden` (`id_orden` INT(11) NOT NULL AUTO_INCREMENT
+                     ,`fecha_orden` DATETIME NOT NULL
+                     ,`fecha_entrega` DATETIME NOT NULL
+                     ,`descripcion` VARCHAR(100) NOT NULL
+                     ,`id_persona` INT(11) NOT NULL
+                     ,`id_empleado` INT(11) NOT NULL
+                     ,`estado` ENUM('0','1') NOT NULL
+                     ,`fecha_creacion` DATETIME NOT NULL
+                     ,`fecha_modificacion` DATETIME NOT NULL
+                     ,`id_usuario_creacion` INT(11) NOT NULL
+                     ,`id_usuario_modificacion` INT(11) NOT NULL
+                     ,PRIMARY KEY (`id_orden`)
+                     ,KEY `id_persona` (`id_persona`)
+                     ,KEY `id_empleado` (`id_empleado`)
+                     ,CONSTRAINT `orden_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`)
+                     ,CONSTRAINT `orden_ibfk_2` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
+                     ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `orden` */
 
@@ -796,6 +795,74 @@ BEGIN
     ,idUsuarioCreacion
     ,idUsuarioModificacion
     );
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `Agregar_orden` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Agregar_orden` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_orden`(IN fechaOrden DATETIME
+                                                                    ,IN fechaEntrega DATETIME
+                                                                    ,IN descripcion VARCHAR(50)
+                                                                    ,IN idCliente INT(11)
+                                                                    ,IN idEmpleado INT(11)
+                                                                    ,IN estado ENUM('0','1')
+                                                                    ,IN idUsuarioCreacion INT(11)
+                                                                    ,IN idUsuarioModificacion INT(11)
+                                                                    )
+BEGIN
+	INSERT INTO orden(fecha_orden
+                   ,fecha_entrega
+                   ,descripcion
+                   ,id_cliente
+                   ,id_empleado
+                   ,estado
+                   ,fecha_creacion
+                   ,fecha_modificacion
+                   ,id_usuario_creacion
+                   ,id_usuario_modificacion
+                   ) 
+    VALUES (fechaOrden
+           ,fechaEntrega
+           ,descripcion
+           ,idCliente
+           ,idEmpleado
+           ,estado
+           ,NOW()
+           ,NOW()
+           ,idUsuarioCreacion
+           ,idUsuarioModificacion
+           );
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `Modificar_orden` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Modificar_orden` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_orden`(IN fechaOrden DATETIME
+                                                                      ,IN fechaEntrega DATETIME
+                                                                      ,IN descripcion VARCHAR(50)
+                                                                      ,IN idCliente INT(11)
+                                                                      ,IN idEmpleado INT(11)
+                                                                      ,IN estado ENUM('0','1')
+                                                                      ,IN idUsuarioModificacion INT(11)
+                                                                      )
+BEGIN
+	UPDATE orden
+   SET fecha_ordem = fechaOrden
+       ,fecha_entrega = fechaEntrega 
+       ,descripcion = descripcion
+       ,id_cliente = idCliente
+       ,id_empleado = idEmpleado
+       ,estado = estado
+       ,id_usuario_modificacion = idUsuarioModificacion
+   WHERE id_orden = idOrden;
 END */$$
 DELIMITER ;
 

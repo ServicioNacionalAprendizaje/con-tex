@@ -20,19 +20,19 @@ USE `contex`;
 
 DROP TABLE IF EXISTS `cargo`;
 
-CREATE TABLE `cargo` (`id_cargo` int(11) NOT NULL AUTO_INCREMENT
-                      ,`descripcion` varchar(50) DEFAULT NULL
-                      ,`estado` enum('0','1') NOT NULL
-                      ,`fecha_creacion` datetime NOT NULL
-                      ,`fecha_modificacion` datetime NOT NULL
-                      ,`id_usuario_creacion` int(11) NOT NULL
-                      ,`id_usuario_modificacion` int(11) NOT NULL
+CREATE TABLE `cargo` (`id_cargo` INT(11) NOT NULL AUTO_INCREMENT
+                      ,`descripcion` VARCHAR(50) DEFAULT NULL
+                      ,`estado` ENUM('0','1') NOT NULL
+                      ,`fecha_creacion` DATETIME NOT NULL
+                      ,`fecha_modificacion` DATETIME NOT NULL
+                      ,`id_usuario_creacion` INT(11) NOT NULL
+                      ,`id_usuario_modificacion` INT(11) NOT NULL
                       ,PRIMARY KEY (`id_cargo`)
-                      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                      ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `cargo` */
 
-insert  into `cargo`(`id_cargo`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+INSERT  INTO `cargo`(`id_cargo`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES 
 (1,'Administrador','1','2021-04-05 08:00:00','2021-04-05 08:00:00',1,1),
 (2,'Contador','1','2021-04-05 08:01:00','2021-04-05 08:01:00',1,1),
 (3,'Vendedor','1','2021-04-05 08:02:00','2021-04-05 08:02:00',1,1),
@@ -44,17 +44,17 @@ insert  into `cargo`(`id_cargo`,`descripcion`,`estado`,`fecha_creacion`,`fecha_m
 DROP TABLE IF EXISTS `cliente`;
 
 CREATE TABLE `cliente` (
-  `id_cliente` int(11) NOT NULL AUTO_INCREMENT,
-  `id_persona` int(11) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
+  `id_cliente` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_persona` INT(11) NOT NULL,
+  `estado` ENUM('0','1') NOT NULL,
+  `fecha_creacion` DATETIME NOT NULL,
+  `fecha_modificacion` DATETIME NOT NULL,
+  `id_usuario_creacion` INT(11) NOT NULL,
+  `id_usuario_modificacion` INT(11) NOT NULL,
   PRIMARY KEY (`id_cliente`),
   KEY `id_persona` (`id_persona`),
   CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `cliente` */
 
@@ -63,24 +63,24 @@ CREATE TABLE `cliente` (
 DROP TABLE IF EXISTS `compra_venta`;
 
 CREATE TABLE `compra_venta` (
-  `id_compra_venta` int(11) NOT NULL AUTO_INCREMENT,
-  `control` enum('Compra','Venta','Cotizacion') NOT NULL,
-  `fecha` datetime NOT NULL,
-  `descuento` double DEFAULT NULL,
-  `valor` double NOT NULL,
-  `id_cliente` int(11) NOT NULL,
-  `id_proveedor` int(11) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
+  `id_compra_venta` INT(11) NOT NULL AUTO_INCREMENT,
+  `control` ENUM('Compra','Venta','Cotizacion') NOT NULL,
+  `fecha` DATETIME NOT NULL,
+  `descuento` DOUBLE DEFAULT NULL,
+  `valor` DOUBLE NOT NULL,
+  `id_cliente` INT(11) NOT NULL,
+  `id_proveedor` INT(11) NOT NULL,
+  `estado` ENUM('0','1') NOT NULL,
+  `fecha_creacion` DATETIME NOT NULL,
+  `fecha_modificacion` DATETIME NOT NULL,
+  `id_usuario_creacion` INT(11) NOT NULL,
+  `id_usuario_modificacion` INT(11) NOT NULL,
   PRIMARY KEY (`id_compra_venta`),
   KEY `id_cliente` (`id_cliente`),
   KEY `id_proveedor` (`id_proveedor`),
   CONSTRAINT `compra_venta_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`),
   CONSTRAINT `compra_venta_ibfk_2` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `compra_venta` */
 
@@ -89,30 +89,30 @@ CREATE TABLE `compra_venta` (
 DROP TABLE IF EXISTS `empleado`;
 
 CREATE TABLE `empleado` (
-  `id_empleado` int(11) NOT NULL AUTO_INCREMENT,
-  `id_cargo` int(11) NOT NULL,
-  `correo_institucional` varchar(50) NOT NULL,
-  `fecha_ingreso` date NOT NULL,
-  `arl` varchar(20) NOT NULL,
-  `salud` varchar(20) NOT NULL,
-  `pension` varchar(20) NOT NULL,
-  `id_persona` int(11) NOT NULL,
-  `sueldo_basico` double DEFAULT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
+  `id_empleado` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_cargo` INT(11) NOT NULL,
+  `correo_institucional` VARCHAR(50) NOT NULL,
+  `fecha_ingreso` DATE NOT NULL,
+  `arl` VARCHAR(20) NOT NULL,
+  `salud` VARCHAR(20) NOT NULL,
+  `pension` VARCHAR(20) NOT NULL,
+  `id_persona` INT(11) NOT NULL,
+  `sueldo_basico` DOUBLE DEFAULT NULL,
+  `estado` ENUM('0','1') NOT NULL,
+  `fecha_creacion` DATETIME NOT NULL,
+  `fecha_modificacion` DATETIME NOT NULL,
+  `id_usuario_creacion` INT(11) NOT NULL,
+  `id_usuario_modificacion` INT(11) NOT NULL,
   PRIMARY KEY (`id_empleado`),
   KEY `id_persona` (`id_persona`),
   KEY `id_cargo` (`id_cargo`),
   CONSTRAINT `empleado_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`),
   CONSTRAINT `empleado_ibfk_2` FOREIGN KEY (`id_cargo`) REFERENCES `cargo` (`id_cargo`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=INNODB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `empleado` */
 
-insert  into `empleado`(`id_empleado`,`id_cargo`,`correo_institucional`,`fecha_ingreso`,`arl`,`salud`,`pension`,`id_persona`,`sueldo_basico`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+INSERT  INTO `empleado`(`id_empleado`,`id_cargo`,`correo_institucional`,`fecha_ingreso`,`arl`,`salud`,`pension`,`id_persona`,`sueldo_basico`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES 
 (1,1,'Correo','2021-05-19','Equidad Seguros','Comfamiliar','Porvenir',3,500000,'0','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1),
 (2,1,'Gmail','2021-05-09','Equidad Seguros','Comfamiliar','Porvenir',3,700000,'1','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1),
 (4,1,'Outlook','2021-07-09','Equidad Seguros','Sanitas','Proteccion',3,900000,'0','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1);
@@ -122,17 +122,17 @@ insert  into `empleado`(`id_empleado`,`id_cargo`,`correo_institucional`,`fecha_i
 DROP TABLE IF EXISTS `formulario`;
 
 CREATE TABLE `formulario` (
-  `id_formulario` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(50) NOT NULL,
-  `etiqueta` varchar(30) NOT NULL,
-  `ubicacion` varchar(100) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
+  `id_formulario` INT(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` VARCHAR(50) NOT NULL,
+  `etiqueta` VARCHAR(30) NOT NULL,
+  `ubicacion` VARCHAR(100) NOT NULL,
+  `estado` ENUM('0','1') NOT NULL,
+  `fecha_creacion` DATETIME NOT NULL,
+  `fecha_modificacion` DATETIME NOT NULL,
+  `id_usuario_creacion` INT(11) NOT NULL,
+  `id_usuario_modificacion` INT(11) NOT NULL,
   PRIMARY KEY (`id_formulario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `formulario` */
 
@@ -141,20 +141,20 @@ CREATE TABLE `formulario` (
 DROP TABLE IF EXISTS `formulario_rol`;
 
 CREATE TABLE `formulario_rol` (
-  `id_formulario_rol` int(11) NOT NULL AUTO_INCREMENT,
-  `id_rol` int(11) NOT NULL,
-  `id_formulario` int(11) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
+  `id_formulario_rol` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_rol` INT(11) NOT NULL,
+  `id_formulario` INT(11) NOT NULL,
+  `estado` ENUM('0','1') NOT NULL,
+  `fecha_creacion` DATETIME NOT NULL,
+  `fecha_modificacion` DATETIME NOT NULL,
+  `id_usuario_creacion` INT(11) NOT NULL,
+  `id_usuario_modificacion` INT(11) NOT NULL,
   PRIMARY KEY (`id_formulario_rol`),
   KEY `id_rol` (`id_rol`),
   KEY `id_formulario` (`id_formulario`),
   CONSTRAINT `formulario_rol_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`),
   CONSTRAINT `formulario_rol_ibfk_2` FOREIGN KEY (`id_formulario`) REFERENCES `formulario` (`id_formulario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `formulario_rol` */
 
@@ -163,21 +163,21 @@ CREATE TABLE `formulario_rol` (
 DROP TABLE IF EXISTS `generar_pago`;
 
 CREATE TABLE `generar_pago` (
-  `id_generar_pago` int(11) NOT NULL AUTO_INCREMENT,
-  `valor_pago` double NOT NULL,
-  `deduccion` double NOT NULL,
-  `fecha_inicio` datetime NOT NULL,
-  `fecha_fin` datetime NOT NULL,
-  `id_empleado` int(11) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
+  `id_generar_pago` INT(11) NOT NULL AUTO_INCREMENT,
+  `valor_pago` DOUBLE NOT NULL,
+  `deduccion` DOUBLE NOT NULL,
+  `fecha_inicio` DATETIME NOT NULL,
+  `fecha_fin` DATETIME NOT NULL,
+  `id_empleado` INT(11) NOT NULL,
+  `estado` ENUM('0','1') NOT NULL,
+  `fecha_creacion` DATETIME NOT NULL,
+  `fecha_modificacion` DATETIME NOT NULL,
+  `id_usuario_creacion` INT(11) NOT NULL,
+  `id_usuario_modificacion` INT(11) NOT NULL,
   PRIMARY KEY (`id_generar_pago`),
   KEY `id_empleado` (`id_empleado`),
   CONSTRAINT `generar_pago_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `generar_pago` */
 
@@ -186,23 +186,23 @@ CREATE TABLE `generar_pago` (
 DROP TABLE IF EXISTS `orden`;
 
 CREATE TABLE `orden` (
-  `id_orden` int(11) NOT NULL AUTO_INCREMENT,
-  `fecha_orden` datetime NOT NULL,
-  `fecha_entrega` datetime NOT NULL,
-  `descripcion` varchar(100) NOT NULL,
-  `id_persona` int(11) NOT NULL,
-  `id_empleado` int(11) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
+  `id_orden` INT(11) NOT NULL AUTO_INCREMENT,
+  `fecha_orden` DATETIME NOT NULL,
+  `fecha_entrega` DATETIME NOT NULL,
+  `descripcion` VARCHAR(100) NOT NULL,
+  `id_persona` INT(11) NOT NULL,
+  `id_empleado` INT(11) NOT NULL,
+  `estado` ENUM('0','1') NOT NULL,
+  `fecha_creacion` DATETIME NOT NULL,
+  `fecha_modificacion` DATETIME NOT NULL,
+  `id_usuario_creacion` INT(11) NOT NULL,
+  `id_usuario_modificacion` INT(11) NOT NULL,
   PRIMARY KEY (`id_orden`),
   KEY `id_persona` (`id_persona`),
   KEY `id_empleado` (`id_empleado`),
   CONSTRAINT `orden_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`),
   CONSTRAINT `orden_ibfk_2` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `orden` */
 
@@ -211,18 +211,18 @@ CREATE TABLE `orden` (
 DROP TABLE IF EXISTS `pago_dia`;
 
 CREATE TABLE `pago_dia` (
-  `id_pago_dia` int(11) NOT NULL AUTO_INCREMENT,
-  `id_empleado` int(11) NOT NULL,
-  `pago_dia` double NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
+  `id_pago_dia` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_empleado` INT(11) NOT NULL,
+  `pago_dia` DOUBLE NOT NULL,
+  `estado` ENUM('0','1') NOT NULL,
+  `fecha_creacion` DATETIME NOT NULL,
+  `fecha_modificacion` DATETIME NOT NULL,
+  `id_usuario_creacion` INT(11) NOT NULL,
+  `id_usuario_modificacion` INT(11) NOT NULL,
   PRIMARY KEY (`id_pago_dia`),
   KEY `id_empleado` (`id_empleado`),
   CONSTRAINT `pago_dia_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `pago_dia` */
 
@@ -231,22 +231,22 @@ CREATE TABLE `pago_dia` (
 DROP TABLE IF EXISTS `persona`;
 
 CREATE TABLE `persona` (
-  `id_persona` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) NOT NULL,
-  `apellido` varchar(100) NOT NULL,
-  `edad` int(11) NOT NULL,
-  `genero` enum('M','F') NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
+  `id_persona` INT(11) NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(100) NOT NULL,
+  `apellido` VARCHAR(100) NOT NULL,
+  `edad` INT(11) NOT NULL,
+  `genero` ENUM('M','F') NOT NULL,
+  `estado` ENUM('0','1') NOT NULL,
+  `fecha_creacion` DATETIME NOT NULL,
+  `fecha_modificacion` DATETIME NOT NULL,
+  `id_usuario_creacion` INT(11) NOT NULL,
+  `id_usuario_modificacion` INT(11) NOT NULL,
   PRIMARY KEY (`id_persona`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+) ENGINE=INNODB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `persona` */
 
-insert  into `persona`(`id_persona`,`nombre`,`apellido`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+INSERT  INTO `persona`(`id_persona`,`nombre`,`apellido`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES 
 (2,'Yesica','Gonzalez',26,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',0,0),
 (3,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',0,0),
 (4,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),
@@ -258,17 +258,17 @@ insert  into `persona`(`id_persona`,`nombre`,`apellido`,`edad`,`genero`,`estado`
 DROP TABLE IF EXISTS `proveedor`;
 
 CREATE TABLE `proveedor` (
-  `id_proveedor` int(11) NOT NULL AUTO_INCREMENT,
-  `id_persona` int(11) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
+  `id_proveedor` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_persona` INT(11) NOT NULL,
+  `estado` ENUM('0','1') NOT NULL,
+  `fecha_creacion` DATETIME NOT NULL,
+  `fecha_modificacion` DATETIME NOT NULL,
+  `id_usuario_creacion` INT(11) NOT NULL,
+  `id_usuario_modificacion` INT(11) NOT NULL,
   PRIMARY KEY (`id_proveedor`),
   KEY `id_persona` (`id_persona`),
   CONSTRAINT `proveedor_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `proveedor` */
 
@@ -277,15 +277,15 @@ CREATE TABLE `proveedor` (
 DROP TABLE IF EXISTS `rol`;
 
 CREATE TABLE `rol` (
-  `id_rol` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(50) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
+  `id_rol` INT(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` VARCHAR(50) NOT NULL,
+  `estado` ENUM('0','1') NOT NULL,
+  `fecha_creacion` DATETIME NOT NULL,
+  `fecha_modificacion` DATETIME NOT NULL,
+  `id_usuario_creacion` INT(11) NOT NULL,
+  `id_usuario_modificacion` INT(11) NOT NULL,
   PRIMARY KEY (`id_rol`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `rol` */
 
@@ -294,22 +294,22 @@ CREATE TABLE `rol` (
 DROP TABLE IF EXISTS `tarea`;
 
 CREATE TABLE `tarea` (
-  `id_tarea` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(100) NOT NULL,
-  `valor_unitario` double NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `fecha` datetime NOT NULL,
-  `estado_pago` enum('por pagar','pagado') NOT NULL,
-  `id_empleado` int(11) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
+  `id_tarea` INT(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` VARCHAR(100) NOT NULL,
+  `valor_unitario` DOUBLE NOT NULL,
+  `cantidad` INT(11) NOT NULL,
+  `fecha` DATETIME NOT NULL,
+  `estado_pago` ENUM('por pagar','pagado') NOT NULL,
+  `id_empleado` INT(11) NOT NULL,
+  `estado` ENUM('0','1') NOT NULL,
+  `fecha_creacion` DATETIME NOT NULL,
+  `fecha_modificacion` DATETIME NOT NULL,
+  `id_usuario_creacion` INT(11) NOT NULL,
+  `id_usuario_modificacion` INT(11) NOT NULL,
   PRIMARY KEY (`id_tarea`),
   KEY `id_empleado` (`id_empleado`),
   CONSTRAINT `tarea_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tarea` */
 
@@ -318,21 +318,21 @@ CREATE TABLE `tarea` (
 DROP TABLE IF EXISTS `usuario`;
 
 CREATE TABLE `usuario` (
-  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
-  `usuario` varchar(50) NOT NULL,
-  `contrasenia` varchar(50) NOT NULL,
-  `fecha_activacion` datetime NOT NULL,
-  `fecha_expiracion` datetime NOT NULL,
-  `id_persona` int(11) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
+  `id_usuario` INT(11) NOT NULL AUTO_INCREMENT,
+  `usuario` VARCHAR(50) NOT NULL,
+  `contrasenia` VARCHAR(50) NOT NULL,
+  `fecha_activacion` DATETIME NOT NULL,
+  `fecha_expiracion` DATETIME NOT NULL,
+  `id_persona` INT(11) NOT NULL,
+  `estado` ENUM('0','1') NOT NULL,
+  `fecha_creacion` DATETIME NOT NULL,
+  `fecha_modificacion` DATETIME NOT NULL,
+  `id_usuario_creacion` INT(11) NOT NULL,
+  `id_usuario_modificacion` INT(11) NOT NULL,
   PRIMARY KEY (`id_usuario`),
   KEY `id_persona` (`id_persona`),
   CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `usuario` */
 
@@ -341,20 +341,20 @@ CREATE TABLE `usuario` (
 DROP TABLE IF EXISTS `usuario_rol`;
 
 CREATE TABLE `usuario_rol` (
-  `id_usuario_rol` int(11) NOT NULL AUTO_INCREMENT,
-  `id_usuario` int(11) NOT NULL,
-  `id_rol` int(11) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
+  `id_usuario_rol` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` INT(11) NOT NULL,
+  `id_rol` INT(11) NOT NULL,
+  `estado` ENUM('0','1') NOT NULL,
+  `fecha_creacion` DATETIME NOT NULL,
+  `fecha_modificacion` DATETIME NOT NULL,
+  `id_usuario_creacion` INT(11) NOT NULL,
+  `id_usuario_modificacion` INT(11) NOT NULL,
   PRIMARY KEY (`id_usuario_rol`),
   KEY `id_usuario` (`id_usuario`),
   KEY `id_rol` (`id_rol`),
   CONSTRAINT `usuario_rol_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
   CONSTRAINT `usuario_rol_ibfk_2` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `usuario_rol` */
 
@@ -388,15 +388,15 @@ DELIMITER ;
 
 DROP TABLE IF EXISTS `categoria`;
 
-CREATE TABLE `categoria` (`id_categoria` int(11) NOT NULL AUTO_INCREMENT
-                          ,`descripcion` varchar(50) NOT NULL
-                          ,`estado` enum('0','1') NOT NULL
-                          ,`fecha_creacion` datetime NOT NULL
-                          ,`fecha_modificacion` datetime NOT NULL
-                          ,`id_usuario_creacion` int(11) NOT NULL
-                          ,`id_usuario_modificacion` int(11) NOT NULL
+CREATE TABLE `categoria` (`id_categoria` INT(11) NOT NULL AUTO_INCREMENT
+                          ,`descripcion` VARCHAR(50) NOT NULL
+                          ,`estado` ENUM('0','1') NOT NULL
+                          ,`fecha_creacion` DATETIME NOT NULL
+                          ,`fecha_modificacion` DATETIME NOT NULL
+                          ,`id_usuario_creacion` INT(11) NOT NULL
+                          ,`id_usuario_modificacion` INT(11) NOT NULL
                           ,PRIMARY KEY (`id_categoria`)
-                          ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                          ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `categoria` */
 
@@ -776,13 +776,26 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_categoria`(IN aquiAlgo VARCHAR(50)
-                                                                        ,IN algoMas VARCHAR(50))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_categoria`(
+          IN descripcion VARCHAR(50)
+          ,IN estado enum('0','1'))
 BEGIN
-	INSERT INTO categoria(aquiAlgo
-                        ,algoMas)
-   VALUES (campo1
-          ,campo2);
+	INSERT INTO categoria(
+    descripcion
+    ,estado
+    ,fecha_creacion
+    ,fecha_modificacion
+    ,id_usuario_creacion
+    ,id_usuario_modificacion
+    )
+   VALUES (
+     descripcion
+    ,estado
+    ,CURDATE()
+    ,CURDATE()
+    ,idUsuarioCreacion
+    ,idUsuarioModificacion
+    );
 END */$$
 DELIMITER ;
 
@@ -792,12 +805,16 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_categoria`(IN aquiAlgo VARCHAR(50)
-                                                                          ,IN algoMas VARCHAR(50))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_categoria`(
+    IN descripcion VARCHAR(50)
+   ,IN estado enum('0','1')
+   ,IN idCategoria INT
+   )
 BEGIN
 	UPDATE categoria
-   SET aqui_algo = aquiAlgo
-        ,algo_mas = algoMas
+   SET descripcion = descripcion
+   ,estado = estado
+   
    WHERE id_categoria = idCategoria;
 END */$$
 DELIMITER ;

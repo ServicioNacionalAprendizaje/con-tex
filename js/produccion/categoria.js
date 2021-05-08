@@ -4,14 +4,14 @@ function Enviar(accion,id){
     }
     var parametros = {
         "id" : id,
-        "txtDescripcion":$('#hidIdCategoria').val(),
+        "descripcion":$('#txtDescripcion').val(),
         "estado":$('#cmbEstado').val(),
         "accion" : accion
     }; 
 
     $.ajax({
             data: parametros, //datos que se van a enviar al ajax
-            url: '../../controlador/produccion/producto.M.php', //archivo php que recibe los datos
+            url: '../../controlador/produccion/categoria.C.php', //archivo php que recibe los datos
             type: 'post', //método para enviar los datos
             dataType: 'json',//Recibe el array desde php
            
@@ -31,7 +31,7 @@ function Enviar(accion,id){
                 }
 
                 //Respuesta un registro
-                if(respuesta['accion']=='CONSULTAR'){
+                if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros'] == 1){
                     $('#hidIdCategoria').val(respuesta['id']);
                     $('#txtDescripcion').val(respuesta['descripcion']);
                     $('#cmbEstado').html(respuesta['estado']);

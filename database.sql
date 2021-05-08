@@ -113,9 +113,9 @@ CREATE TABLE `empleado` (
 /*Data for the table `empleado` */
 
 INSERT  INTO `empleado`(`id_empleado`,`id_cargo`,`correo_institucional`,`fecha_ingreso`,`arl`,`salud`,`pension`,`id_persona`,`sueldo_basico`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES 
-(1,1,'Correo','2021-05-19','Equidad Seguros','Comfamiliar','Porvenir',3,500000,'0','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1),
-(2,1,'Gmail','2021-05-09','Equidad Seguros','Comfamiliar','Porvenir',3,700000,'1','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1),
-(4,1,'Outlook','2021-07-09','Equidad Seguros','Sanitas','Proteccion',3,900000,'0','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1);
+(1,1,'Correo','2021-05-19','Equidad Seguros','Comfamiliar','Porvenir',4,500000,'0','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1),
+(2,2,'Gmail','2021-05-09','Equidad Seguros','Comfamiliar','Porvenir',2,700000,'1','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1),
+(4,3,'Outlook','2021-07-09','Equidad Seguros','Sanitas','Proteccion',3,900000,'0','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1);
 
 /*Table structure for table `formulario` */
 
@@ -247,11 +247,10 @@ CREATE TABLE `persona` (
 /*Data for the table `persona` */
 
 INSERT  INTO `persona`(`id_persona`,`nombre`,`apellido`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES 
-(2,'Yesica','Gonzalez',26,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',0,0),
-(3,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',0,0),
-(4,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),
-(5,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),
-(6,'Jesus','Gonzalez',29,'M','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1);
+(2,'Yesica','Tovar',26,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',2,1),
+(3,'Alejandra','Tovar',22,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',3,0),
+(4,'Carmenza','Gonzalez',42,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),
+(5,'Costurera','SiDatos',11,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',4,0);
 
 /*Table structure for table `proveedor` */
 
@@ -778,7 +777,10 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_categoria`(
           IN descripcion VARCHAR(50)
-          ,IN estado enum('0','1'))
+          ,IN estado enum('0','1')
+          ,IN idUsuarioCreacion INT(11)
+          ,IN idUsuarioModificacion INT(11)
+          )
 BEGIN
 	INSERT INTO categoria(
     descripcion
@@ -808,7 +810,7 @@ DELIMITER $$
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_categoria`(
     IN descripcion VARCHAR(50)
    ,IN estado enum('0','1')
-   ,IN idCategoria INT
+   ,IN idCategoria INT(11)
    )
 BEGIN
 	UPDATE categoria

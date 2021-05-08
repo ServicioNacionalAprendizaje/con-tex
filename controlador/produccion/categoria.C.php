@@ -28,7 +28,8 @@ if (isset ($accion)){
                 $categoria = new Categoria();
                 $categoria->setIdCategoria($_POST['id']);
                 $categoria->setDescripcion($_POST['descripcion']);
-                $categoria->setEstado($_POST['estado']);
+                $categoria->setEstado($_POST['estado']);  
+                $categoria->setIdUsuarioModificacion(1);              
                 $resultado = $categoria->Modificar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){
@@ -54,21 +55,20 @@ if (isset ($accion)){
                 $categoria = new Categoria();
                 $categoria->setIdCategoria($_POST['id']);
                 $categoria->setDescripcion($_POST['descripcion']);
-                $categoria->setEstado($_POST['estado']);
-                $resultado = $categoria->Consultar();
+                $resultado = $categoria->consultar();
 
                 $numeroRegistros = $categoria->conn->obtenerNumeroRegistros();
                 if($numeroRegistros === 1){
                     if ($rowBuscar = $categoria->conn->obtenerObjeto()){
                         $respuesta['id'] = $rowBuscar->id_categoria;
                         $respuesta['descripcion'] = $rowBuscar->descripcion;
-                        //$respuesta['estado'] = $rowBuscar->estado == 1 ? 'Activo':'Inactivo';
-                        $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_rol.")'>";
+                        $respuesta['estado'] = $rowBuscar->estado;
+                        $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_categoria.")'>";
                      }
                 }else{
                     if(isset($resultado)){
                         $retorno="<table>";
-                        foreach($rol->conn->ObtenerRegistros() AS $rowConsulta){
+                        foreach($categoria->conn->ObtenerRegistros() AS $rowConsulta){
                             $retorno .= "<tr>
                                         <td><label>".$rowConsulta[1]."</label></td>     
                                         <td><label>".($rowConsulta[2] == 1 ? 'Activo' : 'Inactivo')."</label></td>                                           

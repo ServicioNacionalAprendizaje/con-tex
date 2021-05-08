@@ -93,9 +93,8 @@ $sentenciaSql = "CALL Agregar_categoria(
     public function Modificar()
     {
         $sentenciaSql = "CALL Modificar_categoria(
-                            ,'$this->descripcion'
+                            '$this->descripcion'
                             ,'$this->estado'
-                            ,$this->idUsuarioModificacion
                             ,$this->idCategoria)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
@@ -126,7 +125,7 @@ $sentenciaSql = "CALL Agregar_categoria(
     {
         $whereAnd = " WHERE ";
         $condicion = " ";
-        if($this->idEmpleado !=''){
+        if($this->idCategoria !=''){
             $condicion=$whereAnd.$condicion." id_categoria  = $this->idCategoria";
             $whereAnd = ' AND ';
         }

@@ -34,7 +34,7 @@ function Enviar(accion,id){
                 if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros'] == 1){
                     $('#hidIdCategoria').val(respuesta['id']);
                     $('#txtDescripcion').val(respuesta['descripcion']);
-                    $('#cmbEstado').html(respuesta['estado']);
+                    $('#cmbEstado').val(respuesta['estado']);
                     $('#divEliminar').html(respuesta['eliminar']);
                 }
 

@@ -1,9 +1,8 @@
 /*
-SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.5.5-10.4.18-MariaDB : Database - contex
+SQLyog Professional v12.5.1 (64 bit)
+MySQL - 10.4.18-MariaDB : Database - contex
 *********************************************************************
 */
-
 
 /*!40101 SET NAMES utf8 */;
 
@@ -33,11 +32,12 @@ CREATE TABLE `cargo` (`id_cargo` int(11) NOT NULL AUTO_INCREMENT
 
 /*Data for the table `cargo` */
 
-LOCK TABLES `cargo` WRITE;
-
--- insert  into `cargo`(`id_cargo`,`codigo_cargo`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,10,'Admin','1','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1);
-
-UNLOCK TABLES;
+insert  into `cargo`(`id_cargo`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+(1,'Administrador','1','2021-04-05 08:00:00','2021-04-05 08:00:00',1,1),
+(2,'Contador','1','2021-04-05 08:01:00','2021-04-05 08:01:00',1,1),
+(3,'Vendedor','1','2021-04-05 08:02:00','2021-04-05 08:02:00',1,1),
+(4,'Operario','0','2021-04-05 08:03:00','2021-04-05 08:03:00',1,1),
+(5,'Bodeguero','0','2021-04-05 08:04:00','2021-04-05 08:04:00',1,1);
 
 /*Table structure for table `cliente` */
 
@@ -57,10 +57,6 @@ CREATE TABLE `cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `cliente` */
-
-LOCK TABLES `cliente` WRITE;
-
-UNLOCK TABLES;
 
 /*Table structure for table `compra_venta` */
 
@@ -88,10 +84,6 @@ CREATE TABLE `compra_venta` (
 
 /*Data for the table `compra_venta` */
 
-LOCK TABLES `compra_venta` WRITE;
-
-UNLOCK TABLES;
-
 /*Table structure for table `empleado` */
 
 DROP TABLE IF EXISTS `empleado`;
@@ -105,6 +97,7 @@ CREATE TABLE `empleado` (
   `salud` varchar(20) NOT NULL,
   `pension` varchar(20) NOT NULL,
   `id_persona` int(11) NOT NULL,
+  `sueldo_basico` double DEFAULT NULL,
   `estado` enum('0','1') NOT NULL,
   `fecha_creacion` datetime NOT NULL,
   `fecha_modificacion` datetime NOT NULL,
@@ -119,11 +112,10 @@ CREATE TABLE `empleado` (
 
 /*Data for the table `empleado` */
 
-LOCK TABLES `empleado` WRITE;
-
-insert  into `empleado`(`id_empleado`,`id_cargo`,`correo_institucional`,`fecha_ingreso`,`arl`,`salud`,`pension`,`id_persona`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,1,'ariel52','2021-05-19','Equidad Seguros','Comfamiliar','Porvenir',3,'0','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1),(2,1,'ariel5252','2021-05-09','Equidad Seguros','Comfamiliar','Porvenir',3,'1','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1),(4,1,'dfhsajkfgsa','2021-07-09','Equidad Seguros','Sanitas','Proteccion',3,'0','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1);
-
-UNLOCK TABLES;
+insert  into `empleado`(`id_empleado`,`id_cargo`,`correo_institucional`,`fecha_ingreso`,`arl`,`salud`,`pension`,`id_persona`,`sueldo_basico`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+(1,1,'Correo','2021-05-19','Equidad Seguros','Comfamiliar','Porvenir',3,500000,'0','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1),
+(2,1,'Gmail','2021-05-09','Equidad Seguros','Comfamiliar','Porvenir',3,700000,'1','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1),
+(4,1,'Outlook','2021-07-09','Equidad Seguros','Sanitas','Proteccion',3,900000,'0','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1);
 
 /*Table structure for table `formulario` */
 
@@ -143,10 +135,6 @@ CREATE TABLE `formulario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `formulario` */
-
-LOCK TABLES `formulario` WRITE;
-
-UNLOCK TABLES;
 
 /*Table structure for table `formulario_rol` */
 
@@ -170,10 +158,6 @@ CREATE TABLE `formulario_rol` (
 
 /*Data for the table `formulario_rol` */
 
-LOCK TABLES `formulario_rol` WRITE;
-
-UNLOCK TABLES;
-
 /*Table structure for table `generar_pago` */
 
 DROP TABLE IF EXISTS `generar_pago`;
@@ -196,10 +180,6 @@ CREATE TABLE `generar_pago` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `generar_pago` */
-
-LOCK TABLES `generar_pago` WRITE;
-
-UNLOCK TABLES;
 
 /*Table structure for table `orden` */
 
@@ -226,10 +206,6 @@ CREATE TABLE `orden` (
 
 /*Data for the table `orden` */
 
-LOCK TABLES `orden` WRITE;
-
-UNLOCK TABLES;
-
 /*Table structure for table `pago_dia` */
 
 DROP TABLE IF EXISTS `pago_dia`;
@@ -249,10 +225,6 @@ CREATE TABLE `pago_dia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `pago_dia` */
-
-LOCK TABLES `pago_dia` WRITE;
-
-UNLOCK TABLES;
 
 /*Table structure for table `persona` */
 
@@ -274,11 +246,12 @@ CREATE TABLE `persona` (
 
 /*Data for the table `persona` */
 
-LOCK TABLES `persona` WRITE;
-
-insert  into `persona`(`id_persona`,`nombre`,`apellido`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (2,'Yesica','Gonzalez',26,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',0,0),(3,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',0,0),(4,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),(5,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),(6,'Jesus','Gonzalez',29,'M','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1);
-
-UNLOCK TABLES;
+insert  into `persona`(`id_persona`,`nombre`,`apellido`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+(2,'Yesica','Gonzalez',26,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',0,0),
+(3,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',0,0),
+(4,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),
+(5,'Jesus','Gonzalez',29,'','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),
+(6,'Jesus','Gonzalez',29,'M','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1);
 
 /*Table structure for table `proveedor` */
 
@@ -299,10 +272,6 @@ CREATE TABLE `proveedor` (
 
 /*Data for the table `proveedor` */
 
-LOCK TABLES `proveedor` WRITE;
-
-UNLOCK TABLES;
-
 /*Table structure for table `rol` */
 
 DROP TABLE IF EXISTS `rol`;
@@ -319,10 +288,6 @@ CREATE TABLE `rol` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `rol` */
-
-LOCK TABLES `rol` WRITE;
-
-UNLOCK TABLES;
 
 /*Table structure for table `tarea` */
 
@@ -348,10 +313,6 @@ CREATE TABLE `tarea` (
 
 /*Data for the table `tarea` */
 
-LOCK TABLES `tarea` WRITE;
-
-UNLOCK TABLES;
-
 /*Table structure for table `usuario` */
 
 DROP TABLE IF EXISTS `usuario`;
@@ -375,10 +336,6 @@ CREATE TABLE `usuario` (
 
 /*Data for the table `usuario` */
 
-LOCK TABLES `usuario` WRITE;
-
-UNLOCK TABLES;
-
 /*Table structure for table `usuario_rol` */
 
 DROP TABLE IF EXISTS `usuario_rol`;
@@ -401,9 +358,31 @@ CREATE TABLE `usuario_rol` (
 
 /*Data for the table `usuario_rol` */
 
-LOCK TABLES `usuario_rol` WRITE;
+/* Procedure structure for procedure `Agregar_cargo` */
 
-UNLOCK TABLES;
+/*!50003 DROP PROCEDURE IF EXISTS  `Agregar_cargo` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_cargo`(IN descripcion VARCHAR(50)
+																	,IN estado ENUM('0','1')
+																	,IN idUsuarioCreacion INT(11)
+																	,IN idUsuarioModificacion INT(11))
+BEGIN
+	INSERT INTO cargo(descripcion
+					,estado
+                    ,fecha_creacion
+                    ,fecha_modificacion
+                    ,id_usuario_creacion
+                    ,id_usuario_modificacion) 
+				VALUES (descripcion
+                        ,estado
+                        ,CURDATE()
+                        ,CURDATE()
+                        ,idUsuarioCreacion
+                        ,idUsuarioModificacion);
+END */$$
+DELIMITER ;
 
 /*Table structure for table `categoria` */
 
@@ -439,6 +418,7 @@ DELIMITER $$
 						,IN salud VARCHAR(20)
 						,IN pension VARCHAR(20)
 						,IN idPersona INT(11)
+            ,IN sueldoBasico double
 						,iN estado enum('0','1')
 						,IN idUsuarioCreacion INT(11)
 					)
@@ -451,12 +431,13 @@ BEGIN
 		,salud
 		,pension
 		,id_persona
+    ,sueldo_basico
 		,estado
 		,fecha_creacion
 		,fecha_modificacion
 		,id_usuario_creacion
 		,id_usuario_modificacion
-	) 
+	)
 VALUES(
 		idCargo
 		,correoInstitucional
@@ -465,6 +446,7 @@ VALUES(
 		,salud
 		,pension
 		,idPersona
+    ,sueldoBasico
 		,estado
 		,CURDATE()
 		,CURDATE()
@@ -642,6 +624,36 @@ BEGIN
 END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `Agregar_producto` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Agregar_producto` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_producto`(IN descripcion VARCHAR(50)
+																	,IN estado ENUM('0','1')
+																	,IN idUsuarioCreacion INT(11)
+																	,IN idUsuarioModificacion INT(11))
+BEGIN
+	INSERT INTO producto(descripcion
+			,talla
+			,estado
+			,id_categoria
+			,fecha_creacion
+			,fecha_modificacion
+			,id_usuario_creacion
+			,id_usuario_modificacion) 
+		VALUES (descripcion
+			,talla
+                        ,estado
+                        ,id_categoria
+                        ,CURDATE()
+                        ,CURDATE()
+                        ,idUsuarioCreacion
+                        ,idUsuarioModificacion);
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `Agregar_rol` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `Agregar_rol` */;
@@ -744,23 +756,17 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_cargo`(IN descripcion VARCHAR(50)
-																	,IN estado ENUM('0','1')
-																	,IN idUsuarioCreacion INT(11)
-																	,IN idUsuarioModificacion INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_cargo`(IN descripcion VARCHAR(50)
+																		,IN estado ENUM('0','1')
+                                                                        ,IN idUsuarioModificacion INT(11)
+                                                                        ,IN idCargo INT(11))
 BEGIN
-	INSERT INTO cargo(descripcion
-					,estado
-                    ,fecha_creacion
-                    ,fecha_modificacion
-                    ,id_usuario_creacion
-                    ,id_usuario_modificacion) 
-				VALUES (descripcion
-                        ,estado
-                        ,CURDATE()
-                        ,CURDATE()
-                        ,idUsuarioCreacion
-                        ,idUsuarioModificacion);
+	UPDATE cargo 
+    SET descripcion = descripcion
+        ,estado = estado
+        ,fecha_modificacion = NOW()
+        ,id_usuario_modificacion = idUsuarioModificacion 
+	WHERE id_cargo = idCargo;
 END */$$
 DELIMITER ;
 
@@ -810,6 +816,7 @@ DELIMITER $$
 		,IN salud VARCHAR (20)
 		,IN pension VARCHAR (20)
 		,IN idPersona INT(11)
+    ,IN sueldoBasico double
 		,IN estado enum('0','1')
 		,IN idUsuarioModificacion INT(11)
 		,IN idEmpleado INT(11)
@@ -820,12 +827,13 @@ BEGIN
 		correo_institucional = correoInstitucional,
 		fecha_ingreso = fechaIngreso,
 		arl = arl,
-        salud = salud,
-        pension = pension,
+    salud = salud,	
+    pension = pension,
 		id_persona = idPersona,
-        estado = estado,
-        fecha_modificacion = CURDATE(),
-        id_usuario_modificacion = idUsuarioModificacion 
+    sueldo_basico = sueldoBasico,
+    estado = estado,
+    fecha_modificacion = CURDATE(),
+    id_usuario_modificacion = idUsuarioModificacion 
 	WHERE id_empleado = idEmpleado;
 END */$$
 DELIMITER ;
@@ -946,6 +954,29 @@ BEGIN
 END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `Modificar_producto` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Modificar_producto` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_producto`(IN descripcion VARCHAR(50),
+                    IN talla VARCHAR(50),
+                    IN estado ENUM('0','1'),
+                    IN idUsuarioModificacion INT(11),
+                    IN idPersona INT(11))
+BEGIN
+	UPDATE producto 
+    SET descripcion = descripcion,
+	talla = talla,
+        estado = estado,
+        genero = genero,
+	fecha_modificacion = NOW(),
+	id_usuario_modificacion = idUsuarioModificacion 
+	WHERE id_producto = idProducto;
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `Modificar_rol` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `Modificar_rol` */;
@@ -1015,71 +1046,6 @@ BEGIN
 	WHERE id_usuario_rol = idUsuarioRol;
 END */$$
 DELIMITER ;
-
-/* Procedure structure for procedure `Modificar_cargo` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `Modificar_cargo` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_cargo`(IN descripcion VARCHAR(50)
-																		,IN estado ENUM('0','1')
-                                                                        ,IN idUsuarioModificacion INT(11)
-                                                                        ,IN idCargo INT(11))
-BEGIN
-	UPDATE cargo 
-    SET descripcion = descripcion
-        ,estado = estado
-        ,fecha_modificacion = NOW()
-        ,id_usuario_modificacion = idUsuarioModificacion 
-	WHERE id_cargo = idCargo;
-END */$$
-DELIMITER ;
-
-INSERT INTO `cargo`(`id_cargo`
-					,`descripcion`
-					,`estado`
-					,`fecha_creacion`
-					,`fecha_modificacion`
-					,`id_usuario_creacion`
-					,`id_usuario_modificacion`
-                    ) 
-VALUES ('1'
-		,'Administrador'
-		,'1'
-		,'2021-04-05 08:00:00'
-		,'2021-04-05 08:00:00'
-		,1
-		,1
-        ),('2'
-		,'Contador'
-		,'1'
-		,'2021-04-05 08:01:00'
-		,'2021-04-05 08:01:00'
-		,1
-		,1
-        ),('3'
-		,'Vendedor'
-		,'1'
-		,'2021-04-05 08:02:00'
-		,'2021-04-05 08:02:00'
-		,1
-		,1
-        ),('4'
-		,'Operario'
-		,'0'
-		,'2021-04-05 08:03:00'
-		,'2021-04-05 08:03:00'
-		,1
-		,1
-        ),('5'
-		,'Bodeguero'
-		,'0'
-		,'2021-04-05 08:04:00'
-		,'2021-04-05 08:04:00'
-		,1
-		,1
-        );
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

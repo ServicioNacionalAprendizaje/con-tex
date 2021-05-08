@@ -16,6 +16,7 @@ if (isset ($accion)){
                 $empleado->setSalud($_POST['salud']);
                 $empleado->setPension($_POST['pension']);
                 $empleado->setIdPersona($_POST['idPersona']);
+                $empleado->setSueldoBasico($_POST['sueldoBasico']);
                 $empleado->setEstado($_POST['estado']);
                 $empleado->setIdUsuarioCreacion(1); // Obtener id de la persona con la variable session
                 $empleado->setIdUsuarioModificacion(1); // Obtener id de la persona con la variable session
@@ -38,6 +39,7 @@ if (isset ($accion)){
                 $empleado->setSalud($_POST['salud']);
                 $empleado->setPension($_POST['pension']);
                 $empleado->setIdPersona($_POST['idPersona']);
+                $empleado->setSueldoBasico($_POST['sueldoBasico']);
                 $empleado->setEstado($_POST['estado']);  
                 $empleado->setIdUsuarioModificacion(1);              
                 $resultado = $empleado->Modificar();
@@ -70,7 +72,8 @@ if (isset ($accion)){
                 $empleado->setArl($_POST['arl']);
                 $empleado->setSalud($_POST['salud']);   
                 $empleado->setPension($_POST['pension']);
-                $empleado->setIdPersona($_POST['idPersona']);                           
+                $empleado->setIdPersona($_POST['idPersona']);
+                $empleado->setSueldoBasico($_POST['sueldoBasico']);                           
                 $resultado = $empleado->consultar();
                 $numeroRegistros = $empleado->conn->ObtenerNumeroRegistros();
                 if($numeroRegistros === 1){
@@ -84,6 +87,7 @@ if (isset ($accion)){
                         $respuesta['salud'] = $rowBuscar->salud;                           
                         $respuesta['pension'] = $rowBuscar->pension;
                         $respuesta['idPersona'] = $rowBuscar->id_persona;
+                        $respuesta['sueldoBasico'] = $rowBuscar->sueldo_basico;
                         $respuesta['persona'] = $rowBuscar->nombre;
                         $respuesta['estado'] = $rowBuscar->estado;
                         $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_empleado.")'>";
@@ -99,6 +103,7 @@ if (isset ($accion)){
                                         <td><label>".$rowConsulta[3]."</label></td>                                             
                                         <td><label>".$rowConsulta[4]."</label></td>                                        
                                         <td><label>".$rowConsulta[5]."</label></td>
+                                        <td><label>".$rowConsulta[11]."</label></td>
                                         <td><label>".$rowConsulta[10]."</label></td>
                                         <td><label>".($rowConsulta[6]== 1 ? 'Activo' : 'Inactivo')."</label></td>
                                         <td align='center'><a href='#' class='btn btn-warning'><i class='fas fa-edit' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></i></a></td>

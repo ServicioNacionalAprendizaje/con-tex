@@ -9,11 +9,13 @@ class Empleado
     private $salud;
     private $pension;
     private $idPersona;
+    private $sueldoBasico;
     private $estado;
     private $fechaCreacion;
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
+
     //idEmpleado
     public function getIdEmpleado()
     {
@@ -86,6 +88,15 @@ class Empleado
     {
         $this->idPersona = $idPersona;
     }
+    //sueldoBasico
+    public function getSueldoBasico()
+    {
+        return $this->sueldoBasico;
+    }
+    public function setSueldoBasico($sueldoBasico)
+    {
+        $this->sueldoBasico = $sueldoBasico;
+    }
     //estado
     public function getEstado()
     {
@@ -147,6 +158,7 @@ $sentenciaSql = "CALL Agregar_empleado(
                             ,'$this->salud'
                             ,'$this->pension'
                              ,$this->idPersona
+                             ,$this->sueldoBasico
                             ,'$this->estado'
                             ,$this->idUsuarioCreacion)";
         $this->conn->preparar($sentenciaSql);
@@ -162,6 +174,7 @@ $sentenciaSql = "CALL Agregar_empleado(
                             ,'$this->salud'
                             ,'$this->pension'
                             ,$this->idPersona
+                            ,$this->sueldoBasico
                             ,'$this->estado'
                             ,$this->idUsuarioModificacion
                             ,$this->idEmpleado)";
@@ -191,6 +204,7 @@ $sentenciaSql = "CALL Agregar_empleado(
                             ,c.id_cargo
                             ,c.descripcion
                             ,p.id_persona
+                            ,e.sueldo_basico
                             ,CONCAT(p.nombre,' ',p.apellido) AS nombre
                         FROM 
                             empleado AS e

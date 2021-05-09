@@ -30,177 +30,178 @@ CREATE TABLE `cargo` (`id_cargo` int(11) NOT NULL AUTO_INCREMENT
 					 ,PRIMARY KEY (`id_cargo`)
 					 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
+LOCK TABLES `cargo` WRITE;
+
+	INSERT INTO `cargo` (`id_cargo`, `descripcion`, `estado`, `fecha_creacion`, `fecha_modificacion`, `id_usuario_creacion`, `id_usuario_modificacion`) VALUES
+	(1, 'Administrador', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1),
+	(2, 'Contador', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1),
+	(3, 'Vendedor', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1),
+	(4, 'Empleado', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1);
+
+UNLOCK TABLES;
+
 /*Table structure for table `categoria` */
 
 DROP TABLE IF EXISTS `categoria`;
 
-CREATE TABLE `categoria` (
-  `id_categoria` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(50) NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
-  PRIMARY KEY (`id_categoria`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `categoria` (`id_categoria` int(11) NOT NULL AUTO_INCREMENT
+						 ,`descripcion` varchar(50) NOT NULL
+						 ,`fecha_creacion` datetime NOT NULL
+						 ,`fecha_modificacion` datetime NOT NULL
+						 ,`id_usuario_creacion` int(11) NOT NULL
+						 ,`id_usuario_modificacion` int(11) NOT NULL
+						 ,PRIMARY KEY (`id_categoria`)
+						 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Table structure for table `cliente` */
 
 DROP TABLE IF EXISTS `cliente`;
 
-CREATE TABLE `cliente` (
-  `id_cliente` int(11) NOT NULL AUTO_INCREMENT,
-  `id_persona` int(11) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
-  PRIMARY KEY (`id_cliente`),
-  KEY `id_persona` (`id_persona`),
-  CONSTRAINT `fk_cliente_persona` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `cliente` (`id_cliente` int(11) NOT NULL AUTO_INCREMENT
+						,`id_persona` int(11) NOT NULL
+						,`estado` enum('0','1') NOT NULL
+						,`fecha_creacion` datetime NOT NULL
+						,`fecha_modificacion` datetime NOT NULL
+						,`id_usuario_creacion` int(11) NOT NULL
+						,`id_usuario_modificacion` int(11) NOT NULL
+						,PRIMARY KEY (`id_cliente`)
+						,KEY `id_persona` (`id_persona`)
+						,CONSTRAINT `fk_cliente_persona` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`)
+						) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Table structure for table `compra_venta` */
 
 DROP TABLE IF EXISTS `compra_venta`;
 
-CREATE TABLE `compra_venta` (
-  `id_compra_venta` int(11) NOT NULL AUTO_INCREMENT,
-  `control` enum('Compra','Venta','Cotizacion') NOT NULL,
-  `fecha` datetime NOT NULL,
-  `descuento` double DEFAULT NULL,
-  `valor` double NOT NULL,
-  `id_cliente` int(11) NOT NULL,
-  `id_proveedor` int(11) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
-  PRIMARY KEY (`id_compra_venta`),
-  KEY `id_cliente` (`id_cliente`),
-  KEY `id_proveedor` (`id_proveedor`),
-  CONSTRAINT `compra_venta_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`),
-  CONSTRAINT `compra_venta_ibfk_2` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `compra_venta` (`id_compra_venta` int(11) NOT NULL AUTO_INCREMENT
+							,`control` enum('Compra','Venta','Cotizacion') NOT NULL
+							,`fecha` datetime NOT NULL
+							,`descuento` double DEFAULT NULL
+							,`valor` double NOT NULL
+							,`id_cliente` int(11) NOT NULL
+							,`id_proveedor` int(11) NOT NULL
+							,`estado` enum('0','1') NOT NULL
+							,`fecha_creacion` datetime NOT NULL
+							,`fecha_modificacion` datetime NOT NULL
+							,`id_usuario_creacion` int(11) NOT NULL
+							,`id_usuario_modificacion` int(11) NOT NULL
+							,PRIMARY KEY (`id_compra_venta`)
+							,KEY `id_cliente` (`id_cliente`)
+							,KEY `id_proveedor` (`id_proveedor`)
+							,CONSTRAINT `compra_venta_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`)
+							,CONSTRAINT `compra_venta_ibfk_2` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`)
+							) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Table structure for table `detalle_orden` */
 
 DROP TABLE IF EXISTS `detalle_orden`;
 
-CREATE TABLE `detalle_orden` (
-  `id_detalle_orden` int(11) NOT NULL AUTO_INCREMENT,
-  `valor_inventario` double NOT NULL,
-  `valor_venta` double NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `id_orden` int(11) NOT NULL,
-  `id_producto` int(11) NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
-  PRIMARY KEY (`id_detalle_orden`),
-  KEY `fk_detalle_orden_producto` (`id_producto`),
-  KEY `fk_detalle_orden_orden` (`id_orden`),
-  CONSTRAINT `fk_detalle_orden_orden` FOREIGN KEY (`id_orden`) REFERENCES `orden` (`id_orden`),
-  CONSTRAINT `fk_detalle_orden_producto` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `detalle_orden` (`id_detalle_orden` int(11) NOT NULL AUTO_INCREMENT
+							 ,`valor_inventario` double NOT NULL
+							 ,`valor_venta` double NOT NULL
+							 ,`cantidad` int(11) NOT NULL
+							 ,`id_orden` int(11) NOT NULL
+							 ,`id_producto` int(11) NOT NULL
+							 ,`fecha_creacion` datetime NOT NULL
+							 ,`fecha_modificacion` datetime NOT NULL
+							 ,`id_usuario_creacion` int(11) NOT NULL
+							 ,`id_usuario_modificacion` int(11) NOT NULL
+							 ,PRIMARY KEY (`id_detalle_orden`)
+							 ,KEY `fk_detalle_orden_producto` (`id_producto`)
+							 ,KEY `fk_detalle_orden_orden` (`id_orden`)
+							 ,CONSTRAINT `fk_detalle_orden_orden` FOREIGN KEY (`id_orden`) REFERENCES `orden` (`id_orden`)
+							 ,CONSTRAINT `fk_detalle_orden_producto` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`)
+							 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Table structure for table `empleado` */
 
 DROP TABLE IF EXISTS `empleado`;
 
-CREATE TABLE `empleado` (
-  `id_empleado` int(11) NOT NULL AUTO_INCREMENT,
-  `id_cargo` int(11) NOT NULL,
-  `correo_institucional` varchar(50) NOT NULL,
-  `fecha_ingreso` date NOT NULL,
-  `arl` varchar(20) NOT NULL,
-  `salud` varchar(20) NOT NULL,
-  `pension` varchar(20) NOT NULL,
-  `id_persona` int(11) NOT NULL,
-  `sueldo_basico` double DEFAULT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
-  PRIMARY KEY (`id_empleado`),
-  KEY `id_persona` (`id_persona`),
-  KEY `id_cargo` (`id_cargo`),
-  CONSTRAINT `empleado_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`),
-  CONSTRAINT `empleado_ibfk_2` FOREIGN KEY (`id_cargo`) REFERENCES `cargo` (`id_cargo`)
-<<<<<<< HEAD
-) ENGINE=INNODB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `empleado` (`id_empleado` int(11) NOT NULL AUTO_INCREMENT
+						,`id_cargo` int(11) NOT NULL
+						,`correo_institucional` varchar(50) NOT NULL
+						,`fecha_ingreso` date NOT NULL
+						,`arl` varchar(20) NOT NULL
+						,`salud` varchar(20) NOT NULL
+						,`pension` varchar(20) NOT NULL
+						,`id_persona` int(11) NOT NULL
+						,`sueldo_basico` double DEFAULT NULL
+						,`estado` enum('0','1') NOT NULL
+						,`fecha_creacion` datetime NOT NULL
+						,`fecha_modificacion` datetime NOT NULL
+						,`id_usuario_creacion` int(11) NOT NULL
+						,`id_usuario_modificacion` int(11) NOT NULL
+						,PRIMARY KEY (`id_empleado`)
+						,KEY `id_persona` (`id_persona`)
+						,KEY `id_cargo` (`id_cargo`)
+						,CONSTRAINT `empleado_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`)
+						,CONSTRAINT `empleado_ibfk_2` FOREIGN KEY (`id_cargo`) REFERENCES `cargo` (`id_cargo`)
+						) ENGINE=INNODB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
-/*Data for the table `empleado` */
+LOCK TABLES `empleado` WRITE;
+	
+	INSERT INTO `empleado` (`id_empleado`, `id_cargo`, `correo_institucional`, `fecha_ingreso`, `arl`, `salud`, `pension`, `id_persona`, `sueldo_basico`, `estado`, `fecha_creacion`, `fecha_modificacion`, `id_usuario_creacion`, `id_usuario_modificacion`) VALUES
+	(1, 1, 'cargon@contex.com', '2021-05-08', 'Equidad Seguros', 'Comfamiliar', 'Colpesiones', 2, 1200000, '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1)
+	,(2, 2, 'yestov@contex.com', '2021-05-08', 'Equidad Seguros', 'Comfamiliar', 'Colpesiones', 1, 1200000, '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1)
+	,(3, 3, 'yestov@contex.com', '2021-05-08', 'Equidad Seguros', 'Comfamiliar', 'Colpesiones', 1, 1200000, '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1)
+	,(4, 4, 'aletov@context.com', '2021-05-08', 'Equidad Seguros', 'Comfamiliar', 'Colpesiones', 3, 1200000, '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1);
 
-INSERT  INTO `empleado`(`id_empleado`,`id_cargo`,`correo_institucional`,`fecha_ingreso`,`arl`,`salud`,`pension`,`id_persona`,`sueldo_basico`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES 
-(1,1,'Correo','2021-05-19','Equidad Seguros','Comfamiliar','Porvenir',4,500000,'0','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1),
-(2,2,'Gmail','2021-05-09','Equidad Seguros','Comfamiliar','Porvenir',2,700000,'1','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1),
-(4,3,'Outlook','2021-07-09','Equidad Seguros','Sanitas','Proteccion',3,900000,'0','2021-05-06 00:00:00','2021-05-06 00:00:00',1,1);
-=======
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
->>>>>>> a68ae307b5e1a406ee733b5a2d86df774a70fd7c
+UNLOCK TABLES;
 
 /*Table structure for table `formulario` */
 
 DROP TABLE IF EXISTS `formulario`;
 
-CREATE TABLE `formulario` (
-  `id_formulario` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(50) NOT NULL,
-  `etiqueta` varchar(30) NOT NULL,
-  `ubicacion` varchar(100) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
-  PRIMARY KEY (`id_formulario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `formulario` (`id_formulario` int(11) NOT NULL AUTO_INCREMENT
+							,`descripcion` varchar(50) NOT NULL
+							,`etiqueta` varchar(30) NOT NULL
+							,`ubicacion` varchar(100) NOT NULL
+							,`estado` enum('0','1') NOT NULL
+							,`fecha_creacion` datetime NOT NULL
+							,`fecha_modificacion` datetime NOT NULL
+							,`id_usuario_creacion` int(11) NOT NULL
+							,`id_usuario_modificacion` int(11) NOT NULL
+							,PRIMARY KEY (`id_formulario`)
+							) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Table structure for table `formulario_rol` */
 
 DROP TABLE IF EXISTS `formulario_rol`;
 
-CREATE TABLE `formulario_rol` (
-  `id_formulario_rol` int(11) NOT NULL AUTO_INCREMENT,
-  `id_rol` int(11) NOT NULL,
-  `id_formulario` int(11) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
-  PRIMARY KEY (`id_formulario_rol`),
-  KEY `id_rol` (`id_rol`),
-  KEY `id_formulario` (`id_formulario`),
-  CONSTRAINT `formulario_rol_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`),
-  CONSTRAINT `formulario_rol_ibfk_2` FOREIGN KEY (`id_formulario`) REFERENCES `formulario` (`id_formulario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `formulario_rol` (`id_formulario_rol` int(11) NOT NULL AUTO_INCREMENT
+								,`id_rol` int(11) NOT NULL
+								,`id_formulario` int(11) NOT NULL
+								,`estado` enum('0','1') NOT NULL
+								,`fecha_creacion` datetime NOT NULL
+								,`fecha_modificacion` datetime NOT NULL
+								,`id_usuario_creacion` int(11) NOT NULL
+								,`id_usuario_modificacion` int(11) NOT NULL
+								,PRIMARY KEY (`id_formulario_rol`)
+								,KEY `id_rol` (`id_rol`)
+								,KEY `id_formulario` (`id_formulario`)
+								,CONSTRAINT `formulario_rol_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`)
+								,CONSTRAINT `formulario_rol_ibfk_2` FOREIGN KEY (`id_formulario`) REFERENCES `formulario` (`id_formulario`)
+								) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Table structure for table `generar_pago` */
 
 DROP TABLE IF EXISTS `generar_pago`;
 
-CREATE TABLE `generar_pago` (
-  `id_generar_pago` int(11) NOT NULL AUTO_INCREMENT,
-  `valor_pago` double NOT NULL,
-  `deduccion` double NOT NULL,
-  `fecha_inicio` datetime NOT NULL,
-  `fecha_fin` datetime NOT NULL,
-  `id_empleado` int(11) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
-  PRIMARY KEY (`id_generar_pago`),
-  KEY `id_empleado` (`id_empleado`),
-  CONSTRAINT `generar_pago_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `generar_pago` (`id_generar_pago` int(11) NOT NULL AUTO_INCREMENT
+							,`valor_pago` double NOT NULL
+							,`deduccion` double NOT NULL
+							,`fecha_inicio` datetime NOT NULL
+							,`fecha_fin` datetime NOT NULL
+							,`id_empleado` int(11) NOT NULL
+							,`estado` enum('0','1') NOT NULL
+							,`fecha_creacion` datetime NOT NULL
+							,`fecha_modificacion` datetime NOT NULL
+							,`id_usuario_creacion` int(11) NOT NULL
+							,`id_usuario_modificacion` int(11) NOT NULL
+							,PRIMARY KEY (`id_generar_pago`)
+							,KEY `id_empleado` (`id_empleado`)
+							,CONSTRAINT `generar_pago_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
+							) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Table structure for table `orden` */
 
@@ -228,177 +229,175 @@ CREATE TABLE `orden` (`id_orden` int(11) NOT NULL AUTO_INCREMENT
 
 DROP TABLE IF EXISTS `pago_dia`;
 
-CREATE TABLE `pago_dia` (
-  `id_pago_dia` int(11) NOT NULL AUTO_INCREMENT,
-  `id_empleado` int(11) NOT NULL,
-  `pago_dia` double NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
-  PRIMARY KEY (`id_pago_dia`),
-  KEY `id_empleado` (`id_empleado`),
-  CONSTRAINT `pago_dia_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `pago_dia` (`id_pago_dia` int(11) NOT NULL AUTO_INCREMENT
+						,`id_empleado` int(11) NOT NULL
+						,`pago_dia` double NOT NULL
+						,`estado` enum('0','1') NOT NULL
+						,`fecha_creacion` datetime NOT NULL
+						,`fecha_modificacion` datetime NOT NULL
+						,`id_usuario_creacion` int(11) NOT NULL
+						,`id_usuario_modificacion` int(11) NOT NULL
+						,PRIMARY KEY (`id_pago_dia`)
+						,KEY `id_empleado` (`id_empleado`)
+						,CONSTRAINT `pago_dia_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
+						) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Table structure for table `persona` */
 
 DROP TABLE IF EXISTS `persona`;
 
-CREATE TABLE `persona` (
-  `id_persona` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) NOT NULL,
-  `apellido` varchar(100) NOT NULL,
-  `edad` int(11) NOT NULL,
-  `genero` enum('M','F') NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
-  PRIMARY KEY (`id_persona`)
-<<<<<<< HEAD
-) ENGINE=INNODB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `persona` (`id_persona` int(11) NOT NULL AUTO_INCREMENT
+						,`nombre` varchar(100) NOT NULL
+						,`apellido` varchar(100) NOT NULL
+						,`edad` int(11) NOT NULL
+						,`genero` enum('M','F') NOT NULL
+						,`estado` enum('0','1') NOT NULL
+						,`fecha_creacion` datetime NOT NULL
+						,`fecha_modificacion` datetime NOT NULL
+						,`id_usuario_creacion` int(11) NOT NULL
+						,`id_usuario_modificacion` int(11) NOT NULL
+						,PRIMARY KEY (`id_persona`)
+						) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
-/*Data for the table `persona` */
+LOCK TABLES `persona` WRITE;
 
-INSERT  INTO `persona`(`id_persona`,`nombre`,`apellido`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES 
-(2,'Yesica','Tovar',26,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',2,1),
-(3,'Alejandra','Tovar',22,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',3,0),
-(4,'Carmenza','Gonzalez',42,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),
-(5,'Costurera','SiDatos',11,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',4,0);
-=======
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+	/*Data for the table `persona` */
+
+	INSERT  INTO `persona`(`id_persona`,`nombre`,`apellido`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES 
+	(2,'Yesica','Tovar',26,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',2,1)
+	,(3,'Alejandra','Tovar',22,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',3,0)
+	,(4,'Carmenza','Gonzalez',42,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1)
+	,(5,'Costurera','SiDatos',11,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',4,0);
+
+UNLOCK TABLES;
 
 /*Table structure for table `producto` */
 
 DROP TABLE IF EXISTS `producto`;
 
-CREATE TABLE `producto` (
-  `id_producto` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(100) NOT NULL,
-  `talla` varchar(50) NOT NULL,
-  `id_categoria` int(11) NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
-  PRIMARY KEY (`id_producto`),
-  KEY `fk_producto_categoria` (`id_categoria`),
-  CONSTRAINT `fk_producto_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
->>>>>>> a68ae307b5e1a406ee733b5a2d86df774a70fd7c
+CREATE TABLE `producto` (`id_producto` int(11) NOT NULL AUTO_INCREMENT
+						,`descripcion` varchar(100) NOT NULL
+						,`talla` varchar(50) NOT NULL
+						,`id_categoria` int(11) NOT NULL
+						,`fecha_creacion` datetime NOT NULL
+						,`fecha_modificacion` datetime NOT NULL
+						,`id_usuario_creacion` int(11) NOT NULL
+						,`id_usuario_modificacion` int(11) NOT NULL
+						,PRIMARY KEY (`id_producto`)
+						,KEY `fk_producto_categoria` (`id_categoria`)
+						,CONSTRAINT `fk_producto_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`)
+						) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Table structure for table `proveedor` */
 
 DROP TABLE IF EXISTS `proveedor`;
 
-CREATE TABLE `proveedor` (
-  `id_proveedor` int(11) NOT NULL AUTO_INCREMENT,
-  `id_persona` int(11) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
-  PRIMARY KEY (`id_proveedor`),
-  KEY `id_persona` (`id_persona`),
-  CONSTRAINT `proveedor_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `proveedor` (`id_proveedor` int(11) NOT NULL AUTO_INCREMENT
+						 ,`id_persona` int(11) NOT NULL
+						 ,`estado` enum('0','1') NOT NULL
+						 ,`fecha_creacion` datetime NOT NULL
+						 ,`fecha_modificacion` datetime NOT NULL
+						 ,`id_usuario_creacion` int(11) NOT NULL
+						 ,`id_usuario_modificacion` int(11) NOT NULL
+						 ,PRIMARY KEY (`id_proveedor`)
+						 ,KEY `id_persona` (`id_persona`)
+						 ,CONSTRAINT `proveedor_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`)
+						 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Table structure for table `rol` */
 
 DROP TABLE IF EXISTS `rol`;
 
-CREATE TABLE `rol` (
-  `id_rol` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(50) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
-  PRIMARY KEY (`id_rol`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `rol` (`id_rol` int(11) NOT NULL AUTO_INCREMENT
+					,`descripcion` varchar(50) NOT NULL
+					,`estado` enum('0','1') NOT NULL
+					,`fecha_creacion` datetime NOT NULL
+					,`fecha_modificacion` datetime NOT NULL
+					,`id_usuario_creacion` int(11) NOT NULL
+					,`id_usuario_modificacion` int(11) NOT NULL
+					,PRIMARY KEY (`id_rol`)
+					) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Table structure for table `tarea` */
 
 DROP TABLE IF EXISTS `tarea`;
 
-CREATE TABLE `tarea` (
-  `id_tarea` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(100) NOT NULL,
-  `valor_unitario` double NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `fecha` datetime NOT NULL,
-  `estado_pago` enum('por pagar','pagado') NOT NULL,
-  `id_empleado` int(11) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
-  PRIMARY KEY (`id_tarea`),
-  KEY `id_empleado` (`id_empleado`),
-  CONSTRAINT `fk_tarea_id_empleado` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tarea` (`id_tarea` int(11) NOT NULL AUTO_INCREMENT
+					 ,`descripcion` varchar(100) NOT NULL
+					 ,`valor_unitario` double NOT NULL
+					 ,`cantidad` int(11) NOT NULL
+					 ,`fecha` datetime NOT NULL
+					 ,`estado_pago` enum('por pagar','pagado') NOT NULL
+					 ,`id_empleado` int(11) NOT NULL
+					 ,`estado` enum('0','1') NOT NULL
+					 ,`fecha_creacion` datetime NOT NULL
+					 ,`fecha_modificacion` datetime NOT NULL
+					 ,`id_usuario_creacion` int(11) NOT NULL
+					 ,`id_usuario_modificacion` int(11) NOT NULL
+					 ,PRIMARY KEY (`id_tarea`)
+					 ,KEY `id_empleado` (`id_empleado`)
+					 ,CONSTRAINT `fk_tarea_id_empleado` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
+					 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Table structure for table `tipo_pago` */
 
 DROP TABLE IF EXISTS `tipo_pago`;
 
-CREATE TABLE `tipo_pago` (
-  `id_tipo_pago` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(100) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
-  PRIMARY KEY (`id_tipo_pago`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tipo_pago` (`id_tipo_pago` int(11) NOT NULL AUTO_INCREMENT
+						 ,`descripcion` varchar(100) NOT NULL
+						 ,`estado` enum('0','1') NOT NULL
+						 ,`fecha_creacion` datetime NOT NULL
+						 ,`fecha_modificacion` datetime NOT NULL
+						 ,`id_usuario_creacion` int(11) NOT NULL
+						 ,`id_usuario_modificacion` int(11) NOT NULL
+						 ,PRIMARY KEY (`id_tipo_pago`)
+						 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Table structure for table `usuario` */
 
 DROP TABLE IF EXISTS `usuario`;
 
-CREATE TABLE `usuario` (
-  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
-  `usuario` varchar(50) NOT NULL,
-  `contrasenia` varchar(50) NOT NULL,
-  `fecha_activacion` datetime NOT NULL,
-  `fecha_expiracion` datetime NOT NULL,
-  `id_persona` int(11) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
-  PRIMARY KEY (`id_usuario`),
-  KEY `id_persona` (`id_persona`),
-  CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `usuario` (`id_usuario` int(11) NOT NULL AUTO_INCREMENT
+						,`usuario` varchar(50) NOT NULL
+						,`contrasenia` varchar(50) NOT NULL
+						,`fecha_activacion` datetime NOT NULL
+						,`fecha_expiracion` datetime NOT NULL
+						,`id_persona` int(11) NOT NULL
+						,`estado` enum('0','1') NOT NULL
+						,`fecha_creacion` datetime NOT NULL
+						,`fecha_modificacion` datetime NOT NULL
+						,`id_usuario_creacion` int(11) NOT NULL
+						,`id_usuario_modificacion` int(11) NOT NULL
+						,PRIMARY KEY (`id_usuario`)
+						,KEY `id_persona` (`id_persona`)
+						,CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`)
+						) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+LOCK TABLES `usuario` WRITE;
+	
+	INSERT INTO `usuario` (`id_usuario`, `usuario`, `contrasenia`, `fecha_activacion`, `fecha_expiracion`, `id_persona`, `estado`, `fecha_creacion`, `fecha_modificacion`, `id_usuario_creacion`, `id_usuario_modificacion`) VALUES
+	(1, 'admin', 'admin', '2021-05-08 01:35:00', '2022-05-08 01:35:00', 1, '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1);
+
+UNLOCK TABLES;
 
 /*Table structure for table `usuario_rol` */
 
 DROP TABLE IF EXISTS `usuario_rol`;
 
-CREATE TABLE `usuario_rol` (
-  `id_usuario_rol` int(11) NOT NULL AUTO_INCREMENT,
-  `id_usuario` int(11) NOT NULL,
-  `id_rol` int(11) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
-  PRIMARY KEY (`id_usuario_rol`),
-  KEY `id_usuario` (`id_usuario`),
-  KEY `id_rol` (`id_rol`),
-  CONSTRAINT `usuario_rol_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
-  CONSTRAINT `usuario_rol_ibfk_2` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `usuario_rol` (`id_usuario_rol` int(11) NOT NULL AUTO_INCREMENT
+							,`id_usuario` int(11) NOT NULL
+							,`id_rol` int(11) NOT NULL
+							,`estado` enum('0','1') NOT NULL
+							,`fecha_creacion` datetime NOT NULL
+							,`fecha_modificacion` datetime NOT NULL
+							,`id_usuario_creacion` int(11) NOT NULL
+							,`id_usuario_modificacion` int(11) NOT NULL
+							,PRIMARY KEY (`id_usuario_rol`)
+							,KEY `id_usuario` (`id_usuario`)
+							,KEY `id_rol` (`id_rol`)
+							,CONSTRAINT `usuario_rol_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`)
+							,CONSTRAINT `usuario_rol_ibfk_2` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`)
+							) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Procedure structure for procedure `Agregar_cargo` */
 
@@ -421,8 +420,8 @@ BEGIN
 					 )
 	VALUES (descripcion
 			,estado
-			,CURDATE()
-			,CURDATE()
+			,NOW()
+			,NOW()
 			,idUsuarioCreacion
 			,idUsuarioModificacion
 			);
@@ -435,27 +434,27 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_categoria`(
-          IN descripcion VARCHAR(50)
-          ,IN estado enum('0','1'))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_categoria`(IN descripcion VARCHAR(50)
+																		,IN estado enum('0','1')
+																		,IN idUsuarioCreacion int(11)
+																		,IN idUsuarioModificacion int(11)
+																		)
 BEGIN
-	INSERT INTO categoria(
-    descripcion
-    ,estado
-    ,fecha_creacion
-    ,fecha_modificacion
-    ,id_usuario_creacion
-    ,id_usuario_modificacion
-    )
-   VALUES (
-     descripcion
-    ,estado
-    ,CURDATE()
-    ,CURDATE()
-    ,idUsuarioCreacion
-    ,idUsuarioModificacion
-    );
-	END */$$
+	INSERT INTO categoria(descripcion
+						 ,estado
+						 ,fecha_creacion
+						 ,fecha_modificacion
+						 ,id_usuario_creacion
+						 ,id_usuario_modificacion
+						 )
+   VALUES (descripcion
+   			,estado
+			,NOW()
+			,NOW()
+			,idUsuarioCreacion
+			,idUsuarioModificacion
+			);
+END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `Agregar_cliente` */
@@ -464,29 +463,26 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_cliente`(
-		IN idPersona INT(11)
-		,IN estado ENUM('0','1')
-		-- ,in fecha_creacion DATETIME
-		-- ,IN fecha_modificacion DATETIME
-		,IN idUsuarioCreacion INT(11)
-		,IN idUsuarioModificacion INT(11)
-    )
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_cliente`(IN idPersona INT(11)
+																		,IN estado ENUM('0','1')
+																		,IN idUsuarioCreacion INT(11)
+																		,IN idUsuarioModificacion INT(11)
+																		)
 BEGIN
-	INSERT INTO persona(
-		id_persona
-		,estado
-		,fecha_creacion
-		,fecha_modificacion
-		,id_usuario_creacion
-		,id_usuario_modificacion) 
-		VALUES (
-		idPersona
-		,estado
-		,CURDATE()
-		,CURDATE()
-		,idUsuarioCreacion
-		,idUsuarioCreacion);
+	INSERT INTO persona(id_persona
+						,estado
+						,fecha_creacion
+						,fecha_modificacion
+						,id_usuario_creacion
+						,id_usuario_modificacion
+						) 
+	VALUES (idPersona
+			,estado
+			,NOW()
+			,NOW()
+			,idUsuarioCreacion
+			,idUsuarioModificacion
+			);
 END */$$
 DELIMITER ;
 
@@ -496,34 +492,35 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_detalle_orden`(
-		IN valorInventario DOUBLE
-		,IN valorVenta DOUBLE
-                ,IN cantidad INT(11)
-                ,IN idOrden INT(11)
-		,IN idProducto INT(11)
-		,IN idUsuarioCreacion INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_detalle_orden`(IN valorInventario DOUBLE
+																			,IN valorVenta DOUBLE
+																			,IN cantidad INT(11)
+																			,IN idOrden INT(11)
+																			,IN idProducto INT(11)
+																			,IN idUsuarioCreacion INT(11)
+																			,IN idUsuarioModificacion INT(11)
+																			)
 BEGIN
-	INSERT INTO detalle_orden(
-		valor_inventario
-		,valor_venta
-		,cantidad
-		,id_orden
-		,id_producto
-		,fecha_creacion
-		,fecha_modificacion
-		,id_usuario_creacion
-		,id_usuario_modificacion) 
-	VALUES (
-		valorInventario
-		,valorVenta
-		,cantidad
-		,idOrden
-		,idProducto
-		,CURDATE()
-		,CURDATE()
-		,idUsuarioCreacion
-		,idUsuarioCreacion);
+	INSERT INTO detalle_orden(valor_inventario
+							 ,valor_venta
+							 ,cantidad
+							 ,id_orden
+							 ,id_producto
+							 ,fecha_creacion
+							 ,fecha_modificacion
+							 ,id_usuario_creacion
+							 ,id_usuario_modificacion
+							 ) 
+	VALUES (valorInventario
+			,valorVenta
+			,cantidad
+			,idOrden
+			,idProducto
+			,NOW()
+			,NOW()
+			,idUsuarioCreacion
+			,idUsuarioModificacion
+			);
 END */$$
 DELIMITER ;
 
@@ -533,49 +530,47 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_empleado`(
-						IN idCargo INT(11)
-						,IN correoInstitucional VARCHAR(50)
-						,IN fechaIngreso DATE
-						,IN arl VARCHAR(20)
-						,IN salud VARCHAR(20)
-						,IN pension VARCHAR(20)
-						,IN idPersona INT(11)
-            ,IN sueldoBasico double
-						,iN estado enum('0','1')
-						,IN idUsuarioCreacion INT(11)
-					)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_empleado`(IN idCargo INT(11)
+																		,IN correoInstitucional VARCHAR(50)
+																		,IN fechaIngreso DATE
+																		,IN arl VARCHAR(20)
+																		,IN salud VARCHAR(20)
+																		,IN pension VARCHAR(20)
+																		,IN idPersona INT(11)
+																		,IN sueldoBasico double
+																		,iN estado enum('0','1')
+																		,IN idUsuarioCreacion INT(11)
+																		,IN idUsuarioModificacion INT(11)
+																		)
 BEGIN
-	INSERT INTO empleado(
-		id_cargo
-		,correo_institucional
-		,fecha_ingreso
-		,arl
-		,salud
-		,pension
-		,id_persona
-    ,sueldo_basico
-		,estado
-		,fecha_creacion
-		,fecha_modificacion
-		,id_usuario_creacion
-		,id_usuario_modificacion
-	)
-VALUES(
-		idCargo
-		,correoInstitucional
-		,fechaIngreso
-		,arl
-		,salud
-		,pension
-		,idPersona
-    ,sueldoBasico
-		,estado
-		,CURDATE()
-		,CURDATE()
-		,idUsuarioCreacion
-		,idUsuarioCreacion
-	);
+	INSERT INTO empleado(id_cargo
+						,correo_institucional
+						,fecha_ingreso
+						,arl
+						,salud
+						,pension
+						,id_persona
+						,sueldo_basico
+						,estado
+						,fecha_creacion
+						,fecha_modificacion
+						,id_usuario_creacion
+						,id_usuario_modificacion
+						)
+	VALUES(idCargo
+			,correoInstitucional
+			,fechaIngreso
+			,arl
+			,salud
+			,pension
+			,idPersona
+			,sueldoBasico
+			,estado
+			,NOW()
+			,NOW()
+			,idUsuarioCreacion
+			,idUsuarioModificacion
+			);
 END */$$
 DELIMITER ;
 
@@ -585,30 +580,32 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_formulario`(IN descripcion VARCHAR(50),
-					IN etiqueta VARCHAR(30),
-                    IN ubicacion VARCHAR(100),
-                    IN estado enum('0','1'),
-                    IN idUsuarioCreacion INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_formulario`(IN descripcion VARCHAR(50)
+																		 ,IN etiqueta VARCHAR(30)
+																		 ,IN ubicacion VARCHAR(100)
+																		 ,IN estado enum('0','1')
+																		 ,IN idUsuarioCreacion INT(11)
+																		 ,IN idUsuarioModificacion INT(11)
+																		 )
 BEGIN
-	INSERT INTO formulario(
-					descripcion,
-                    etiqueta,
-                    ubicacion,
-                    estado,
-                    fecha_creacion,
-                    fecha_modificacion,
-                    id_usuario_creacion,
-                    id_usuario_modificacion) 
-			VALUES (
-				descripcion,
-				etiqueta,
-				ubicacion,
-				estado,
-				CURDATE(),
-				CURDATE(),
-				idUsuarioCreacion,
-				idUsuarioCreacion);
+	INSERT INTO formulario(descripcion
+							,etiqueta
+							,ubicacion
+							,estado
+							,fecha_creacion
+							,fecha_modificacion
+							,id_usuario_creacion
+							,id_usuario_modificacion
+							) 
+	VALUES (descripcion
+			,etiqueta
+			,ubicacion
+			,estado
+			,NOW()
+			,NOW()
+			,idUsuarioCreacion
+			,idUsuarioModificacion
+			);
 END */$$
 DELIMITER ;
 
@@ -618,28 +615,29 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_formulario_rol`(IN idRol INT(11),
-				          	IN idFormulario INT(11),
-                    IN estado enum('0','1'),
-                    IN idUsuarioCreacion INT(11),
-                    IN idUsuarioModificacion INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_formulario_rol`(IN idRol INT(11)
+																				,IN idFormulario INT(11)
+																				,IN estado enum('0','1')
+																				,IN idUsuarioCreacion INT(11)
+																				,IN idUsuarioModificacion INT(11)
+																				)
 BEGIN
-	INSERT INTO formulario_rol(
-				          	id_rol,
-                    id_formulario,
-                    estado,
-                    fecha_creacion,
-                    fecha_modificacion,
-                    id_usuario_creacion,
-                    id_usuario_modificacion) 
-			VALUES (
-				idRol,
-				idFormulario,
-				estado,
-				CURDATE(),
-				CURDATE(),
-				idUsuarioCreacion,
-				idUsuarioModificacion);
+	INSERT INTO formulario_rol(id_rol
+								,id_formulario
+								,estado
+								,fecha_creacion
+								,fecha_modificacion
+								,id_usuario_creacion
+								,id_usuario_modificacion
+								) 
+	VALUES (idRol
+			,idFormulario
+			,estado
+			,NOW()
+			,NOW()
+			,idUsuarioCreacion
+			,idUsuarioModificacion
+			);
 END */$$
 DELIMITER ;
 
@@ -649,33 +647,35 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_generar_pago`(IN valorPago DOUBLE, 
-	IN deduccion DOUBLE, 
-    IN fechaInicio DATETIME, 
-    IN fechaFin DATETIME, 
-    IN idEmpleado INT(11),
-    IN idUsuarioCreacion INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_generar_pago`(IN valorPago DOUBLE
+																			,IN deduccion DOUBLE
+																			,IN fechaInicio DATETIME
+																			,IN fechaFin DATETIME
+																			,IN idEmpleado INT(11)
+																			,IN idUsuarioCreacion INT(11)
+																			,IN idUsuarioModificacion INT(11)
+																			)
 BEGIN
-	INSERT INTO generar_pago(
-					valor_pago,
-                    deduccion,
-                    fecha_inicio,
-                    fecha_fin,
-                    id_empleado,
-                    fecha_creacion,
-                    fecha_modificacion,
-                    id_usuario_creacion,
-                    id_usuario_modificacion) 
-			VALUES (
-				valorPago,
-                deduccion,
-                fechaInicio,
-				fechaFin,
-                idEmpleado,
-				CURDATE(),
-				CURDATE(),
-				idUsuarioCreacion,
-				idUsuarioCreacion);
+	INSERT INTO generar_pago(valor_pago
+							,deduccion
+							,fecha_inicio
+							,fecha_fin
+							,id_empleado
+							,fecha_creacion
+							,fecha_modificacion
+							,id_usuario_creacion
+							,id_usuario_modificacion
+							) 
+	VALUES (valorPago
+			,deduccion
+			,fechaInicio
+			,fechaFin
+			,idEmpleado
+			,NOW()
+			,NOW()
+			,idUsuarioCreacion
+			,idUsuarioModificacion
+			);
 END */$$
 DELIMITER ;
 
@@ -726,25 +726,27 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_pago_dia`(IN idEmpleado INT(11), 
-	IN pagoDia DOUBLE,
-    IN idUsuarioCreacion INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_pago_dia`(IN idEmpleado INT(11)
+																		,IN pagoDia DOUBLE
+																		,IN idUsuarioCreacion INT(11)
+																		,IN idUsuarioModificacion INT(11)
+																		)
 BEGIN
-	INSERT INTO pago_dia(
-					id_empleado,
-                    pago_dia,
-                    fecha_creacion,
-                    fecha_modificacion,
-                    id_usuario_creacion,
-                    id_usuario_modificacion) 
-			VALUES (
-				idEmpleado,
-                pagoDia,
-				CURDATE(),
-				CURDATE(),
-				idUsuarioCreacion,
-				idUsuarioCreacion);
-	END */$$
+	INSERT INTO pago_dia(id_empleado
+						,pago_dia
+						,fecha_creacion
+						,fecha_modificacion
+						,id_usuario_creacion
+						,id_usuario_modificacion
+						) 
+	VALUES (idEmpleado
+			,pagoDia
+			,NOW()
+			,NOW()
+			,idUsuarioCreacion
+			,idUsuarioModificacion
+			);
+END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `Agregar_persona` */
@@ -753,38 +755,35 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_persona`(
-		IN nombre VARCHAR(100)
-		,IN apellido VARCHAR(100)
-		,IN edad INT(11)
-		,IN genero ENUM('M','F')	
-		,IN estado ENUM('0','1')
-		-- ,in fecha_creacion DATETIME
-		-- ,IN fecha_modificacion DATETIME
-		,IN idUsuarioCreacion INT(11)
-		,IN idUsuarioModificacion INT(11)   
-    )
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_persona`(IN nombre VARCHAR(100)
+																		,IN apellido VARCHAR(100)
+																		,IN edad INT(11)
+																		,IN genero ENUM('M','F')
+																		,IN estado ENUM('0','1')
+																		,IN idUsuarioCreacion INT(11)
+																		,IN idUsuarioModificacion INT(11)
+																		)
 BEGIN
-INSERT INTO persona(
-		nombre
+INSERT INTO persona(nombre
+					,apellido
+					,edad
+					,genero
+					,estado
+					,fecha_creacion
+					,fecha_modificacion
+					,id_usuario_creacion
+					,id_usuario_modificacion
+					) 
+VALUES (nombre
 		,apellido
 		,edad
 		,genero
 		,estado
-		,fecha_creacion
-		,fecha_modificacion
-		,id_usuario_creacion
-		,id_usuario_modificacion) 
-	VALUES (
-		nombre
-		,apellido
-		,edad
-		,genero
-		,estado
-		,CURDATE()
-		,CURDATE()
+		,NOW()
+		,NOW()
 		,idUsuarioCreacion
-		,idUsuarioModificacion);	
+		,idUsuarioModificacion
+		);	
 END */$$
 DELIMITER ;
 
@@ -795,26 +794,30 @@ DELIMITER ;
 DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_producto`(IN descripcion VARCHAR(50)
-																	,IN estado ENUM('0','1')
-																	,IN idUsuarioCreacion INT(11)
-																	,IN idUsuarioModificacion INT(11))
+																		,IN estado ENUM('0','1')
+																		,IN idUsuarioCreacion INT(11)
+																		,IN idUsuarioModificacion INT(11)
+																		-- faltan idCategoria y talla
+																		)
 BEGIN
 	INSERT INTO producto(descripcion
+						,talla
+						,estado
+						,id_categoria
+						,fecha_creacion
+						,fecha_modificacion
+						,id_usuario_creacion
+						,id_usuario_modificacion
+						) 
+	VALUES (descripcion
 			,talla
 			,estado
-			,id_categoria
-			,fecha_creacion
-			,fecha_modificacion
-			,id_usuario_creacion
-			,id_usuario_modificacion) 
-		VALUES (descripcion
-			,talla
-                        ,estado
-                        ,idCategoria
-                        ,CURDATE()
-                        ,CURDATE()
-                        ,idUsuarioCreacion
-                        ,idUsuarioModificacion);
+			,idCategoria
+			,NOW()
+			,NOW()
+			,idUsuarioCreacion
+			,idUsuarioModificacion
+			);
 END */$$
 DELIMITER ;
 
@@ -824,24 +827,26 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_rol`(IN descripcion VARCHAR(50),
-					IN estado enum('0','1'),
-                    IN idUsuarioCreacion INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_rol`(IN descripcion VARCHAR(50)
+																	,IN estado enum('0','1')
+																	,IN idUsuarioCreacion INT(11)
+																	,IN idUsuarioModificacion INT(11)
+																	)
 BEGIN
-	INSERT INTO rol(
-		descripcion
-		,estado
-		,fecha_creacion
-		,fecha_modificacion
-		,id_usuario_creacion
-		,id_usuario_modificacion) 
-	VALUES (
-		descripcion
-		,estado
-		,CURDATE()
-		,CURDATE()
-		,idUsuarioCreacion
-		,idUsuarioCreacion);
+	INSERT INTO rol(descripcion
+					,estado
+					,fecha_creacion
+					,fecha_modificacion
+					,id_usuario_creacion
+					,id_usuario_modificacion
+					) 
+	VALUES (descripcion
+			,estado
+			,NOW()
+			,NOW()
+			,idUsuarioCreacion
+			,idUsuarioModificacion
+			);
 END */$$
 DELIMITER ;
 
@@ -851,44 +856,41 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_tarea`(
-		IN descripcion VARCHAR(100)
-		,IN valorUnitario DOUBLE
-		,IN cantidad INT(11)
-		,in fecha DATETIME
-		,IN estadoPago ENUM('0','1')
-		,in idEmpleado INT(11)
-		,in estado ENUM('0','1')
-		,IN idUsuarioCreacion INT(11)
-		,IN idUsuarioModificacion INT(11) 
-    )
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_tarea`(IN descripcion VARCHAR(100)
+																	,IN valorUnitario DOUBLE
+																	,IN cantidad INT(11)
+																	,in fecha DATETIME
+																	,IN estadoPago ENUM('0','1')
+																	,in idEmpleado INT(11)
+																	,in estado ENUM('0','1')
+																	,IN idUsuarioCreacion INT(11)
+																	,IN idUsuarioModificacion INT(11)
+																	)
 BEGIN
-	insert into rol(
-		descripcion
-		,valor_unitario
-		,cantidad
-		,fecha
-		,estado_pago
-		,id_empleado
-		,estado
-		,fecha_creacion
-		,fecha_modificacion
-		,id_usuario_creacion
-		,id_usuario_modificacion
-	) 
-	VALUES(
-		descripcion
-		,valorUnitario
-		,cantidad
-		,fecha
-		,estadoPago
-		,idEmpleado
-		,estado
-		,CURDATE()
-		,CURDATE()
-		,idUsuarioCreacion
-		,idUsuarioModificacion
-	);
+	insert into rol(descripcion
+					,valor_unitario
+					,cantidad
+					,fecha
+					,estado_pago
+					,id_empleado
+					,estado
+					,fecha_creacion
+					,fecha_modificacion
+					,id_usuario_creacion
+					,id_usuario_modificacion
+					) 
+	VALUES(descripcion
+			,valorUnitario
+			,cantidad
+			,fecha
+			,estadoPago
+			,idEmpleado
+			,estado
+			,NOW()
+			,NOW()
+			,idUsuarioCreacion
+			,idUsuarioModificacion
+			);
 END */$$
 DELIMITER ;
 
@@ -898,26 +900,26 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_tipo_pago`(
-	IN descripcion VARCHAR(100)
-	,IN estado ENUM('0','1')
-	,IN idUsuarioCreacion INT(11)
-	,IN idUsuarioModificacion INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_tipo_pago`(IN descripcion VARCHAR(100)
+																		,IN estado ENUM('0','1')
+																		,IN idUsuarioCreacion INT(11)
+																		,IN idUsuarioModificacion INT(11)
+																		)
 BEGIN
-	INSERT INTO tipo_pago(
-		descripcion
-		,estado
-                ,fecha_creacion
-                ,fecha_modificacion
-                ,id_usuario_creacion
-                ,id_usuario_modificacion) 
-	VALUES (
-		descripcion
-		,estado
-                ,CURDATE()
-		,CURDATE()
-                ,idUsuarioCreacion
-                ,idUsuarioModificacion);
+	INSERT INTO tipo_pago(descripcion
+						 ,estado
+						 ,fecha_creacion
+						 ,fecha_modificacion
+						 ,id_usuario_creacion
+						 ,id_usuario_modificacion
+						 ) 
+	VALUES (descripcion
+			,estado
+			,NOW()
+			,NOW()
+			,idUsuarioCreacion
+			,idUsuarioModificacion
+			);
 END */$$
 DELIMITER ;
 
@@ -927,36 +929,38 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_usuario`(IN usuario VARCHAR(50),
-					IN contrasenia VARCHAR(50),
-                    IN fechaActivacion DATETIME,
-                    IN fechaExpiracion DATETIME,
-                    IN idPersona INT(11),
-					IN estado enum('0','1'),
-                    IN idUsuarioCreacion INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_usuario`(IN usuario VARCHAR(50)
+																		,IN contrasenia VARCHAR(50)
+																		,IN fechaActivacion DATETIME
+																		,IN fechaExpiracion DATETIME
+																		,IN idPersona INT(11)
+																		,IN estado enum('0','1')
+																		,IN idUsuarioCreacion INT(11)
+																		,IN idUsuarioModificacion INT(11)
+																		)
 BEGIN
-	INSERT INTO usuario(
-					usuario,
-                    contrasenia,
-                    fecha_activacion,
-                    fecha_expiracion,
-                    id_persona,
-                    estado,
-                    fecha_creacion,
-                    fecha_modificacion,
-                    id_usuario_creacion,
-                    id_usuario_modificacion) 
-			VALUES (
-				usuario,
-                contrasenia,
-                fechaActivacion,
-                fechaExpiracion,
-                idPersona,
-				estado,
-				CURDATE(),
-				CURDATE(),
-				idUsuarioCreacion,
-				idUsuarioCreacion);
+	INSERT INTO usuario(usuario
+						,contrasenia
+						,fecha_activacion
+						,fecha_expiracion
+						,id_persona
+						,estado
+						,fecha_creacion
+						,fecha_modificacion
+						,id_usuario_creacion
+						,id_usuario_modificacion
+						) 
+	VALUES (usuario
+			,contrasenia
+			,fechaActivacion
+			,fechaExpiracion
+			,idPersona
+			,estado
+			,NOW()
+			,NOW()
+			,idUsuarioCreacion
+			,idUsuarioModificacion
+			);
 END */$$
 DELIMITER ;
 
@@ -966,27 +970,29 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_usuario_rol`(IN idUsuario INT(11),
-					IN idRol INT(11),
-					IN estado enum('0','1'),
-                    IN idUsuarioCreacion INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_usuario_rol`(IN idUsuario INT(11)
+																			,IN idRol INT(11)
+																			,IN estado enum('0','1')
+																			,IN idUsuarioCreacion INT(11)
+																			,IN idUsuarioModificacion INT(11)
+																			)
 BEGIN
-	INSERT INTO usuario_rol(
-					id_usuario,
-                    id_rol,
-                    estado,
-                    fecha_creacion,
-                    fecha_modificacion,
-                    id_usuario_creacion,
-                    id_usuario_modificacion) 
-			VALUES (
-				idUsuario,
-                idRol,
-				estado,
-				CURDATE(),
-				CURDATE(),
-				idUsuarioCreacion,
-				idUsuarioCreacion);
+	INSERT INTO usuario_rol(id_usuario
+							,id_rol
+							,estado
+							,fecha_creacion
+							,fecha_modificacion
+							,id_usuario_creacion
+							,id_usuario_modificacion
+							) 
+	VALUES (idUsuario
+			,idRol
+			,estado
+			,NOW()
+			,NOW()
+			,idUsuarioCreacion
+			,idUsuarioModificacion
+			);
 END */$$
 DELIMITER ;
 
@@ -1011,59 +1017,25 @@ BEGIN
 END */$$
 DELIMITER ;
 
-<<<<<<< HEAD
-/* Procedure structure for procedure `Agregar_categoria` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `Agregar_categoria` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_categoria`(
-          IN descripcion VARCHAR(50)
-          ,IN estado enum('0','1')
-          ,IN idUsuarioCreacion INT(11)
-          ,IN idUsuarioModificacion INT(11)
-          )
-BEGIN
-	INSERT INTO categoria(
-    descripcion
-    ,estado
-    ,fecha_creacion
-    ,fecha_modificacion
-    ,id_usuario_creacion
-    ,id_usuario_modificacion
-    )
-   VALUES (
-     descripcion
-    ,estado
-    ,CURDATE()
-    ,CURDATE()
-    ,idUsuarioCreacion
-    ,idUsuarioModificacion
-    );
-END */$$
-DELIMITER ;
-
-=======
->>>>>>> a68ae307b5e1a406ee733b5a2d86df774a70fd7c
 /* Procedure structure for procedure `Modificar_categoria` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `Modificar_categoria` */;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_categoria`(
-    IN descripcion VARCHAR(50)
-   ,IN estado enum('0','1')
-   ,IN idCategoria INT(11)
-   )
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_categoria`(IN descripcion VARCHAR(50)
+																			,IN estado enum('0','1')
+																			,IN idUsuarioModificacion INT(11)
+																			,IN idCategoria INT(11)
+																			)
 BEGIN
-	UPDATE categoria
-   SET descripcion = descripcion
-   ,estado = estado
-   
-   WHERE id_categoria = idCategoria;
-	END */$$
+	UPDATE categoria 
+	SET descripcion = descripcion
+		,estado = estado
+		,fecha_modificacion = NOW()
+		,id_usuario_modificacion = idUsuarioModificacion
+	WHERE id_categoria = idCategoria;
+END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `Modificar_cliente` */
@@ -1072,15 +1044,14 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_cliente`(
-		IN idPersona INT(11)
-		,IN estado ENUM('0','1')
-		,IN idUsuarioModificacion INT(11)
-		,IN idCliente INT(11)
-	)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_cliente`(IN idPersona INT(11)
+																		,IN estado ENUM('0','1')
+																		,IN idUsuarioModificacion INT(11)
+																		,IN idCliente INT(11)
+																		)
 BEGIN
 	UPDATE cliente 
-	SET 	id_persona = idPersona
+	SET id_persona = idPersona
 		,estado = estado
 		,fecha_modificacion = NOW()
 		,id_usuario_modificacion = idUsuarioModificacion 
@@ -1094,22 +1065,21 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_empleado`(
-		IN idCargo INT(11)
-		,IN correoInstitucional VARCHAR(50)
-		,IN fechaIngreso DATETIME
-		,IN arl VARCHAR (20)
-		,IN salud VARCHAR (20)
-		,IN pension VARCHAR (20)
-		,IN idPersona INT(11)
-		,IN sueldoBasico double
-		,IN estado enum('0','1')
-		,IN idUsuarioModificacion INT(11)
-		,IN idEmpleado INT(11)
-		)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_empleado`(IN idCargo INT(11)
+																			,IN correoInstitucional VARCHAR(50)
+																			,IN fechaIngreso DATETIME
+																			,IN arl VARCHAR (20)
+																			,IN salud VARCHAR (20)
+																			,IN pension VARCHAR (20)
+																			,IN idPersona INT(11)
+																			,IN sueldoBasico double
+																			,IN estado enum('0','1')
+																			,IN idUsuarioModificacion INT(11)
+																			,IN idEmpleado INT(11)
+																			)
 BEGIN
 	UPDATE empleado 
-		SET id_cargo = idCargo
+	SET id_cargo = idCargo
 		,correo_institucional = correoInstitucional
 		,fecha_ingreso = fechaIngreso
 		,arl = arl
@@ -1130,20 +1100,21 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_formulario`(IN descripcion VARCHAR(50),
-					IN etiqueta VARCHAR(30),
-                    IN ubicacion VARCHAR(100),
-                    IN estado enum('0','1'),
-                    IN idUsuarioModificacion INT(11),
-                    IN idFormulario INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_formulario`(IN descripcion VARCHAR(50)
+																			,IN etiqueta VARCHAR(30)
+																			,IN ubicacion VARCHAR(100)
+																			,IN estado enum('0','1')
+																			,IN idUsuarioModificacion INT(11)
+																			,IN idFormulario INT(11)
+																			)
 BEGIN
 	UPDATE formulario 
-    SET descripcion = descripcion,
-		etiqueta = etiqueta,
-		ubicacion = ubicacion,
-		estado = estado,
-		fecha_modificacion = NOW(),
-		id_usuario_modificacion = idUsuarioModificacion 
+    SET descripcion = descripcion
+		,etiqueta = etiqueta
+		,ubicacion = ubicacion
+		,estado = estado
+		,fecha_modificacion = NOW()
+		,id_usuario_modificacion = idUsuarioModificacion 
 	WHERE id_formulario = idFormulario;
 END */$$
 DELIMITER ;
@@ -1176,19 +1147,19 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_generar_pago`(
-		IN valorPago DOUBLE
-		,IN deduccion DOUBLE
-                ,IN fechaInicio DATETIME
-                ,IN fechaFin DATETIME
-		,IN idEmpleado INT(11)
-		,IN idUsuarioModificacion INT(11)
-		,IN idGenerarPago INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_generar_pago`(IN valorPago DOUBLE
+																				,IN deduccion DOUBLE
+																				,IN fechaInicio DATETIME
+																				,IN fechaFin DATETIME
+																				,IN idEmpleado INT(11)
+																				,IN idUsuarioModificacion INT(11)
+																				,IN idGenerarPago INT(11)
+																				)
 BEGIN
 	UPDATE generar_pago 
-	SET 	valor_pago = valorPago
+	SET valor_pago = valorPago
 		,deduccion = deduccion
-		,fecha_nicio = fechaInicio
+		,fecha_inicio = fechaInicio
 		,fecha_fin = fechaFin
 		,id_empleado = idEmpleado
 		,fecha_modificacion = NOW()
@@ -1210,6 +1181,7 @@ DELIMITER $$
                                                                       ,IN idEmpleado INT(11)
                                                                       ,IN estado ENUM('0','1')
                                                                       ,IN idUsuarioModificacion INT(11)
+																	  ,IN idOrden INT(11)
                                                                       )
 BEGIN
 	UPDATE orden 
@@ -1219,6 +1191,7 @@ BEGIN
        ,id_cliente = idCliente
        ,id_empleado = idEmpleado
        ,estado = estado
+	   ,fecha_modificacion = NOW()
        ,id_usuario_modificacion = idUsuarioModificacion 
 	WHERE id_orden = idOrden;
 END */$$
@@ -1230,16 +1203,18 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_pago_dia`(
-		IN idEmpleado INT(11)
-		,IN pagoDia DOUBLE
-                ,IN idUsuarioModificacion INT(11)
-                ,IN idPagoDia INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_pago_dia`(IN idEmpleado INT(11)
+																			,IN pagoDia DOUBLE
+																			,IN estado ENUM('0'.'1')
+																			,IN idUsuarioModificacion INT(11)
+																			,IN idPagoDia INT(11)
+																			)
 BEGIN
 	UPDATE pago_dia 
-	SET 
-		id_empleado = idEmpleado
+	SET id_empleado = idEmpleado
 		,pago_dia = pagoDia
+		,estado = estado
+		,fecha_modificacion = NOW()
 		,id_usuario_modificacion = idUsuarioModificacion 
 	WHERE 
 		id_pago_dia = idPagoDia;
@@ -1252,19 +1227,17 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_persona`(
-		IN nombre VARCHAR(100)
-		,IN apellido VARCHAR(100)
-		,IN edad INT(11)
-		,IN genero ENUM('Masculino','Femenino','Otro')
-		,IN estado enum('0','1')
-		,IN idUsuarioModificacion INT(11)
-		,IN idPersona INT(11)
-		)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_persona`(IN nombre VARCHAR(100)
+																		,IN apellido VARCHAR(100)
+																		,IN edad INT(11)
+																		,IN genero ENUM('M','F')
+																		,IN estado enum('0','1')
+																		,IN idUsuarioModificacion INT(11)
+																		,IN idPersona INT(11)
+																		)
 BEGIN
 	UPDATE persona 
-	SET 
-		nombre = nombre
+	SET nombre = nombre
 		,apellido = apellido
 		,edad = edad
 		,genero = genero
@@ -1282,19 +1255,19 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_producto`(IN descripcion VARCHAR(50),
-                    IN talla VARCHAR(50),
-                    IN estado ENUM('0','1'),
-                    IN idUsuarioModificacion INT(11),
-                    IN idPersona INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_producto`(IN descripcion VARCHAR(50)
+																			,IN talla VARCHAR(50)
+																			,IN estado ENUM('0','1')
+																			,IN idUsuarioModificacion INT(11),
+																			IN idProducto INT(11)
+																			)
 BEGIN
 	UPDATE producto 
-    SET descripcion = descripcion,
-	talla = talla,
-        estado = estado,
-        genero = genero,
-	fecha_modificacion = NOW(),
-	id_usuario_modificacion = idUsuarioModificacion 
+    SET descripcion = descripcion
+		,talla = talla
+		,estado = estado
+		,fecha_modificacion = NOW()
+		,id_usuario_modificacion = idUsuarioModificacion 
 	WHERE id_producto = idProducto;
 END */$$
 DELIMITER ;
@@ -1305,22 +1278,19 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_rol`(
-		IN descripcion VARCHAR(50)
-		,in estado ENUM('0','1')
-		,IN idUsuarioModificacion INT(11)
-		,IN idrOL INT(11)
-    )
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_rol`(IN descripcion VARCHAR(50)
+																	,in estado ENUM('0','1')
+																	,IN idUsuarioModificacion INT(11)
+																	,IN idRol INT(11)
+																	)
 BEGIN
-	
-	UPDATE rol
-	set  	descripcion = descripcion
+	UPDATE rol 
+	SET	descripcion = descripcion
 		,estado = estado
 		,fecha_modificacion = NOW()
 		,id_usuario_modificacion = idUsuarioModificacion 
 	WHERE id_rol = idRol;
-
-	END */$$
+END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `Modificar_tarea` */
@@ -1329,28 +1299,26 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_tarea`(
-		IN descripcion VARCHAR(100)
-		,IN valorUnitario DOUBLE
-		,IN cantidad INT(11)
-		,IN fecha DATETIME
-		,IN estadoPago ENUM('0','1')
-		,IN idEmpleado INT(11)
-		,IN estado ENUM('0','1')
-		,IN idUsuarioModificacion INT(11)
-		,IN idTarea INT(11)
-		)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_tarea`(IN descripcion VARCHAR(100)
+																		,IN valorUnitario DOUBLE
+																		,IN cantidad INT(11)
+																		,IN fecha DATETIME
+																		,IN estadoPago ENUM('0','1')
+																		,IN idEmpleado INT(11)
+																		,IN estado ENUM('0','1')
+																		,IN idUsuarioModificacion INT(11)
+																		,IN idTarea INT(11)
+																		)
 BEGIN
 	UPDATE rol
-	set 	
-		descripcion = descripcion
+	set descripcion = descripcion
 		,valor_unitario = valorUnitario
 		,cantidad = cantidad
 		,fecha = fecha
 		,estado_pago = estadoPago
 		,id_empleado = idEmpleado
 		,estado = estado
-		,fecha_modificacion = CURDATE()
+		,fecha_modificacion = NOW()
 		,id_usuario_Modificacion = idUsuarioModificacion
 	WHERE
 		id_tarea = idTarea;
@@ -1363,14 +1331,14 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_tipo_pago`(
-		IN descripcion VARCHAR(100)
-		,IN estado ENUM('0','1')
-		,IN idUsuarioModificacion INT(11)
-		,IN idTipoPago INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_tipo_pago`(IN descripcion VARCHAR(100)
+																			,IN estado ENUM('0','1')
+																			,IN idUsuarioModificacion INT(11)
+																			,IN idTipoPago INT(11)
+																			)
 BEGIN
 	UPDATE persona 
-		SET descripcion = descripcion
+	SET descripcion = descripcion
 		,estado = estado
 		,fecha_modificacion = NOW()
 		,id_usuario_modificacion = idUsuarioModificacion 
@@ -1384,19 +1352,18 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_usuario`(
-		IN usuario VARCHAR(50)
-		,IN contrasenia VARCHAR(50)
-		,IN fechaActivacion DATETIME
-		,IN fechaExpiracion DATETIME
-		,IN idPersona INT(11)
-		,IN estado enum('0','1')
-		,IN idUsuarioModificacion INT(11)
-		,IN idUsuario INT(11)
-		)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_usuario`(IN usuario VARCHAR(50)
+																		,IN contrasenia VARCHAR(50)
+																		,IN fechaActivacion DATETIME
+																		,IN fechaExpiracion DATETIME
+																		,IN idPersona INT(11)
+																		,IN estado enum('0','1')
+																		,IN idUsuarioModificacion INT(11)
+																		,IN idUsuario INT(11)
+																		)
 BEGIN
 	UPDATE usuario 
-	SET 	usuario = usuario
+	SET usuario = usuario
 		,contrasenia = contrasenia
 		,fecha_activacion = fechaActivacion
 		,fecha_expiracion = fechaExpiracion
@@ -1414,15 +1381,15 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_usuario_rol`(
-		IN idUsuario INT(11)
-		,IN idRol INT(11)
-		,IN estado enum('0','1')
-		,IN idUsuarioModificacion INT(11)
-		,IN idUsuarioRol INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_usuario_rol`(IN idUsuario INT(11)
+																			,IN idRol INT(11)
+																			,IN estado enum('0','1')
+																			,IN idUsuarioModificacion INT(11)
+																			,IN idUsuarioRol INT(11)
+																			)
 BEGIN
 	UPDATE usuario_rol 
-	SET 	id_usuario = idUsuario
+	SET id_usuario = idUsuario
 		,id_rol = idRol
 		,estado = estado
 		,fecha_modificacion = NOW()

@@ -20,13 +20,13 @@ USE `contex`;
 
 DROP TABLE IF EXISTS `cargo`;
 
-CREATE TABLE `cargo` (`id_cargo` int(11) NOT NULL AUTO_INCREMENT
-					 ,`descripcion` varchar(50) DEFAULT NULL
-					 ,`estado` enum('0','1') NOT NULL
-					 ,`fecha_creacion` datetime NOT NULL
-					 ,`fecha_modificacion` datetime NOT NULL
-					 ,`id_usuario_creacion` int(11) NOT NULL
-					 ,`id_usuario_modificacion` int(11) NOT NULL
+CREATE TABLE `cargo` (`id_cargo` INT(11) NOT NULL AUTO_INCREMENT
+					 ,`descripcion` VARCHAR(50) DEFAULT NULL
+					 ,`estado` ENUM('0','1') NOT NULL
+					 ,`fecha_creacion` DATETIME NOT NULL
+					 ,`fecha_modificacion` DATETIME NOT NULL
+					 ,`id_usuario_creacion` INT(11) NOT NULL
+					 ,`id_usuario_modificacion` INT(11) NOT NULL
 					 ,PRIMARY KEY (`id_cargo`)
 					 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
@@ -44,12 +44,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `categoria`;
 
-CREATE TABLE `categoria` (`id_categoria` int(11) NOT NULL AUTO_INCREMENT
-						 ,`descripcion` varchar(50) NOT NULL
-						 ,`fecha_creacion` datetime NOT NULL
-						 ,`fecha_modificacion` datetime NOT NULL
-						 ,`id_usuario_creacion` int(11) NOT NULL
-						 ,`id_usuario_modificacion` int(11) NOT NULL
+CREATE TABLE `categoria` (`id_categoria` INT(11) NOT NULL AUTO_INCREMENT
+						 ,`descripcion` VARCHAR(50) NOT NULL
+						 ,`fecha_creacion` DATETIME NOT NULL
+						 ,`fecha_modificacion` DATETIME NOT NULL
+						 ,`id_usuario_creacion` INT(11) NOT NULL
+						 ,`id_usuario_modificacion` INT(11) NOT NULL
 						 ,PRIMARY KEY (`id_categoria`)
 						 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -57,13 +57,13 @@ CREATE TABLE `categoria` (`id_categoria` int(11) NOT NULL AUTO_INCREMENT
 
 DROP TABLE IF EXISTS `cliente`;
 
-CREATE TABLE `cliente` (`id_cliente` int(11) NOT NULL AUTO_INCREMENT
-						,`id_persona` int(11) NOT NULL
-						,`estado` enum('0','1') NOT NULL
-						,`fecha_creacion` datetime NOT NULL
-						,`fecha_modificacion` datetime NOT NULL
-						,`id_usuario_creacion` int(11) NOT NULL
-						,`id_usuario_modificacion` int(11) NOT NULL
+CREATE TABLE `cliente` (`id_cliente` INT(11) NOT NULL AUTO_INCREMENT
+						,`id_persona` INT(11) NOT NULL
+						,`estado` ENUM('0','1') NOT NULL
+						,`fecha_creacion` DATETIME NOT NULL
+						,`fecha_modificacion` DATETIME NOT NULL
+						,`id_usuario_creacion` INT(11) NOT NULL
+						,`id_usuario_modificacion` INT(11) NOT NULL
 						,PRIMARY KEY (`id_cliente`)
 						,KEY `id_persona` (`id_persona`)
 						,CONSTRAINT `fk_cliente_persona` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`)
@@ -73,18 +73,18 @@ CREATE TABLE `cliente` (`id_cliente` int(11) NOT NULL AUTO_INCREMENT
 
 DROP TABLE IF EXISTS `compra_venta`;
 
-CREATE TABLE `compra_venta` (`id_compra_venta` int(11) NOT NULL AUTO_INCREMENT
-							,`control` enum('Compra','Venta','Cotizacion') NOT NULL
-							,`fecha` datetime NOT NULL
-							,`descuento` double DEFAULT NULL
-							,`valor` double NOT NULL
-							,`id_cliente` int(11) NOT NULL
-							,`id_proveedor` int(11) NOT NULL
-							,`estado` enum('0','1') NOT NULL
-							,`fecha_creacion` datetime NOT NULL
-							,`fecha_modificacion` datetime NOT NULL
-							,`id_usuario_creacion` int(11) NOT NULL
-							,`id_usuario_modificacion` int(11) NOT NULL
+CREATE TABLE `compra_venta` (`id_compra_venta` INT(11) NOT NULL AUTO_INCREMENT
+							,`control` ENUM('Compra','Venta','Cotizacion') NOT NULL
+							,`fecha` DATETIME NOT NULL
+							,`descuento` DOUBLE DEFAULT NULL
+							,`valor` DOUBLE NOT NULL
+							,`id_cliente` INT(11) NOT NULL
+							,`id_proveedor` INT(11) NOT NULL
+							,`estado` ENUM('0','1') NOT NULL
+							,`fecha_creacion` DATETIME NOT NULL
+							,`fecha_modificacion` DATETIME NOT NULL
+							,`id_usuario_creacion` INT(11) NOT NULL
+							,`id_usuario_modificacion` INT(11) NOT NULL
 							,PRIMARY KEY (`id_compra_venta`)
 							,KEY `id_cliente` (`id_cliente`)
 							,KEY `id_proveedor` (`id_proveedor`)
@@ -96,16 +96,16 @@ CREATE TABLE `compra_venta` (`id_compra_venta` int(11) NOT NULL AUTO_INCREMENT
 
 DROP TABLE IF EXISTS `detalle_orden`;
 
-CREATE TABLE `detalle_orden` (`id_detalle_orden` int(11) NOT NULL AUTO_INCREMENT
-							 ,`valor_inventario` double NOT NULL
-							 ,`valor_venta` double NOT NULL
-							 ,`cantidad` int(11) NOT NULL
-							 ,`id_orden` int(11) NOT NULL
-							 ,`id_producto` int(11) NOT NULL
-							 ,`fecha_creacion` datetime NOT NULL
-							 ,`fecha_modificacion` datetime NOT NULL
-							 ,`id_usuario_creacion` int(11) NOT NULL
-							 ,`id_usuario_modificacion` int(11) NOT NULL
+CREATE TABLE `detalle_orden` (`id_detalle_orden` INT(11) NOT NULL AUTO_INCREMENT
+							 ,`valor_inventario` DOUBLE NOT NULL
+							 ,`valor_venta` DOUBLE NOT NULL
+							 ,`cantidad` INT(11) NOT NULL
+							 ,`id_orden` INT(11) NOT NULL
+							 ,`id_producto` INT(11) NOT NULL
+							 ,`fecha_creacion` DATETIME NOT NULL
+							 ,`fecha_modificacion` DATETIME NOT NULL
+							 ,`id_usuario_creacion` INT(11) NOT NULL
+							 ,`id_usuario_modificacion` INT(11) NOT NULL
 							 ,PRIMARY KEY (`id_detalle_orden`)
 							 ,KEY `fk_detalle_orden_producto` (`id_producto`)
 							 ,KEY `fk_detalle_orden_orden` (`id_orden`)
@@ -117,20 +117,20 @@ CREATE TABLE `detalle_orden` (`id_detalle_orden` int(11) NOT NULL AUTO_INCREMENT
 
 DROP TABLE IF EXISTS `empleado`;
 
-CREATE TABLE `empleado` (`id_empleado` int(11) NOT NULL AUTO_INCREMENT
-						,`id_cargo` int(11) NOT NULL
-						,`correo_institucional` varchar(50) NOT NULL
+CREATE TABLE `empleado` (`id_empleado` INT(11) NOT NULL AUTO_INCREMENT
+						,`id_cargo` INT(11) NOT NULL
+						,`correo_institucional` VARCHAR(50) NOT NULL
 						,`fecha_ingreso` date NOT NULL
-						,`arl` varchar(20) NOT NULL
-						,`salud` varchar(20) NOT NULL
-						,`pension` varchar(20) NOT NULL
-						,`id_persona` int(11) NOT NULL
-						,`sueldo_basico` double DEFAULT NULL
-						,`estado` enum('0','1') NOT NULL
-						,`fecha_creacion` datetime NOT NULL
-						,`fecha_modificacion` datetime NOT NULL
-						,`id_usuario_creacion` int(11) NOT NULL
-						,`id_usuario_modificacion` int(11) NOT NULL
+						,`arl` VARCHAR(20) NOT NULL
+						,`salud` VARCHAR(20) NOT NULL
+						,`pension` VARCHAR(20) NOT NULL
+						,`id_persona` INT(11) NOT NULL
+						,`sueldo_basico` DOUBLE DEFAULT NULL
+						,`estado` ENUM('0','1') NOT NULL
+						,`fecha_creacion` DATETIME NOT NULL
+						,`fecha_modificacion` DATETIME NOT NULL
+						,`id_usuario_creacion` INT(11) NOT NULL
+						,`id_usuario_modificacion` INT(11) NOT NULL
 						,PRIMARY KEY (`id_empleado`)
 						,KEY `id_persona` (`id_persona`)
 						,KEY `id_cargo` (`id_cargo`)
@@ -152,15 +152,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `formulario`;
 
-CREATE TABLE `formulario` (`id_formulario` int(11) NOT NULL AUTO_INCREMENT
-							,`descripcion` varchar(50) NOT NULL
-							,`etiqueta` varchar(30) NOT NULL
-							,`ubicacion` varchar(100) NOT NULL
-							,`estado` enum('0','1') NOT NULL
-							,`fecha_creacion` datetime NOT NULL
-							,`fecha_modificacion` datetime NOT NULL
-							,`id_usuario_creacion` int(11) NOT NULL
-							,`id_usuario_modificacion` int(11) NOT NULL
+CREATE TABLE `formulario` (`id_formulario` INT(11) NOT NULL AUTO_INCREMENT
+							,`descripcion` VARCHAR(50) NOT NULL
+							,`etiqueta` VARCHAR(30) NOT NULL
+							,`ubicacion` VARCHAR(100) NOT NULL
+							,`estado` ENUM('0','1') NOT NULL
+							,`fecha_creacion` DATETIME NOT NULL
+							,`fecha_modificacion` DATETIME NOT NULL
+							,`id_usuario_creacion` INT(11) NOT NULL
+							,`id_usuario_modificacion` INT(11) NOT NULL
 							,PRIMARY KEY (`id_formulario`)
 							) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -168,14 +168,14 @@ CREATE TABLE `formulario` (`id_formulario` int(11) NOT NULL AUTO_INCREMENT
 
 DROP TABLE IF EXISTS `formulario_rol`;
 
-CREATE TABLE `formulario_rol` (`id_formulario_rol` int(11) NOT NULL AUTO_INCREMENT
-								,`id_rol` int(11) NOT NULL
-								,`id_formulario` int(11) NOT NULL
-								,`estado` enum('0','1') NOT NULL
-								,`fecha_creacion` datetime NOT NULL
-								,`fecha_modificacion` datetime NOT NULL
-								,`id_usuario_creacion` int(11) NOT NULL
-								,`id_usuario_modificacion` int(11) NOT NULL
+CREATE TABLE `formulario_rol` (`id_formulario_rol` INT(11) NOT NULL AUTO_INCREMENT
+								,`id_rol` INT(11) NOT NULL
+								,`id_formulario` INT(11) NOT NULL
+								,`estado` ENUM('0','1') NOT NULL
+								,`fecha_creacion` DATETIME NOT NULL
+								,`fecha_modificacion` DATETIME NOT NULL
+								,`id_usuario_creacion` INT(11) NOT NULL
+								,`id_usuario_modificacion` INT(11) NOT NULL
 								,PRIMARY KEY (`id_formulario_rol`)
 								,KEY `id_rol` (`id_rol`)
 								,KEY `id_formulario` (`id_formulario`)
@@ -187,17 +187,17 @@ CREATE TABLE `formulario_rol` (`id_formulario_rol` int(11) NOT NULL AUTO_INCREME
 
 DROP TABLE IF EXISTS `generar_pago`;
 
-CREATE TABLE `generar_pago` (`id_generar_pago` int(11) NOT NULL AUTO_INCREMENT
-							,`valor_pago` double NOT NULL
-							,`deduccion` double NOT NULL
-							,`fecha_inicio` datetime NOT NULL
-							,`fecha_fin` datetime NOT NULL
-							,`id_empleado` int(11) NOT NULL
-							,`estado` enum('0','1') NOT NULL
-							,`fecha_creacion` datetime NOT NULL
-							,`fecha_modificacion` datetime NOT NULL
-							,`id_usuario_creacion` int(11) NOT NULL
-							,`id_usuario_modificacion` int(11) NOT NULL
+CREATE TABLE `generar_pago` (`id_generar_pago` INT(11) NOT NULL AUTO_INCREMENT
+							,`valor_pago` DOUBLE NOT NULL
+							,`deduccion` DOUBLE NOT NULL
+							,`fecha_inicio` DATETIME NOT NULL
+							,`fecha_fin` DATETIME NOT NULL
+							,`id_empleado` INT(11) NOT NULL
+							,`estado` ENUM('0','1') NOT NULL
+							,`fecha_creacion` DATETIME NOT NULL
+							,`fecha_modificacion` DATETIME NOT NULL
+							,`id_usuario_creacion` INT(11) NOT NULL
+							,`id_usuario_modificacion` INT(11) NOT NULL
 							,PRIMARY KEY (`id_generar_pago`)
 							,KEY `id_empleado` (`id_empleado`)
 							,CONSTRAINT `generar_pago_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
@@ -207,17 +207,17 @@ CREATE TABLE `generar_pago` (`id_generar_pago` int(11) NOT NULL AUTO_INCREMENT
 
 DROP TABLE IF EXISTS `orden`;
 
-CREATE TABLE `orden` (`id_orden` int(11) NOT NULL AUTO_INCREMENT
-					 ,`fecha_orden` datetime NOT NULL
-					 ,`fecha_entrega` datetime NOT NULL
-					 ,`descripcion` varchar(100) NOT NULL
-					 ,`id_persona` int(11) NOT NULL
-					 ,`id_empleado` int(11) NOT NULL
-					 ,`estado` enum('0','1') NOT NULL
-					 ,`fecha_creacion` datetime NOT NULL
-					 ,`fecha_modificacion` datetime NOT NULL
-					 ,`id_usuario_creacion` int(11) NOT NULL
-					 ,`id_usuario_modificacion` int(11) NOT NULL
+CREATE TABLE `orden` (`id_orden` INT(11) NOT NULL AUTO_INCREMENT
+					 ,`fecha_orden` DATETIME NOT NULL
+					 ,`fecha_entrega` DATETIME NOT NULL
+					 ,`descripcion` VARCHAR(100) NOT NULL
+					 ,`id_persona` INT(11) NOT NULL
+					 ,`id_empleado` INT(11) NOT NULL
+					 ,`estado` ENUM('0','1') NOT NULL
+					 ,`fecha_creacion` DATETIME NOT NULL
+					 ,`fecha_modificacion` DATETIME NOT NULL
+					 ,`id_usuario_creacion` INT(11) NOT NULL
+					 ,`id_usuario_modificacion` INT(11) NOT NULL
 					 ,PRIMARY KEY (`id_orden`)
 					 ,KEY `id_persona` (`id_persona`)
 					 ,KEY `id_empleado` (`id_empleado`)
@@ -229,14 +229,14 @@ CREATE TABLE `orden` (`id_orden` int(11) NOT NULL AUTO_INCREMENT
 
 DROP TABLE IF EXISTS `pago_dia`;
 
-CREATE TABLE `pago_dia` (`id_pago_dia` int(11) NOT NULL AUTO_INCREMENT
-						,`id_empleado` int(11) NOT NULL
-						,`pago_dia` double NOT NULL
-						,`estado` enum('0','1') NOT NULL
-						,`fecha_creacion` datetime NOT NULL
-						,`fecha_modificacion` datetime NOT NULL
-						,`id_usuario_creacion` int(11) NOT NULL
-						,`id_usuario_modificacion` int(11) NOT NULL
+CREATE TABLE `pago_dia` (`id_pago_dia` INT(11) NOT NULL AUTO_INCREMENT
+						,`id_empleado` INT(11) NOT NULL
+						,`pago_dia` DOUBLE NOT NULL
+						,`estado` ENUM('0','1') NOT NULL
+						,`fecha_creacion` DATETIME NOT NULL
+						,`fecha_modificacion` DATETIME NOT NULL
+						,`id_usuario_creacion` INT(11) NOT NULL
+						,`id_usuario_modificacion` INT(11) NOT NULL
 						,PRIMARY KEY (`id_pago_dia`)
 						,KEY `id_empleado` (`id_empleado`)
 						,CONSTRAINT `pago_dia_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
@@ -246,16 +246,16 @@ CREATE TABLE `pago_dia` (`id_pago_dia` int(11) NOT NULL AUTO_INCREMENT
 
 DROP TABLE IF EXISTS `persona`;
 
-CREATE TABLE `persona` (`id_persona` int(11) NOT NULL AUTO_INCREMENT
-						,`nombre` varchar(100) NOT NULL
-						,`apellido` varchar(100) NOT NULL
-						,`edad` int(11) NOT NULL
-						,`genero` enum('M','F') NOT NULL
-						,`estado` enum('0','1') NOT NULL
-						,`fecha_creacion` datetime NOT NULL
-						,`fecha_modificacion` datetime NOT NULL
-						,`id_usuario_creacion` int(11) NOT NULL
-						,`id_usuario_modificacion` int(11) NOT NULL
+CREATE TABLE `persona` (`id_persona` INT(11) NOT NULL AUTO_INCREMENT
+						,`nombre` VARCHAR(100) NOT NULL
+						,`apellido` VARCHAR(100) NOT NULL
+						,`edad` INT(11) NOT NULL
+						,`genero` ENUM('M','F') NOT NULL
+						,`estado` ENUM('0','1') NOT NULL
+						,`fecha_creacion` DATETIME NOT NULL
+						,`fecha_modificacion` DATETIME NOT NULL
+						,`id_usuario_creacion` INT(11) NOT NULL
+						,`id_usuario_modificacion` INT(11) NOT NULL
 						,PRIMARY KEY (`id_persona`)
 						) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
@@ -275,14 +275,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `producto`;
 
-CREATE TABLE `producto` (`id_producto` int(11) NOT NULL AUTO_INCREMENT
-						,`descripcion` varchar(100) NOT NULL
-						,`talla` varchar(50) NOT NULL
-						,`id_categoria` int(11) NOT NULL
-						,`fecha_creacion` datetime NOT NULL
-						,`fecha_modificacion` datetime NOT NULL
-						,`id_usuario_creacion` int(11) NOT NULL
-						,`id_usuario_modificacion` int(11) NOT NULL
+CREATE TABLE `producto` (`id_producto` INT(11) NOT NULL AUTO_INCREMENT
+						,`descripcion` VARCHAR(100) NOT NULL
+						,`talla` VARCHAR(50) NOT NULL
+						,`id_categoria` INT(11) NOT NULL
+						,`fecha_creacion` DATETIME NOT NULL
+						,`fecha_modificacion` DATETIME NOT NULL
+						,`id_usuario_creacion` INT(11) NOT NULL
+						,`id_usuario_modificacion` INT(11) NOT NULL
 						,PRIMARY KEY (`id_producto`)
 						,KEY `fk_producto_categoria` (`id_categoria`)
 						,CONSTRAINT `fk_producto_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`)
@@ -292,13 +292,13 @@ CREATE TABLE `producto` (`id_producto` int(11) NOT NULL AUTO_INCREMENT
 
 DROP TABLE IF EXISTS `proveedor`;
 
-CREATE TABLE `proveedor` (`id_proveedor` int(11) NOT NULL AUTO_INCREMENT
-						 ,`id_persona` int(11) NOT NULL
-						 ,`estado` enum('0','1') NOT NULL
-						 ,`fecha_creacion` datetime NOT NULL
-						 ,`fecha_modificacion` datetime NOT NULL
-						 ,`id_usuario_creacion` int(11) NOT NULL
-						 ,`id_usuario_modificacion` int(11) NOT NULL
+CREATE TABLE `proveedor` (`id_proveedor` INT(11) NOT NULL AUTO_INCREMENT
+						 ,`id_persona` INT(11) NOT NULL
+						 ,`estado` ENUM('0','1') NOT NULL
+						 ,`fecha_creacion` DATETIME NOT NULL
+						 ,`fecha_modificacion` DATETIME NOT NULL
+						 ,`id_usuario_creacion` INT(11) NOT NULL
+						 ,`id_usuario_modificacion` INT(11) NOT NULL
 						 ,PRIMARY KEY (`id_proveedor`)
 						 ,KEY `id_persona` (`id_persona`)
 						 ,CONSTRAINT `proveedor_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`)
@@ -308,13 +308,13 @@ CREATE TABLE `proveedor` (`id_proveedor` int(11) NOT NULL AUTO_INCREMENT
 
 DROP TABLE IF EXISTS `rol`;
 
-CREATE TABLE `rol` (`id_rol` int(11) NOT NULL AUTO_INCREMENT
-					,`descripcion` varchar(50) NOT NULL
-					,`estado` enum('0','1') NOT NULL
-					,`fecha_creacion` datetime NOT NULL
-					,`fecha_modificacion` datetime NOT NULL
-					,`id_usuario_creacion` int(11) NOT NULL
-					,`id_usuario_modificacion` int(11) NOT NULL
+CREATE TABLE `rol` (`id_rol` INT(11) NOT NULL AUTO_INCREMENT
+					,`descripcion` VARCHAR(50) NOT NULL
+					,`estado` ENUM('0','1') NOT NULL
+					,`fecha_creacion` DATETIME NOT NULL
+					,`fecha_modificacion` DATETIME NOT NULL
+					,`id_usuario_creacion` INT(11) NOT NULL
+					,`id_usuario_modificacion` INT(11) NOT NULL
 					,PRIMARY KEY (`id_rol`)
 					) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -322,18 +322,18 @@ CREATE TABLE `rol` (`id_rol` int(11) NOT NULL AUTO_INCREMENT
 
 DROP TABLE IF EXISTS `tarea`;
 
-CREATE TABLE `tarea` (`id_tarea` int(11) NOT NULL AUTO_INCREMENT
-					 ,`descripcion` varchar(100) NOT NULL
-					 ,`valor_unitario` double NOT NULL
-					 ,`cantidad` int(11) NOT NULL
-					 ,`fecha` datetime NOT NULL
-					 ,`estado_pago` enum('por pagar','pagado') NOT NULL
-					 ,`id_empleado` int(11) NOT NULL
-					 ,`estado` enum('0','1') NOT NULL
-					 ,`fecha_creacion` datetime NOT NULL
-					 ,`fecha_modificacion` datetime NOT NULL
-					 ,`id_usuario_creacion` int(11) NOT NULL
-					 ,`id_usuario_modificacion` int(11) NOT NULL
+CREATE TABLE `tarea` (`id_tarea` INT(11) NOT NULL AUTO_INCREMENT
+					 ,`descripcion` VARCHAR(100) NOT NULL
+					 ,`valor_unitario` DOUBLE NOT NULL
+					 ,`cantidad` INT(11) NOT NULL
+					 ,`fecha` DATETIME NOT NULL
+					 ,`estado_pago` ENUM('por pagar','pagado') NOT NULL
+					 ,`id_empleado` INT(11) NOT NULL
+					 ,`estado` ENUM('0','1') NOT NULL
+					 ,`fecha_creacion` DATETIME NOT NULL
+					 ,`fecha_modificacion` DATETIME NOT NULL
+					 ,`id_usuario_creacion` INT(11) NOT NULL
+					 ,`id_usuario_modificacion` INT(11) NOT NULL
 					 ,PRIMARY KEY (`id_tarea`)
 					 ,KEY `id_empleado` (`id_empleado`)
 					 ,CONSTRAINT `fk_tarea_id_empleado` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
@@ -343,13 +343,13 @@ CREATE TABLE `tarea` (`id_tarea` int(11) NOT NULL AUTO_INCREMENT
 
 DROP TABLE IF EXISTS `tipo_pago`;
 
-CREATE TABLE `tipo_pago` (`id_tipo_pago` int(11) NOT NULL AUTO_INCREMENT
-						 ,`descripcion` varchar(100) NOT NULL
-						 ,`estado` enum('0','1') NOT NULL
-						 ,`fecha_creacion` datetime NOT NULL
-						 ,`fecha_modificacion` datetime NOT NULL
-						 ,`id_usuario_creacion` int(11) NOT NULL
-						 ,`id_usuario_modificacion` int(11) NOT NULL
+CREATE TABLE `tipo_pago` (`id_tipo_pago` INT(11) NOT NULL AUTO_INCREMENT
+						 ,`descripcion` VARCHAR(100) NOT NULL
+						 ,`estado` ENUM('0','1') NOT NULL
+						 ,`fecha_creacion` DATETIME NOT NULL
+						 ,`fecha_modificacion` DATETIME NOT NULL
+						 ,`id_usuario_creacion` INT(11) NOT NULL
+						 ,`id_usuario_modificacion` INT(11) NOT NULL
 						 ,PRIMARY KEY (`id_tipo_pago`)
 						 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -357,17 +357,17 @@ CREATE TABLE `tipo_pago` (`id_tipo_pago` int(11) NOT NULL AUTO_INCREMENT
 
 DROP TABLE IF EXISTS `usuario`;
 
-CREATE TABLE `usuario` (`id_usuario` int(11) NOT NULL AUTO_INCREMENT
-						,`usuario` varchar(50) NOT NULL
-						,`contrasenia` varchar(50) NOT NULL
-						,`fecha_activacion` datetime NOT NULL
-						,`fecha_expiracion` datetime NOT NULL
-						,`id_persona` int(11) NOT NULL
-						,`estado` enum('0','1') NOT NULL
-						,`fecha_creacion` datetime NOT NULL
-						,`fecha_modificacion` datetime NOT NULL
-						,`id_usuario_creacion` int(11) NOT NULL
-						,`id_usuario_modificacion` int(11) NOT NULL
+CREATE TABLE `usuario` (`id_usuario` INT(11) NOT NULL AUTO_INCREMENT
+						,`usuario` VARCHAR(50) NOT NULL
+						,`contrasenia` VARCHAR(50) NOT NULL
+						,`fecha_activacion` DATETIME NOT NULL
+						,`fecha_expiracion` DATETIME NOT NULL
+						,`id_persona` INT(11) NOT NULL
+						,`estado` ENUM('0','1') NOT NULL
+						,`fecha_creacion` DATETIME NOT NULL
+						,`fecha_modificacion` DATETIME NOT NULL
+						,`id_usuario_creacion` INT(11) NOT NULL
+						,`id_usuario_modificacion` INT(11) NOT NULL
 						,PRIMARY KEY (`id_usuario`)
 						,KEY `id_persona` (`id_persona`)
 						,CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`)
@@ -384,14 +384,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `usuario_rol`;
 
-CREATE TABLE `usuario_rol` (`id_usuario_rol` int(11) NOT NULL AUTO_INCREMENT
-							,`id_usuario` int(11) NOT NULL
-							,`id_rol` int(11) NOT NULL
-							,`estado` enum('0','1') NOT NULL
-							,`fecha_creacion` datetime NOT NULL
-							,`fecha_modificacion` datetime NOT NULL
-							,`id_usuario_creacion` int(11) NOT NULL
-							,`id_usuario_modificacion` int(11) NOT NULL
+CREATE TABLE `usuario_rol` (`id_usuario_rol` INT(11) NOT NULL AUTO_INCREMENT
+							,`id_usuario` INT(11) NOT NULL
+							,`id_rol` INT(11) NOT NULL
+							,`estado` ENUM('0','1') NOT NULL
+							,`fecha_creacion` DATETIME NOT NULL
+							,`fecha_modificacion` DATETIME NOT NULL
+							,`id_usuario_creacion` INT(11) NOT NULL
+							,`id_usuario_modificacion` INT(11) NOT NULL
 							,PRIMARY KEY (`id_usuario_rol`)
 							,KEY `id_usuario` (`id_usuario`)
 							,KEY `id_rol` (`id_rol`)
@@ -435,9 +435,9 @@ DELIMITER ;
 DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_categoria`(IN descripcion VARCHAR(50)
-																		,IN estado enum('0','1')
-																		,IN idUsuarioCreacion int(11)
-																		,IN idUsuarioModificacion int(11)
+																		,IN estado ENUM('0','1')
+																		,IN idUsuarioCreacion INT(11)
+																		,IN idUsuarioModificacion INT(11)
 																		)
 BEGIN
 	INSERT INTO categoria(descripcion
@@ -537,8 +537,8 @@ DELIMITER $$
 																		,IN salud VARCHAR(20)
 																		,IN pension VARCHAR(20)
 																		,IN idPersona INT(11)
-																		,IN sueldoBasico double
-																		,iN estado enum('0','1')
+																		,IN sueldoBasico DOUBLE
+																		,iN estado ENUM('0','1')
 																		,IN idUsuarioCreacion INT(11)
 																		,IN idUsuarioModificacion INT(11)
 																		)
@@ -583,7 +583,7 @@ DELIMITER $$
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_formulario`(IN descripcion VARCHAR(50)
 																		 ,IN etiqueta VARCHAR(30)
 																		 ,IN ubicacion VARCHAR(100)
-																		 ,IN estado enum('0','1')
+																		 ,IN estado ENUM('0','1')
 																		 ,IN idUsuarioCreacion INT(11)
 																		 ,IN idUsuarioModificacion INT(11)
 																		 )
@@ -617,7 +617,7 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_formulario_rol`(IN idRol INT(11)
 																				,IN idFormulario INT(11)
-																				,IN estado enum('0','1')
+																				,IN estado ENUM('0','1')
 																				,IN idUsuarioCreacion INT(11)
 																				,IN idUsuarioModificacion INT(11)
 																				)
@@ -828,7 +828,7 @@ DELIMITER ;
 DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_rol`(IN descripcion VARCHAR(50)
-																	,IN estado enum('0','1')
+																	,IN estado ENUM('0','1')
 																	,IN idUsuarioCreacion INT(11)
 																	,IN idUsuarioModificacion INT(11)
 																	)
@@ -867,7 +867,7 @@ DELIMITER $$
 																	,IN idUsuarioModificacion INT(11)
 																	)
 BEGIN
-	insert into rol(descripcion
+	INSERT INTO rol(descripcion
 					,valor_unitario
 					,cantidad
 					,fecha
@@ -934,7 +934,7 @@ DELIMITER $$
 																		,IN fechaActivacion DATETIME
 																		,IN fechaExpiracion DATETIME
 																		,IN idPersona INT(11)
-																		,IN estado enum('0','1')
+																		,IN estado ENUM('0','1')
 																		,IN idUsuarioCreacion INT(11)
 																		,IN idUsuarioModificacion INT(11)
 																		)
@@ -972,7 +972,7 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_usuario_rol`(IN idUsuario INT(11)
 																			,IN idRol INT(11)
-																			,IN estado enum('0','1')
+																			,IN estado ENUM('0','1')
 																			,IN idUsuarioCreacion INT(11)
 																			,IN idUsuarioModificacion INT(11)
 																			)
@@ -1024,7 +1024,7 @@ DELIMITER ;
 DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_categoria`(IN descripcion VARCHAR(50)
-																			,IN estado enum('0','1')
+																			,IN estado ENUM('0','1')
 																			,IN idUsuarioModificacion INT(11)
 																			,IN idCategoria INT(11)
 																			)
@@ -1072,8 +1072,8 @@ DELIMITER $$
 																			,IN salud VARCHAR (20)
 																			,IN pension VARCHAR (20)
 																			,IN idPersona INT(11)
-																			,IN sueldoBasico double
-																			,IN estado enum('0','1')
+																			,IN sueldoBasico DOUBLE
+																			,IN estado ENUM('0','1')
 																			,IN idUsuarioModificacion INT(11)
 																			,IN idEmpleado INT(11)
 																			)
@@ -1103,7 +1103,7 @@ DELIMITER $$
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_formulario`(IN descripcion VARCHAR(50)
 																			,IN etiqueta VARCHAR(30)
 																			,IN ubicacion VARCHAR(100)
-																			,IN estado enum('0','1')
+																			,IN estado ENUM('0','1')
 																			,IN idUsuarioModificacion INT(11)
 																			,IN idFormulario INT(11)
 																			)
@@ -1125,11 +1125,12 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_formulario_rol`(IN idRol INT(11),
-					IN idFormulario INT(11),
-                    IN estado enum('0','1'),
-                    IN idUsuarioModificacion INT(11),
-                    IN idFormularioRol INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_formulario_rol`(IN idRol INT(11)
+																				,IN idFormulario INT(11)
+																				,IN estado ENUM('0','1')
+																				,IN idUsuarioModificacion INT(11)
+																				,IN idFormularioRol INT(11)
+																				)
 BEGIN
 	UPDATE formulario_rol 
     SET id_rol = idRol,
@@ -1231,7 +1232,7 @@ DELIMITER $$
 																		,IN apellido VARCHAR(100)
 																		,IN edad INT(11)
 																		,IN genero ENUM('M','F')
-																		,IN estado enum('0','1')
+																		,IN estado ENUM('0','1')
 																		,IN idUsuarioModificacion INT(11)
 																		,IN idPersona INT(11)
 																		)
@@ -1357,7 +1358,7 @@ DELIMITER $$
 																		,IN fechaActivacion DATETIME
 																		,IN fechaExpiracion DATETIME
 																		,IN idPersona INT(11)
-																		,IN estado enum('0','1')
+																		,IN estado ENUM('0','1')
 																		,IN idUsuarioModificacion INT(11)
 																		,IN idUsuario INT(11)
 																		)
@@ -1383,7 +1384,7 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_usuario_rol`(IN idUsuario INT(11)
 																			,IN idRol INT(11)
-																			,IN estado enum('0','1')
+																			,IN estado ENUM('0','1')
 																			,IN idUsuarioModificacion INT(11)
 																			,IN idUsuarioRol INT(11)
 																			)

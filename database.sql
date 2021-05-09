@@ -1206,7 +1206,7 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_pago_dia`(IN idEmpleado INT(11)
 																			,IN pagoDia DOUBLE
-																			,IN estado ENUM('0'.'1')
+																			,IN estado ENUM('0','1')
 																			,IN idUsuarioModificacion INT(11)
 																			,IN idPagoDia INT(11)
 																			)

@@ -46,6 +46,7 @@ DROP TABLE IF EXISTS `categoria`;
 
 CREATE TABLE `categoria` (`id_categoria` INT(11) NOT NULL AUTO_INCREMENT
 						 ,`descripcion` VARCHAR(50) NOT NULL
+						 ,`estado` ENUM('0','1') NOT NULL
 						 ,`fecha_creacion` DATETIME NOT NULL
 						 ,`fecha_modificacion` DATETIME NOT NULL
 						 ,`id_usuario_creacion` INT(11) NOT NULL
@@ -278,6 +279,7 @@ DROP TABLE IF EXISTS `producto`;
 CREATE TABLE `producto` (`id_producto` INT(11) NOT NULL AUTO_INCREMENT
 						,`descripcion` VARCHAR(100) NOT NULL
 						,`talla` VARCHAR(50) NOT NULL
+						,`estado` ENUM('0','1') NOT NULL
 						,`id_categoria` INT(11) NOT NULL
 						,`fecha_creacion` DATETIME NOT NULL
 						,`fecha_modificacion` DATETIME NOT NULL
@@ -793,31 +795,33 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_producto`(IN descripcion VARCHAR(50)
-																		,IN estado ENUM('0','1')
-																		,IN idUsuarioCreacion INT(11)
-																		,IN idUsuarioModificacion INT(11)
-																		-- faltan idCategoria y talla
-																		)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_producto`(
+	IN `descripcion` VARCHAR(50),
+	IN `talla` INT(11),
+	IN `estado` ENUM('0','1'),
+	IN `idCategoria` INT,
+	IN `idUsuarioCreacion` INT(11),
+	IN `idUsuarioModificacion` INT(11)
+)																		)
 BEGIN
-	INSERT INTO producto(descripcion
-						,talla
-						,estado
-						,id_categoria
-						,fecha_creacion
-						,fecha_modificacion
-						,id_usuario_creacion
-						,id_usuario_modificacion
-						) 
-	VALUES (descripcion
+	INSERT INTO producto(
+			descripcion
 			,talla
 			,estado
+			,id_categoria
+			,fecha_creacion
+			,fecha_modificacion
+			,id_usuario_creacion
+			,id_usuario_modificacion) 
+		VALUES (
+			descripcion
+			,talla
+         	,estado
 			,idCategoria
 			,NOW()
 			,NOW()
 			,idUsuarioCreacion
-			,idUsuarioModificacion
-			);
+			,idUsuarioModificacion);
 END */$$
 DELIMITER ;
 
@@ -1256,19 +1260,23 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_producto`(IN descripcion VARCHAR(50)
-																			,IN talla VARCHAR(50)
-																			,IN estado ENUM('0','1')
-																			,IN idUsuarioModificacion INT(11),
-																			IN idProducto INT(11)
-																			)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_producto`(
+	IN `descripcion` VARCHAR(50),
+	IN `talla` VARCHAR(50),
+	IN `estado` ENUM('0','1'),
+	IN `idCategoria` INT,
+	IN `idUsuarioModificacion` INT(11),
+	IN `idProducto` INT(11)
+)
 BEGIN
 	UPDATE producto 
-    SET descripcion = descripcion
-		,talla = talla
-		,estado = estado
-		,fecha_modificacion = NOW()
-		,id_usuario_modificacion = idUsuarioModificacion 
+    SET 
+	 	descripcion = descripcion,
+		talla = talla,
+		estado = estado,
+		id_categoria = idCategoria,
+		fecha_modificacion = NOW(),
+		id_usuario_modificacion = idUsuarioModificacion 
 	WHERE id_producto = idProducto;
 END */$$
 DELIMITER ;

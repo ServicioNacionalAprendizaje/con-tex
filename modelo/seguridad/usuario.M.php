@@ -140,7 +140,8 @@ class Usuario
                             ,'$this->fechaExpiracion'
                             ,$this->idPersona
                             ,'$this->estado'
-                            ,'$this->idUsuarioCreacion')";
+                            ,$this->idUsuarioCreacion
+                            ,$this->idUsuarioModificacion)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -155,7 +156,6 @@ class Usuario
                             ,'$this->fechaExpiracion'
                             ,$this->idPersona
                             ,'$this->estado'
-                            ,'$this->idUsuarioModificacion'
                             ,$this->idUsuario)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();

@@ -36,7 +36,8 @@ if (isset ($accion)){
                 $usuario->setFechaActivacion($_POST['fechaActivacion']);
                 $usuario->setFechaExpiracion($_POST['fechaExpiracion']);
                 $usuario->setIdPersona($_POST['idPersona']);
-                $usuario->setEstado($_POST['estado']);               
+                $usuario->setEstado($_POST['estado']);  
+                $usuario->setIdUsuarioModificacion(1);             
                 $resultado = $usuario->Modificar();
                 $respuesta['respuesta']="La información se modificó correctamente.";
             }catch(Exception $e){
@@ -61,12 +62,10 @@ if (isset ($accion)){
             try{
                 $usuario = new Usuario();
                 $usuario->setIdUsuario($_POST['id']);
-                $usuario->setUsuario($_POST['usuario']);
                 $usuario->setContrasenia($_POST['contrasenia']);
                 $usuario->setFechaActivacion($_POST['fechaActivacion']);
                 $usuario->setFechaExpiracion($_POST['fechaExpiracion']);
                 $usuario->setIdPersona($_POST['idPersona']);
-                $usuario->setEstado($_POST['estado']);
                 $resultado = $usuario->consultar();
 
                 $numeroRegistros = $usuario->conn->obtenerNumeroRegistros();
@@ -78,7 +77,7 @@ if (isset ($accion)){
                         $respuesta['fechaActivacion'] = $rowBuscar->fecha_activacion;
                         $respuesta['fechaExpiracion'] = $rowBuscar->fecha_expiracion;
                         $respuesta['idPersona'] = $rowBuscar->id_persona;
-                        $respuesta['estado'] = $rowBuscar->estado == 1 ? 'Activo':'Inactivo';
+                        $respuesta['estado'] = $rowBuscar->estado;
                         $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_usuario.")'>";
                         
                     }
@@ -91,7 +90,7 @@ if (isset ($accion)){
                                         <td><label>".$rowConsulta[2]."</label></td>                                        
                                         <td><label>".$rowConsulta[3]."</label></td>                                                                                               
                                         <td><label>".$rowConsulta[4]."</label></td>
-                                        <td><label>".($rowConsulta[9]== 1 ? 'Activo':'Inactivo')."</label></td>
+                                        <td><label>".($rowConsulta[6]== 1 ? 'Activo':'Inactivo')."</label></td>
                                         <td align='center'><a href='#' class='btn btn-warning'><i class='fas fa-edit' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></i></a></td>
                                         <td align='center'><a href='#' class='btn btn-danger'><i class='fas fa-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></i></a></td>                                                                                
                                         </tr>";

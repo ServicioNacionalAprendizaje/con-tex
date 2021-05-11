@@ -380,8 +380,8 @@ DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario` (`id_usuario` INT(11) NOT NULL AUTO_INCREMENT
 						,`usuario` VARCHAR(50) NOT NULL
 						,`contrasenia` VARCHAR(50) NOT NULL
-						,`fecha_activacion` DATETIME NOT NULL
-						,`fecha_expiracion` DATETIME NOT NULL
+						,`fecha_activacion` DATE NOT NULL
+						,`fecha_expiracion` DATE NOT NULL
 						,`id_persona` INT(11) NOT NULL
 						,`estado` ENUM('0','1') NOT NULL
 						,`fecha_creacion` DATETIME NOT NULL
@@ -952,8 +952,8 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_usuario`(IN usuario VARCHAR(50)
 																		,IN contrasenia VARCHAR(50)
-																		,IN fechaActivacion DATETIME
-																		,IN fechaExpiracion DATETIME
+																		,IN fechaActivacion DATE
+																		,IN fechaExpiracion DATE
 																		,IN idPersona INT(11)
 																		,IN estado ENUM('0','1')
 																		,IN idUsuarioCreacion INT(11)
@@ -1378,8 +1378,8 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_usuario`(IN usuario VARCHAR(50)
 																		,IN contrasenia VARCHAR(50)
-																		,IN fechaActivacion DATETIME
-																		,IN fechaExpiracion DATETIME
+																		,IN fechaActivacion DATE
+																		,IN fechaExpiracion DATE
 																		,IN idPersona INT(11)
 																		,IN estado ENUM('0','1')
 																		,IN idUsuarioModificacion INT(11)

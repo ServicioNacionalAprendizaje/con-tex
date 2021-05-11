@@ -75,11 +75,11 @@ CREATE TABLE `cliente` (`id_cliente` INT(11) NOT NULL AUTO_INCREMENT
 LOCK TABLES `cliente` WRITE;
 
 	INSERT INTO `cliente` (`id_cliente`,`id_persona`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES
-	(1,5,1,'2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
-	,(2,6,1,'2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
-	,(3,7,1,'2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
-	,(4,8,1,'2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
-	,(5,9,1,'2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
+	(1,5,'1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(2,6,'1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(3,7,'1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(4,8,'1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(5,9,'1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
 
 UNLOCK TABLES;
 
@@ -181,21 +181,21 @@ CREATE TABLE `formulario` (`id_formulario` INT(11) NOT NULL AUTO_INCREMENT
 LOCK TABLES `formulario` WRITE;
 
 	INSERT INTO `formulario` (`id_formulario`,`descripcion`,`etiqueta`,`ubicacion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES
-	(1,'formulario','Seguridad','./vista/Seguridad/formulario.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(2,'formulario rol','Seguridad','./vista/Seguridad/formularioRol.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(3,'persona','Seguridad','./vista/Seguridad/persona.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(4,'rol','Seguridad','./vista/Seguridad/rol.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(5,'usuario','Seguridad','./vista/Seguridad/usuario.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(6,'cargo','Nomina','./vista/Nomina/cargo.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(7,'empleado','Nomina','./vista/Nomina/empleado.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(8,'generar pago','Nomina','./vista/Nomina/generarPago.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(9,'pago dia','Nomina','./vista/Nomina/pagoDia.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(10,'categoria','Producción','./vista/Producción/categoria.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(11,'detalle orden','Producción','./vista/Producción/detalleOrden.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(12,'insumo','Producción','./vista/Producción/insumo.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(13,'orden','Producción','./vista/Producción/orden.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(14,'producto','Producción','./vista/Producción/producto.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(15,'tarea','Producción','./vista/Producción/tarea.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1);
+	(1,'formulario','Seguridad','./vista/Seguridad/formulario.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(2,'formulario rol','Seguridad','./vista/Seguridad/formularioRol.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(3,'persona','Seguridad','./vista/Seguridad/persona.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(4,'rol','Seguridad','./vista/Seguridad/rol.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(5,'usuario','Seguridad','./vista/Seguridad/usuario.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(6,'cargo','Nomina','./vista/Nomina/cargo.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(7,'empleado','Nomina','./vista/Nomina/empleado.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(8,'generar pago','Nomina','./vista/Nomina/generarPago.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(9,'pago dia','Nomina','./vista/Nomina/pagoDia.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(10,'categoria','Producción','./vista/Producción/categoria.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(11,'detalle orden','Producción','./vista/Producción/detalleOrden.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(12,'insumo','Producción','./vista/Producción/insumo.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(13,'orden','Producción','./vista/Producción/orden.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(14,'producto','Producción','./vista/Producción/producto.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(15,'tarea','Producción','./vista/Producción/tarea.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1);
 
 UNLOCK TABLES;
 
@@ -221,21 +221,21 @@ CREATE TABLE `formulario_rol` (`id_formulario_rol` INT(11) NOT NULL AUTO_INCREME
 LOCK TABLES `formulario_rol` WRITE;
 
 	INSERT INTO `formulario_rol` (`id_formulario_rol`,`id_rol`,`id_formulario`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES
-	(1,1,1,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(2,1,2,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(3,1,3,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(4,1,4,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(5,1,5,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(6,1,6,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(7,1,7,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(8,1,8,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(9,1,9,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(10,1,10,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(11,1,11,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(12,1,12,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(13,1,13,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(14,1,14,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-	(15,1,15,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1);
+	(1,1,1,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(2,1,2,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(3,1,3,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(4,1,4,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(5,1,5,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(6,1,6,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(7,1,7,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(8,1,8,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(9,1,9,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(10,1,10,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(11,1,11,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(12,1,12,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(13,1,13,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(14,1,14,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(15,1,15,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1);
 
 UNLOCK TABLES;
 
@@ -280,6 +280,17 @@ CREATE TABLE `orden` (`id_orden` INT(11) NOT NULL AUTO_INCREMENT
 					 ,CONSTRAINT `orden_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`)
 					 ,CONSTRAINT `orden_ibfk_2` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
 					 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+LOCK TABLES `orden` WRITE;
+
+	INSERT INTO `orden` (`id_orden`,`fecha_orden`,`fecha_entrega`,`descripcion`,`id_cliente`,`id_empleado`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES
+	(1,'2021-05-10 09:30:00','2021-05-17 09:30:00','Pantalones x 5',1,3,'1','2021-05-10 09:30:00','2021-05-10 09:30:00',1,1),
+	(2,'2021-05-10 09:35:00','2021-05-17 09:35:00','camisas x 5',2,4,'1','2021-05-10 09:35:00','2021-05-10 09:35:00',1,1),
+	(3,'2021-05-11 15:10:00','2021-05-13 15:10:00','sacos x 2',3,3,'1','2021-05-11 15:10:00','2021-05-11 15:10:00',1,1),
+	(4,'2021-05-12 10:15:00','2021-06-02 10:15:00','medias x 50',4,4,'0','2021-05-12 10:15:00','2021-05-12 10:15:00',1,1),
+	(5,'2021-05-12 15:30:00','2021-05-14 15:30:00','fundas de almohadas x 4',5,3,'1','2021-05-12 15:30:00','2021-05-12 15:30:00',1,1);
+
+UNLOCK TABLES;
 
 /*Table structure for table `pago_dia` */
 
@@ -383,10 +394,10 @@ CREATE TABLE `rol` (`id_rol` INT(11) NOT NULL AUTO_INCREMENT
 LOCK TABLES `rol` WRITE;
 
 	INSERT INTO `rol` (`id_rol`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES
-	(1,'admin',1,'2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
-	(2,'contador',1,'2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
-	(3,'vendedor',1,'2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
-	(4,'empleado',1,'2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
+	(1,'admin','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+	(2,'contador','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+	(3,'vendedor','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+	(4,'empleado','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
 
 UNLOCK TABLES;
 

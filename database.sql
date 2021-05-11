@@ -34,11 +34,11 @@ CREATE TABLE `cargo` (`id_cargo` INT(11) NOT NULL AUTO_INCREMENT
 
 LOCK TABLES `cargo` WRITE;
 
-	INSERT INTO `cargo` (`id_cargo`, `descripcion`, `estado`, `fecha_creacion`, `fecha_modificacion`, `id_usuario_creacion`, `id_usuario_modificacion`) VALUES
-	(1, 'Administrador', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1)
-	,(2, 'Contador', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1)
-	,(3, 'Vendedor', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1)
-	,(4, 'Empleado', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1);
+	INSERT INTO `cargo` (`id_cargo`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES
+	(1,'Administrador','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1)
+	,(2,'Contador','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1)
+	,(3,'Vendedor','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1)
+	,(4,'Empleado','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1);
 
 UNLOCK TABLES;
 
@@ -75,11 +75,11 @@ CREATE TABLE `cliente` (`id_cliente` INT(11) NOT NULL AUTO_INCREMENT
 LOCK TABLES `cliente` WRITE;
 
 	INSERT INTO `cliente` (`id_cliente`,`id_persona`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES
-	(1, 5, 1, '2021-05-10 20:00:00', '2021-05-10 20:00:00', 1, 1)
-	,(2, 6, 1, '2021-05-10 20:00:00', '2021-05-10 20:00:00', 1, 1)
-	,(3, 7, 1, '2021-05-10 20:00:00', '2021-05-10 20:00:00', 1, 1)
-	,(4, 8, 1, '2021-05-10 20:00:00', '2021-05-10 20:00:00', 1, 1)
-	,(5, 9, 1, '2021-05-10 20:00:00', '2021-05-10 20:00:00', 1, 1);
+	(1,5,1,'2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(2,6,1,'2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(3,7,1,'2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(4,8,1,'2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(5,9,1,'2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
 
 UNLOCK TABLES;
 
@@ -154,11 +154,11 @@ CREATE TABLE `empleado` (`id_empleado` INT(11) NOT NULL AUTO_INCREMENT
 
 LOCK TABLES `empleado` WRITE;
 	
-	INSERT INTO `empleado` (`id_empleado`, `id_cargo`, `correo_institucional`, `fecha_ingreso`, `arl`, `salud`, `pension`, `id_persona`, `sueldo_basico`, `estado`, `fecha_creacion`, `fecha_modificacion`, `id_usuario_creacion`, `id_usuario_modificacion`) VALUES
-	(1, 1, 'cargon@contex.com', '2021-05-08', 'Equidad Seguros', 'Comfamiliar', 'Colpesiones', 2, 1200000, '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1)
-	,(2, 2, 'yestov@contex.com', '2021-05-08', 'Equidad Seguros', 'Comfamiliar', 'Colpesiones', 1, 1200000, '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1)
-	,(3, 3, 'yestov@contex.com', '2021-05-08', 'Equidad Seguros', 'Comfamiliar', 'Colpesiones', 1, 1200000, '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1)
-	,(4, 4, 'aletov@context.com', '2021-05-08', 'Equidad Seguros', 'Comfamiliar', 'Colpesiones', 3, 1200000, '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1);
+	INSERT INTO `empleado` (`id_empleado`,`id_cargo`,`correo_institucional`,`fecha_ingreso`,`arl`,`salud`,`pension`,`id_persona`,`sueldo_basico`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES
+	(1,1,'cargon@contex.com','2021-05-08','Equidad Seguros','Comfamiliar','Colpesiones',2,1200000,'1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1)
+	,(2,2,'yestov@contex.com','2021-05-08','Equidad Seguros','Comfamiliar','Colpesiones',1,1200000,'1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1)
+	,(3,3,'yestov@contex.com','2021-05-08','Equidad Seguros','Comfamiliar','Colpesiones',1,1200000,'1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1)
+	,(4,4,'aletov@context.com','2021-05-08','Equidad Seguros','Comfamiliar','Colpesiones',3,1200000,'1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1);
 
 UNLOCK TABLES;
 
@@ -178,6 +178,27 @@ CREATE TABLE `formulario` (`id_formulario` INT(11) NOT NULL AUTO_INCREMENT
 							,PRIMARY KEY (`id_formulario`)
 							) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+LOCK TABLES `formulario` WRITE;
+
+	INSERT INTO `formulario` (`id_formulario`,`descripcion`,`etiqueta`,`ubicacion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES
+	(1,'formulario','Seguridad','./vista/Seguridad/formulario.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(2,'formulario rol','Seguridad','./vista/Seguridad/formularioRol.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(3,'persona','Seguridad','./vista/Seguridad/persona.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(4,'rol','Seguridad','./vista/Seguridad/rol.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(5,'usuario','Seguridad','./vista/Seguridad/usuario.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(6,'cargo','Nomina','./vista/Nomina/cargo.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(7,'empleado','Nomina','./vista/Nomina/empleado.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(8,'generar pago','Nomina','./vista/Nomina/generarPago.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(9,'pago dia','Nomina','./vista/Nomina/pagoDia.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(10,'categoria','Producción','./vista/Producción/categoria.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(11,'detalle orden','Producción','./vista/Producción/detalleOrden.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(12,'insumo','Producción','./vista/Producción/insumo.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(13,'orden','Producción','./vista/Producción/orden.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(14,'producto','Producción','./vista/Producción/producto.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(15,'tarea','Producción','./vista/Producción/tarea.V.html',1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1);
+
+UNLOCK TABLES;
+
 /*Table structure for table `formulario_rol` */
 
 DROP TABLE IF EXISTS `formulario_rol`;
@@ -196,6 +217,27 @@ CREATE TABLE `formulario_rol` (`id_formulario_rol` INT(11) NOT NULL AUTO_INCREME
 								,CONSTRAINT `formulario_rol_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`)
 								,CONSTRAINT `formulario_rol_ibfk_2` FOREIGN KEY (`id_formulario`) REFERENCES `formulario` (`id_formulario`)
 								) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+LOCK TABLES `formulario_rol` WRITE;
+
+	INSERT INTO `formulario_rol` (`id_formulario_rol`,`id_rol`,`id_formulario`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES
+	(1,1,1,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(2,1,2,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(3,1,3,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(4,1,4,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(5,1,5,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(6,1,6,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(7,1,7,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(8,1,8,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(9,1,9,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(10,1,10,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(11,1,11,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(12,1,12,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(13,1,13,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(14,1,14,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+	(15,1,15,1,'2021-05-10 22:22:00','2021-05-10 22:22:00',1,1);
+
+UNLOCK TABLES;
 
 /*Table structure for table `generar_pago` */
 
@@ -338,6 +380,16 @@ CREATE TABLE `rol` (`id_rol` INT(11) NOT NULL AUTO_INCREMENT
 					,PRIMARY KEY (`id_rol`)
 					) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+LOCK TABLES `rol` WRITE;
+
+	INSERT INTO `rol` (`id_rol`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES
+	(1,'admin',1,'2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+	(2,'contador',1,'2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+	(3,'vendedor',1,'2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+	(4,'empleado',1,'2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
+
+UNLOCK TABLES;
+
 /*Table structure for table `tarea` */
 
 DROP TABLE IF EXISTS `tarea`;
@@ -380,8 +432,8 @@ DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario` (`id_usuario` INT(11) NOT NULL AUTO_INCREMENT
 						,`usuario` VARCHAR(50) NOT NULL
 						,`contrasenia` VARCHAR(50) NOT NULL
-						,`fecha_activacion` DATETIME NOT NULL
-						,`fecha_expiracion` DATETIME NOT NULL
+						,`fecha_activacion` DATE NOT NULL
+						,`fecha_expiracion` DATE NOT NULL
 						,`id_persona` INT(11) NOT NULL
 						,`estado` ENUM('0','1') NOT NULL
 						,`fecha_creacion` DATETIME NOT NULL
@@ -395,8 +447,8 @@ CREATE TABLE `usuario` (`id_usuario` INT(11) NOT NULL AUTO_INCREMENT
 
 LOCK TABLES `usuario` WRITE;
 	
-	INSERT INTO `usuario` (`id_usuario`, `usuario`, `contrasenia`, `fecha_activacion`, `fecha_expiracion`, `id_persona`, `estado`, `fecha_creacion`, `fecha_modificacion`, `id_usuario_creacion`, `id_usuario_modificacion`) VALUES
-	(1, 'admin', 'admin', '2021-05-08 01:35:00', '2022-05-08 01:35:00', 1, '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1);
+	INSERT INTO `usuario` (`id_usuario`,`usuario`,`contrasenia`,`fecha_activacion`,`fecha_expiracion`,`id_persona`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES
+	(1,'admin','admin','2021-05-08 01:35:00','2022-05-08 01:35:00',1,'1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1);
 
 UNLOCK TABLES;
 
@@ -952,8 +1004,8 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_usuario`(IN usuario VARCHAR(50)
 																		,IN contrasenia VARCHAR(50)
-																		,IN fechaActivacion DATETIME
-																		,IN fechaExpiracion DATETIME
+																		,IN fechaActivacion DATE
+																		,IN fechaExpiracion DATE
 																		,IN idPersona INT(11)
 																		,IN estado ENUM('0','1')
 																		,IN idUsuarioCreacion INT(11)
@@ -1379,8 +1431,8 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_usuario`(IN usuario VARCHAR(50)
 																		,IN contrasenia VARCHAR(50)
-																		,IN fechaActivacion DATETIME
-																		,IN fechaExpiracion DATETIME
+																		,IN fechaActivacion DATE
+																		,IN fechaExpiracion DATE
 																		,IN idPersona INT(11)
 																		,IN estado ENUM('0','1')
 																		,IN idUsuarioModificacion INT(11)

@@ -4,6 +4,8 @@ MySQL - 10.4.18-MariaDB : Database - contex
 *********************************************************************
 */
 
+DROP DATABASE IF EXISTS contex;
+
 /*!40101 SET NAMES utf8 */;
 
 /*!40101 SET SQL_MODE=''*/;
@@ -212,7 +214,7 @@ CREATE TABLE `orden` (`id_orden` INT(11) NOT NULL AUTO_INCREMENT
 					 ,`fecha_orden` DATETIME NOT NULL
 					 ,`fecha_entrega` DATETIME NOT NULL
 					 ,`descripcion` VARCHAR(100) NOT NULL
-					 ,`id_persona` INT(11) NOT NULL
+					 ,`id_cliente` INT(11) NOT NULL
 					 ,`id_empleado` INT(11) NOT NULL
 					 ,`estado` ENUM('0','1') NOT NULL
 					 ,`fecha_creacion` DATETIME NOT NULL
@@ -220,9 +222,9 @@ CREATE TABLE `orden` (`id_orden` INT(11) NOT NULL AUTO_INCREMENT
 					 ,`id_usuario_creacion` INT(11) NOT NULL
 					 ,`id_usuario_modificacion` INT(11) NOT NULL
 					 ,PRIMARY KEY (`id_orden`)
-					 ,KEY `id_persona` (`id_persona`)
+					 ,KEY `id_cliente` (`id_cliente`)
 					 ,KEY `id_empleado` (`id_empleado`)
-					 ,CONSTRAINT `orden_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`)
+					 ,CONSTRAINT `orden_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`)
 					 ,CONSTRAINT `orden_ibfk_2` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
 					 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -798,10 +800,10 @@ DELIMITER $$
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_producto`(IN `descripcion` VARCHAR(50)
 																		,IN `talla` INT(11)
 																		,IN `estado` ENUM('0','1')
-																		,IN `idCategoria` INT
+																		,IN `idCategoria` INT(11)
 																		,IN `idUsuarioCreacion` INT(11)
 																		,IN `idUsuarioModificacion` INT(11)
-																		)																		)
+																		)
 BEGIN
 	INSERT INTO producto(descripcion
 						,talla

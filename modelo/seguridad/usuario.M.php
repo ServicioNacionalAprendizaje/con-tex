@@ -179,6 +179,26 @@ class Usuario
         $this->conn->ejecutar();
         return true;
     }
+
+    public function construirDashboard()
+    {
+        $condicion = $this->obtenerCondicion();
+        $sentenciaSql = "SELECT 
+                            f.id_formulario
+                            ,f.ubicacion
+                            ,f.etiqueta
+                        FROM 
+                            usuario AS u
+                            INNER JOIN usuario_rol AS ur ON u.id_usuario = ur.id_usuario
+                            INNER JOIN rol AS r ON ur.id_rol = r.id_rol
+                            INNER JOIN formulario_rol AS fr ON r.id_rol = fr.id_rol
+                            INNER JOIN formulario AS f ON fr.id_formulario = f.id_formulario
+                            $condicion";
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+        return true;
+    }
+    
     
     private function obtenerCondicion()
     {

@@ -11,7 +11,13 @@
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="../../js/produccion/produccion.js"></script>
+    <script src="../../js/produccion/producto.js"></script>
+
+    <!-- Auto complete -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Auto complete -->    
 </head>
 
 <body>
@@ -49,16 +55,17 @@
                     </div>
                 </div>
                     <div class="row">
-                        <div class="col-12 col-sm-6">
-                            <input type="button" class="boton form-control btn-light btn-outline-primary"
-                                name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado">
+                        <div class="col-12 col-sm-4">
+                            <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado" onclick="Enviar('CONSULTAR',null);">
                         </div>
-                        <div class="col-12 col-sm-6">
-                            <input type="button" class="boton form-control btn-light btn-outline-primary"
-                                name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción">
+                        <div class="col-12 col-sm-4">
+                            <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick=" Enviar('ADICIONAR',null);">
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnModificar" value="MODIFICAR" id="btnModificar" placeholder="Descripción" onclick=" Enviar('MODIFICAR',null);">
                         </div>
                     </div>
-                    <div class="container">
+                <div class="container">
                         <div class="row">
                             <div class="col">
                                 <div class="table-responsive">

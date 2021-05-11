@@ -129,10 +129,10 @@ $sentenciaSql = "CALL Agregar_categoria(
             $condicion=$whereAnd.$condicion." id_categoria  = $this->idCategoria";
             $whereAnd = ' AND ';
         }
-        // if($this->idCargo !=''){
-        //         $condicion=$condicion.$whereAnd." descripcion LIKE '%$this->idCargo%' ";
-        //         $whereAnd = ' AND ';
-        // }        
+        if($this->idCategoria !=''){
+            $condicion=$condicion.$whereAnd." descripcion LIKE '%$this->descripcion%' ";
+            $whereAnd = ' AND ';
+        }        
         // if($this->estado!=''){
         //         if ($whereAnd == ' AND '){
         //         $condicion=$condicion.$whereAnd." seg_usu.estado = '$this->estado'";

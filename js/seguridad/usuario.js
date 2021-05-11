@@ -1,24 +1,3 @@
-$(function(){
-    //se carga el autocompleta del contratista
-     $("#txtPersona").autocomplete({
-        source:'../../busqueda/persona.B.php',
-        select:function(event, ui){
-            $("#hidIdPersona").val(ui.item.id);
-        }
-     }); 
-});
-
-// Para consultar combox
-// $.post('../../busqueda/persona.B.php', {accion: 'MOSTRAR'}, function (respuesta) {
-//     let datos = JSON.parse(respuesta);
-//     datos.forEach(dato => {
-//         option = document.createElement("option");
-//         option.value = dato[1];  
-//         option.setAttribute('data-index-number',dato[0]);
-//         document.getElementById('roles').append(option); 
-//     });
-// })
-
 function Enviar(accion, id) {
     if (id === null) {
         id = $('#hidIdUsuario').val();
@@ -46,6 +25,7 @@ function Enviar(accion, id) {
             //respuesta adicionar
             if(respuesta['accion']=='ADICIONAR'){
                 alert(respuesta['respuesta']);
+                Limpiar();
             }
 
             //Respuesta muchos registros
@@ -55,12 +35,12 @@ function Enviar(accion, id) {
             }
 
             //Respuesta un registro
-            if (respuesta['accion'] == 'CONSULTAR') {
+            if (respuesta['accion'] == 'CONSULTAR' && respuesta['numeroRegistros'] == 1) {
                 $('#hidIdUsuario').val(respuesta['id']);
                 $('#txtUsuario').val(respuesta['usuario']);
                 $('#passContrasenia').val(respuesta['contrasenia']);
-                $('#fechaActivacion').val(respuesta['fechaActivacion']);
-                $('#datFechaExpiracion').val(respuesta['datFechaExpiracion']);
+                $('#datFechaActivacion').val(respuesta['fechaActivacion']);
+                $('#datFechaExpiracion').val(respuesta['fechaExpiracion']);
                 $('#hidIdPersona').val(respuesta['idPersona']);
                 $('#cmbEstado').html(respuesta['estado']);
                 $('#divEliminar').html(respuesta['eliminar']);
@@ -69,6 +49,7 @@ function Enviar(accion, id) {
             //Respuesta modificar
             if (respuesta['accion'] == 'MODIFICAR') {
                 alert(respuesta['respuesta']);
+                Limpiar();
             }
 
             //Respuesta eliminar
@@ -77,4 +58,25 @@ function Enviar(accion, id) {
             }
         }
     });
+}
+
+$(function(){
+    //se carga el autocompleta del contratista
+     $("#txtPersona").autocomplete({
+        source:'../../busqueda/persona.B.php',
+        select:function(event, ui){
+            $("#hidIdPersona").val(ui.item.id);
+        }
+     }); 
+});
+
+function Limpiar(){
+    $('#hidIdUsuario').val("");  
+    $('#txtUsuario').val(""); 
+    $('#passContrasenia').val("");
+    $('#datFechaActivacion').val("");  
+    $('#datFechaExpiracion').val(""); 
+    $('#hidIdPersona').val("");
+    $('#txtPersona').val("");
+    $('#cmbEstado').val("");
 }

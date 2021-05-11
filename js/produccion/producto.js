@@ -1,10 +1,21 @@
+
+            $(function(){
+                //se carga el autocompleta d
+                $("#txtCategoria").autocomplete({
+                    source:'../../busqueda/categoria.B.php',
+                    select:function(event, ui){
+                        $("#hidIdCategoria").val(ui.item.id);
+                    }
+                 }); 
+            });
+
 function Enviar(accion,id){
     if(id===null){
         id=$('#hidIdProduccion').val();
     }
     var parametros = {
         "id" : id,
-        "categoria":$('#txtCategoria').val(),
+        "idCategoria":$('#hidIdCategoria').val(),
         "talla":$('#txtTalla').val(),
         "descripcion":$('#txtDescripcion').val(),
         "estado":$('#cmbEstado').val(),
@@ -13,7 +24,7 @@ function Enviar(accion,id){
 
     $.ajax({
             data: parametros, //datos que se van a enviar al ajax
-            url: '../../controlador/produccion/producto.M.php', //archivo php que recibe los datos
+            url: '../../controlador/produccion/producto.C.php', //archivo php que recibe los datos
             type: 'post', //método para enviar los datos
             dataType: 'json',//Recibe el array desde php
            

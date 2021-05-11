@@ -23,13 +23,23 @@ class Producto
     }
 
     //idCategoria
-    public function getIdProducto()
+    public function getIdCategoria()
     {
-        return $this->idProducto;
+        return $this->idCategoria;
     }
-    public function setIdProducto($idProducto)
+    public function setIdCategoria($idCategoria)
     {
-        $this->idProducto = $idProducto;
+        $this->idCategoria = $idCategoria;
+    }
+
+    //idTalla
+    public function getTalla()
+    {
+        return $this->idTalla;
+    }
+    public function setTalla($idTalla)
+    {
+        $this->idTalla = $idTalla;
     }
 
     //descripcion
@@ -101,9 +111,12 @@ class Producto
 
     public function Agregar()
     {
-        $sentenciaSql = "CALL Agregar_rol('$this->descripcion'
+        echo $sentenciaSql = "CALL Agregar_producto(
+                            '$this->descripcion'
+                            ,'$this->talla'
                             ,'$this->estado'
-                            ,'$this->idUsuarioCreacion')";
+                            , $this->idCategoria
+                            , $this->idUsuarioCreacion)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -111,9 +124,11 @@ class Producto
 
     public function Modificar()
     {
-        $sentenciaSql = "CALL Modificar_rol(
+        $sentenciaSql = "CALL Modificar_producto(
                             '$this->descripcion'
+                            ,'$this->talla'
                             ,'$this->estado'
+                            ,'$this->idCategoria'
                             ,'$this->idUsuarioModificacion'
                             ,'$this->idRol')";
         $this->conn->preparar($sentenciaSql);
@@ -123,8 +138,8 @@ class Producto
 
     public function Eliminar()
     {
-        $sentenciaSql = "DELETE FROM rol 
-                            WHERE id_rol = $this->idRol";
+        $sentenciaSql = "DELETE FROM producto 
+                            WHERE id_producto = $this->idProducto";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }
@@ -133,7 +148,7 @@ class Producto
     {
         $condicion = $this->obtenerCondicion();
         $sentenciaSql = "SELECT * 
-                            FROM rol $condicion";
+                            FROM producto $condicion";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -144,8 +159,8 @@ class Producto
         $whereAnd = " WHERE ";
         $condicion = " ";
 
-        if($this->idRol !=''){
-            $condicion=$whereAnd.$condicion." id_rol  = $this->idRol";
+        if($this->idProducto !=''){
+            $condicion=$whereAnd.$condicion." id_producto  = $this->idProducto";
             $whereAnd = ' AND ';
         }
         if($this->descripcion !=''){
@@ -175,9 +190,11 @@ class Producto
 
     public function __destruct()
     {
-        unset($this->idRol);
+        unset($this->idProducto);
         unset($this->descripcion);
+        unset($this->talla);
         unset($this->estado);
+        unset($this->idCategoria);
         unset($this->fechaCreacion);
         unset($this->fechaModificacion);
         unset($this->idUsuarioCreacion);

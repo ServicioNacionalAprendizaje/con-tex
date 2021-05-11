@@ -65,10 +65,10 @@ if (isset ($accion)){
                 if($numeroRegistros === 1){
                     if ($rowBuscar = $producto->conn->obtenerObjeto()){
                         $respuesta['id'] = $rowBuscar->id_producto;
-                        $respuesta['idCategoria'] = $rowBuscar->idCategoria;
                         $respuesta['descripcion'] = $rowBuscar->descripcion;
                         $respuesta['talla'] = $rowBuscar->talla;
-                        //$respuesta['estado'] = $rowBuscar->estado == 1 ? 'Activo':'Inactivo';
+                        $respuesta['estado'] = $rowBuscar->estado == 1 ? 'Activo':'Inactivo';
+                        $respuesta['idCategoria'] = $rowBuscar->idCategoria;
                         $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_rol.")'>";
                      }
                 }else{
@@ -76,9 +76,9 @@ if (isset ($accion)){
                         $retorno="<table>";
                         foreach($producto->conn->ObtenerRegistros() AS $rowConsulta){
                             $retorno .= "<tr>
+                                        <td><label>".$rowConsulta[1]."</label></td>
                                         <td><label>".$rowConsulta[4]."</label></td>
-                                        <td><label>".$rowConsulta[2]."</label></td>
-                                        <td><label>".$rowConsulta[1]."</label></td>      
+                                        <td><label>".$rowConsulta[2]."</label></td>      
                                         <td><label>".($rowConsulta[3] == 1 ? 'Activo' : 'Inactivo')."</label></td>                                           
                                         <td align='center'><a href='#' class='btn btn-warning'><i class='fas fa-edit' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></i></a></td>
                                         <td align='center'><a href='#' class='btn btn-danger'><i class='fas fa-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></i></a></td>

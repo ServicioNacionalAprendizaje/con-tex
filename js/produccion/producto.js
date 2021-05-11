@@ -15,10 +15,10 @@ function Enviar(accion,id){
     }
     var parametros = {
         "id" : id,
-        "idCategoria":$('#hidIdCategoria').val(),
-        "talla":$('#txtTalla').val(),
         "descripcion":$('#txtDescripcion').val(),
+        "talla":$('#txtTalla').val(),
         "estado":$('#cmbEstado').val(),
+        "idCategoria":$('#hidIdCategoria').val(),
         "accion" : accion
     }; 
 
@@ -45,10 +45,10 @@ function Enviar(accion,id){
                 //Respuesta un registro
                 if(respuesta['accion']=='CONSULTAR'){
                     $('#hidIdProducto').val(respuesta['id']);
-                    $('#txtCategoria').val(respuesta['categoria']);
-                    $('#txtTalla').val(respuesta['talla']);
                     $('#txtDescripcion').val(respuesta['descripcion']);
+                    $('#txtTalla').val(respuesta['talla']);
                     $('#cmbEstado').html(respuesta['estado']);
+                    $('#txtCategoria').val(respuesta['idCategoria']);
                     $('#divEliminar').html(respuesta['eliminar']);
                 }
 

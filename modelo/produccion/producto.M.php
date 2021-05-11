@@ -3,9 +3,9 @@
 class Producto
 {
     private $idProducto;
+    private $descripcion;
     private $idCategoria;
     private $talla;
-    private $descripcion;
     private $estado;
     private $fechaCreacion;
     private $fechaModificacion;
@@ -130,7 +130,7 @@ class Producto
                             ,'$this->estado'
                             ,'$this->idCategoria'
                             ,'$this->idUsuarioModificacion'
-                            ,'$this->idRol')";
+                            ,'$this->idProducto')";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -190,7 +190,7 @@ class Producto
 
     public function __destruct()
     {
-        unset($this->idProducto);
+        unset($this->idProducto);        
         unset($this->descripcion);
         unset($this->talla);
         unset($this->estado);

@@ -3,7 +3,7 @@
 class Producto
 {
     private $idProducto;
-    private $idCategoria
+    private $idCategoria;
     private $talla;
     private $descripcion;
     private $estado;

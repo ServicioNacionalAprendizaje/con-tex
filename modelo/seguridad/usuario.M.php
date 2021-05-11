@@ -199,7 +199,7 @@ class Usuario
         $condicion = $this->obtenerCondicion();
         $sentenciaSql = "SELECT 
                             f.id_formulario
-                            ,f.ubicacion
+                            ,CONVERT(CAST(CONVERT(f.ubicacion USING latin1) AS BINARY) USING utf8) AS ubicacion
                             ,f.etiqueta
                         FROM 
                             usuario AS u
@@ -220,13 +220,9 @@ class Usuario
         $condicion = " ";
 
         if($this->idUsuario !=''){
-            $condicion=$whereAnd.$condicion." id_usuario  = $this->idUsuario";
+            $condicion=$whereAnd.$condicion." u.id_usuario  = $this->idUsuario";
             $whereAnd = ' AND ';
-        }
-        // if($this->usuario !=''){
-        ///          $condicion=$condicion.$whereAnd." usuario LIKE '%$this->usuario%' ";
-        //        $whereAnd = ' AND ';
-        //}
+        }        
 
         return $condicion;
     }

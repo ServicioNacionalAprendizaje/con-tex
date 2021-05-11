@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/seguridad/cargarDashboard.js"></script>
 </head>
 
 <body id="page-top">
@@ -23,15 +26,15 @@
                 </a>
                 <hr class="sidebar-divider my-0">
 
-
-                <div class="btn-group">
+                <div id="cargarDashboard" name="cargarDashboard"></div>
+                <!-- <div class="btn-group">
                     <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Seguridad</button>
                     <div class="dropdown-menu">
                         <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="vista/seguridad/usuario.V.html" target="container_fluid_iframe">Usuario</a>
                         <div class="dropdown-divider"></div>                        
                     </div>
-                </div>
+                </div> -->
                                 
                 <!-- <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item">                        
@@ -163,3 +166,6 @@
 </body>
 
 </html>
+<script>
+    CargarDashboard();
+</script>

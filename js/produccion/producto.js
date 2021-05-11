@@ -45,9 +45,9 @@ function Enviar(accion,id){
                 //Respuesta un registro
                 if(respuesta['accion']=='CONSULTAR'){
                     $('#hidIdProducto').val(respuesta['id']);
-                    $('#txtDescripcion').val(respuesta['descripcion']);
-                    $('#txtTalla').val(respuesta['talla']);
-                    $('#cmbEstado').html(respuesta['estado']);
+                    $('#txtDescripcion').html(respuesta['descripcion']);
+                    $('#txtTalla').html(respuesta['talla']);
+                    $('#cmbEstado').val(respuesta['estado']);
                     $('#txtCategoria').val(respuesta['idCategoria']);
                     $('#divEliminar').html(respuesta['eliminar']);
                 }

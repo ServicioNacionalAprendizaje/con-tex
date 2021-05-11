@@ -1302,11 +1302,12 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_rol`(IN descripcion VARCHAR(50)
-																	,in estado ENUM('0','1')
-																	,IN idUsuarioModificacion INT(11)
-																	,IN idRol INT(11)
-																	)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_rol`(
+		IN descripcion VARCHAR(50)
+		,in estado ENUM('0','1')
+		,IN idUsuarioModificacion INT(11)
+		,IN idRol INT(11)
+		)
 BEGIN
 	UPDATE rol 
 	SET	descripcion = descripcion

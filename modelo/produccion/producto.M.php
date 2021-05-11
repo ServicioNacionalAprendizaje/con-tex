@@ -111,12 +111,12 @@ class Producto
 
     public function Agregar()
     {
-        $sentenciaSql = "CALL Agregar_producto(
+        echo $sentenciaSql = "CALL Agregar_producto(
                             '$this->descripcion'
                             ,'$this->talla'
                             ,'$this->estado'
-                            ,'$this->idCategoria'
-                            ,'$this->idUsuarioCreacion')";
+                            , $this->idCategoria
+                            , $this->idUsuarioCreacion)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;

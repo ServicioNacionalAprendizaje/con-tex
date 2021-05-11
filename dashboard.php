@@ -11,11 +11,9 @@
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/seguridad/cargarDashboard.js"></script>
 </head>
-
 <body id="page-top">
     <div id="wrapper">
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
@@ -25,7 +23,6 @@
                     <div class="sidebar-brand-text mx-3"><span>con-tex</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
-
                 <div id="cargarDashboard" name="cargarDashboard"></div>
                 <!-- <div class="btn-group">
                     <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Seguridad</button>
@@ -148,7 +145,6 @@
                 </nav>
                 <!-- <div class="container-fluid" height="315" > -->
                     <iframe class="responsive-iframe" name="container_fluid_iframe" id="container-fluid_iframe" >
-
                     </iframe>
                 <!-- </div> -->
             </div>
@@ -164,7 +160,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="assets/js/theme.js"></script>
 </body>
-
 </html>
 <script>
     CargarDashboard();

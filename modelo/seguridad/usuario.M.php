@@ -156,8 +156,7 @@ class Usuario
                             ,'$this->fechaExpiracion'
                             ,$this->idPersona
                             ,'$this->estado'
-                            ,$this->idUsuario
-                            ,$this->idUsuarioModificacion)";
+                            ,$this->idUsuario)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -175,44 +174,11 @@ class Usuario
     public function Consultar()
     {
         $condicion = $this->obtenerCondicion();
-        $sentenciaSql = "SELECT 
-                        u.id_usuario
-                        ,u.usuario
-                        ,u.contrasenia
-                        ,u.fecha_activacion
-                        ,u.fecha_expiracion
-                        ,u.estado
-                        ,p.id_persona
-                        ,CONCAT(p.nombre,' ',p.apellido) AS nombre
-                    FROM 
-                        usuario AS u
-                        
-                        INNER JOIN persona AS p ON u.id_persona = p.id_persona
-                        $condicion";
+        $sentenciaSql = "SELECT * FROM usuario $condicion";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
     }
-
-    public function construirDashboard()
-    {
-        $condicion = $this->obtenerCondicion();
-        $sentenciaSql = "SELECT 
-                            f.id_formulario
-                            ,f.ubicacion
-                            ,f.etiqueta
-                        FROM 
-                            usuario AS u
-                            INNER JOIN usuario_rol AS ur ON u.id_usuario = ur.id_usuario
-                            INNER JOIN rol AS r ON ur.id_rol = r.id_rol
-                            INNER JOIN formulario_rol AS fr ON r.id_rol = fr.id_rol
-                            INNER JOIN formulario AS f ON fr.id_formulario = f.id_formulario
-                            $condicion";
-        $this->conn->preparar($sentenciaSql);
-        $this->conn->ejecutar();
-        return true;
-    }
-    
     
     private function obtenerCondicion()
     {
@@ -223,10 +189,10 @@ class Usuario
             $condicion=$whereAnd.$condicion." id_usuario  = $this->idUsuario";
             $whereAnd = ' AND ';
         }
-        // if($this->usuario !=''){
-        ///          $condicion=$condicion.$whereAnd." usuario LIKE '%$this->usuario%' ";
-        //        $whereAnd = ' AND ';
-        //}
+        if($this->usuario !=''){
+                $condicion=$condicion.$whereAnd." usuario LIKE '%$this->usuario%' ";
+                $whereAnd = ' AND ';
+        }
 
         return $condicion;
     }

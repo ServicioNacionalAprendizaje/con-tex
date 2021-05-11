@@ -42,8 +42,7 @@ function Enviar(accion, id) {
                 $('#datFechaActivacion').val(respuesta['fechaActivacion']);
                 $('#datFechaExpiracion').val(respuesta['fechaExpiracion']);
                 $('#hidIdPersona').val(respuesta['idPersona']);
-                $('#txtPersona').val(respuesta['persona']);
-                $('#cmbEstado').val(respuesta['estado']);
+                $('#cmbEstado').html(respuesta['estado']);
                 $('#divEliminar').html(respuesta['eliminar']);
             }
 

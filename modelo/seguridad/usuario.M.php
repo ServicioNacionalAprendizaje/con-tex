@@ -156,8 +156,7 @@ class Usuario
                             ,'$this->fechaExpiracion'
                             ,$this->idPersona
                             ,'$this->estado'
-                            ,$this->idUsuario
-                            ,$this->idUsuarioModificacion)";
+                            ,$this->idUsuario)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -175,20 +174,7 @@ class Usuario
     public function Consultar()
     {
         $condicion = $this->obtenerCondicion();
-        $sentenciaSql = "SELECT 
-                        u.id_usuario
-                        ,u.usuario
-                        ,u.contrasenia
-                        ,u.fecha_activacion
-                        ,u.fecha_expiracion
-                        ,u.estado
-                        ,p.id_persona
-                        ,CONCAT(p.nombre,' ',p.apellido) AS nombre
-                    FROM 
-                        usuario AS u
-                        
-                        INNER JOIN persona AS p ON u.id_persona = p.id_persona
-                        $condicion";
+        $sentenciaSql = "SELECT * FROM usuario $condicion";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -203,10 +189,10 @@ class Usuario
             $condicion=$whereAnd.$condicion." id_usuario  = $this->idUsuario";
             $whereAnd = ' AND ';
         }
-        // if($this->usuario !=''){
-        ///          $condicion=$condicion.$whereAnd." usuario LIKE '%$this->usuario%' ";
-        //        $whereAnd = ' AND ';
-        //}
+        if($this->usuario !=''){
+                $condicion=$condicion.$whereAnd." usuario LIKE '%$this->usuario%' ";
+                $whereAnd = ' AND ';
+        }
 
         return $condicion;
     }

@@ -45,7 +45,7 @@ class Rol
     {
         return $this->fechaCreacion;
     }
-    public function setfechaCreacion($fechaCreacion = 1)
+    public function setfechaCreacion($fechaCreacion)
     {
         $this->fechaCreacion = $fechaCreacion;
     }
@@ -55,7 +55,7 @@ class Rol
     {
         return $this->fechaModificacion;
     }
-    public function setfechaModificacion($fechaModificacion = 1)
+    public function setfechaModificacion($fechaModificacion)
     {
         $this->fechaModificacion = $fechaModificacion;
     }
@@ -89,9 +89,11 @@ class Rol
 
     public function Agregar()
     {
-        $sentenciaSql = "CALL Agregar_rol('$this->descripcion'
+        $sentenciaSql = "CALL Agregar_rol(
+                             '$this->descripcion'
                             ,'$this->estado'
-                            ,'$this->idUsuarioCreacion')";
+                            , $this->idUsuarioCreacion
+                            , $this->idUsuarioModificacion)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -100,10 +102,10 @@ class Rol
     public function Modificar()
     {
         $sentenciaSql = "CALL Modificar_rol(
-                            '$this->descripcion'
+                             '$this->descripcion'
                             ,'$this->estado'
                             ,'$this->idUsuarioModificacion'
-                            ,'$this->idRol')";
+                            , $this->idRol)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;

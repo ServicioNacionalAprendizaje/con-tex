@@ -35,10 +35,10 @@ CREATE TABLE `cargo` (`id_cargo` INT(11) NOT NULL AUTO_INCREMENT
 LOCK TABLES `cargo` WRITE;
 
 	INSERT INTO `cargo` (`id_cargo`, `descripcion`, `estado`, `fecha_creacion`, `fecha_modificacion`, `id_usuario_creacion`, `id_usuario_modificacion`) VALUES
-	(1, 'Administrador', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1),
-	(2, 'Contador', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1),
-	(3, 'Vendedor', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1),
-	(4, 'Empleado', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1);
+	(1, 'Administrador', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1)
+	,(2, 'Contador', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1)
+	,(3, 'Vendedor', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1)
+	,(4, 'Empleado', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1);
 
 UNLOCK TABLES;
 
@@ -71,6 +71,17 @@ CREATE TABLE `cliente` (`id_cliente` INT(11) NOT NULL AUTO_INCREMENT
 						,KEY `id_persona` (`id_persona`)
 						,CONSTRAINT `fk_cliente_persona` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`)
 						) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+LOCK TABLES `cliente` WRITE;
+
+	INSERT INTO `cliente` (`id_cliente`,`id_persona`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES
+	(1, 6, 1, '2021-05-10 20:00:00', '2021-05-10 20:00:00', 1, 1)
+	,(2, 7, 1, '2021-05-10 20:00:00', '2021-05-10 20:00:00', 1, 1)
+	,(3, 8, 1, '2021-05-10 20:00:00', '2021-05-10 20:00:00', 1, 1)
+	,(4, 9, 1, '2021-05-10 20:00:00', '2021-05-10 20:00:00', 1, 1)
+	,(5, 10, 1, '2021-05-10 20:00:00', '2021-05-10 20:00:00', 1, 1);
+
+UNLOCK TABLES;
 
 /*Table structure for table `compra_venta` */
 
@@ -267,10 +278,15 @@ LOCK TABLES `persona` WRITE;
 	/*Data for the table `persona` */
 
 	INSERT  INTO `persona`(`id_persona`,`nombre`,`apellido`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES 
-	(2,'Yesica','Tovar',26,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',2,1)
-	,(3,'Alejandra','Tovar',22,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',3,0)
-	,(4,'Carmenza','Gonzalez',42,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1)
-	,(5,'Costurera','SiDatos',11,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',4,0);
+	(2,'Yesica','Tovar',26,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1)
+	,(3,'Alejandra','Tovar',22,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1)
+	,(4,'Carmenza','Gonzalez',42,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1)
+	,(5,'Costurera','SiDatos',11,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1)
+	,(6,'Cliente#1','ACliente#1',101,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(7,'Cliente#2','ACliente#2',102,'F','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(8,'Cliente#3','ACliente#3',103,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(9,'Cliente#4','ACliente#4',104,'F','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(10,'Cliente#5','ACliente#5',105,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
 
 UNLOCK TABLES;
 
@@ -1138,11 +1154,11 @@ DELIMITER $$
 																				)
 BEGIN
 	UPDATE formulario_rol 
-    SET id_rol = idRol,
-		id_formulario = idFormulario,
-		estado = estado,
-		fecha_modificacion = NOW(),
-		id_usuario_modificacion = idUsuarioModificacion 
+    SET id_rol = idRol
+		,id_formulario = idFormulario
+		,estado = estado
+		,fecha_modificacion = NOW()
+		,id_usuario_modificacion = idUsuarioModificacion 
 	WHERE id_formulario_rol = idFormularioRol;
 END */$$
 DELIMITER ;

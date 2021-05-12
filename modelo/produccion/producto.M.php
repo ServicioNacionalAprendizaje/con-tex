@@ -129,7 +129,7 @@ class Producto
                             ,'$this->talla'
                             ,'$this->estado'
                             , $this->idCategoria
-                            , $this->idUsuarioModificacion
+                            ,'$this->idUsuarioModificacion'
                             , $this->idProducto)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();

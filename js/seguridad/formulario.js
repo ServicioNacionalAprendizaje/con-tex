@@ -23,16 +23,17 @@ function Enviar(accion,id){
                 //Respueta adicionar
                 if(respuesta['accion']=='ADICIONAR'){
                     alert(respuesta['respuesta']);
+                    Limpiar();
                 }
                 
                 //Respuesta muchos registros
                 if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']>1){
                     $("#resultado").html(respuesta['tablaRegistro']);
-                    $('#divEliminar').html(respuesta['eliminar']).hide();
+                    //$('#divEliminar').html(respuesta['eliminar']).hide();
                 }
 
                 //Respuesta un registro
-                if(respuesta['accion']=='CONSULTAR'){
+                if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']==1){
                     $('#hidIdFormulario').val(respuesta['id']);
                     $('#txtDescripcion').val(respuesta['descripcion']);
                     $('#txtEtiqueta').val(respuesta['etiqueta']);
@@ -44,6 +45,7 @@ function Enviar(accion,id){
                 //Respuesta modificar
                 if(respuesta['accion']=='MODIFICAR'){
                     alert(respuesta['respuesta']);
+                    Limpiar();
                 }
                 
                 //Respuesta eliminar
@@ -52,4 +54,12 @@ function Enviar(accion,id){
                 }
             }
     });
+}
+
+function Limpiar(){
+    $('#hidIdFormulario').val("");  
+    $('#txtDescripcion').val("");  
+    $('#txtEtiqueta').val("");      
+    $('#txtUbicacion').val("");
+    $('#cmbEstado').val("");
 }

@@ -36,7 +36,7 @@
                     <input type="text" name="txtUbicacion" id="txtUbicacion" value="" class="caja form-control"
                         placeholder="Ubicación">
                 </div>
-                <div class="col-12 col-sm-6">
+                <!-- <div class="col-12 col-sm-6">
                     <label class="col-form-label">Estado</label>
                     <form action="">
                         <div class="switch">
@@ -44,23 +44,29 @@
                             <label for="check"></label>
                         </div>
                     </form>
-                </div>
+                </div> -->
                 <div class="col-lg-4 form-group">
                     <label for="cmbEstado">Estado</label>
                     <select class="lista form-control" id="cmbEstado">
                         <option value="" selected="selected">--Seleccione--</option>
-                        <option value="0">Activo</option>
-                        <option value="1">Inactivo</option>
+                        <option value="1">Activo</option>
+                        <option value="0">Inactivo</option>
                     </select>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-sm-6">
+            <div class="col-12 col-sm-3">
                 <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado" onclick="Enviar('CONSULTAR',null);">
             </div>
-            <div class="col-12 col-sm-6">
+            <div class="col-12 col-sm-3">
                 <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick="Enviar('ADICIONAR',null);">
+            </div>
+            <div class="col-12 col-sm-3">
+                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnModificar" value="MODIFICAR" id="btnModificar" placeholder="Descripción" onclick=" Enviar('MODIFICAR',null);">
+            </div>
+            <div class="col-12 col-sm-3">
+                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnLimpiar" value="LIMPIAR" id="btnLimpiar" onclick="Limpiar()" />
             </div>
         </div>
         <br></br>
@@ -78,8 +84,8 @@
                                     <td align="center">Eliminar</td>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
+                            <tbody id="resultado">
+                                <!-- <tr>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -87,7 +93,7 @@
                                                 class="fas fa-edit"></i></a></td>
                                     <td align="center"><a href="#" class="btn btn-danger"><i
                                                 class="fas fa-trash"></i></a></td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>
@@ -97,7 +103,7 @@
     </div>
 </form>
 </body>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 
     var check;
     $("#check").on("click", function(){
@@ -110,5 +116,5 @@
             // check = $("#check").prop("checked",false);
         }
     }); 
-    </script>
+    </script> -->
 </html>

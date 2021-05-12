@@ -5,7 +5,7 @@ require '../../modelo/seguridad/formulario.M.php';
 
 $respuesta = array();
 // $_POST['accion'] --- $accion
-$accion = 'ADICIONAR';
+$accion = 'accion';
 if (isset ($accion)){
     switch($accion){
         case 'ADICIONAR':
@@ -26,13 +26,11 @@ if (isset ($accion)){
         case 'MODIFICAR':
             try{
                 $formulario = new Formulario();
-                $formulario->setIdFormulario($_POST['idUsuario']);
-                $formulario->setDescripcion($_POST['usuario']);
-                $formulario->setEtiqueta($_POST['contrasenia']);
-                $formulario->setUbicacion($_POST['fechaActivacion']);
-                $formulario->setEstado($_POST['estado']);               
-                $formulario->setFechaModificacion($_POST['fechaModificacion']);
-                $formulario->setIdUsuarioModificacion($_POST['idUsuarioModificacion']);
+                $formulario->setIdFormulario($_POST['id']);
+                $formulario->setDescripcion($_POST['descripcion']);
+                $formulario->setEtiqueta($_POST['etiqueta']);
+                $formulario->setUbicacion($_POST['ubicacion']);
+                $formulario->setEstado($_POST['estado']);
 
                 $resultado = $formulario->Modificar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
@@ -44,7 +42,7 @@ if (isset ($accion)){
         case 'ELIMINAR':
             try{
                 $formulario = new Usuario();
-                $formulario->setIdFormulario($_POST['idFormulario']);
+                $formulario->setIdFormulario($_POST['id']);
                 $resultado = $formulario->Eliminar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){
@@ -55,14 +53,11 @@ if (isset ($accion)){
         case 'CONSULTAR':
             try{
                 $formulario = new Formulario();
-                $formulario->setIdFormulario($_POST['idUsuario']);
-                $formulario->setEtiqueta($_POST['usuario']);
-                $formulario->setUbicado($_POST['contrasenia']);
+                $formulario->setIdFormulario($_POST['id']);
+                $formulario->setDescripcion($_POST['descripcion']);
+                $formulario->setEtiqueta($_POST['etiqueta']);
+                $formulario->setUbicacion($_POST['ubicacion']);
                 $formulario->setEstado($_POST['estado']);
-                $formulario->setFechaCreacion($_POST['fechaCreacion']);
-                $formulario->setFechaModificacion($_POST['fechaModificacion']);
-                $formulario->setIdUsuarioCreacion($_POST['idUsuarioCreacion']);
-                $formulario->setIdUsuarioModificacion($_POST['idUsuarioModificacion']);
                 $resultado = $formulario->consultar();
 
                 $numeroRegistros = $usuario->conn->obtenerNumeroRegistros();
@@ -73,10 +68,7 @@ if (isset ($accion)){
                         $_POST['etiqueta'] = $rowBuscar->etiqueta;
                         $_POST['ubicacion'] = $rowBuscar->ubicacion;
                         $_POST['estado'] = $rowBuscar->estado;
-                        $_POST['fechaCreacion'] = $rowBuscar->fecha_creacion;
-                        $_POST['fechaModificacion'] = $rowBuscar->fecha_modificacion;
-                        $_POST['idUsuarioCreacion'] = $rowBuscar->id_usuario_creacion;
-                        $_POST['idUsuarioModificacion'] = $rowBuscar->id_usuario_modificacion;
+                        $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_formulario.")'>";
                     }
                 }
             }catch(Exception $e){

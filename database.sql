@@ -1348,13 +1348,14 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_producto`(IN `descripcion` VARCHAR(50)
-																		 ,IN `talla` VARCHAR(50)
-																		 ,IN `estado` ENUM('0','1')
-																		 ,IN `idCategoria` INT
-																		 ,IN `idUsuarioModificacion` INT(11)
-																		 ,IN `idProducto` INT(11)
-																		 )
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_producto`(
+		IN `descripcion` VARCHAR(50)
+		,IN `talla` VARCHAR(50)
+		,IN `estado` ENUM('0','1')
+		,IN `idCategoria` INT(11)
+		,IN `idUsuarioModificacion` INT(11)
+		,IN `idProducto` INT(11)
+		)
 BEGIN
 	UPDATE producto 
     SET descripcion = descripcion

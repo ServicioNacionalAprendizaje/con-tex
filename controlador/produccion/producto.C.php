@@ -70,8 +70,8 @@ if (isset ($accion)){
                         $respuesta['descripcion'] = $rowBuscar->descripcion;
                         $respuesta['talla'] = $rowBuscar->talla;
                         $respuesta['estado'] = $rowBuscar->estado;
-                        $respuesta['idCategoria'] = $rowBuscar->idCategoria;
-                        $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_rol.")'>";
+                        $respuesta['idCategoria'] = $rowBuscar->id_categoria;
+                        $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_producto.")'>";
                      }
                 }else{
                     if(isset($resultado)){

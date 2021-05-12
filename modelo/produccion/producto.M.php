@@ -110,7 +110,7 @@ class Producto
 
     public function Agregar()
     {
-        echo $sentenciaSql = "CALL Agregar_producto(
+        $sentenciaSql = "CALL Agregar_producto(
                             '$this->descripcion'
                             ,'$this->talla'
                             ,'$this->estado'

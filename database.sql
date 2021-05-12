@@ -34,19 +34,11 @@ CREATE TABLE `cargo` (`id_cargo` INT(11) NOT NULL AUTO_INCREMENT
 
 LOCK TABLES `cargo` WRITE;
 
-<<<<<<< HEAD
 	INSERT INTO `cargo` (`id_cargo`, `descripcion`, `estado`, `fecha_creacion`, `fecha_modificacion`, `id_usuario_creacion`, `id_usuario_modificacion`) VALUES
 	(1, 'Administrador', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1)
 	,(2, 'Contador', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1)
 	,(3, 'Empleado', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1)
 	,(4, 'Vendedor', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', 1, 1);
-=======
-	INSERT INTO `cargo` (`id_cargo`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) VALUES
-	(1,'Administrador','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1)
-	,(2,'Contador','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1)
-	,(3,'Vendedor','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1)
-	,(4,'Empleado','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1);
->>>>>>> 2c87d7bfc109d9e32ecb86f9900ee36f573f5423
 
 UNLOCK TABLES;
 

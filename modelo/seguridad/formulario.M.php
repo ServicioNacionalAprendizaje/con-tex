@@ -111,11 +111,11 @@ class Formulario
 
     public function Agregar()
     {
-        $sentenciaSql = "CALL Agregar_formulario(
-                            '$this->descripcion'
+        $sentenciaSql = "CALL Agregar_formulario('$this->descripcion'
                             ,'$this->etiqueta'
                             ,'$this->ubicacion'
-                            ,'$this->estado';
+                            ,'$this->estado'
+                            ,'$this->idUsuarioCreacion')";
         $this->conn->Preparar($sentenciaSql);
         $this->conn->Ejecutar();
         return true;
@@ -123,11 +123,12 @@ class Formulario
 
     public function Modificar()
     {
-        $sentenciaSql = "CALL Modificar_formulario(
-                            '$this->descripcion'
+        $sentenciaSql = "CALL Modificar_formulario('$this->descripcion'
                             ,'$this->etiqueta'
                             ,'$this->ubicacion'
-                            ,'$this->estado')";
+                            ,'$this->estado'
+                            ,'$this->idUsuarioModificacion'
+                            ,'$this->idFormulario')";
         $this->conn->Preparar($sentenciaSql);
         $this->conn->Ejecutar();
         return true;
@@ -147,6 +148,14 @@ class Formulario
         $condicion = $this->obtenerCondicion();
         $sentenciaSql = "SELECT * 
                             FROM formulario $condicion";
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+        return true;
+    }
+
+    public function construirDashboard()
+    {        
+        $sentenciaSql = "CALL Obtener_menu('$this->etiqueta',1)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;

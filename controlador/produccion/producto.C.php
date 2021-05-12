@@ -28,7 +28,6 @@ if (isset ($accion)){
         case 'MODIFICAR':
             try{
                 $producto = new Producto();
-                $producto->setIdProducto($_POST['id']);
                 $producto->setDescripcion($_POST['descripcion']);
                 $producto->setTalla($_POST['talla']);
                 $producto->setEstado($_POST['estado']);
@@ -56,7 +55,6 @@ if (isset ($accion)){
         case 'CONSULTAR':
             try{
                 $producto = new Producto();
-                $producto->setIdProducto($_POST['id']);
                 $producto->setDescripcion($_POST['descripcion']);
                 $producto->setTalla($_POST['talla']);
                 $producto->setEstado($_POST['estado']);
@@ -69,7 +67,7 @@ if (isset ($accion)){
                         $respuesta['id'] = $rowBuscar->id_producto;
                         $respuesta['descripcion'] = $rowBuscar->descripcion;
                         $respuesta['talla'] = $rowBuscar->talla;
-                        $respuesta['estado'] = $rowBuscar->estado;
+                        $respuesta['estado'] = $rowBuscar->estado == 1 ? 'Activo':'Inactivo';
                         $respuesta['idCategoria'] = $rowBuscar->idCategoria;
                         $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_rol.")'>";
                      }

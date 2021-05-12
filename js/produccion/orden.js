@@ -65,25 +65,14 @@ function Enviar(accion,id){
     });
 }
 $(function(){
-    //se carga el autocompleta
+    //se carga el autocompleta del contratista
      $("#txtEmpleado").autocomplete({
-        source:'../../busqueda/produccion/empleado.B.php',
+        source:'../../busqueda/empleado.B.php',
         select:function(event, ui){
             $("#hidIdEmpleado").val(ui.item.id);
         }
      }); 
 });
-
-// $(function(){
-//     //se carga el autocompleta del cargo
-//      $("#txtCliente").autocomplete({
-//         source:'../../busqueda/produccion/cliente.B.php',
-//         select:function(event, ui){
-//             $("#hidIdCliente").val(ui.item.id);
-//         }
-//      }); 
-// });
-
 function Limpiar() {
     document.getElementById('hidIdOrden').value = '';
     document.getElementById('hidIdEmpleado').value = '';

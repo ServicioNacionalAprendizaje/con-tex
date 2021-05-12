@@ -1,6 +1,6 @@
 <?php
-require '../entorno/conexion.php';
-require '../modelo/produccion/categoria.M.php';
+require '../../entorno/conexion.php';
+require '../../modelo/produccion/categoria.M.php';
 
 $arrCategoria = array();
 $contador = 0;

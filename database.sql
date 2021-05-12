@@ -575,14 +575,15 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_detalle_orden`(IN valorInventario DOUBLE
-																			,IN valorVenta DOUBLE
-																			,IN cantidad INT(11)
-																			,IN idOrden INT(11)
-																			,IN idProducto INT(11)
-																			,IN idUsuarioCreacion INT(11)
-																			,IN idUsuarioModificacion INT(11)
-																			)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_detalle_orden`(
+		IN valorInventario DOUBLE
+		,IN valorVenta DOUBLE
+		,IN cantidad INT(11)
+		,IN idOrden INT(11)
+		,IN idProducto INT(11)
+		,IN idUsuarioCreacion INT(11)
+		,IN idUsuarioModificacion INT(11)
+		)
 BEGIN
 	INSERT INTO detalle_orden(valor_inventario
 							 ,valor_venta
@@ -1140,6 +1141,35 @@ BEGIN
 		,fecha_modificacion = NOW()
 		,id_usuario_modificacion = idUsuarioModificacion 
 	WHERE id_cliente = idCliente;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `Modificar_detalle_orden` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Modificar_detalle_orden` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_detalle_orden`(
+		IN `valorInventario` DOUBLE,
+		IN `valorVenta` DOUBLE,
+		IN `cantidad` INT(11),
+		IN `idOrden` INT(11),
+		IN `idProducto` INT(11),
+		IN `idUsuarioModificacion` INT(11),
+		IN `idDetalleOrden` INT(11)
+	)
+BEGIN
+	UPDATE detalle_orden 
+	    SET 
+		 	valor_inventario = valorInventario
+			,valor_venta = valorVenta
+			,cantidad = cantidad
+			,id_orden = idOrden
+			,id_producto = idProducto
+			,fecha_modificacion = NOW()
+			,id_usuario_modificacion = idUsuarioModificacion 
+		WHERE id_detalle_orden = idDetalleOrden;
 END */$$
 DELIMITER ;
 

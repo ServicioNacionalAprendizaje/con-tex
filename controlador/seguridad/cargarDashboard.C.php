@@ -19,7 +19,7 @@ if (isset ($autenticado)){
                             <button type='button' class='btn btn-success dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>".$rowConsulta->etiqueta."</button>
                             <div class='dropdown-menu'>
                                 <div class='dropdown-divider'></div>
-                                    <a class='dropdown-item' href='".$rowConsulta->ubicacion."' target='container_fluid_iframe'>".$rowConsulta->etiqueta."</a>
+                                    <a class='dropdown-item' href='".$rowConsulta->ubicacion."' target='container_fluid_iframe'>".$rowConsulta->descripcion."</a>
                                 <div class='dropdown-divider'></div>                        
                             </div>
                         </div>";

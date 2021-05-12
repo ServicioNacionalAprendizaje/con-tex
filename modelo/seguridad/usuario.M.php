@@ -199,6 +199,7 @@ class Usuario
         $condicion = $this->obtenerCondicion();
         $sentenciaSql = "SELECT 
                             f.id_formulario
+                            ,f.descripcion
                             ,CONVERT(CAST(CONVERT(f.ubicacion USING latin1) AS BINARY) USING utf8) AS ubicacion
                             ,f.etiqueta
                         FROM 
@@ -212,7 +213,14 @@ class Usuario
         $this->conn->ejecutar();
         return true;
     }
-    
+    public function construirCarpeta()
+    {
+        $condicion = $this->obtenerCondicion();
+        $sentenciaSql = "CALL Obtener_carpeta($this->id_usuario)";
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+        return true;
+    }
     
     private function obtenerCondicion()
     {

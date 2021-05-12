@@ -11,7 +11,7 @@
 
 function Enviar(accion,id){
     if(id===null){
-        id=$('#hidIdProduccion').val();
+        id=$('#hidIdProducto').val();
     }
     var parametros = {
         "id" : id,
@@ -45,8 +45,8 @@ function Enviar(accion,id){
                 //Respuesta un registro
                 if(respuesta['accion']=='CONSULTAR'){
                     $('#hidIdProducto').val(respuesta['id']);
-                    $('#txtDescripcion').html(respuesta['descripcion']);
-                    $('#txtTalla').html(respuesta['talla']);
+                    $('#txtDescripcion').val(respuesta['descripcion']);
+                    $('#txtTalla').val(respuesta['talla']);
                     $('#cmbEstado').val(respuesta['estado']);
                     $('#txtCategoria').val(respuesta['idCategoria']);
                     $('#divEliminar').html(respuesta['eliminar']);

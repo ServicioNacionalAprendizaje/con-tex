@@ -2,7 +2,8 @@
 SQLyog Ultimate v11.11 (64 bit)
 MySQL - 5.5.5-10.4.18-MariaDB : Database - contex
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -831,13 +832,14 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_producto`(IN `descripcion` VARCHAR(50)
-																		,IN `talla` INT(11)
-																		,IN `estado` ENUM('0','1')
-																		,IN `idCategoria` INT(11)
-																		,IN `idUsuarioCreacion` INT(11)
-																		,IN `idUsuarioModificacion` INT(11)
-																		)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_producto`(
+		IN `descripcion` VARCHAR(50)
+		,IN `talla` INT(11)
+		,IN `estado` ENUM('0','1')
+		,IN `idCategoria` INT(11)
+		,IN `idUsuarioCreacion` INT(11)
+		,IN `idUsuarioModificacion` INT(11)
+		)
 BEGIN
 	INSERT INTO producto(descripcion
 						,talla
@@ -1098,6 +1100,35 @@ BEGIN
 END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `Modificar_detalle_orden` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Modificar_detalle_orden` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_detalle_orden`(
+		IN `valorInventario` DOUBLE,
+		IN `valorVenta` DOUBLE,
+		IN `cantidad` INT(11),
+		IN `idOrden` INT(11),
+		IN `idProducto` INT(11),
+		IN `idUsuarioModificacion` INT(11),
+		IN `idDetalleOrden` INT(11)
+	)
+BEGIN
+	UPDATE detalle_orden 
+	    SET 
+		 	valor_inventario = valorInventario
+			,valor_venta = valorVenta
+			,cantidad = cantidad
+			,id_orden = idOrden
+			,id_producto = idProducto
+			,fecha_modificacion = NOW()
+			,id_usuario_modificacion = idUsuarioModificacion 
+		WHERE id_detalle_orden = idDetalleOrden;
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `Modificar_empleado` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `Modificar_empleado` */;
@@ -1295,22 +1326,24 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_producto`(IN `descripcion` VARCHAR(50)
-																		 ,IN `talla` VARCHAR(50)
-																		 ,IN `estado` ENUM('0','1')
-																		 ,IN `idCategoria` INT
-																		 ,IN `idUsuarioModificacion` INT(11)
-																		 ,IN `idProducto` INT(11)
-																		 )
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_producto`(
+		IN `descripcion` VARCHAR(50)
+		,IN `talla` VARCHAR(50)
+		,IN `estado` ENUM('0','1')
+		,IN `idCategoria` INT(11)
+		,IN `idUsuarioModificacion` INT(11)
+		,IN `idProducto` INT(11)
+		)
 BEGIN
 	UPDATE producto 
-    SET descripcion = descripcion
+	SET 	descripcion = descripcion
 		,talla = talla
 		,estado = estado
 		,id_categoria = idCategoria
 		,fecha_modificacion = NOW()
 		,id_usuario_modificacion = idUsuarioModificacion 
-	WHERE id_producto = idProducto;
+	WHERE 
+		id_producto = idProducto;
 END */$$
 DELIMITER ;
 

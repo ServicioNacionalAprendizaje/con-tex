@@ -1,20 +1,20 @@
-<!-- codigo proveniente de cargo, falta modificacion -->
+<!-- codigo proveniente de cliente, falta modificacion -->
 <?php
-require '../entorno/conexion.php';
-require '../modelo/nomina/cargo.M.php';
+require '../../entorno/conexion.php';
+require '../../modelo/nomina/cliente.M.php';
 
-$arrCargo = array();
+$arrCliente = array();
 $contador = 0;
-$cargo = new Cargo();
-$cargo->setDescripcion($_REQUEST['term']);
+$cliente = new Cliente();
+$cliente->setDescripcion($_REQUEST['term']);
 
-$cargo->Consultar();
-$numeroRegistros = $cargo->conn->obtenerNumeroRegistros();
-while($rowCargo = $cargo->conn->obtenerObjeto()){
-    $arrCargo[$contador]['id'] = $rowCargo->id_cargo;
-    $arrCargo[$contador]['value'] = $rowCargo->descripcion ;
+$cliente->Consultar();
+$numeroRegistros = $cliente->conn->obtenerNumeroRegistros();
+while($rowCliente = $cliente->conn->obtenerObjeto()){
+    $arrCliente[$contador]['id'] = $rowCliente->id_cliente;
+    $arrCliente[$contador]['value'] = $rowCliente->descripcion ;
 
     $contador++;
 }
-echo json_encode($arrCargo);
+echo json_encode($arrCliente);
 ?>

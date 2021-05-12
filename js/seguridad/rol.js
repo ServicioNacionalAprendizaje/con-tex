@@ -33,7 +33,7 @@ function Enviar(accion,id){
                 if(respuesta['accion']=='CONSULTAR'){
                     $('#hidIdRol').val(respuesta['id']);
                     $('#txtDescripcion').val(respuesta['descripcion']);
-                    $('#cmbEstado').html(respuesta['estado']);
+                    $('#cmbEstado').val(respuesta['estado']);
                     $('#divEliminar').html(respuesta['eliminar']);
                 }
 

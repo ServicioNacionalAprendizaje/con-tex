@@ -4,15 +4,15 @@ class Producto
 {
     private $idProducto;
     private $descripcion;
-    private $idCategoria;
     private $talla;
     private $estado;
+    private $idCategoria;
     private $fechaCreacion;
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
 
-    //idRol
+    //idProducto
     public function getIdProducto()
     {
         return $this->idProducto;
@@ -20,26 +20,6 @@ class Producto
     public function setIdProducto($idProducto)
     {
         $this->idProducto = $idProducto;
-    }
-
-    //idCategoria
-    public function getIdCategoria()
-    {
-        return $this->idCategoria;
-    }
-    public function setIdCategoria($idCategoria)
-    {
-        $this->idCategoria = $idCategoria;
-    }
-
-    //idTalla
-    public function getTalla()
-    {
-        return $this->idTalla;
-    }
-    public function setTalla($idTalla)
-    {
-        $this->idTalla = $idTalla;
     }
 
     //descripcion
@@ -52,6 +32,16 @@ class Producto
         $this->descripcion = $descripcion;
     }
 
+    //talla
+    public function getTalla()
+    {
+        return $this->talla;
+    }
+    public function setTalla($talla)
+    {
+        $this->talla = $talla;
+    }
+
     //estado
     public function getEstado()
     {
@@ -60,6 +50,16 @@ class Producto
     public function setEstado($estado)
     {
         $this->estado = $estado;
+    }
+
+    //idCategoria
+    public function getIdCategoria()
+    {
+        return $this->idCategoria;
+    }
+    public function setIdCategoria($idCategoria)
+    {
+        $this->idCategoria = $idCategoria;
     }
 
     //fechaCreacion
@@ -81,7 +81,6 @@ class Producto
     {
         $this->fechaModificacion = $fechaModificacion;
     }
-
 
     //idUsuarioCreacion
     public function getIdUsuarioCreacion()
@@ -116,7 +115,8 @@ class Producto
                             ,'$this->talla'
                             ,'$this->estado'
                             , $this->idCategoria
-                            , $this->idUsuarioCreacion)";
+                            , $this->idUsuarioCreacion
+                            , $this->idUsuarioModificacion)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -128,9 +128,9 @@ class Producto
                             '$this->descripcion'
                             ,'$this->talla'
                             ,'$this->estado'
-                            ,'$this->idCategoria'
+                            , $this->idCategoria
                             ,'$this->idUsuarioModificacion'
-                            ,'$this->idProducto')";
+                            , $this->idProducto)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;

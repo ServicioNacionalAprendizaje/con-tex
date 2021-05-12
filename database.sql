@@ -34,7 +34,7 @@ CREATE TABLE `cargo` (
 
 /*Data for the table `cargo` */
 
-insert  into `cargo`(`id_cargo`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'Administrador','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(2,'Contador','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(3,'Vendedor','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(4,'Empleado','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1);
+insert  into `cargo`(`id_cargo`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'Administrador','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(2,'Contador','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(3,'Empleado','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(4,'Vendedor','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1);
 
 /*Table structure for table `categoria` */
 

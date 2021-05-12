@@ -74,15 +74,15 @@ $(function(){
      }); 
 });
 
-// $(function(){
-//     //se carga el autocompleta del cargo
-//      $("#txtCliente").autocomplete({
-//         source:'../../busqueda/produccion/cliente.B.php',
-//         select:function(event, ui){
-//             $("#hidIdCliente").val(ui.item.id);
-//         }
-//      }); 
-// });
+$(function(){
+    //se carga el autocompleta del cargo
+     $("#txtCliente").autocomplete({
+        source:'../../busqueda/produccion/cliente.B.php',
+        select:function(event, ui){
+            $("#hidIdCliente").val(ui.item.id);
+        }
+     }); 
+});
 
 function Limpiar() {
     document.getElementById('hidIdOrden').value = '';

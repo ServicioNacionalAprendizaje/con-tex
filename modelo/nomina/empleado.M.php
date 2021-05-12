@@ -160,8 +160,7 @@ $sentenciaSql = "CALL Agregar_empleado(
                              ,$this->idPersona
                              ,$this->sueldoBasico
                             ,'$this->estado'
-                            ,$this->idUsuarioCreacion
-                            ,$this->idUsuarioModificacion)";
+                            ,$this->idUsuarioCreacion)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;

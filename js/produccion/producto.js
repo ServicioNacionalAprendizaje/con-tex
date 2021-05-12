@@ -2,7 +2,7 @@
             $(function(){
                 //se carga el autocompleta d
                 $("#txtCategoria").autocomplete({
-                    source:'../../busqueda/produccion/categoria.B.php',
+                    source:'../../busqueda/categoria.B.php',
                     select:function(event, ui){
                         $("#hidIdCategoria").val(ui.item.id);
                     }
@@ -11,7 +11,7 @@
 
 function Enviar(accion,id){
     if(id===null){
-        id=$('#hidIdProducto').val();
+        id=$('#hidIdProduccion').val();
     }
     var parametros = {
         "id" : id,
@@ -45,8 +45,8 @@ function Enviar(accion,id){
                 //Respuesta un registro
                 if(respuesta['accion']=='CONSULTAR'){
                     $('#hidIdProducto').val(respuesta['id']);
-                    $('#txtDescripcion').val(respuesta['descripcion']);
-                    $('#txtTalla').val(respuesta['talla']);
+                    $('#txtDescripcion').html(respuesta['descripcion']);
+                    $('#txtTalla').html(respuesta['talla']);
                     $('#cmbEstado').val(respuesta['estado']);
                     $('#txtCategoria').val(respuesta['idCategoria']);
                     $('#divEliminar').html(respuesta['eliminar']);

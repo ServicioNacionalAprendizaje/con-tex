@@ -2,7 +2,7 @@
             $(function(){
                 //se carga el autocompleta d
                 $("#txtCategoria").autocomplete({
-                    source:'../../busqueda/categoria.B.php',
+                    source:'../../busqueda/produccion/categoria.B.php',
                     select:function(event, ui){
                         $("#hidIdCategoria").val(ui.item.id);
                     }

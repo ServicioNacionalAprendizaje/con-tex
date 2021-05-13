@@ -201,6 +201,14 @@ class Usuario
         $this->conn->ejecutar();
         return true;
     }
+
+    public function login()
+    {
+        $sentenciaSql = "CALL Obtener_login('$this->usuario','$this->contrasenia')";
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+        return true;
+    }
     
     private function obtenerCondicion()
     {

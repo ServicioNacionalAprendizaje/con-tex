@@ -8,7 +8,7 @@ id=$('#hidIdTarea').val();
         "valorUnitario":$('#numValorUnitario').val(),   
         "fecha":$('#datFecha').val(), 
         "cantidad":$('#numCantidad').val(), 
-        "estadoPago":$('#txtEstadoPago').val(), 
+        "estadoPago":$('#cmbEstadoPago').val(), 
         "descripcion":$('#txtDescripcion').val(),
         "estado":$('#cmbEstado').val(),
         "accion" : accion
@@ -40,7 +40,7 @@ id=$('#hidIdTarea').val();
                     $('#numValorUnitario').val(respuesta['valorUnitario']);
                     $('#datFecha').val(respuesta['fecha']);
                     $('#numCantidad').val(respuesta['cantidad']);
-                    $('#txtEstadoPago').val(respuesta['estadoPago']);
+                    $('#cmbEstadoPago').val(respuesta['estadoPago']);
                     $('#txtDescripcion').val(respuesta['descripcion']);
                     $('#cmbEstado').val(respuesta['estado']);
                     $('#divEliminar').html(respuesta['eliminar']);
@@ -59,9 +59,9 @@ id=$('#hidIdTarea').val();
     });
 }
 $(function(){
-    //se carga el autocompleta
+    //se carga el autocompleta del contratista
      $("#txtEmpleado").autocomplete({
-        source:'../../busqueda/persona.B.php',
+        source:'../../busqueda/empleado.B.php',
         select:function(event, ui){
             $("#hidIdEmpleado").val(ui.item.id);
         }

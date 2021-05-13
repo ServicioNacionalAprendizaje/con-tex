@@ -2,8 +2,7 @@
 SQLyog Ultimate v11.11 (64 bit)
 MySQL - 5.5.5-10.4.18-MariaDB : Database - contex
 *********************************************************************
-*/
-
+*/
 
 /*!40101 SET NAMES utf8 */;
 
@@ -34,7 +33,7 @@ CREATE TABLE `cargo` (
 
 /*Data for the table `cargo` */
 
-insert  into `cargo`(`id_cargo`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'Administrador','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(2,'Contador','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(3,'Empleado','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(4,'Vendedor','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1);
+insert  into `cargo`(`id_cargo`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'Administrador','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(2,'Contador','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(3,'Vendedor','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(4,'Empleado','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1);
 
 /*Table structure for table `categoria` */
 
@@ -358,7 +357,7 @@ CREATE TABLE `tarea` (
   `valor_unitario` double NOT NULL,
   `cantidad` int(11) NOT NULL,
   `fecha` datetime NOT NULL,
-  `estado_pago` enum('por pagar','pagado') NOT NULL,
+  `estado_pago` enum('0','1') NOT NULL,
   `id_empleado` int(11) NOT NULL,
   `estado` enum('0','1') NOT NULL,
   `fecha_creacion` datetime NOT NULL,
@@ -368,9 +367,11 @@ CREATE TABLE `tarea` (
   PRIMARY KEY (`id_tarea`),
   KEY `id_empleado` (`id_empleado`),
   CONSTRAINT `fk_tarea_id_empleado` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tarea` */
+
+insert  into `tarea`(`id_tarea`,`descripcion`,`valor_unitario`,`cantidad`,`fecha`,`estado_pago`,`id_empleado`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'por pagar',10000,10,'2021-05-17 00:00:00','0',2,'1','2021-05-12 22:36:37','2021-05-12 22:36:37',1,1);
 
 /*Table structure for table `tipo_pago` */
 
@@ -832,14 +833,13 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_producto`(
-		IN `descripcion` VARCHAR(50)
-		,IN `talla` INT(11)
-		,IN `estado` ENUM('0','1')
-		,IN `idCategoria` INT(11)
-		,IN `idUsuarioCreacion` INT(11)
-		,IN `idUsuarioModificacion` INT(11)
-		)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_producto`(IN `descripcion` VARCHAR(50)
+																		,IN `talla` INT(11)
+																		,IN `estado` ENUM('0','1')
+																		,IN `idCategoria` INT(11)
+																		,IN `idUsuarioCreacion` INT(11)
+																		,IN `idUsuarioModificacion` INT(11)
+																		)
 BEGIN
 	INSERT INTO producto(descripcion
 						,talla
@@ -908,7 +908,7 @@ DELIMITER $$
 																	,IN idUsuarioModificacion INT(11)
 																	)
 BEGIN
-	INSERT INTO rol(descripcion
+	INSERT INTO tarea (descripcion
 					,valor_unitario
 					,cantidad
 					,fecha
@@ -1097,35 +1097,6 @@ BEGIN
 		,fecha_modificacion = NOW()
 		,id_usuario_modificacion = idUsuarioModificacion 
 	WHERE id_cliente = idCliente;
-END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `Modificar_detalle_orden` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `Modificar_detalle_orden` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_detalle_orden`(
-		IN `valorInventario` DOUBLE,
-		IN `valorVenta` DOUBLE,
-		IN `cantidad` INT(11),
-		IN `idOrden` INT(11),
-		IN `idProducto` INT(11),
-		IN `idUsuarioModificacion` INT(11),
-		IN `idDetalleOrden` INT(11)
-	)
-BEGIN
-	UPDATE detalle_orden 
-	    SET 
-		 	valor_inventario = valorInventario
-			,valor_venta = valorVenta
-			,cantidad = cantidad
-			,id_orden = idOrden
-			,id_producto = idProducto
-			,fecha_modificacion = NOW()
-			,id_usuario_modificacion = idUsuarioModificacion 
-		WHERE id_detalle_orden = idDetalleOrden;
 END */$$
 DELIMITER ;
 
@@ -1326,24 +1297,22 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_producto`(
-		IN `descripcion` VARCHAR(50)
-		,IN `talla` VARCHAR(50)
-		,IN `estado` ENUM('0','1')
-		,IN `idCategoria` INT(11)
-		,IN `idUsuarioModificacion` INT(11)
-		,IN `idProducto` INT(11)
-		)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_producto`(IN `descripcion` VARCHAR(50)
+																		 ,IN `talla` VARCHAR(50)
+																		 ,IN `estado` ENUM('0','1')
+																		 ,IN `idCategoria` INT
+																		 ,IN `idUsuarioModificacion` INT(11)
+																		 ,IN `idProducto` INT(11)
+																		 )
 BEGIN
 	UPDATE producto 
-	SET 	descripcion = descripcion
+    SET descripcion = descripcion
 		,talla = talla
 		,estado = estado
 		,id_categoria = idCategoria
 		,fecha_modificacion = NOW()
 		,id_usuario_modificacion = idUsuarioModificacion 
-	WHERE 
-		id_producto = idProducto;
+	WHERE id_producto = idProducto;
 END */$$
 DELIMITER ;
 

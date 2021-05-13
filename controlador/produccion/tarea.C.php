@@ -11,14 +11,15 @@ if(isset($accion)){
         case 'ADICIONAR':
             try {
                 $tarea=new Tarea();
+                $tarea->setIdEmpleado($_POST['idEmpleado']);
                 $tarea->setValorUnitario($_POST['valorUnitario']);
                 $tarea->setDescripcion($_POST['descripcion']);
                 $tarea->setCantidad($_POST['cantidad']);
                 $tarea->setFecha($_POST['fecha']);
                 $tarea->setEstadoPago($_POST['estadoPago']);
                 $tarea->setEstado($_POST['estado']);
-                $tarea->setIdUsuarioCreacion();
-                $tarea->setIdUsuarioModificacion();
+                $tarea->setIdUsuarioCreacion(1);
+                $tarea->setIdUsuarioModificacion(1);
                 $resultado=$tarea->Agregar();
                 $respuesta['respuesta']="La información se adicionó correctamente";
             } catch (Exception $e) {

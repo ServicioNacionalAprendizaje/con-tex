@@ -34,7 +34,7 @@
                     </div>
                     <div class="col-12 col-sm-6">
                         <label class="col-form-label">Valor unitario</label>
-                        <input type="number" class="caja form-control" name="numValorUnita" value="" id="numValorUnita" placeholder="Valor unitario">
+                        <input type="number" class="caja form-control" name="numValorUnitario" value="" id="numValorUnitario" placeholder="Valor unitario">
                     </div>
                 </div>
                     <div class="row">
@@ -49,12 +49,14 @@
                                 placeholder="Cantidad">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12 col-sm-6">
-                            <label class="col-form-label">Estado pago</label>
-                            <input type="text" class="caja form-control" name="txtEstadoPago" value=""
-                                id="txtEstadoPago" placeholder="Estado pago">
-                        </div>
+                    <div class="col-12 col-sm-6 form-group">
+                        <label for="cmbEstadoPago">Estado Pago</label>
+                        <select class="lista form-control" id="cmbEstadoPago">
+                            <option value="" selected="selected">--Seleccione--</option>
+                            <option value="1">Pagado</option>
+                            <option value="0">Por pagar</option>
+                        </select>
+                    </div>
                         <div class="col-12 col-sm-6">
                             <label class="col-form-label">Descripción</label>
                             <input type="text" class="caja form-control" name="txtDescripcion" value=""

@@ -143,12 +143,13 @@ class Tarea{
 
     public function Agregar()
     {
-        $sentenciaSql = "CALL Agregar_tarea('$this->descripcion'
+        $sentenciaSql = "CALL Agregar_tarea(
+                            '$this->estadoPago'
                             ,'$this->valorUnitario'
                             ,'$this->cantidad'
-                            ,'$this->idEmpleado'
                             ,'$this->fecha'
                             ,'$this->estadoPago'
+                            , $this->idEmpleado
                             ,'$this->estado'
                             ,'$this->idUsuarioCreacion'
                             , $this->idUsuarioModificacion)";

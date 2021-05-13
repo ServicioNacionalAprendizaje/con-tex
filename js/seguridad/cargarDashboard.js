@@ -1,5 +1,9 @@
-function CargarDashboard(){    
-    $.ajax({        
+function CargarDashboard(sesion){    
+    var parametros = {                
+        "sesion" : sesion
+    }; 
+    $.ajax({   
+        data: parametros,     
         url: 'controlador/seguridad/cargarDashboard.C.php', //archivo php que recibe los datos
         type: 'post', //método para enviar los datos
         dataType: 'json',//Recibe el array desde php
@@ -9,6 +13,9 @@ function CargarDashboard(){
             //Respuesta muchos registros
             if( respuesta['numeroRegistros']>=1){
                 $("#cargarDashboard").html(respuesta['menu_recursivo']);
+            }
+            if( respuesta['respuesta']=='cerrar_sesion'){
+                window.location =respuesta['ruta'];
             }              
         }
     });

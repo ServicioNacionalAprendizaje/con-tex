@@ -6,38 +6,51 @@ require '../../modelo/seguridad/formulario.M.php';
 
 $respuesta = array();
 $contador = 0;
-$autenticado = 1;
 session_start();
 
-if (isset ($autenticado)){  
-    try{
-        $carpeta = new Usuario();                
-        $carpeta->setIdUsuario($_SESSION['id_login']);        
-        $carpeta->construirCarpeta(); 
-
-
-        $retorno="";
-        while($rowCarpeta = $carpeta->conn->obtenerObjeto()){                  
-            $retorno .= "<div class='btn-group'>
-                    <button type='button' class='btn btn-success dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>".$rowCarpeta->modulo."</button>
-                    <div class='dropdown-menu'>";
-
-            $menu = new Formulario();                
-            $menu->setEtiqueta($rowCarpeta->modulo);        
-            $menu->construirDashboard();
-            while($rowConsulta = $menu->conn->obtenerObjeto()){                    
-                $retorno .= " <a class='dropdown-item' href='".$rowConsulta->ubicacion."' target='container_fluid_iframe'>".$rowConsulta->descripcion."</a><div class='dropdown-divider'></div>";                            
-            }                                      
-            $retorno .= "</div></div>";
-            $contador++;                        
-        }     
-             
-        $respuesta['menu_recursivo']=$retorno;
-        $respuesta['numeroRegistros']=$contador;
+if (isset ($_SESSION['id_login'])){  
+    switch ($_POST['sesion'])
+    {
+        case "cerrar_sesion":
+            session_destroy();
+            $respuesta['respuesta']= "cerrar_sesion";
+            $respuesta['ruta']= "login.html";
+        break;
+        case "":
+            try{
+                $carpeta = new Usuario();                
+                $carpeta->setIdUsuario($_SESSION['id_login']);        
+                $carpeta->construirCarpeta(); 
         
-    }catch(Exception $e){
-        $respuesta['respuesta']="Error, no fué posible consultar la información, consulte con el administrador.";
-    }
+        
+                $retorno="";
+                while($rowCarpeta = $carpeta->conn->obtenerObjeto()){                  
+                    $retorno .= "<div class='btn-group'>
+                            <button type='button' class='btn btn-success dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>".$rowCarpeta->modulo."</button>
+                            <div class='dropdown-menu'>";
+        
+                    $menu = new Formulario();                
+                    $menu->setEtiqueta($rowCarpeta->modulo);        
+                    $menu->construirDashboard();
+                    while($rowConsulta = $menu->conn->obtenerObjeto()){                    
+                        $retorno .= " <a class='dropdown-item' href='".$rowConsulta->ubicacion."' target='container_fluid_iframe'>".$rowConsulta->descripcion."</a><div class='dropdown-divider'></div>";                            
+                    }                                      
+                    $retorno .= "</div></div>";
+                    $contador++;                        
+                }     
+                     
+                $respuesta['menu_recursivo']=$retorno;
+                $respuesta['numeroRegistros']=$contador;
+                
+            }catch(Exception $e){
+                $respuesta['respuesta']="Error, no fué posible consultar la información, consulte con el administrador.";
+            }
+        break; 
+    }    
+    echo json_encode($respuesta);
+}else{
+    $respuesta['respuesta']= "cerrar_sesion";
+    $respuesta['ruta']= "login.html";
     echo json_encode($respuesta);
 }
 ?>

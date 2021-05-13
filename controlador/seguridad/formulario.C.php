@@ -1,5 +1,5 @@
 <?php
-// $ubicacionFormulario =  substr($_SERVER["SCRIPT_NAME"], 17);
+$ubicacionFormulario =  substr($_SERVER["SCRIPT_NAME"], 17);
 include '../../entorno/conexion.php';
 require '../../modelo/seguridad/formulario.M.php';
 

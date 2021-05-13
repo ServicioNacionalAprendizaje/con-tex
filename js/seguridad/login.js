@@ -17,6 +17,8 @@ function Login(){
                 window.location =respuesta['respuesta'];
             }else{
                 alert(respuesta['respuesta']);
+                $('#txtEmail').val("");  
+                $('#txtContrasenia').val(""); 
             }              
         }
     });

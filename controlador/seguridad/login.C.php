@@ -21,12 +21,11 @@ if (isset ($_POST['user'])){
                 $_SESSION['nombre_login'] = $rowBuscar->nombre;
                 $respuesta['estado']=0;
                 $respuesta['respuesta']= "dashboard.php";
-            }            
-                     
-        }else{
-            $respuesta['respuesta']='Error en los datos ingresados!!';
-            $respuesta['estado']=1;
-        }           
+            } else{
+                $respuesta['respuesta']='Error en los datos ingresados!!';
+                $respuesta['estado']=1;
+            }        
+        }         
         
     }catch(Exception $e){
         $respuesta['respuesta']="Error, no fué posible consultar la información, consulte con el administrador.";     

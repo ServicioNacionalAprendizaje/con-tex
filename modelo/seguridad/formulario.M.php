@@ -154,8 +154,9 @@ class Formulario
     }
 
     public function construirDashboard()
-    {        
-        $sentenciaSql = "CALL Obtener_menu('$this->etiqueta',1)";
+    {      
+        $id_usuario = $_SESSION['id_login'];  
+        $sentenciaSql = "CALL Obtener_menu('$this->etiqueta',$id_usuario)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;

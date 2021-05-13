@@ -7,11 +7,12 @@ require '../../modelo/seguridad/formulario.M.php';
 $respuesta = array();
 $contador = 0;
 $autenticado = 1;
+session_start();
 
 if (isset ($autenticado)){  
     try{
         $carpeta = new Usuario();                
-        $carpeta->setIdUsuario($autenticado);        
+        $carpeta->setIdUsuario($_SESSION['id_login']);        
         $carpeta->construirCarpeta(); 
 
 

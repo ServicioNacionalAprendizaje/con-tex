@@ -1,8 +1,8 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset='utf-8'>
-    <title>Formulario Rol</title>
+    <title>Usuario Rol</title>
     <link rel='stylesheet' type='text/css' media='screen' href='../../componente/css/goblal.css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
@@ -10,7 +10,7 @@
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="../../js/seguridad/formularioRol.js"></script>
+    <script src="../../js/seguridad/usuarioRol.js"></script>
 
     <!-- Auto complete -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -21,23 +21,23 @@
 </head>
 
 <body>
-    <form name="fmrFormularioRol" id="frmFormularioRol"> 
+    <form name="fmrUsuarioRol" id="frmUsuarioRol"> 
     <div class="margen" align="center">
         <label>
-            <h1>Roles del formulario</h1>
+            <h1>Roles del Usuario</h1>
         </label>
         <div class="container form-group">
             <div class="row">
-                        <div class="col-12 col-sm-6">
-                            <input type="hidden" name="hidIdFormularioRol" id="hidIdFormularioRol" value="">
+                <div class="col-12 col-sm-6">
+                    <input type="hidden" name="hidIdUsuarioRol" id="hidIdUsuarioRol" value="">
+                    <input type="hidden" name="hidIdUsuario" id="hidIdUsuario" value="">
+                    <label class="col-form-label">Usuario</label>
+                    <input type="text" name="txtUsuario" id="txtUsuario" value="" placeholder=" Usuario" class="caja form-control">
+                </div>
+                <div class="col-12 col-sm-6">
                     <input type="hidden" name="hidIdRol" id="hidIdRol" value="">
                     <label class="col-form-label">Rol</label>
                     <input type="text" name="txtRol" id="txtRol" value="" placeholder=" Rol" class="caja form-control">
-                </div>
-                <div class="col-12 col-sm-6">
-                    <input type="hidden" name="hidIdFormulario" id="hidIdFormulario" value="">
-                    <label class="col-form-label">Formulario</label>
-                    <input type="text" name="txtFormulario" id="txtFormulario" value="" placeholder=" Formulario" class="caja form-control">
                 </div>
             <div class="row">
                 <div class="col-12 col-sm-6">
@@ -73,7 +73,7 @@
             <div class="col-12 col-sm-3">
                 <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnLimpiar" value="LIMPIAR" id="btnLimpiar" placeholder="Limpiar" onclick=" Enviar('LIMPIAR',null);">
             </div>
-        </div> 
+        </div>
         <br></br>
         <div class="container">
             <div class="row">
@@ -82,7 +82,7 @@
             <table class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
-                        <td align="center">formularioRol</td>
+                        <td align="center">UsuarioRol</td>
                         <td align="center">Fecha Creacion</td>
                         <td align="center">Fecha Modificacion</td>
                         <td align="center">Estado</td>

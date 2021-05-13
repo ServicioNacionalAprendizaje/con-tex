@@ -3,27 +3,26 @@
 class UsuarioRol
 {
     private $idUsuarioRol;
-    private $idUsuario;
     private $idRol;
+    private $idUsuario;
     private $estado;
     private $fechaCreacion;
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
+   
 
-    public $conn = null;
-
-    //IdUsuario
-    public function getIdUsuario()
+    //idUsuarioRol
+    public function getIdUsuarioRol()
     {
-        return $this->idUsuario;
+        return $this->idUsuarioRol;
     }
-    public function setIdUsuario($idUsuario)
+    public function setIdUsuarioRol($idUsuarioRol)
     {
-        $this->idUsuario = $idUsuario;
+        $this->idUsuarioRol = $idUsuarioRol;
     }
 
-    //IdRol
+    //idRol
     public function getIdRol()
     {
         return $this->idRol;
@@ -33,7 +32,17 @@ class UsuarioRol
         $this->idRol = $idRol;
     }
 
-    //Estado
+    //idUsuario
+    public function getIdUsuario()
+    {
+        return $this->idUsuario;
+    }
+    public function setIdUsuario($idUsuario)
+    {
+        $this->idUsuario = $idUsuario;
+    }
+
+    //estado
     public function getEstado()
     {
         return $this->estado;
@@ -43,17 +52,17 @@ class UsuarioRol
         $this->estado = $estado;
     }
 
-    //FechaCreacion
+    //fechaCreacion
     public function getFechaCreacion()
     {
         return $this->fechaCreacion;
     }
-    public function setFechaCreacion($fechaCreacion = 1)
+    public function setFechaCreacion($fechaCreacion)
     {
         $this->fechaCreacion = $fechaCreacion;
     }
 
-    //FechaModificacion
+    //fechaModificacion
     public function getFechaModificacion()
     {
         return $this->fechaModificacion;
@@ -63,22 +72,22 @@ class UsuarioRol
         $this->fechaModificacion = $fechaModificacion;
     }
 
-    //IdUsuarioCreacion
+    //idUsuarioCreacion
     public function getIdUsuarioCreacion()
     {
         return $this->idUsuarioCreacion;
     }
-    public function setIdUsuarioCreacion($idUsuarioCreacion = 1)
+    public function setIdUsuarioCreacion($idUsuarioCreacion =1)
     {
         $this->idUsuarioCreacion = $idUsuarioCreacion;
     }
 
-    //IdUsuarioModificacion
+    //idUsuarioModificacion
     public function getIdUsuarioModificacion()
     {
         return $this->idUsuarioModificacion;
     }
-    public function setIdUsuarioModificacion($idUsuarioModificacion = 1)
+    public function setIdUsuarioModificacion($idUsuarioModificacion=1)
     {
         $this->idUsuarioModificacion = $idUsuarioModificacion;
     }
@@ -91,10 +100,12 @@ class UsuarioRol
 
     public function Agregar()
     {
-        $sentenciaSql = "CALL Agregar_usuario_rol('$this->idUsuario'
-                            ,'$this->idRol'
+        $sentenciaSql = "CALL Agregar_usuario_rol(
+                            $this->idUsuario
+                            , $this->idRol
                             ,'$this->estado'
-                            ,'$this->idUsuarioCreacion')";
+                            , $this->idUsuarioCreacion
+                            , $this->idUsuarioModificacion)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -102,11 +113,12 @@ class UsuarioRol
 
     public function Modificar()
     {
-        $sentenciaSql = "CALL Modificar_usuario_rol('$this->idUsuario'
-                            ,'$this->idRol'
+        $sentenciaSql = "CALL Modificar_usuario_rol(
+                            $this->idUsuario
+                            , $this->idRol
                             ,'$this->estado'
-                            ,'$this->idUsuarioModificacion'
-                            ,'$this->idUsuarioRol')";
+                            , $this->idUsuarioModificacion
+                            , $this->idUsuarioRol)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -130,14 +142,29 @@ class UsuarioRol
         $this->conn->ejecutar();
         return true;
     }
-    
+
     private function obtenerCondicion()
     {
+        $whereAnd = " WHERE ";
+        $condicion = " ";
+
+        if($this->idUsuarioRol !=''){
+            $condicion=$whereAnd.$condicion." id_usuario_rol  = $this->idUsuarioRol";
+            $whereAnd = ' AND ';
+        }
+        // if($this->usuarioRol !=''){
+        //     $condicion=$condicion.$whereAnd." usuarioRol LIKE '%$this->usuarioRol%' ";
+        //     $whereAnd = ' AND ';
+        //     return $condicion;
+        // }
+        return $condicion;
     }
 
     public function __destruct()
     {
-
+        unset($this->idUsuarioRol);
+        unset($this->idRol);
+        unset($this->idUsuario);
         unset($this->estado);
         unset($this->fechaCreacion);
         unset($this->fechaModificacion);

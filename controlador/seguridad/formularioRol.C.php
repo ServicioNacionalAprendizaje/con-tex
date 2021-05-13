@@ -31,9 +31,8 @@ if (isset ($accion)){
                 $formularioRol->setIdFormularioRol($_POST['idFormularioRol']);
                 $formularioRol->setIdRol($_POST['idRol']);
                 $formularioRol->setIdFormulario($_POST['idFormulario']);
-                $formularioRol->setEstado($_POST['estado']);               
-                $formularioRol->setFechaModificacion($_POST['fechaModificacion']);
-                $formularioRol->setIdUsuarioModificacion($_POST['idUsuarioModificacion']);
+                $formularioRol->setEstado($_POST['estado']);
+                $formularioRol->setIdUsuarioModificacion();
 
                 $resultado = $formularioRol->Modificar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";

@@ -95,6 +95,7 @@ $sentenciaSql = "CALL Agregar_categoria(
         $sentenciaSql = "CALL Modificar_categoria(
                             '$this->descripcion'
                             ,'$this->estado'
+                            ,$this->idUsuarioModificacion
                             ,$this->idCategoria)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();

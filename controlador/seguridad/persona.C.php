@@ -72,8 +72,8 @@ if (isset ($accion)){
                         $respuesta['nombre'] = $rowBuscar->nombre;
                         $respuesta['apellido'] = $rowBuscar->apellido;
                         $respuesta['edad'] = $rowBuscar->edad;                           
-                        $respuesta['genero'] = $rowBuscar->genero == 'M' ? 'Masculino':'Femenino';
-                        $respuesta['estado'] = $rowBuscar->estado == 1 ? 'Activo':'Inactivo';
+                        $respuesta['genero'] = $rowBuscar->genero;
+                        $respuesta['estado'] = $rowBuscar->estado;
                         $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_persona.")'>";
                     }
                 }else{
@@ -85,7 +85,7 @@ if (isset ($accion)){
                                         <td><label>".$rowConsulta[2]."</label></td>                                        
                                         <td><label>".$rowConsulta[3]."</label></td>                                                                                               
                                         <td><label>".($rowConsulta[4]== 'M' ? 'Masculino':'Femenino')."</label></td>
-                                        <td><label>".($rowConsulta[9]== 1 ? 'Activo' : 'Inactivo')."</label></td>
+                                        <td><label>".($rowConsulta[5]== 1 ? 'Activo' : 'Inactivo')."</label></td>
                                         <td align='center'><a href='#' class='btn btn-warning'><i class='fas fa-edit' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></i></a></td>
                                         <td align='center'><a href='#' class='btn btn-danger'><i class='fas fa-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></i></a></td>                                                                                
                                     </tr>";

@@ -36,7 +36,7 @@ CREATE TABLE `cargo` (
 
 LOCK TABLES `cargo` WRITE;
 
-insert  into `cargo`(`id_cargo`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'Administrador','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(2,'Contador','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(3,'Vendedor','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(4,'Empleado','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1);
+insert  into `cargo`(`id_cargo`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'Administrador','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(2,'Contador','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(3,'Empleado','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(4,'Vendedor','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1);
 
 UNLOCK TABLES;
 
@@ -167,7 +167,7 @@ CREATE TABLE `empleado` (
   KEY `id_persona` (`id_persona`),
   KEY `id_cargo` (`id_cargo`),
   CONSTRAINT `empleado_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`),
-  CONSTRAINT `empleado_ibfk_2` FOREIGN KEY (`id_cargo`) REFERENCES `cargo` (`id_cargo`)
+  CONSTRAINT `empleado_ibfk_2` FOREIGN KEY (`id_cargo`) REFERENCES `cargo` (`id_cargo`) 
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `empleado` */

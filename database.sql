@@ -199,7 +199,24 @@ CREATE TABLE `formulario` (
 
 LOCK TABLES `formulario` WRITE;
 
-insert  into `formulario`(`id_formulario`,`descripcion`,`etiqueta`,`ubicacion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'formulario','Seguridad','./vista/Seguridad/formulario.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(2,'formulario rol','Seguridad','./vista/Seguridad/formularioRol.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(3,'persona','Seguridad','./vista/Seguridad/persona.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(4,'rol','Seguridad','./vista/Seguridad/rol.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(5,'usuario','Seguridad','./vista/Seguridad/usuario.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(6,'cargo','Nomina','./vista/Nomina/cargo.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(7,'empleado','Nomina','./vista/Nomina/empleado.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(8,'generar pago','Nomina','./vista/Nomina/generarPago.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(9,'pago dia','Nomina','./vista/Nomina/pagoDia.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(10,'categoria','Producciom','./vista/Producción/categoria.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(11,'detalle orden','Producciom','./vista/Producción/detalleOrden.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(12,'insumo','Producciom','./vista/Producción/insumo.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(13,'orden','Producciom','./vista/Producción/orden.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(14,'producto','Producciom','./vista/Producción/producto.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(15,'tarea','Producciom','./vista/Producción/tarea.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1);
+insert  into
+	`formulario`(`id_formulario`,`descripcion`,`etiqueta`,`ubicacion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`)
+values
+	(1,'formulario','Seguridad','./vista/Seguridad/formulario.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(2,'formulario rol','Seguridad','./vista/Seguridad/formularioRol.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(3,'persona','Seguridad','./vista/Seguridad/persona.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(4,'rol','Seguridad','./vista/Seguridad/rol.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(5,'usuario','Seguridad','./vista/Seguridad/usuario.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(6,'cargo','Nomina','./vista/Nomina/cargo.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(7,'empleado','Nomina','./vista/Nomina/empleado.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(8,'generar pago','Nomina','./vista/Nomina/generarPago.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(9,'pago dia','Nomina','./vista/Nomina/pagoDia.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(10,'categoria','Producciom','./vista/Producción/categoria.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(11,'detalle orden','Producciom','./vista/Producción/detalleOrden.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(12,'insumo','Producciom','./vista/Producción/insumo.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(13,'orden','Producciom','./vista/Producción/orden.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(14,'producto','Producciom','./vista/Producción/producto.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(15,'tarea','Producciom','./vista/Producción/tarea.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1);
 
 UNLOCK TABLES;
 

@@ -1,6 +1,6 @@
 <?php
-require '../entorno/conexion.php';
-require '../modelo/seguridad/persona.M.php';
+require '../../entorno/conexion.php';
+require '../../modelo/seguridad/persona.M.php';
 
 $arrPersona = array();
 $contador = 0;

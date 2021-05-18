@@ -135,8 +135,22 @@ class FormularioRol
     public function Consultar()
     {
         $condicion = $this->obtenerCondicion();
-        $sentenciaSql = "SELECT * 
-                            FROM formulario_rol $condicion";
+        $sentenciaSql = "SELECT
+                            fr.id_formulario_rol
+                            ,r.id_rol
+                            ,r.descripcion AS descripcion_rol
+                            ,f.id_formulario
+                            ,f.descripcion AS descripcion_formulario
+                            ,fr.estado
+                            ,fr.fecha_creacion
+                            ,fr.fecha_modificacion
+                            ,fr.id_usuario_creacion
+                            ,fr.id_usuario_modificacion
+                        FROM
+                            formulario AS f
+                        INNER JOIN formulario_rol AS fr ON f.id_formulario = fr.id_formulario
+                        INNER JOIN rol AS r ON fr.id_rol = r.id_rol
+                        $condicion";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;

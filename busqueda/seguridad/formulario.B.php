@@ -1,6 +1,6 @@
 <?php
-require '../entorno/conexion.php';
-require '../modelo/seguridad/formulario.M.php';
+require '../../entorno/conexion.php';
+require '../../modelo/seguridad/formulario.M.php';
 
 $arrFormulario = array();
 $contador = 0;

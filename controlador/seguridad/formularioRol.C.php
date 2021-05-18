@@ -33,7 +33,7 @@ if (isset ($accion)){
                 $formularioRol->setIdFormulario($_POST['idFormulario']);
                 $formularioRol->setEstado($_POST['estado']);
                 $formularioRol->setIdUsuarioModificacion();
-
+                
                 $resultado = $formularioRol->Modificar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){
@@ -72,8 +72,10 @@ if (isset ($accion)){
                     if ($rowBuscar = $formularioRol->conn->obtenerObjeto()){
                         $respuesta['idFormularioRol'] = $rowBuscar->id_formulario_rol;
                         $respuesta['idRol'] = $rowBuscar->id_rol;
+                        $respuesta['descripcionRol'] = $rowBuscar->descripcion_rol;
                         $respuesta['idFormulario'] = $rowBuscar->id_formulario;
-                        $respuesta['estado'] = $rowBuscar->estado == 1 ? 'Activo':'Inactivo';
+                        $respuesta['descripcionFormulario'] = $rowBuscar->descripcion_formulario;
+                        $respuesta['estado'] = $rowBuscar->estado;
                         $respuesta['fechaCreacion'] = $rowBuscar->fecha_creacion;
                         $respuesta['fechaModificacion'] = $rowBuscar->fecha_modificacion;
                         $respuesta['idUsuarioCreacion'] = $rowBuscar->id_usuario_creacion;
@@ -86,10 +88,10 @@ if (isset ($accion)){
                             foreach($formularioRol->conn->ObtenerRegistros()AS $rowConsulta){
                                 $retorno .= "<tr>                                          
                                             <td><label>".$rowConsulta[0]."</label></td>                                             
-                                            <td><label>".$rowConsulta[4]."</label></td>                                        
-                                            <td><label>".$rowConsulta[5]."</label></td>                                                                                               
+                                            <td><label>".$rowConsulta[6]."</label></td>                                        
+                                            <td><label>".$rowConsulta[7]."</label></td>                                                                                               
 
-                                            <td><label>".($rowConsulta[3]== 1 ? 'Activo':'Inactivo')."</label></td>
+                                            <td><label>".($rowConsulta[5]== 1 ? 'Activo':'Inactivo')."</label></td>
                                             <td align='center'><a href='#' class='btn btn-warning'><i class='fas fa-edit' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></i></a></td>
                                             <td align='center'><a href='#' class='btn btn-danger'><i class='fas fa-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></i></a></td>                                                                                
                                             </tr>";

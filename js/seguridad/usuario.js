@@ -64,7 +64,7 @@ function Enviar(accion, id) {
 $(function(){
     //se carga el autocompleta del contratista
      $("#txtPersona").autocomplete({
-        source:'../../busqueda/persona.B.php',
+        source:'../../busqueda/seguridad/persona.B.php',
         select:function(event, ui){
             $("#hidIdPersona").val(ui.item.id);
         }

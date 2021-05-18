@@ -70,10 +70,12 @@ if (isset ($accion)){
                 $numeroRegistros = $usuarioRol->conn->obtenerNumeroRegistros();
                 if($numeroRegistros === 1){
                     if ($rowBuscar = $usuarioRol->conn->obtenerObjeto()){
-                        $respuesta['idFormularioRol'] = $rowBuscar->id_usuario_rol;
+                        $respuesta['idUsuarioRol'] = $rowBuscar->id_usuario_rol;
                         $respuesta['idUsuario'] = $rowBuscar->id_usuario;
+                        $respuesta['nombreUsuario'] = $rowBuscar->nombre_usuario;
                         $respuesta['idRol'] = $rowBuscar->id_rol;
-                        $respuesta['estado'] = $rowBuscar->estado == 1 ? 'Activo':'Inactivo';
+                        $respuesta['descripcionRol'] = $rowBuscar->descripcion_rol;
+                        $respuesta['estado'] = $rowBuscar->estado;
                         $respuesta['fechaCreacion'] = $rowBuscar->fecha_creacion;
                         $respuesta['fechaModificacion'] = $rowBuscar->fecha_modificacion;
                         $respuesta['idUsuarioCreacion'] = $rowBuscar->id_usuario_creacion;
@@ -86,10 +88,9 @@ if (isset ($accion)){
                             foreach($usuarioRol->conn->ObtenerRegistros()AS $rowConsulta){
                                 $retorno .= "<tr>                                          
                                             <td><label>".$rowConsulta[0]."</label></td>                                             
-                                            <td><label>".$rowConsulta[4]."</label></td>                                        
-                                            <td><label>".$rowConsulta[5]."</label></td>                                                                                               
-
-                                            <td><label>".($rowConsulta[3]== 1 ? 'Activo':'Inactivo')."</label></td>
+                                            <td><label>".$rowConsulta[6]."</label></td>                                        
+                                            <td><label>".$rowConsulta[7]."</label></td>
+                                            <td><label>".($rowConsulta[5]== 1 ? 'Activo':'Inactivo')."</label></td>
                                             <td align='center'><a href='#' class='btn btn-warning'><i class='fas fa-edit' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></i></a></td>
                                             <td align='center'><a href='#' class='btn btn-danger'><i class='fas fa-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></i></a></td>                                                                                
                                             </tr>";

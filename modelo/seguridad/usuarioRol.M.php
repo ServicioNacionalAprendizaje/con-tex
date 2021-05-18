@@ -136,8 +136,22 @@ class UsuarioRol
     public function Consultar()
     {
         $condicion = $this->obtenerCondicion();
-        $sentenciaSql = "SELECT * 
-                            FROM usuario_rol $condicion";
+        $sentenciaSql = "SELECT
+                            ur.id_usuario_rol
+                            ,u.id_usuario
+                            ,u.usuario AS nombre_usuario
+                            ,r.id_rol
+                            ,r.descripcion AS descripcion_rol
+                            ,ur.estado
+                            ,ur.fecha_creacion
+                            ,ur.fecha_modificacion
+                            ,ur.id_usuario_creacion
+                            ,ur.id_usuario_modificacion
+                        FROM
+                            rol AS r
+                        INNER JOIN usuario_rol AS ur ON r.id_rol = ur.id_rol
+                        INNER JOIN usuario AS u ON ur.id_usuario = u.id_usuario
+                        $condicion";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;

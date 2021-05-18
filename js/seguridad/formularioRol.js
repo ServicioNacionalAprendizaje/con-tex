@@ -1,25 +1,3 @@
-
-            $(function(){
-                //se carga el autocompleta d
-                $("#txtRol").autocomplete({
-                    source:'../../busqueda/rol.B.php',
-                    select:function(event, ui){
-                        $("#hidIdRol").val(ui.item.id);
-                    }
-                 }); 
-            });
-            //
-            $(function(){
-                //se carga el autocompleta 
-                $("#txtFormulario").autocomplete({
-                    source:'../../busqueda/formulario.B.php',
-                    select:function(event, ui){
-                        $("#hidIdFormulario").val(ui.item.id);
-                //i
-                    }
-                 }); 
-            });
-
 function Enviar(accion,id){
     if(id===null){
         id =  $('#hidIdFormularioRol').val();
@@ -55,8 +33,10 @@ function Enviar(accion,id){
                 //Respuesta un registro
                 if(respuesta['accion']=='CONSULTAR'){
                     $('#hidIdFormularioRol').val(respuesta['idFormularioRol']);
-                    $('#txtRol').val(respuesta['idRol']);
-                    $('#txtFormulario').val(respuesta['idFormulario']);
+                    $('#hidIdRol').val(respuesta['idRol']);
+                    $('#txtRol').val(respuesta['descripcionRol']);
+                    $('#hidIdFormulario').val(respuesta['idFormulario']);
+                    $('#txtFormulario').val(respuesta['descripcionFormulario']);
                     $('#cmbEstado').val(respuesta['estado']);
                     $('#datfechaCreacion').val(respuesta['datfechaCreacion']);
                     $('#datModificacion').val(respuesta['datModificacion']);
@@ -74,4 +54,34 @@ function Enviar(accion,id){
                 }
             }
     });
+}
+
+$(function(){
+    //se carga el autocompleta d
+    $("#txtRol").autocomplete({
+        source:'../../busqueda/seguridad/rol.B.php',
+        select:function(event, ui){
+            $("#hidIdRol").val(ui.item.id);
+        }
+     }); 
+});
+//
+$(function(){
+    //se carga el autocompleta 
+    $("#txtFormulario").autocomplete({
+        source:'../../busqueda/seguridad/formulario.B.php',
+        select:function(event, ui){
+            $("#hidIdFormulario").val(ui.item.id);
+    //i
+        }
+     }); 
+});
+
+function Limpiar(){
+    $('#hidIdFormularioRol').val("");
+    $('#hidIdRol').val("");
+    $('#txtRol').val("");
+    $('#hidIdFormulario').val("");
+    $('#txtFormulario').val("");
+    $('#cmbEstado').val("");
 }

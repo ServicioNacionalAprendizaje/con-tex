@@ -13,8 +13,8 @@ if (isset ($accion)){
                 $rol = new Rol();
                 $rol->setDescripcion($_POST['descripcion']);
                 $rol->setEstado($_POST['estado']);
-                $rol->setIdUsuarioCreacion(1);
-                $rol->setIdUsuarioModificacion(1);
+                $rol->setIdUsuarioCreacion();
+                $rol->setIdUsuarioModificacion();
                 $rol = $rol->Agregar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){
@@ -29,6 +29,7 @@ if (isset ($accion)){
                 $rol->setIdRol($_POST['id']);
                 $rol->setDescripcion($_POST['descripcion']);
                 $rol->setEstado($_POST['estado']);
+                $rol->setIdUsuarioModificacion();
                 $resultado = $rol->Modificar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){

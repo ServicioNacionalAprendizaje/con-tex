@@ -49,3 +49,9 @@ function Enviar(accion,id){
             }
     });
 }
+
+function Limpiar(){
+    $('#hidIdRol').val("");  
+    $('#txtDescripcion').val(""); 
+    $('#cmbEstado').val("");
+}

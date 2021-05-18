@@ -1,6 +1,6 @@
 <?php
-require '../entorno/conexion.php';
-require '../modelo/seguridad/rol.M.php';
+require '../../entorno/conexion.php';
+require '../../modelo/seguridad/rol.M.php';
 
 $arrRol = array();
 $contador = 0;

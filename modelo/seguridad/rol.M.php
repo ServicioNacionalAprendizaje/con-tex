@@ -104,7 +104,7 @@ class Rol
         $sentenciaSql = "CALL Modificar_rol(
                              '$this->descripcion'
                             ,'$this->estado'
-                            ,'$this->idUsuarioModificacion'
+                            , $this->idUsuarioModificacion
                             , $this->idRol)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();

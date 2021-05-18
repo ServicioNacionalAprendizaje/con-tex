@@ -1,24 +1,4 @@
 
-            $(function(){
-                //se carga el autocompletar
-                $("#txtRol").autocomplete({
-                    source:'../../busqueda/rol.B.php',
-                    select:function(event, ui){
-                        $("#hidIdRol").val(ui.item.id);
-                    }
-                 }); 
-            });
-            //
-            $(function(){
-                //se carga el autocompletar
-                $("#txtUsuario").autocomplete({
-                    source:'../../busqueda/seguridad/usuario.B.php',
-                    select:function(event, ui){
-                        $("#hidIdUsuario").val(ui.item.id);
-                    }
-                 }); 
-            });
-
 function Enviar(accion,id){
     if(id===null){
         id =  $('#hidIdUsuarioRol').val();
@@ -54,8 +34,10 @@ function Enviar(accion,id){
                 //Respuesta un registro
                 if(respuesta['accion']=='CONSULTAR'){
                     $('#hidIdUsuarioRol').val(respuesta['idUsuarioRol']);
-                    $('#txtRol').val(respuesta['idRol']);
-                    $('#txtUsuario').val(respuesta['idUsuario']);
+                    $('#hidIdUsuario').val(respuesta['idUsuario']);
+                    $('#txtUsuario').val(respuesta['nombreUsuario']);
+                    $('#hidIdRol').val(respuesta['idRol']);
+                    $('#txtRol').val(respuesta['descripcionRol']);
                     $('#cmbEstado').val(respuesta['estado']);
                     $('#datfechaCreacion').val(respuesta['datfechaCreacion']);
                     $('#datModificacion').val(respuesta['datModificacion']);
@@ -73,4 +55,33 @@ function Enviar(accion,id){
                 }
             }
     });
+}
+
+$(function(){
+    //se carga el autocompletar
+    $("#txtRol").autocomplete({
+        source:'../../busqueda/seguridad/rol.B.php',
+        select:function(event, ui){
+            $("#hidIdRol").val(ui.item.id);
+        }
+     }); 
+});
+//
+$(function(){
+    //se carga el autocompletar
+    $("#txtUsuario").autocomplete({
+        source:'../../busqueda/seguridad/usuario.B.php',
+        select:function(event, ui){
+            $("#hidIdUsuario").val(ui.item.id);
+        }
+     }); 
+});
+
+function Limpiar(){
+    $('#hidIdUsuarioRol').val("");  
+    $('#hidIdRol').val("");
+    $('#txtRol').val("");
+    $('#hidIdUsuario').val("");
+    $('#txtUsuario').val(""); 
+    $('#cmbEstado').val("");
 }

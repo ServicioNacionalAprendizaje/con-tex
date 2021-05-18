@@ -26,44 +26,40 @@
             <h1><label>Tarea</label></h1>
             <div class="container form-group">
                 <div class="row">
-                    <div class="col-12 col-sm-6">
+                    <div class="col-12 col-sm-4">
                         <input type="hidden" name="hidIdTarea" id="hidIdTarea" value="">
                         <label class="col-form-label">Nombre empleado</label>
                         <input type="hidden" name="hidIdEmpleado" id="hidIdEmpleado" value="">
                         <input type="text" name="txtEmpleado" id="txtEmpleado" value="" class="caja form-control" placeholder="Empleado">
                     </div>
-                    <div class="col-12 col-sm-6">
+                    <div class="col-12 col-sm-4">
                         <label class="col-form-label">Valor unitario</label>
                         <input type="number" class="caja form-control" name="numValorUnitario" value="" id="numValorUnitario" placeholder="Valor unitario">
                     </div>
-                </div>
-                    <div class="row">
-                        <div class="col-12 col-sm-6">
-                            <label class="col-form-label">Fecha</label>
-                            <input type="date" name="datFecha" id="datFecha" value=""
-                                class="caja form-control" placeholder="Fecha">
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <label class="col-form-label">Cantidad</label>
-                            <input type="number" class="caja form-control" name="numCantidad" value="" id="numCantidad"
-                                placeholder="Cantidad">
-                        </div>
+                    <div class="col-12 col-sm-4">
+                        <label class="col-form-label">Descripción</label>
+                        <input type="text" class="caja form-control" name="txtDescripcion" value=""
+                            id="txtDescripcion" placeholder="Descripción">
                     </div>
-                    <div class="col-12 col-sm-6 form-group">
-                        <label for="cmbEstadoPago">Estado Pago</label>
+                    <div class="col-12 col-sm-3">
+                        <label class="col-form-label">Cantidad</label>
+                        <input type="number" class="caja form-control" name="numCantidad" value="" id="numCantidad"
+                            placeholder="Cantidad">
+                    </div>
+                    <div class="col-12 col-sm-3">
+                        <label class="col-form-label">Fecha</label>
+                        <input type="date" name="datFecha" id="datFecha" value=""
+                            class="caja form-control" placeholder="Fecha">
+                    </div>
+                    <div class="col-12 col-sm-3 form-group">
+                        <label for="cmbEstadoPago">Estado del pago</label>
                         <select class="lista form-control" id="cmbEstadoPago">
                             <option value="" selected="selected">--Seleccione--</option>
                             <option value="1">Pagado</option>
                             <option value="0">Por pagar</option>
                         </select>
                     </div>
-                        <div class="col-12 col-sm-6">
-                            <label class="col-form-label">Descripción</label>
-                            <input type="text" class="caja form-control" name="txtDescripcion" value=""
-                                id="txtDescripcion" placeholder="Descripción">
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 form-group">
+                    <div class="col-12 col-sm-3 form-group">
                         <label for="cmbEstado">Estado</label>
                         <select class="lista form-control" id="cmbEstado">
                             <option value="" selected="selected">--Seleccione--</option>
@@ -71,77 +67,49 @@
                             <option value="0">Inactivo</option>
                         </select>
                     </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-sm-3">
-                            <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Buscar" onclick="Enviar('CONSULTAR',null);">
-                        </div>
-                        <div class="col-12 col-sm-3">
-                            <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Registrar" onclick="Enviar('ADICIONAR',null);">
-                        </div>
-                        <div class="col-12 col-sm-3">
-                            <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnModificar" value="ACTUALIZAR" id="btnModificar" placeholder="Actualizar" onclick="Enviar('MODIFICAR',null);">
-                        </div>
-                        <div class="col-12 col-sm-3">
-                            <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnLimpiar" value="LIMPIAR" id="btnLimpiar" onclick="Limpiar()" />
-                        </div>
-                    </div>
-                    <br></br>
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <td align="center">Empleado</td>
-                                            <td align="center">Valor unitario</td>
-                                            <td align="center">Fecha</td>
-                                            <td align="center">Cantidad</td>
-                                            <td align="center">Estado pago</td>
-                                            <td align="center">Descripción</td>
-                                            <td align="center">Estado</td>
-                                            <td align="center">Modificar</td>
-                                            <td align="center">Eliminar</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="resultado">
-                                        <!-- <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td align="center"><a href="#" class="btn btn-warning"><i
-                                                        class="fas fa-edit"></i></a>
-                                            </td>
-                                            <td align="center"><a href="#" class="btn btn-danger"><i
-                                                        class="fas fa-trash"></i></a>
-                                            </td>
-                                        </tr> -->
-                                    </tbody>
-                                </table>
-                            </div>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col-12 col-sm-3">
+                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Buscar" onclick="Enviar('CONSULTAR',null);">
+                </div>
+                <div class="col-12 col-sm-3">
+                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Registrar" onclick="Enviar('ADICIONAR',null);">
+                </div>
+                <div class="col-12 col-sm-3">
+                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnModificar" value="ACTUALIZAR" id="btnModificar" placeholder="Actualizar" onclick="Enviar('MODIFICAR',null);">
+                </div>
+                <div class="col-12 col-sm-3">
+                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnLimpiar" value="LIMPIAR" id="btnLimpiar" onclick="Limpiar()" />
+                </div>
+            </div>                  
+            <br></br>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <td align="center">Empleado</td>
+                                        <td align="center">Valor unitario</td>
+                                        <td align="center">Fecha</td>
+                                        <td align="center">Cantidad</td>
+                                        <td align="center">Estado pago</td>
+                                        <td align="center">Descripción</td>
+                                        <td align="center">Estado</td>
+                                        <td align="center">Modificar</td>
+                                        <td align="center">Eliminar</td>
+                                    </tr>
+                                </thead>
+                                <tbody id="resultado">
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </form>
 </body>
-<script type="text/javascript">
-
-    var check;
-    $("#check").on("click", function(){
-        check = $("#check").prop("checked");
-        if(check) {
-             alert("Activo");
-            //  check = $("#check").prop("checked",true);
-        } else {
-            alert("No activo");
-            // check = $("#check").prop("checked",false);
-        }
-    }); 
-    </script>
 </html>

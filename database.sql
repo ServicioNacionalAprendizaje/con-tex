@@ -202,21 +202,22 @@ LOCK TABLES `formulario` WRITE;
 insert  into
 	`formulario`(`id_formulario`,`descripcion`,`etiqueta`,`ubicacion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`)
 values
-	(1,'formulario','Seguridad','./vista/Seguridad/formulario.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
-	,(2,'formulario rol','Seguridad','./vista/Seguridad/formularioRol.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
-	,(3,'persona','Seguridad','./vista/Seguridad/persona.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
-	,(4,'rol','Seguridad','./vista/Seguridad/rol.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
-	,(5,'usuario','Seguridad','./vista/Seguridad/usuario.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
-	,(6,'cargo','Nomina','./vista/Nomina/cargo.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
-	,(7,'empleado','Nomina','./vista/Nomina/empleado.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
-	,(8,'generar pago','Nomina','./vista/Nomina/generarPago.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
-	,(9,'pago dia','Nomina','./vista/Nomina/pagoDia.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
-	,(10,'categoria','Producciom','./vista/Producción/categoria.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
-	,(11,'detalle orden','Producciom','./vista/Producción/detalleOrden.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
-	,(12,'insumo','Producciom','./vista/Producción/insumo.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
-	,(13,'orden','Producciom','./vista/Producción/orden.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
-	,(14,'producto','Producciom','./vista/Producción/producto.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
-	,(15,'tarea','Producciom','./vista/Producción/tarea.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1);
+	(1,'Formulario','Seguridad','./vista/seguridad/formulario.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(2,'Formularios de rol','Seguridad','./vista/seguridad/formularioRol.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(3,'Persona','Seguridad','./vista/seguridad/persona.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(4,'Rol','Seguridad','./vista/seguridad/rol.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(5,'Usuario','Seguridad','./vista/seguridad/usuario.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(6,'Cargo','Nomina','./vista/nomina/cargo.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(7,'Empleado','Nomina','./vista/nomina/empleado.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(8,'Generar pago','Nomina','./vista/nomina/generarPago.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(9,'Pago del dia','Nomina','./vista/nomina/pagoDia.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(10,'Categoria','Producción','./vista/produccion/categoria.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(11,'Detalles de orden','Producción','./vista/produccion/detalleOrden.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(12,'Insumo','Producción','./vista/produccion/insumo.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(13,'Orden','Producción','./vista/produccion/orden.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(14,'Producto','Producción','./vista/produccion/producto.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(15,'Tarea','Producción','./vista/produccion/tarea.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(16,'Roles de Usuario','Seguridad','./vista/seguridad/usuarioRol.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1);
 
 UNLOCK TABLES;
 
@@ -244,7 +245,25 @@ CREATE TABLE `formulario_rol` (
 
 LOCK TABLES `formulario_rol` WRITE;
 
-insert  into `formulario_rol`(`id_formulario_rol`,`id_rol`,`id_formulario`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,1,1,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(2,1,2,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(3,1,3,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(4,1,4,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(5,1,5,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(6,1,6,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(7,1,7,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(8,1,8,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(9,1,9,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(10,1,10,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(11,1,11,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(12,1,12,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(13,1,13,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(14,1,14,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(15,1,15,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(19,4,3,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1);
+insert  into
+	`formulario_rol`(`id_formulario_rol`,`id_rol`,`id_formulario`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`)
+values
+	(1,1,1,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(2,1,2,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(3,1,3,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(4,1,4,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(5,1,5,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(6,1,6,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(7,1,7,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(8,1,8,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(9,1,9,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(10,1,10,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(11,1,11,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(12,1,12,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(13,1,13,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(14,1,14,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(15,1,15,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1)
+	,(19,4,3,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1);
 
 UNLOCK TABLES;
 

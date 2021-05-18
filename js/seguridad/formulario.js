@@ -3,7 +3,7 @@ function Enviar(accion,id){
         id=$('#hidIdFormulario').val();
     }
     var parametros = {
-        "id" : id,
+        "idFormulario" : id,
         "descripcion":$('#txtDescripcion').val(),
         "etiqueta":$('#txtEtiqueta').val(),
         "ubicacion":$('#txtUbicacion').val(),
@@ -28,12 +28,12 @@ function Enviar(accion,id){
                 //Respuesta muchos registros
                 if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']>1){
                     $("#resultado").html(respuesta['tablaRegistro']);
-                    $('#divEliminar').html(respuesta['eliminar']).hide();
+                    //$('#divEliminar').html(respuesta['eliminar']).hide();
                 }
 
                 //Respuesta un registro
                 if(respuesta['accion']=='CONSULTAR'){
-                    $('#hidIdFormulario').val(respuesta['id']);
+                    $('#hidIdFormulario').val(respuesta['idFormulario']);
                     $('#txtDescripcion').val(respuesta['descripcion']);
                     $('#txtEtiqueta').val(respuesta['etiqueta']);
                     $('#txtUbicacion').val(respuesta['ubicacion']);
@@ -52,4 +52,12 @@ function Enviar(accion,id){
                 }
             }
     });
+}
+
+function Limpiar(){
+    $('#hidIdFormulario').val("");  
+    $('#txtDescripcion').val("");
+    $('#txtEtiqueta').val("");
+    $('#txtUbicacion').val(""); 
+    $('#cmbEstado').val("");
 }

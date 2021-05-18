@@ -76,3 +76,12 @@ $(function(){
         }
      }); 
 });
+
+function Limpiar(){
+    $('#hidIdFormularioRol').val("");
+    $('#hidIdRol').val("");
+    $('#txtRol').val("");
+    $('#hidIdFormulario').val("");
+    $('#txtFormulario').val("");
+    $('#cmbEstado').val("");
+}

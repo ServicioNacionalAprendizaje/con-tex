@@ -1,11 +1,12 @@
 <?php
-$ubicacionFormulario =  substr($_SERVER["SCRIPT_NAME"], 17);
+//$ubicacionFormulario =  substr($_SERVER["SCRIPT_NAME"], 17);
 include '../../entorno/conexion.php';
 require '../../modelo/seguridad/formulario.M.php';
 
 $respuesta = array();
-// $_POST['accion'] --- $accion
-$accion = 'ADICIONAR';
+
+$accion = $_POST['accion'];
+
 if (isset ($accion)){
     switch($accion){
         case 'ADICIONAR':
@@ -15,6 +16,8 @@ if (isset ($accion)){
                 $formulario->setEtiqueta($_POST['etiqueta']);
                 $formulario->setUbicacion($_POST['ubicacion']);
                 $formulario->setEstado($_POST['estado']);
+                $formulario->setIdUsuarioCreacion();
+                $formulario->setIdUsuarioModificacion();
                 $resultado = $formulario->Agregar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){
@@ -26,63 +29,88 @@ if (isset ($accion)){
         case 'MODIFICAR':
             try{
                 $formulario = new Formulario();
-                $formulario->setIdFormulario($_POST['idUsuario']);
-                $formulario->setDescripcion($_POST['usuario']);
-                $formulario->setEtiqueta($_POST['contrasenia']);
-                $formulario->setUbicacion($_POST['fechaActivacion']);
+                $formulario->setIdFormulario($_POST['idFormulario']);
+                $formulario->setDescripcion($_POST['descripcion']);
+                $formulario->setEtiqueta($_POST['etiqueta']);
+                $formulario->setUbicacion($_POST['ubicacion']);
                 $formulario->setEstado($_POST['estado']);               
-                $formulario->setFechaModificacion($_POST['fechaModificacion']);
-                $formulario->setIdUsuarioModificacion($_POST['idUsuarioModificacion']);
+                $formulario->setIdUsuarioModificacion();
 
                 $resultado = $formulario->Modificar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible modificar la información, consulte con el administrador.";
             }
-            json_encode($respuesta);
+            $respuesta['accion']='MODIFICAR';
+            echo json_encode($respuesta);
         break;
         case 'ELIMINAR':
             try{
-                $formulario = new Usuario();
+                $formulario = new Formulario();
                 $formulario->setIdFormulario($_POST['idFormulario']);
                 $resultado = $formulario->Eliminar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible eliminar la información, consulte con el administrador.";
             }
-            json_encode($respuesta);
+            $respuesta['accion']='ELIMINAR';
+            echo json_encode($respuesta);
         break;
         case 'CONSULTAR':
             try{
                 $formulario = new Formulario();
-                $formulario->setIdFormulario($_POST['idUsuario']);
-                $formulario->setEtiqueta($_POST['usuario']);
-                $formulario->setUbicado($_POST['contrasenia']);
+                $formulario->setIdFormulario($_POST['idFormulario']);
+                $formulario->setDescripcion($_POST['descripcion']);
+                $formulario->setEtiqueta($_POST['etiqueta']);
+                $formulario->setUbicacion($_POST['ubicacion']);
                 $formulario->setEstado($_POST['estado']);
-                $formulario->setFechaCreacion($_POST['fechaCreacion']);
-                $formulario->setFechaModificacion($_POST['fechaModificacion']);
-                $formulario->setIdUsuarioCreacion($_POST['idUsuarioCreacion']);
-                $formulario->setIdUsuarioModificacion($_POST['idUsuarioModificacion']);
+                // $formulario->setFechaCreacion($_POST['fechaCreacion']);
+                // $formulario->setFechaModificacion($_POST['fechaModificacion']);
+                // $formulario->setIdUsuarioCreacion($_POST['idUsuarioCreacion']);
+                // $formulario->setIdUsuarioModificacion($_POST['idUsuarioModificacion']);
                 $resultado = $formulario->consultar();
 
-                $numeroRegistros = $usuario->conn->obtenerNumeroRegistros();
+                $numeroRegistros = $formulario->conn->obtenerNumeroRegistros();
                 if($numeroRegistros === 1){
-                    if ($rowBuscar = $usuario->conn->obtenerObjeto()){
-                        $_POST['idFormulario'] = $rowBuscar->id_formulario;
-                        $_POST['descripcion'] = $rowBuscar->descripcion;
-                        $_POST['etiqueta'] = $rowBuscar->etiqueta;
-                        $_POST['ubicacion'] = $rowBuscar->ubicacion;
-                        $_POST['estado'] = $rowBuscar->estado;
-                        $_POST['fechaCreacion'] = $rowBuscar->fecha_creacion;
-                        $_POST['fechaModificacion'] = $rowBuscar->fecha_modificacion;
-                        $_POST['idUsuarioCreacion'] = $rowBuscar->id_usuario_creacion;
-                        $_POST['idUsuarioModificacion'] = $rowBuscar->id_usuario_modificacion;
+                    if ($rowBuscar = $formulario->conn->obtenerObjeto()){
+                        $respuesta['idFormulario'] = $rowBuscar->id_formulario;
+                        $respuesta['descripcion'] = $rowBuscar->descripcion;
+                        $respuesta['etiqueta'] = $rowBuscar->etiqueta;
+                        $respuesta['ubicacion'] = $rowBuscar->ubicacion;
+                        $respuesta['estado'] = $rowBuscar->estado;
+                        $respuesta['fechaCreacion'] = $rowBuscar->fecha_creacion;
+                        $respuesta['fechaModificacion'] = $rowBuscar->fecha_modificacion;
+                        $respuesta['idUsuarioCreacion'] = $rowBuscar->id_usuario_creacion;
+                        $respuesta['idUsuarioModificacion'] = $rowBuscar->id_usuario_modificacion;
+                        $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_formulario.")'>";
+                    }
+                }else{
+                    if(isset($resultado)){
+                        $retorno="<table>";
+                        foreach($formulario->conn->ObtenerRegistros()AS $rowConsulta){
+                            $retorno .= "<tr>                                          
+                                        <td><label>".$rowConsulta[1]."</label></td>                                             
+                                        <td><label>".$rowConsulta[2]."</label></td>                                        
+                                        <td><label>".$rowConsulta[3]."</label></td>                                                                                               
+
+                                        <!-- <td><label>".($rowConsulta[4]== 1 ? 'Activo':'Inactivo')."</label></td> -->
+                                        <td align='center'><a href='#' class='btn btn-warning'><i class='fas fa-edit' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></i></a></td>
+                                        <td align='center'><a href='#' class='btn btn-danger'><i class='fas fa-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></i></a></td>                                                                                
+                                        </tr>";
+                        }
+
+                        $retorno.="</table>";
+                        $respuesta['tablaRegistro']=$retorno;
+                    }else{
+                    $respuesta['tablaRegistro']='No existen datos!!';
                     }
                 }
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible consultar la información, consulte con el administrador.";
             }
-            json_encode($respuesta);
+            $respuesta['numeroRegistros']=$numeroRegistros;
+            $respuesta['accion']='CONSULTAR';
+            echo json_encode($respuesta);
         break;
     }
 }

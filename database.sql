@@ -369,7 +369,18 @@ CREATE TABLE `persona` (
 
 LOCK TABLES `persona` WRITE;
 
-insert  into `persona`(`id_persona`,`nombre`,`apellido`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'Yesica','Tovar',26,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),(2,'Carmenza','Gonzalez',42,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),(3,'Alejandra','Tovar',22,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),(4,'Costurera','SiDatos',11,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),(5,'Cliente#1','ACliente#1',101,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(6,'Cliente#2','ACliente#2',102,'F','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(7,'Cliente#3','ACliente#3',103,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(8,'Cliente#4','ACliente#4',104,'F','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(9,'Cliente#5','ACliente#5',105,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
+insert  into
+	`persona`(`id_persona`,`nombre`,`apellido`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`)
+values
+	(1,'Yesica','Tovar',26,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1)
+	,(2,'Carmenza','Gonzalez',42,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1)
+	,(3,'Alejandra','Tovar',22,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1)
+	,(4,'Costurera','SiDatos',11,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1)
+	,(5,'Cliente#1','ACliente#1',101,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(6,'Cliente#2','ACliente#2',102,'F','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(7,'Cliente#3','ACliente#3',103,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(8,'Cliente#4','ACliente#4',104,'F','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(9,'Cliente#5','ACliente#5',105,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
 
 UNLOCK TABLES;
 
@@ -440,7 +451,13 @@ CREATE TABLE `rol` (
 
 LOCK TABLES `rol` WRITE;
 
-insert  into `rol`(`id_rol`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'admin','0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(2,'contador','0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(3,'vendedor','0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(4,'empleado','0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
+insert  into
+	`rol`(`id_rol`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`)
+values
+	(1,'Administrador','0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(2,'Contador','0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(3,'Vendedor','0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(4,'Empleado','0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
 
 UNLOCK TABLES;
 
@@ -470,7 +487,10 @@ CREATE TABLE `tarea` (
 
 LOCK TABLES `tarea` WRITE;
 
-insert  into `tarea`(`id_tarea`,`descripcion`,`valor_unitario`,`cantidad`,`fecha`,`estado_pago`,`id_empleado`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'por pagar',10000,10,'2021-05-17 00:00:00','0',2,'1','2021-05-12 22:36:37','2021-05-12 22:36:37',1,1);
+insert  into
+	`tarea`(`id_tarea`,`descripcion`,`valor_unitario`,`cantidad`,`fecha`,`estado_pago`,`id_empleado`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`)
+values
+	(1,'Por pagar',10000,10,'2021-05-17 00:00:00','0',2,'1','2021-05-12 22:36:37','2021-05-12 22:36:37',1,1);
 
 UNLOCK TABLES;
 
@@ -520,7 +540,12 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 
-insert  into `usuario`(`id_usuario`,`usuario`,`contrasenia`,`fecha_activacion`,`fecha_expiracion`,`id_persona`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'admin@','admin','2021-05-16','2021-06-02',1,'1','2021-05-08 01:35:00','2021-05-11 22:11:54',1,3),(2,'camer@','carmen','2021-05-02','2021-05-07',2,'1','2021-05-11 22:06:54','2021-05-11 22:06:54',1,1),(3,'ariel@','ariel','2021-05-16','2021-06-02',1,'1','2021-05-11 22:11:21','2021-05-11 22:26:44',1,1);
+insert  into
+	`usuario`(`id_usuario`,`usuario`,`contrasenia`,`fecha_activacion`,`fecha_expiracion`,`id_persona`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`)
+values
+	(1,'admin@','admin','2021-05-16','2021-06-02',1,'1','2021-05-08 01:35:00','2021-05-11 22:11:54',1,3)
+	,(2,'carmen@','carmen','2021-05-02','2021-05-07',2,'1','2021-05-11 22:06:54','2021-05-11 22:06:54',1,1)
+	,(3,'ariel@','ariel','2021-05-16','2021-06-02',1,'1','2021-05-11 22:11:21','2021-05-11 22:26:44',1,1);
 
 UNLOCK TABLES;
 
@@ -548,7 +573,11 @@ CREATE TABLE `usuario_rol` (
 
 LOCK TABLES `usuario_rol` WRITE;
 
-insert  into `usuario_rol`(`id_usuario_rol`,`id_usuario`,`id_rol`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,1,1,'0','2021-05-10 05:00:22','2021-05-12 05:00:24',1,1),(2,3,4,'0','2021-05-10 05:00:22','2021-05-12 05:00:24',1,1);
+insert  into
+	`usuario_rol`(`id_usuario_rol`,`id_usuario`,`id_rol`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`)
+values
+	(1,1,1,'0','2021-05-10 05:00:22','2021-05-12 05:00:24',1,1)
+	,(2,3,4,'0','2021-05-10 05:00:22','2021-05-12 05:00:24',1,1);
 
 UNLOCK TABLES;
 

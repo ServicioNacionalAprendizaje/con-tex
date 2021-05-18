@@ -67,7 +67,7 @@ id=$('#hidIdEmpleado').val();
 $(function(){
     //se carga el autocompleta
      $("#txtPersona").autocomplete({
-        source:'../../busqueda/persona.B.php',
+        source:'../../busqueda/seguridad/persona.B.php',
         select:function(event, ui){
             $("#hidIdPersona").val(ui.item.id);
         }

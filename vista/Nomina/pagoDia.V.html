@@ -5,12 +5,13 @@
     <meta charset='utf-8'>
     <title>Pago día</title>
     <link rel='stylesheet' type='text/css' media='screen' href='../../componente/css/goblal.css'>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
-        integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <!-- Iconos de las tablas -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/css/bootstrap.min.css" integrity="sha512-N415hCJJdJx+1UBfULt+i+ihvOn42V/kOjOpp1UTh4CZ70Hx5bDlKryWaqEKfY/8EYOu/C2MuyaluJryK1Lb5Q==" crossorigin="anonymous" />    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/js/bootstrap.min.js" integrity="sha512-mp3VeMpuFKbgxm/XMUU4QQUcJX4AZfV5esgX72JQr7H7zWusV6lLP1S78wZnX2z9dwvywil1VHkHZAqfGOW7Nw==" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -19,32 +20,29 @@
             <h1><label> Pago día</label></h1>
             <div class="container form-group">
                 <div class="row">
-                    <div class="col-12 col-sm-6">
+                    <div class="col-12 col-sm-3">
                         <label class="col-form-label">Nombre empleado</label>
                         <input type="hidden" name="hidIdEmpleado" id="hidIdEmpleado" value=""><br>
                         <input type="text" name="txtEmpleado" id="txtEmpleado" value="" class="caja form-control" placeholder="Empleado">
                     </div>
-                    <div class="col-12 col-sm-6">
+                    <div class="col-12 col-sm-3">
                         <label class="col-form-label">Pago día</label>
                         <input type="number" class="caja form-control" name="numPagoDia" value="" id="numPagoDia"
                             placeholder="Pago día">
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 col-sm-6">
+                    <div class="col-12 col-sm-3">
                         <label class="col-form-label">Fecha pago</label>
                         <input type="date" class="caja form-control" name="datFechaPago" value="" id="datFechaPago"
                             placeholder="Fecha Pago">
                     </div>
-                    <div class="col-12 col-sm-6">
-                        <label class="col-form-label">Estado</label>
-                        <form action="">
-                            <div class="switch">
-                                <input type="checkbox" id="check">
-                                <label for="check"></label>
-                            </div>
-                        </form>
-                    </div>
+                    <div class="col-12 col-sm-3">
+                        <label for="cmbEstado">Estado</label>
+                        <select class="lista form-control" id="cmbEstado">
+                            <option value="" selected="selected">--Seleccione--</option>
+                            <option value="1">Activo</option>
+                            <option value="0">Inactivo</option>
+                        </select>
+                    </div> 
                 </div>
     </div>
     <div class="row">
@@ -57,7 +55,6 @@
                 value="REGISTRAR" id="btnRegistrar" placeholder="Descripción">
         </div>
     </div>
-    <div class="container">
         <div class="row">
             <div class="col">
                 <div class="table-responsive">
@@ -72,7 +69,7 @@
                                 <td align="center">Eliminar</td>
                             </tr>
                         </thead>
-                        <tbody>
+                        <!-- <tbody>
                             <tr>
                                 <td></td>
                                 <td></td>
@@ -83,27 +80,12 @@
                                 <td align="center"><a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
-                        </tbody>
+                        </tbody> -->
                     </table>
                 </div>
-            </div>
         </div>
     </div>
 </div>
     </form>
 </body>
-<script type="text/javascript">
-
-    var check;
-    $("#check").on("click", function(){
-        check = $("#check").prop("checked");
-        if(check) {
-             alert("Activo");
-            //  check = $("#check").prop("checked",true);
-        } else {
-            alert("No activo");
-            // check = $("#check").prop("checked",false);
-        }
-    }); 
-    </script>
 </html>

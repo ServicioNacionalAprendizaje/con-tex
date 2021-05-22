@@ -5,51 +5,49 @@
     <meta charset='utf-8'>
     <title>Usuario</title>
     <link rel='stylesheet' type='text/css' media='screen' href='../../componente/css/goblal.css'>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- Iconos de las tablas -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/css/bootstrap.min.css" integrity="sha512-N415hCJJdJx+1UBfULt+i+ihvOn42V/kOjOpp1UTh4CZ70Hx5bDlKryWaqEKfY/8EYOu/C2MuyaluJryK1Lb5Q==" crossorigin="anonymous" />    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/js/bootstrap.min.js" integrity="sha512-mp3VeMpuFKbgxm/XMUU4QQUcJX4AZfV5esgX72JQr7H7zWusV6lLP1S78wZnX2z9dwvywil1VHkHZAqfGOW7Nw==" crossorigin="anonymous"></script>
+    <script src="../../js/produccion/tarea.js"></script>
     <!-- Auto complete -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- Auto complete -->
-    
-    <script src="../../js/produccion/tarea.js"></script>
 </head>
-
 <body>
     <form name="frmTarea" id="frmTarea">
         <div class="margen" align="center">
             <h1><label>Tarea</label></h1>
             <div class="container form-group">
                 <div class="row">
-                    <div class="col-12 col-sm-6">
+                    <div class="col-12 col-sm-4">
                         <input type="hidden" name="hidIdTarea" id="hidIdTarea" value="">
                         <label class="col-form-label">Nombre empleado</label>
                         <input type="hidden" name="hidIdEmpleado" id="hidIdEmpleado" value="">
                         <input type="text" name="txtEmpleado" id="txtEmpleado" value="" class="caja form-control" placeholder="Empleado">
                     </div>
-                    <div class="col-12 col-sm-6">
+                    <div class="col-12 col-sm-4">
                         <label class="col-form-label">Valor unitario</label>
                         <input type="number" class="caja form-control" name="numValorUnitario" value="" id="numValorUnitario" placeholder="Valor unitario">
                     </div>
-                </div>
-                    <div class="row">
-                        <div class="col-12 col-sm-6">
+                        <div class="col-12 col-sm-4">
                             <label class="col-form-label">Fecha</label>
                             <input type="date" name="datFecha" id="datFecha" value=""
                                 class="caja form-control" placeholder="Fecha">
                         </div>
-                        <div class="col-12 col-sm-6">
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-4">
                             <label class="col-form-label">Cantidad</label>
                             <input type="number" class="caja form-control" name="numCantidad" value="" id="numCantidad"
                                 placeholder="Cantidad">
                         </div>
-                    </div>
-                    <div class="col-12 col-sm-6 form-group">
+                    <div class="col-12 col-sm-4">
                         <label for="cmbEstadoPago">Estado Pago</label>
                         <select class="lista form-control" id="cmbEstadoPago">
                             <option value="" selected="selected">--Seleccione--</option>
@@ -57,13 +55,13 @@
                             <option value="0">Por pagar</option>
                         </select>
                     </div>
-                        <div class="col-12 col-sm-6">
+                    <div class="col-12 col-sm-4">
                             <label class="col-form-label">Descripción</label>
                             <input type="text" class="caja form-control" name="txtDescripcion" value=""
                                 id="txtDescripcion" placeholder="Descripción">
                         </div>
                     </div>
-                    <div class="col-12 col-sm-6 form-group">
+                    <div class="col-12 col-sm-4">
                         <label for="cmbEstado">Estado</label>
                         <select class="lista form-control" id="cmbEstado">
                             <option value="" selected="selected">--Seleccione--</option>
@@ -74,20 +72,19 @@
                     </div>
                     <div class="row">
                         <div class="col-12 col-sm-3">
-                            <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Buscar" onclick="Enviar('CONSULTAR',null);">
+                            <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado" onclick="Enviar('CONSULTAR',null);">
                         </div>
                         <div class="col-12 col-sm-3">
-                            <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Registrar" onclick="Enviar('ADICIONAR',null);">
+                            <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick="Enviar('ADICIONAR',null);">
                         </div>
                         <div class="col-12 col-sm-3">
-                            <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnModificar" value="ACTUALIZAR" id="btnModificar" placeholder="Actualizar" onclick="Enviar('MODIFICAR',null);">
-                        </div>
-                        <div class="col-12 col-sm-3">
-                            <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnLimpiar" value="LIMPIAR" id="btnLimpiar" onclick="Limpiar()" />
-                        </div>
+                        <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnModificar" value="ACTUALIZAR" id="btnModificar" placeholder="Descripción" onclick=" Enviar('MODIFICAR',null);">
+                    </div>
+                    <div class="col-12 col-sm-3">
+                        <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnLimpiar" value="LIMPIAR" id="btnLimpiar" onclick="Limpiar()" />
+                    </div>
                     </div>
                     <br></br>
-                <div class="container">
                     <div class="row">
                         <div class="col">
                             <div class="table-responsive">
@@ -124,24 +121,8 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
     </form>
-</body>
-<script type="text/javascript">
-
-    var check;
-    $("#check").on("click", function(){
-        check = $("#check").prop("checked");
-        if(check) {
-             alert("Activo");
-            //  check = $("#check").prop("checked",true);
-        } else {
-            alert("No activo");
-            // check = $("#check").prop("checked",false);
-        }
-    }); 
-    </script>
 </html>

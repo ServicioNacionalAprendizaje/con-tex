@@ -5,12 +5,13 @@
     <meta charset='utf-8'>
     <title>Orden</title>
     <link rel='stylesheet' type='text/css' media='screen' href='../../componente/css/goblal.css'>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
-        integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <!-- Iconos de las tablas -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/css/bootstrap.min.css" integrity="sha512-N415hCJJdJx+1UBfULt+i+ihvOn42V/kOjOpp1UTh4CZ70Hx5bDlKryWaqEKfY/8EYOu/C2MuyaluJryK1Lb5Q==" crossorigin="anonymous" />    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/js/bootstrap.min.js" integrity="sha512-mp3VeMpuFKbgxm/XMUU4QQUcJX4AZfV5esgX72JQr7H7zWusV6lLP1S78wZnX2z9dwvywil1VHkHZAqfGOW7Nw==" crossorigin="anonymous"></script>
     <script src="../../js/produccion/orden.js"></script>
     <!-- Auto complete -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -25,39 +26,37 @@
             <h1><label>Orden</label></h1>
             <div class="container form-group">
                 <div class="row">
-                    <div class="col-12 col-sm-6">
+                    <div class="col-12 col-sm-4">
                         <input type="hidden" name="hidIdOrden" id="hidIdOrden" value="">
                         <label class="col-form-label">Empleado</label>
                         <input type="hidden" name="hidIdEmpleado" id="hidIdEmpleado" value=""><br>
                         <input type="text" name="txtEmpleado" id="txtEmpleado" value="" class="caja form-control"
                             placeholder="Empleado">
                     </div>
-                    <div class="col-12 col-sm-6">
+                    <div class="col-12 col-sm-4">
                         <label class="col-form-label">Cliente</label>
                         <input type="hidden" name="hidIdCliente" id="hidIdCliente" value=""><br>
                         <input type="text" name="txtCliente" id="txtCliente" value="" class="caja form-control"
                             placeholder="Cliente">
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 col-sm-6">
+                    <div class="col-12 col-sm-4">
                         <label class="col-form-label">Fecha orden</label>
                         <input type="datetime" name="datFechaOrden" id="datFechaOrden" value="" class="caja form-control"
                             placeholder="Fecha orden">
                     </div>
-                    <div class="col-12 col-sm-6">
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-4">
                         <label class="col-form-label">Fecha entrega</label>
                         <input type="datetime" name="datFechaEntrega" id="datFechaEntrega" value="" class="caja form-control"
                             placeholder="Fecha entrega">
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 col-sm-6">
+                    <div class="col-12 col-sm-4">
                         <label class="col-form-label">Descripción</label>
                         <input type="text" name="txtDescripcion" id="txtDescripcion" class="caja form-control" value=""
                             placeholder="Descripción">
                     </div>
-                    <div class="col-12 col-sm-6">
+                    <div class="col-12 col-sm-4">
                         <label for="cmbEstado">Estado</label>
                         <select class="lista form-control" id="cmbEstado">
                             <option value="" selected="selected">--Seleccione--</option>
@@ -66,35 +65,21 @@
                         </select>
                     </div>
                 </div>
-                    <!-- <div class="col-12 col-sm-6">
-                        <label class="col-form-label">Estado</label>
-                        <form action="">
-                            <div class="switch">
-                                <input type="checkbox" id="check">
-                                <label for="check"></label>
-                            </div>
-                        </form>
-                    </div> -->
-                <div class="row">
-                    <div class="col-12 col-sm-3">
-                        <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar"
-                            id="btnBuscar" value="BUSCAR" placeholder="Buscar" onclick="Enviar('CONSULTAR',null);">
-                    </div>
-                    <div class="col-12 col-sm-3">
-                        <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar"
-                            value="REGISTRAR" id="btnRegistrar" placeholder="Registrar" onclick="Enviar('ADICIONAR',null);">
-                    </div>
-                    <div class="col-12 col-sm-3">
-                        <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnActualizar" 
-                            value="ACTUALIZAR" id="btnActualizar" placeholder="Actualizar" onclick="Enviar('MODIFICAR',null);">
-                    </div>
-                    <div class="col-12 col-sm-3">
-                        <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnLimpiar" 
-                            value="LIMPIAR" id="btnLimpiar" placeholder="limpiar" onclick="Limpiar();">
-                    </div>
-                </div>
             </div>
-            <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-sm-3">
+                            <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado" onclick="Enviar('CONSULTAR',null);">
+                        </div>
+                        <div class="col-12 col-sm-3">
+                            <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick="Enviar('ADICIONAR',null);">
+                        </div>
+                        <div class="col-12 col-sm-3">
+                        <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnModificar" value="ACTUALIZAR" id="btnModificar" placeholder="Descripción" onclick=" Enviar('MODIFICAR',null);">
+                        </div>
+                        <div class="col-12 col-sm-3">
+                            <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnLimpiar" value="LIMPIAR" id="btnLimpiar" onclick="Limpiar()" />
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col">
                             <div class="table-responsive">
@@ -129,24 +114,8 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
                     </div>
                 </div>
-            </div>
         </form>
 </body>
-<!-- <script type="text/javascript">
-
-    var check;
-    $("#check").on("click", function(){
-        check = $("#check").prop("checked");
-        if(check) {
-             alert("Activo");
-            //  check = $("#check").prop("checked",true);
-        } else {
-            alert("No activo");
-            // check = $("#check").prop("checked",false);
-        }
-    });  -->
-    </script>
 </html>

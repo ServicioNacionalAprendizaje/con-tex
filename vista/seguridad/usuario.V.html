@@ -5,11 +5,13 @@
     <meta charset='utf-8'>
     <title>Usuario</title>
     <link rel='stylesheet' type='text/css' media='screen' href='../../componente/css/goblal.css'>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- Iconos de las tablas -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/css/bootstrap.min.css" integrity="sha512-N415hCJJdJx+1UBfULt+i+ihvOn42V/kOjOpp1UTh4CZ70Hx5bDlKryWaqEKfY/8EYOu/C2MuyaluJryK1Lb5Q==" crossorigin="anonymous" />    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/js/bootstrap.min.js" integrity="sha512-mp3VeMpuFKbgxm/XMUU4QQUcJX4AZfV5esgX72JQr7H7zWusV6lLP1S78wZnX2z9dwvywil1VHkHZAqfGOW7Nw==" crossorigin="anonymous"></script>
 
     <!-- Auto complete -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -28,33 +30,30 @@
             </label>
             <div class="container form-group">
                 <div class="row">
-                    <div class="col-12 col-sm-6">
+                    <div class="col-12 col-sm-4">
                         <input type="hidden" name="hidIdUsuario" id="hidIdUsuario" value="">
                         <label class="col-form-label">Usuario</label>
                         <input type="text" name="txtUsuario" id="txtUsuario" value="" placeholder="Nombre de usuario" class="caja form-control">
                     </div>
-                    <div class="col-12 col-sm-6">
+                    <div class="col-12 col-sm-4">
                         <label class="col-form-label">Contraseña</label>
                         <input type="password" class="caja form-control" name="passContrasenia" value="" id="passContrasenia" placeholder="Contraseña">
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 col-sm-6">
+                    <div class="col-12 col-sm-4">
                         <label class="col-form-label">Fecha Activacion</label>
                         <input type="date" name="datFechaActivacion" id="datFechaActivacion" value="" class="caja form-control">
                     </div>
-                    <div class="col-12 col-sm-6">
-                        <label class="col-form-label">Fecha Expiracion</label>
-                        <input type="date" name="datFechaExpiracion" id="datFechaExpiracion" value="" class="caja form-control">
-                    </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-sm-6">
+                    <div class="col-12 col-sm-4">
+                        <label class="col-form-label">Fecha Expiracion</label>
+                        <input type="date" name="datFechaExpiracion" id="datFechaExpiracion" value="" class="caja form-control">
+                    </div> <div class="col-12 col-sm-4">
                         <label class="col-form-label">Persona</label>
                         <input type="hidden" name="hidIdPersona" id="hidIdPersona" value=""><br>
                         <input type="text" name="txtPersona" id="txtPersona" value="" class="caja form-control" placeholder="Persona">
                     </div>
-                    <div class="col-12 col-sm-6 form-group">
+                    <div class="col-12 col-sm-4 form-group">
                         <label for="cmbEstado">Estado</label>
                         <select class="lista form-control" id="cmbEstado">
                             <option value="" selected="selected">--Seleccione--</option>
@@ -79,7 +78,6 @@
                 </div>
             </div>
             <br></br>
-            <div class="container">
                 <div class="row">
                     <div class="col">
                         <div class="table-responsive">
@@ -99,8 +97,7 @@
                                 <tbody id="resultado">
                                 </tbody>
                             </table>
-                        </div>   
-                    </div>
+                        </div>  
                 </div>
             </div>
         </div>

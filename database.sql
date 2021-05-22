@@ -321,6 +321,15 @@ CREATE TABLE `orden` (
 
 LOCK TABLES `orden` WRITE;
 
+INSERT INTO 
+	`orden`(`id_orden`, `fecha_orden`, `fecha_entrega`, `descripcion`, `id_cliente`, `id_empleado`, `estado`, `fecha_creacion`, `fecha_modificacion`, `id_usuario_creacion`, `id_usuario_modificacion`)
+VALUES 
+	('1', '21-05-2021', '21-06-2021', 'Camisas x 10', '5', '1', '1', '21-05-2021', '21-05-2021', '1', '1')
+	,('2', '22-05-2021', '27-05-2021', 'Pantalones x 2', '4', '2', '1', '21-05-2021', '21-05-2021', '1', '1')
+	,('3', '22-05-2021', '22-06-2021', 'Medias x 20', '3', '3', '1', '21-05-2021', '21-05-2021', '1', '1')
+	,('4', '23-05-2021', '13-06-2021', 'Vestidos x 3', '2', '4', '0', '21-05-2021', '21-05-2021', '1', '1')
+	,('5', '23-05-2021', '16-06-2021', 'Sacos x 3', '1', '1', '1', '21-05-2021', '21-05-2021', '1', '1');
+
 UNLOCK TABLES;
 
 /*Table structure for table `pago_dia` */

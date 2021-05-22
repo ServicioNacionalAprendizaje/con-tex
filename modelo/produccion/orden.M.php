@@ -130,6 +130,33 @@ class Orden{
         $this->conn->ejecutar();
         return true;
     }
+
+    public function BuscarEmpleado(){
+        $sentenciaSql = "SELECT 
+                            CONCAT(p.nombre,' ',p.apellido) AS nombre
+                            ,e.id_empleado 
+                        FROM persona AS p 
+                            INNER JOIN empleado AS e ON p.id_persona = e.id_persona 
+                        WHERE p.estado = '1' AND e.estado = '1' AND nombre LIKE '%$this->descripcion%' 
+                        GROUP BY p.id_persona;";
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+        return true;
+    }
+
+    public function BuscarCliente(){
+        $sentenciaSql = "SELECT 
+                            CONCAT(p.nombre,' ',p.apellido) AS nombre
+                            ,c.id_cliente 
+                        FROM persona AS p 
+                        INNER JOIN cliente AS c ON p.id_persona = c.id_persona 
+                        WHERE p.estado = '1' AND c.estado = '1' AND nombre LIKE '%$this->descripcion%' 
+                        GROUP BY p.id_persona;";
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+        return true;
+    }
+
     private function obtenerCondicion()
     {
         $whereAnd = " WHERE ";

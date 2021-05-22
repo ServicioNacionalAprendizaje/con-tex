@@ -1,20 +1,16 @@
-<!-- codigo proveniente de cliente, falta modificacion -->
 <?php
 require '../../entorno/conexion.php';
-require '../../modelo/nomina/cliente.M.php';
-
-$arrCliente = array();
+require '../../modelo/produccion/orden.M.php';
+$arrOrden = array();
 $contador = 0;
-$cliente = new Cliente();
-$cliente->setDescripcion($_REQUEST['term']);
-
-$cliente->Consultar();
-$numeroRegistros = $cliente->conn->obtenerNumeroRegistros();
-while($rowCliente = $cliente->conn->obtenerObjeto()){
-    $arrCliente[$contador]['id'] = $rowCliente->id_cliente;
-    $arrCliente[$contador]['value'] = $rowCliente->descripcion ;
-
+$orden = new Orden();
+$orden->setDescripcion($_REQUEST['term']);
+$orden->BuscarCliente();
+$numeroRegistros = $orden->conn->obtenerNumeroRegistros();
+while($rowOrden = $orden->conn->obtenerObjeto()){
+    $arrOrden[$contador]['id'] = $rowOrden->id_cliente;
+    $arrOrden[$contador]['value'] = $rowOrden->nombre;
     $contador++;
 }
-echo json_encode($arrCliente);
+echo json_encode($arrOrden);
 ?>

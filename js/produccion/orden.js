@@ -67,9 +67,18 @@ function Enviar(accion,id){
 $(function(){
     //se carga el autocompleta del contratista
      $("#txtEmpleado").autocomplete({
-        source:'../../busqueda/empleado.B.php',
+        source:'../../busqueda/produccion/empleado.B.php',
         select:function(event, ui){
             $("#hidIdEmpleado").val(ui.item.id);
+        }
+     }); 
+});
+$(function(){
+    //se carga el autocompleta del contratista
+     $("#txtCliente").autocomplete({
+        source:'../../busqueda/produccion/cliente.B.php',
+        select:function(event, ui){
+            $("#hidIdCliente").val(ui.item.id);
         }
      }); 
 });

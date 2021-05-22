@@ -1,20 +1,16 @@
-<!-- No estoy seguro si busca los nombres de los empleados -->
 <?php
 require '../../entorno/conexion.php';
-require '../../modelo/nomina/empleado.M.php';
-
-$arrEmpleado = array();
+require '../../modelo/produccion/orden.M.php';
+$arrOrden = array();
 $contador = 0;
-$empleado = new Empleado();
-$empleado->setIdPersona($_REQUEST['term']);
-
-$empleado->Consultar();
-$numeroRegistros = $empleado->conn->obtenerNumeroRegistros();
-while($rowEmpleado = $empleado->conn->obtenerObjeto()){
-    $arrEmpleado[$contador]['id'] = $rowEmpleado->id_empleado;
-    $arrEmpleado[$contador]['value'] = $rowEmpleado->nombre;
-
+$orden = new Orden();
+$orden->setDescripcion($_REQUEST['term']);
+$orden->BuscarEmpleado();
+$numeroRegistros = $orden->conn->obtenerNumeroRegistros();
+while($rowOrden = $orden->conn->obtenerObjeto()){
+    $arrOrden[$contador]['id'] = $rowOrden->id_empleado;
+    $arrOrden[$contador]['value'] = $rowOrden->nombre;
     $contador++;
 }
-echo json_encode($arrEmpleado);
+echo json_encode($arrOrden);
 ?>

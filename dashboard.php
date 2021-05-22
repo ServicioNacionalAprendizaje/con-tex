@@ -24,22 +24,6 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <div id="cargarDashboard" name="cargarDashboard"></div>
-                <!-- <div class="btn-group">
-                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Seguridad</button>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="vista/seguridad/usuario.V.html" target="container_fluid_iframe">Usuario</a>
-                        <div class="dropdown-divider"></div>                        
-                    </div>
-                </div> -->
-                                
-                <!-- <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item">                        
-                        <a class="nav-link active" href="vista/seguridad/usuario.V.html" target="container_fluid_iframe">
-                        <i class="fas fa-window-maximize"></i><span>Usuario</span></a>                        
-                    </li>                    
-                </ul> -->
-                
                 <div class="text-center d-none d-md-inline">
                     <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
                 </div>
@@ -137,13 +121,14 @@
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Administror</span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
                                     <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Perfil</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Configuración</a><a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Resgistro trabajo</a>
                                         <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" onclick="CargarDashboard('cerrar_sesion');"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Salir</a>
+                                            <a class="dropdown-item" href="#" onclick="CargarDashboard('cerrar_sesion');"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Salir</a>
                                     </div>
                                 </div>
                             </li>
                         </ul>
                     </div>
-                </nav>
+                </nav><label>Bien venidos a CON-TEX</label>
+                <!-- <img src="https://www.fundacionaquae.org/wp-content/uploads/2020/03/Qu%C3%A9-es-la-energ%C3%ADa-azul-1024x597.jpg.webp"/> -->
                 <!-- <div class="container-fluid" height="315" > -->
                     <iframe class="responsive-iframe" name="container_fluid_iframe" id="container-fluid_iframe" >
                     </iframe>

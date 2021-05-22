@@ -142,16 +142,16 @@ class Cargo
                 $condicion=$condicion.$whereAnd." descripcion LIKE '%$this->descripcion%' ";
                 $whereAnd = ' AND ';
         }        
-        // if($this->estado!=''){
-        //         if ($whereAnd == ' AND '){
-        //         $condicion=$condicion.$whereAnd." seg_usu.estado = '$this->estado'";
-        //         $whereAnd = ' AND ';
-        //         }
-        //         else{
-        //         $condicion=$whereAnd.$condicion." seg_usu.estado = '$this->estado'";
-        //         $whereAnd = ' AND ';
-        //         }
-        //     }
+        if($this->estado!=''){
+                if ($whereAnd == ' AND '){
+                $condicion=$condicion.$whereAnd." cargo.estado = '$this->estado'";
+                $whereAnd = ' AND ';
+                }
+                else{
+                $condicion=$whereAnd.$condicion." cargo.estado = '$this->estado'";
+                $whereAnd = ' AND ';
+                }
+            }
         // if($this->fechaActivacion!=''){
         //         $condicion=$condicion.$whereAnd." seg_usu.fecha_activacion = '$this->fechaActivacion' ";
         //         $whereAnd = ' AND ';

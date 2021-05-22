@@ -54,7 +54,8 @@ if (isset ($accion)){
             try{
                 $cargo = new Cargo();
                 $cargo->setIdCargo($_POST['id']);
-                $cargo->setDescripcion($_POST['descripcion']);                            
+                $cargo->setDescripcion($_POST['descripcion']);
+                $cargo->setEstado($_POST['estado']); 
                 $resultado = $cargo->consultar();
                 $numeroRegistros = $cargo->conn->ObtenerNumeroRegistros();
                 if($numeroRegistros === 1){

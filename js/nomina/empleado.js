@@ -60,6 +60,7 @@ id=$('#hidIdEmpleado').val();
                 //Respuesta eliminar
                 if(respuesta['accion']=='ELIMINAR'){
                     alert(respuesta['respuesta']);
+                    Limpiar();
                 }
             }
     });

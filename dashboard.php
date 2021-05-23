@@ -19,7 +19,7 @@
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
             <div class="container-fluid d-flex flex-column p-0">
                 <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+                <img src ="componente\img\Logo.jpg"/>
                     <div class="sidebar-brand-text mx-3"><span>con-tex</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
@@ -127,7 +127,7 @@
                             </li>
                         </ul>
                     </div>
-                </nav><label>Bien venidos a CON-TEX</label>
+                </nav>
                 <!-- <img src="https://www.fundacionaquae.org/wp-content/uploads/2020/03/Qu%C3%A9-es-la-energ%C3%ADa-azul-1024x597.jpg.webp"/> -->
                 <!-- <div class="container-fluid" height="315" > -->
                     <iframe class="responsive-iframe" name="container_fluid_iframe" id="container-fluid_iframe" >

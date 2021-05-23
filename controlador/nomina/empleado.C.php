@@ -21,7 +21,7 @@ if (isset ($accion)){
                 $empleado->setIdUsuarioCreacion(1); // Obtener id de la persona con la variable session
                 $empleado->setIdUsuarioModificacion(1); // Obtener id de la persona con la variable session
                 $resultado = $empleado->Agregar();
-                $respuesta['respuesta']="La información se adicionó correctamente.";
+                $respuesta['respuesta']="La información se eliminó correctamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible adicionar la información, consulte con el administrador.";
             }
@@ -43,7 +43,7 @@ if (isset ($accion)){
                 $empleado->setEstado($_POST['estado']);  
                 $empleado->setIdUsuarioModificacion(1);              
                 $resultado = $empleado->Modificar();
-                $respuesta['respuesta']="La información se modificó correctamente.";
+                $respuesta['respuesta']="La información se eliminó correctamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible modificar la información, consulte con el administrador.";
             }

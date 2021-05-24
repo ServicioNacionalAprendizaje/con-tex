@@ -13,6 +13,7 @@ if (isset ($accion)){
                 $persona= new Persona();
                 $persona->setNombre($_POST['nombre']);
                 $persona->setApellido($_POST['apellido']);
+                $persona->setDocumento($_POST['documento']);
                 $persona->setEdad($_POST['edad']);
                 $persona->setGenero($_POST['genero']);
                 $persona->setEstado($_POST['estado']);
@@ -32,6 +33,7 @@ if (isset ($accion)){
                 $persona->setIdPersona($_POST['id']);
                 $persona->setNombre($_POST['nombre']);
                 $persona->setApellido($_POST['apellido']);
+                $persona->setDocumento($_POST['documento']);
                 $persona->setEdad($_POST['edad']);
                 $persona->setGenero($_POST['genero']);
                 $persona->setEstado($_POST['estado']);
@@ -61,6 +63,7 @@ if (isset ($accion)){
                 $persona->setIdPersona($_POST['id']);
                 $persona->setNombre($_POST['nombre']);
                 $persona->setApellido($_POST['apellido']);
+                $persona->setDocumento($_POST['documento']);
                 $persona->setEdad($_POST['edad']);
                 $persona->setGenero($_POST['genero']);                              
                 $resultado = $persona->consultar();
@@ -71,6 +74,7 @@ if (isset ($accion)){
                         $respuesta['id'] = $rowBuscar->id_persona;
                         $respuesta['nombre'] = $rowBuscar->nombre;
                         $respuesta['apellido'] = $rowBuscar->apellido;
+                        $respuesta['documento'] = $rowBuscar->documento;
                         $respuesta['edad'] = $rowBuscar->edad;                           
                         $respuesta['genero'] = $rowBuscar->genero;
                         $respuesta['estado'] = $rowBuscar->estado;
@@ -82,10 +86,11 @@ if (isset ($accion)){
                         foreach($persona->conn->ObtenerRegistros() AS $rowConsulta){
                             $retorno .= "<tr>                                          
                                         <td><label>".$rowConsulta[1]."</label></td>                                             
-                                        <td><label>".$rowConsulta[2]."</label></td>                                        
-                                        <td><label>".$rowConsulta[3]."</label></td>                                                                                               
-                                        <td><label>".($rowConsulta[4]== 'M' ? 'Masculino':'Femenino')."</label></td>
-                                        <td><label>".($rowConsulta[5]== 1 ? 'Activo' : 'Inactivo')."</label></td>
+                                        <td><label>".$rowConsulta[2]."</label></td>  
+                                        <td><label>".$rowConsulta[3]."</label></td>                                         
+                                        <td><label>".$rowConsulta[4]."</label></td>                                                                                               
+                                        <td><label>".($rowConsulta[5]== 'M' ? 'Masculino':'Femenino')."</label></td>
+                                        <td><label>".($rowConsulta[6]== 1 ? 'Activo' : 'Inactivo')."</label></td>
                                         <td align='center'><a href='#' class='btn btn-warning'><i class='fas fa-edit' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></i></a></td>
                                         <td align='center'><a href='#' class='btn btn-danger'><i class='fas fa-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></i></a></td>                                                                                
                                     </tr>";

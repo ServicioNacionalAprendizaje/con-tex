@@ -364,6 +364,7 @@ CREATE TABLE `persona` (
   `id_persona` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
   `apellido` varchar(100) NOT NULL,
+  `documento` int(11) NOT NULL,
   `edad` int(11) NOT NULL,
   `genero` enum('M','F') NOT NULL,
   `estado` enum('0','1') NOT NULL,
@@ -948,6 +949,7 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_persona`(IN nombre VARCHAR(100)
 																		,IN apellido VARCHAR(100)
+																		,IN documento INT(11)
 																		,IN edad INT(11)
 																		,IN genero ENUM('M','F')
 																		,IN estado ENUM('0','1')
@@ -957,6 +959,7 @@ DELIMITER $$
 BEGIN
 INSERT INTO persona(nombre
 					,apellido
+					,documento
 					,edad
 					,genero
 					,estado
@@ -967,6 +970,7 @@ INSERT INTO persona(nombre
 					) 
 VALUES (nombre
 		,apellido
+		,documento
 		,edad
 		,genero
 		,estado
@@ -1451,6 +1455,7 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_persona`(IN nombre VARCHAR(100)
 																		,IN apellido VARCHAR(100)
+																		,IN documento INT(11)
 																		,IN edad INT(11)
 																		,IN genero ENUM('M','F')
 																		,IN estado ENUM('0','1')
@@ -1461,6 +1466,7 @@ BEGIN
 	UPDATE persona 
 	SET nombre = nombre
 		,apellido = apellido
+		,documento = documento
 		,edad = edad
 		,genero = genero
 		,estado = estado

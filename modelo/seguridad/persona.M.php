@@ -5,6 +5,7 @@ class Persona
     private $idPersona;
     private $nombre;
     private $apellido;
+    private $documento;
     private $edad;
     private $genero;
     private $estado;
@@ -41,6 +42,16 @@ class Persona
     public function setApellido($apellido)
     {
         $this->apellido = $apellido;
+    }
+
+    //documento
+    public function getDocumento()
+    {
+        return $this->documento;
+    }
+    public function setDocumento($documento)
+    {
+        $this->documento = $documento;
     }
 
     //edad
@@ -126,6 +137,7 @@ class Persona
         $sentenciaSql = "CALL Agregar_persona(
                              '$this->nombre'
                             ,'$this->apellido'
+                            , $this->documento
                             , $this->edad
                             ,'$this->genero'
                             ,'$this->estado'
@@ -141,10 +153,11 @@ class Persona
         $sentenciaSql = "CALL Modificar_persona(
                              '$this->nombre'
                             ,'$this->apellido'
-                            ,'$this->edad'
+                            , $this->documento
+                            , $this->edad
                             ,'$this->genero'
                             ,'$this->estado'
-                            ,'$this->idUsuarioModificacion'
+                            , $this->idUsuarioModificacion
                             , $this->idPersona)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
@@ -213,6 +226,7 @@ class Persona
         unset($this->idPersona);
         unset($this->nombre);
         unset($this->apellido);
+        unset($this->documento);
         unset($this->edad);
         unset($this->genero);
         unset($this->estado);

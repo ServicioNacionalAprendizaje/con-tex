@@ -6,6 +6,7 @@ function Enviar(accion,id){
         "id" : id,
         "nombre":$('#txtNombre').val(),
         "apellido":$('#txtApellido').val(),
+        "documento":$('#numDocumento').val(),
         "edad":$('#numEdad').val(),       
         "genero" :$('#radGenero').val(),       
         "estado":$('#cmbEstado').val(),
@@ -38,6 +39,7 @@ function Enviar(accion,id){
                     $('#hidIdPersona').val(respuesta['id']);
                     $('#txtNombre').val(respuesta['nombre']);
                     $('#txtApellido').val(respuesta['apellido']);
+                    $('#numDocumento').val(respuesta['documento']);
                     $('#numEdad').val(respuesta['edad']);
                     $('#radGenero').val(respuesta['genero']);
                     $('#cmbEstado').val(respuesta['estado']);
@@ -53,6 +55,7 @@ function Enviar(accion,id){
                 //Respuesta eliminar
                 if(respuesta['accion']=='ELIMINAR'){
                     alert(respuesta['respuesta']);
+                    Limpiar();
                 }
             }
     });
@@ -60,7 +63,8 @@ function Enviar(accion,id){
 function Limpiar(){
     $('#hidIdPersona').val("");  
     $('#txtNombre').val("");  
-    $('#txtApellido').val("");      
+    $('#txtApellido').val(""); 
+    $('#numDocumento').val("");     
     $('#numEdad').val("");    
     $('#radGenero').val("");
     $('#cmbEstado').val("");

@@ -22,6 +22,7 @@ function Enviar(accion,id){
                 //Respueta adicionar
                 if(respuesta['accion']=='ADICIONAR'){
                     alert(respuesta['respuesta']);
+                    Limpiar();
                 }
                 
                 //Respuesta muchos registros
@@ -42,18 +43,21 @@ function Enviar(accion,id){
                 //Respuesta modificar
                 if(respuesta['accion']=='MODIFICAR'){
                     alert(respuesta['respuesta']);
+                    Limpiar();
                 }
                 
                 //Respuesta eliminar
                 if(respuesta['accion']=='ELIMINAR'){
                     alert(respuesta['respuesta']);
+                    Limpiar();
                 }
             }
     });
 }
 
-function Limpiar() {
-    document.getElementById('numCodigo').value = '';
-    document.getElementById('txtDescripcion').value = '';
-    document.getElementById('cmbEstado').value = '';
+function Limpiar(){
+    $('#hidIdCargo').val("");  
+    $('#numCodigo').val("");  
+    $('#txtDescripcion').val("");
+    $('#cmbEstado').val(""); 
 }

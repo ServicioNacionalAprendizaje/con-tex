@@ -23,6 +23,7 @@ function Enviar(accion,id){
                 //Respueta adicionar
                 if(respuesta['accion']=='ADICIONAR'){
                     alert(respuesta['respuesta']);
+                    Limpiar();
                 }
                 
                 //Respuesta muchos registros
@@ -47,11 +48,13 @@ function Enviar(accion,id){
                 //Respuesta modificar
                 if (respuesta['accion'] == 'MODIFICAR') {
                     alert(respuesta['respuesta']);
+                    Limpiar();
                 }
                 
                 //Respuesta eliminar
                 if (respuesta['accion'] == 'ELIMINAR') {
                     alert(respuesta['respuesta']);
+                    Limpiar();
                 }
             }
     });

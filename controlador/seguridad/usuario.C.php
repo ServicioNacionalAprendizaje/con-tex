@@ -12,7 +12,7 @@ if (isset ($accion)){
             try{
                 $usuario= new Usuario();
                 $usuario->setUsuario($_POST['usuario']);
-                $usuario->setContrasenia($_POST['contrasenia']);
+                $usuario->setContrasenia(md5($_POST['contrasenia']));
                 $usuario->setFechaActivacion($_POST['fechaActivacion']);
                 $usuario->setFechaExpiracion($_POST['fechaExpiracion']);
                 $usuario->setIdPersona($_POST['idPersona']);

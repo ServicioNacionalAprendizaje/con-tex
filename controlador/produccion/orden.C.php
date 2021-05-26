@@ -77,8 +77,8 @@ if (isset ($accion)){
                         $respuesta['nombreEmpleado'] = $rowBuscar->nombreEmpleado;
                         $respuesta['idCliente'] = $rowBuscar->id_cliente;
                         $respuesta['nombreCliente'] = $rowBuscar->nombreCliente;
-                        $respuesta['fechaOrden'] = $rowBuscar->fecha_orden;
-                        $respuesta['fechaEntrega'] = $rowBuscar->fecha_entrega;
+                        $respuesta['fechaOrden'] = date("Y-m-d", strtotime($rowBuscar->fecha_orden)).'T'.date("H:i", strtotime($rowBuscar->fecha_orden));
+                        $respuesta['fechaEntrega'] = date("Y-m-d", strtotime($rowBuscar->fecha_entrega)).'T'.date("H:i", strtotime($rowBuscar->fecha_entrega));
                         $respuesta['descripcion'] = $rowBuscar->descripcion;
                         $respuesta['estado'] = $rowBuscar->estado;
                         $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_orden.")'>";

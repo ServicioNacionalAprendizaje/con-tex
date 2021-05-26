@@ -87,7 +87,6 @@ if (isset ($accion)){
                             $retorno="<table>";
                             foreach($usuarioRol->conn->ObtenerRegistros()AS $rowConsulta){
                                 $retorno .= "<tr>                                          
-                                            <td><label>".$rowConsulta[0]."</label></td>
                                             <td><label>".$rowConsulta[2]."</label></td>
                                             <td><label>".$rowConsulta[4]."</label></td>                                             
                                             <td><label>".$rowConsulta[6]."</label></td>                                        

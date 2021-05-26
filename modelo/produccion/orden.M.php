@@ -68,8 +68,10 @@ class Orden{
 
     public function Agregar()
     {
-        $sentenciaSql = "CALL Agregar_orden('$this->fechaOrden'
-                                            ,'$this->fechaEntrega'
+        $ordenDate = date("Y-m-d H:i:s", strtotime($this->fechaOrden));
+        $entregaDate = date("Y-m-d H:i:s", strtotime($this->fechaEntrega));
+        $sentenciaSql = "CALL Agregar_orden('$ordenDate'
+                                            ,'$entregaDate'
                                             ,'$this->descripcion'
                                             ,$this->idCliente
                                             ,$this->idEmpleado
@@ -84,8 +86,10 @@ class Orden{
     
     public function Modificar()
     {
-        $sentenciaSql = "CALL Modificar_orden('$this->fechaOrden'
-                                             ,'$this->fechaEntrega'
+        $ordenDate = date("Y-m-d H:i:s", strtotime($this->fechaOrden));
+        $entregaDate = date("Y-m-d H:i:s", strtotime($this->fechaEntrega));
+        $sentenciaSql = "CALL Modificar_orden('$ordenDate'
+                                             ,'$entregaDate'
                                              ,'$this->descripcion'
                                              ,$this->idCliente
                                              ,$this->idEmpleado
@@ -165,28 +169,54 @@ class Orden{
             $condicion=$whereAnd.$condicion." id_orden  = $this->idOrden";
             $whereAnd = ' AND ';
         }
-        // if($this->idCargo !=''){
-        //         $condicion=$condicion.$whereAnd." descripcion LIKE '%$this->idCargo%' ";
-        //         $whereAnd = ' AND ';
-        // }        
-        // if($this->estado!=''){
-        //         if ($whereAnd == ' AND '){
-        //         $condicion=$condicion.$whereAnd." seg_usu.estado = '$this->estado'";
-        //         $whereAnd = ' AND ';
-        //         }
-        //         else{
-        //         $condicion=$whereAnd.$condicion." seg_usu.estado = '$this->estado'";
-        //         $whereAnd = ' AND ';
-        //         }
-        //     }
-        // if($this->fechaActivacion!=''){
-        //         $condicion=$condicion.$whereAnd." seg_usu.fecha_activacion = '$this->fechaActivacion' ";
-        //         $whereAnd = ' AND ';
-        // }
-        // if($this->fechaExpiracion!=''){
-        //         $condicion=$condicion.$whereAnd." seg_usu.fecha_expiracion = '$this->fechaExpiracion' ";
-        //         $whereAnd = ' AND ';
-        // }
+        if($this->fechaOrden !=''){
+                $ordenDate = date("Y-m-d H:i:s", strtotime($this->fechaOrden));
+                $condicion=$condicion.$whereAnd." fecha_orden LIKE '%$ordenDate%' ";
+                $whereAnd = ' AND ';
+        }
+        if($this->fechaEntrega !=''){
+            $entregaDate = date("Y-m-d H:i:s", strtotime($this->fechaEntrega));
+            $condicion=$condicion.$whereAnd." fecha_entrega LIKE '%$entregaDate%' ";
+            $whereAnd = ' AND ';
+        }
+        if($this->descripcion !=''){
+            $condicion=$condicion.$whereAnd." descripcion LIKE '%$this->descripcion%' ";
+            $whereAnd = ' AND ';
+        }
+        if($this->idCliente !=''){
+            $condicion=$condicion.$whereAnd." id_cliente LIKE '%$this->idCliente%' ";
+            $whereAnd = ' AND ';
+        }
+        if($this->idEmpleado !=''){
+            $condicion=$condicion.$whereAnd." id_empleado LIKE '%$this->idEmpleado%' ";
+            $whereAnd = ' AND ';
+        }
+        if($this->estado!=''){
+                if ($whereAnd == ' AND '){
+                $condicion=$condicion.$whereAnd." estado = '$this->estado'";
+                $whereAnd = ' AND ';
+                }
+                else{
+                $condicion=$whereAnd.$condicion." estado = '$this->estado'";
+                $whereAnd = ' AND ';
+                }
+            }
+        if($this->fechaCreacion!=''){
+                $condicion=$condicion.$whereAnd." fecha_creacion = '$this->fechaCreacion' ";
+                $whereAnd = ' AND ';
+        }
+        if($this->fechaModificacion!=''){
+                $condicion=$condicion.$whereAnd." fecha_modificacion = '$this->fechaModificacion' ";
+                $whereAnd = ' AND ';
+        }
+        if($this->idUsuarioCreacion!=''){
+            $condicion=$condicion.$whereAnd." id_usuario_creacion = '$this->idUsuarioCreacion' ";
+            $whereAnd = ' AND ';
+        }
+        if($this->idUsuarioModificacion!=''){
+            $condicion=$condicion.$whereAnd." id_usuario_modificacion = '$this->idUsuarioModificacion' ";
+            $whereAnd = ' AND ';
+        }
         return $condicion;
     }
 

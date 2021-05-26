@@ -82,7 +82,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 
-insert  into `cliente`(`id_cliente`,`id_persona`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,5,'0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(2,6,'0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(3,7,'0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(4,8,'0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(5,9,'0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
+insert  into `cliente`(`id_cliente`,`id_persona`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,5,'1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(2,6,'1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(3,7,'1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(4,8,'1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(5,9,'1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
 
 UNLOCK TABLES;
 

@@ -91,8 +91,8 @@ if (isset ($accion)){
                                         <td><label>".$rowConsulta[4]."</label></td>                                                                                               
                                         <td><label>".($rowConsulta[5]== 'M' ? 'Masculino':'Femenino')."</label></td>
                                         <td><label>".($rowConsulta[6]== 1 ? 'Activo' : 'Inactivo')."</label></td>
-                                        <td align='center'><a href='#' class='btn btn-warning'><i class='fas fa-edit' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></i></a></td>
-                                        <td align='center'><a href='#' class='btn btn-danger'><i class='fas fa-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></i></a></td>                                                                                
+                                        <td align='center'><span class='icon-edit1' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></td>
+                                        <td align='center'><span class='icon-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></td>                                                                                
                                     </tr>";
                         }  
                             //     <td>

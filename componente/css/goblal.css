@@ -13,6 +13,7 @@ body{
 label{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: bold;
+    color: #757575;
 }
 
 div{
@@ -22,6 +23,7 @@ div{
 td{
     font-weight: bold;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #4d4d4d;
 }
 
 .margen{
@@ -29,6 +31,10 @@ td{
     margin: auto;
     width: 70%;
     margin-top: 30px;
+}
+
+h1{
+    color: #757575;
 }
 
 .caja{

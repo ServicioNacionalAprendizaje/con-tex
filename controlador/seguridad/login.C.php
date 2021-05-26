@@ -9,8 +9,8 @@ if (isset ($_POST['user'])){
     try{
         $usuario = new Usuario();                
         $usuario->setUsuario($_POST['user']); 
-        $usuario->setContrasenia($_POST['password']);        
-        $usuario->login(); 
+        $usuario->setContrasenia(md5($_POST['password']));        
+        $usuario->login();
         
         if ($rowBuscar = $usuario->conn->ObtenerObjeto()){
             if(intval($rowBuscar->autenticado)===1)

@@ -23,7 +23,7 @@
                     <div class="sidebar-brand-text mx-3"><span>con-tex</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
-                <div id="cargarDashboard" name="cargarDashboard"></div>
+                <div id="cargarDashboard" name="cargarDashboard"><a class='dropdown-item' href='/vista/seguridad/rol.V.html' target='_parent'></a></div>
                 <div class="text-center d-none d-md-inline">
                     <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
                 </div>

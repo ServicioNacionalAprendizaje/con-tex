@@ -372,6 +372,7 @@ CREATE TABLE `persona` (
   `fecha_modificacion` datetime NOT NULL,
   `id_usuario_creacion` int(11) NOT NULL,
   `id_usuario_modificacion` int(11) NOT NULL,
+  UNIQUE (`documento`),
   PRIMARY KEY (`id_persona`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
@@ -380,17 +381,17 @@ CREATE TABLE `persona` (
 LOCK TABLES `persona` WRITE;
 
 insert  into
-	`persona`(`id_persona`,`nombre`,`apellido`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`)
+	`persona`(`id_persona`,`nombre`,`apellido`,`documento`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`)
 values
-	(1,'Yesica','Tovar',26,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1)
-	,(2,'Carmenza','Gonzalez',42,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1)
-	,(3,'Alejandra','Tovar',22,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1)
-	,(4,'Costurera','SiDatos',11,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1)
-	,(5,'Cliente#1','ACliente#1',101,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
-	,(6,'Cliente#2','ACliente#2',102,'F','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
-	,(7,'Cliente#3','ACliente#3',103,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
-	,(8,'Cliente#4','ACliente#4',104,'F','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
-	,(9,'Cliente#5','ACliente#5',105,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
+	(1,'Yesica','Tovar',1075264421,26,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1)
+	,(2,'Carmenza','Gonzalez',1075264422,42,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1)
+	,(3,'Alejandra','Tovar',1075264423,22,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1)
+	,(4,'Costurera','SiDatos',1075264424,11,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1)
+	,(5,'Cliente#1','ACliente#1',1075264425,101,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(6,'Cliente#2','ACliente#2',1075264426,102,'F','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(7,'Cliente#3','ACliente#3',1075264427,103,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(8,'Cliente#4','ACliente#4',1075264428,104,'F','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1)
+	,(9,'Cliente#5','ACliente#5',1075264429,105,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
 
 UNLOCK TABLES;
 

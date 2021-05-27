@@ -24,7 +24,7 @@
                 <hr class="sidebar-divider my-0">
                 <div id="cargarDashboard" name="cargarDashboard"><a class='dropdown-item' href='/vista/seguridad/rol.V.html' target='_parent'></a></div>
                 <div class="text-center d-none d-md-inline">
-                    <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
+                    <!-- <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button> -->
                 </div>
             </div>
         </nav>
@@ -138,7 +138,7 @@
                     <div class="text-center my-auto copyright"><span>Copyright © con-tex 2021</span></div>
                 </div>
             </footer> -->
-        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        <!-- </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a> -->
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>

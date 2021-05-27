@@ -26,6 +26,10 @@ id=$('#hidIdEmpleado').val();
                 
                 //Respueta adicionar
                 if(respuesta['accion']=='ADICIONAR'){
+                    if($("#txtCorreoInstitucional").val().indexOf('@', 0) == -1 || $("#txtCorreoInstitucional").val().indexOf('.', 0) == -1) {
+                        alert('El correo electrónico introducido no es correcto.');
+                        return false;
+                    }
                     alert(respuesta['respuesta']);
                     Limpiar();
                 }

@@ -30,6 +30,9 @@ span{
   margin-right: 20px;
   font-size: 45px;
 }
+.icon-user:before {
+  content: "\ea36";
+}
 .icon-trash:before {
   content: "\e94f";
 }

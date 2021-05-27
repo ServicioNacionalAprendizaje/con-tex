@@ -70,17 +70,11 @@ if (isset ($accion)){
                         $retorno="<table>";
                         foreach($cargo->conn->ObtenerRegistros() AS $rowConsulta){
                             $retorno .= "<tr>                                          
-                                        <td><label>".$rowConsulta[1]."</label></td>
-                                        <td><label>".($rowConsulta[2]== 1 ? 'Activo':'Inactivo')."</label></td>
-                                        <td align='center'><span class='icon-edit1' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></td>
-                                        <td align='center'><span class='icon-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></td>                                        
-                                       
-                                    </tr>";
-                        }  
-                            //     <td>
-                            //     <input type='button' name='editar' value='Editar' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'>
-                            //     <input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'>
-                            // </td>
+                                            <td><label>".$rowConsulta[1]."</label></td>
+                                            <td><label>".($rowConsulta[2]== 1 ? 'Activo':'Inactivo')."</label></td>
+                                            <td align='center' style='cursor: pointer'><span class='icon-edit1' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></td>
+                                            <td align='center' style='cursor: pointer'><span class='icon-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></td>                                        
+                                        </tr>";
                         $retorno .= "</table>";
                         $respuesta['tablaRegistro']=$retorno;
                     }else{                                         

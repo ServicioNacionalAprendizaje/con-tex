@@ -73,8 +73,8 @@ if (isset ($accion)){
                             $retorno .= "<tr>
                                             <td><label>".$rowConsulta[1]."</label></td>     
                                             <td><label>".($rowConsulta[2] == 1 ? 'Activo' : 'Inactivo')."</label></td>                                           
-                                            <td align='center'><span class='icon-edit1' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></td>
-                                            <td align='center'><span class='icon-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></td> 
+                                            <td align='center' style='cursor: pointer'><span class='icon-edit1' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></td>
+                                            <td align='center' style='cursor: pointer'><span class='icon-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></td> 
                                         </tr>";
                         }
                         $retorno .= "</table>";

@@ -430,7 +430,7 @@ LOCK TABLES `producto` WRITE;
 
 INSERT INTO 
 	`producto` (`id_producto`, `descripcion`, `talla`, `estado`, `id_categoria`, `fecha_creacion`, `fecha_modificacion`, `id_usuario_creacion`, `id_usuario_modificacion`) 
-VALUES ('1', 'camisa', 'L', '1', '1', '2021-05-26 19:07:00', '2021-05-26 19:07:00', '1', '1');
+VALUES ('1', 'camisa', 'L', '1', '1', '2021-05-26 19:07:00', '2021-05-26 19:07:00', '1', '1')
 		,('2', 'pantalon', '32', '1', '2', '2021-05-26 19:07:00', '2021-05-26 19:07:00', '1', '1')
 		,('3', 'medias', '43', '1', '3', '2021-05-26 19:07:00', '2021-05-26 19:07:00', '1', '1')
 		,('4', 'vestido', 'S', '1', '4', '2021-05-26 19:07:00', '2021-05-26 19:07:00', '1', '1')

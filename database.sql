@@ -127,6 +127,7 @@ CREATE TABLE `detalle_orden` (
   `cantidad` int(11) NOT NULL,
   `id_orden` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
+  `estado` ENUM('0','1') NOT NULL,
   `fecha_creacion` datetime NOT NULL,
   `fecha_modificacion` datetime NOT NULL,
   `id_usuario_creacion` int(11) NOT NULL,
@@ -141,6 +142,15 @@ CREATE TABLE `detalle_orden` (
 /*Data for the table `detalle_orden` */
 
 LOCK TABLES `detalle_orden` WRITE;
+
+INSERT INTO `detalle_orden`(`id_detalle_orden`,`valor_inventario`,`valor_venta`,`cantidad`,`id_orden`,`id_producto`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) 
+	VALUES (1,1100,2100,10,1,1,'1','2021-05-26 19:07:00','2021-05-26 19:07:00',1,1)
+		   ,(2,1200,2200,2,2,1,'1','2021-05-26 19:07:00','2021-05-26 19:07:00',1,1)
+		   ,(3,1100,2300,20,1,2,'1','2021-05-27 19:07:00','2021-05-27 19:07:00',1,1)
+		   ,(4,1300,2400,3,2,3,'1','2021-05-28 19:07:00','2021-05-28 19:07:00',1,1)
+		   ,(5,1400,2500,3,3,4,'1','2021-05-29 19:07:00','2021-05-29 19:07:00',1,1)
+		   ,(6,1500,2200,30,5,6,'0','2021-05-30 19:07:00','2021-05-30 19:07:00',1,1)
+		   ,(7,1600,2700,40,3,3,'0','2021-05-31 19:07:00','2021-05-31 19:07:00',1,1);
 
 UNLOCK TABLES;
 

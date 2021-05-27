@@ -59,6 +59,15 @@ CREATE TABLE `categoria` (
 
 LOCK TABLES `categoria` WRITE;
 
+INSERT INTO 
+	`categoria` (`id_categoria`, `descripcion`, `estado`, `fecha_creacion`, `fecha_modificacion`, `id_usuario_creacion`, `id_usuario_modificacion`) 
+VALUES 
+		('1', 'Camisas', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', '1', '1')
+		,('2', 'Pantalones', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', '1', '1')
+		,('3', 'Vestidos', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', '1', '1')
+		,('4', 'Sueteres', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', '1', '1')
+		,('5', 'Interiores', '1', '2021-05-08 01:35:00', '2021-05-08 01:35:00', '1', '1');
+
 UNLOCK TABLES;
 
 /*Table structure for table `cliente` */

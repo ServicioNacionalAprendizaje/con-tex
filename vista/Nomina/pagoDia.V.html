@@ -3,7 +3,7 @@
 
 <head>
     <meta charset='utf-8'>
-    <title>Pago día</title>
+    <title>Pago del día</title>
     <link rel='stylesheet' type='text/css' media='screen' href='../../componente/css/goblal.css'>
     <!-- Iconos de las tablas -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
@@ -14,17 +14,24 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/css/bootstrap.min.css" integrity="sha512-N415hCJJdJx+1UBfULt+i+ihvOn42V/kOjOpp1UTh4CZ70Hx5bDlKryWaqEKfY/8EYOu/C2MuyaluJryK1Lb5Q==" crossorigin="anonymous" />    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/js/bootstrap.min.js" integrity="sha512-mp3VeMpuFKbgxm/XMUU4QQUcJX4AZfV5esgX72JQr7H7zWusV6lLP1S78wZnX2z9dwvywil1VHkHZAqfGOW7Nw==" crossorigin="anonymous"></script>
-</head>
+    <script src="../../js/nomina/pagoDia.js"></script>
+    <!-- Auto complete -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Auto complete -->
 
+</head>
 <body>
     <form name="frmPagoDia" id="frmPagoDia">
         <div class="margen" align="center">
-            <h1><label> Pago día</label></h1>
+            <h1><label> Pago del día</label></h1>
             <div class="container form-group">
                 <div class="row">
                     <div class="col-12 col-sm-3">
+                        <input type="hidden" name="hidIdPagoDia" id="hidIdPagoDia" value="">
+                        <input type="hidden" name="hidIdEmpleado" id="hidIdEmpleado" value="">
                         <label class="col-form-label">Nombre empleado</label>
-                        <input type="hidden" name="hidIdEmpleado" id="hidIdEmpleado" value=""><br>
                         <input type="text" name="txtEmpleado" id="txtEmpleado" value="" class="caja form-control" placeholder="Empleado">
                     </div>
                     <div class="col-12 col-sm-3">
@@ -67,26 +74,16 @@
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
-                                <td align="center">Id empleado</td>
+                                <td align="center">Empleado</td>
                                 <td align="center">Pago día</td>
-                                <td align="center">Estado</td>
                                 <td align="center">Fecha pago</td>
+                                <td align="center">Estado</td>
                                 <td align="center">Modificar</td>
                                 <td align="center">Eliminar</td>
                             </tr>
                         </thead>
-                        <!-- <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td align="center"><a href="#" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                                </td>
-                                <td align="center"><a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                                </td>
-                            </tr>
-                        </tbody> -->
+                        <tbody id="resultado">
+                        </tbody>
                     </table>
                 </div>
         </div>

@@ -6,17 +6,19 @@ class pagoDia
     private $idPagoDia;
     private $idEmpleado;
     private $pagoDia;
+    private $fechaPago;
+    private $estado;
     private $fechaCreacion;
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
 
     //idPagoDia
-    public function getIdPago()
+    public function getIdPagoDia()
     {
         return $this->idPagoDia;
     }
-    public function setIdPago($idPagoDia)
+    public function setIdPagoDia($idPagoDia)
     {
         $this->idPagoDia = $idPagoDia;
     }
@@ -39,6 +41,26 @@ class pagoDia
     public function setPagoDia($pagoDia)
     {
         $this->pagoDia = $pagoDia;
+    }
+
+    //fechaPago
+    public function getFechaPago()
+    {
+        return $this->fechaPago;
+    }
+    public function setFechaPago($fechaPago)
+    {
+        $this->fechaPago = $fechaPago;
+    }
+
+    //fechaPago
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
     }
 
     //fechaCreacion
@@ -66,7 +88,7 @@ class pagoDia
     {
         return $this->idUsuarioCreacion;
     }
-    public function setIdUsuarioCreacion($idUsuarioCreacion)
+    public function setIdUsuarioCreacion($idUsuarioCreacion = 1)
     {
         $this->idUsuarioCreacion = $idUsuarioCreacion;
     }
@@ -76,7 +98,7 @@ class pagoDia
     {
         return $this->idUsuarioModificacion;
     }
-    public function setIdUsuarioModificacion($idUsuarioModificacion)
+    public function setIdUsuarioModificacion($idUsuarioModificacion = 1)
     {
         $this->idUsuarioModificacion = $idUsuarioModificacion;
     }
@@ -89,8 +111,11 @@ class pagoDia
 
     public function Agregar()
     {
-        $sentenciaSql = "CALL Agregar_pago_dia('$this->idEmpleado'
+        $sentenciaSql = "CALL Agregar_pago_dia(
+                            '$this->idEmpleado'
                             ,'$this->pagoDia'
+                            ,'$this->fechaPago'
+                            ,'$this->estado'
                             ,'$this->idUsuarioCreacion')";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
@@ -99,8 +124,11 @@ class pagoDia
 
     public function Modificar()
     {
-        $sentenciaSql = "CALL Modificar_pago_dia('$this->idEmpleado'
+        $sentenciaSql = "CALL Modificar_pago_dia(
+                            '$this->idEmpleado'
                             ,'$this->pagoDia'
+                            ,'$this->fechaPago'
+                            ,'$this->estado'
                             ,'$this->idUsuarioModificacion'
                             ,'$this->idPagoDia')";
         $this->conn->preparar($sentenciaSql);
@@ -118,8 +146,19 @@ class pagoDia
     public function Consultar()
     {
         $condicion = $this->obtenerCondicion();
-        $sentenciaSql = "SELECT * 
-                            FROM pago_dia $condicion";
+        $sentenciaSql = "SELECT
+                            pd.id_pago_dia
+                            ,CONCAT(p.nombre,' ',p.apellido) AS nombre
+                            ,pd.pago_dia
+                            ,pd.fecha_pago
+                            ,pd.estado
+                            ,e.id_empleado
+                            ,e.id_persona
+                            ,p.id_persona	
+                        FROM persona AS p
+                        INNER JOIN empleado AS e ON e.id_persona = p.id_persona
+                        INNER JOIN pago_dia AS pd ON pd.id_empleado = e.id_empleado
+                        $condicion";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -135,5 +174,7 @@ class pagoDia
         unset($this->idPagoDia);
         unset($this->idEmpleado);
         unset($this->pagoDia);
+        unset($this->fechaPago);
+        unset($this->estado);
     }
 }

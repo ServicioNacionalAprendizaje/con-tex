@@ -37,6 +37,9 @@ id=$('#hidIdEmpleado').val();
                 //Respuesta muchos registros
                 if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']>1){
                     $("#resultado").html(respuesta['tablaRegistro']);
+                    $(document).ready( function () {
+                        $('#tableDatos').DataTable();
+                    } );
                     //$('#divEliminar').html(respuesta['eliminar']).hide();
                 }
                 //Respuesta un registro

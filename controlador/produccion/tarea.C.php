@@ -71,11 +71,11 @@ if(isset($accion)){
                 $tarea->setEstadoPago($_POST['estadoPago']);
                 $tarea->setEstado($_POST['estado']);
                 $tarea->setIdEmpleado($_POST['idEmpleado']);
-                $resultado = $usuario->consultar();
+                $resultado = $tarea->consultar();
 
-                $numeroRegistros = $usuario->conn->obtenerNumeroRegistros();
+                $numeroRegistros = $tarea->conn->obtenerNumeroRegistros();
                 if($numeroRegistros === 1){
-                    if ($rowBuscar = $usuario->conn->obtenerObjeto()){
+                    if ($rowBuscar = $tarea->conn->obtenerObjeto()){
                         $respuesta['id'] = $rowBuscar->id_tarea;
                         $respuesta['valorUnitario'] = $rowBuscar->valor_unitario;
                         $respuesta['descripcion'] = $rowBuscar->descripcion;
@@ -85,7 +85,7 @@ if(isset($accion)){
                         $respuesta['idEmpleado'] = $rowBuscar->id_empleado;
                         $respuesta['empleado']=$rowBuscar->nombre;  //modificar despues x empleado
                         $respuesta['estado'] = $rowBuscar->estado;
-                        $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_usuario.")'>";
+                        $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_tarea.")'>";
                         
                     }
                 }else{
@@ -93,12 +93,13 @@ if(isset($accion)){
                         $retorno="<table>";
                         foreach($tarea->conn->ObtenerRegistros()AS $rowConsulta){
                             $retorno .= "<tr>                                          
-                                        <td><label>".$rowConsulta[1]."</label></td>                                             
+                                        <td><label>".$rowConsulta[9]."</label></td>                                             
                                         <td><label>".$rowConsulta[2]."</label></td>                                        
-                                        <td><label>".$rowConsulta[3]."</label></td>                                                                                               
-                                        <td><label>".$rowConsulta[4]."</label></td>
-                                        <td><label>".$rowConsulta[7]."</label></td>
-                                        <td><label>".($rowConsulta[5]== 1 ? 'Activo':'Inactivo')."</label></td>
+                                        <td><label>".$rowConsulta[4]."</label></td>                                                                                               
+                                        <td><label>".$rowConsulta[3]."</label></td>
+                                        <td><label>".$rowConsulta[5]."</label></td>
+                                        <td><label>".$rowConsulta[1]."</label></td>
+                                        <td><label>".($rowConsulta[8]== 1 ? 'Activo':'Inactivo')."</label></td>
                                         <td align='center' style='cursor: pointer'><span class='icon-edit1' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></td>
                                         <td align='center' style='cursor: pointer'><span class='icon-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></td>                                                                               
                                         </tr>";

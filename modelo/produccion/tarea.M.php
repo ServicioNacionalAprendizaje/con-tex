@@ -144,7 +144,7 @@ class Tarea{
     public function Agregar()
     {
         $sentenciaSql = "CALL Agregar_tarea(
-                            '$this->estadoPago'
+                            '$this->descripcion'
                             ,'$this->valorUnitario'
                             ,'$this->cantidad'
                             ,'$this->fecha'
@@ -161,7 +161,8 @@ class Tarea{
     
     public function Modificar()
     {
-        $sentenciaSql = "CALL Modificar_tarea('$this->descripcion'
+        $sentenciaSql = "CALL Modificar_tarea(
+                            '$this->descripcion'
                             ,'$this->valorUnitario'
                             ,'$this->cantidad'
                             ,'$this->idEmpleado'
@@ -188,9 +189,20 @@ class Tarea{
     public function Consultar(){
         $condicion = $this->obtenerCondicion();
         $sentenciaSql = "SELECT
-           *
-        FROM
-            tarea $condicion";        		
+                            t.id_tarea
+                            ,t.descripcion
+                            ,t.valor_unitario
+                            ,t.cantidad
+                            ,t.fecha
+                            ,t.estado_pago
+                            ,t.id_empleado
+                            ,p.id_persona
+                            ,t.estado
+                            ,CONCAT(p.nombre,' ',p.apellido) AS nombre
+                        FROM 
+                            tarea AS t
+                            INNER JOIN persona AS p ON t.id_empleado = p.id_persona
+                            $condicion";        		
         
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();

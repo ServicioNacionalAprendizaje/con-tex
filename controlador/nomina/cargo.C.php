@@ -75,6 +75,7 @@ if (isset ($accion)){
                                             <td align='center' style='cursor: pointer'><span class='icon-edit1' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></td>
                                             <td align='center' style='cursor: pointer'><span class='icon-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></td>                                        
                                         </tr>";
+                        }
                         $retorno .= "</table>";
                         $respuesta['tablaRegistro']=$retorno;
                     }else{                                         

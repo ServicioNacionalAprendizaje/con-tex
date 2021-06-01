@@ -194,6 +194,20 @@ class Usuario
         return true;
     }
 
+    public function Restablecer()
+    {
+        $sentenciaSql = "UPDATE usuario 
+                         SET id_usuario = $this->idUsuario
+                            ,contrasenia = '$this->contrasenia' 
+                            ,fecha_modificacion = NOW() 
+                            ,id_usuario_modificacion = $this->idUsuario
+                         WHERE id_usuario = $this->idUsuario;
+                        ";
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+        return true;
+    }
+
     public function construirCarpeta()
     {
         $sentenciaSql = "CALL Obtener_carpeta($this->idUsuario)";

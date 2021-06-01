@@ -571,6 +571,7 @@ CREATE TABLE `usuario` (
   `id_usuario_creacion` int(11) NOT NULL,
   `id_usuario_modificacion` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`),
+  UNIQUE KEY `id_persona_UNIQUE` (`id_persona`),
   KEY `id_persona` (`id_persona`),
   CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
@@ -582,7 +583,7 @@ LOCK TABLES `usuario` WRITE;
 insert  into `usuario`(`id_usuario`,`usuario`,`contrasenia`,`fecha_activacion`,`fecha_expiracion`,`id_persona`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
 (1,'admin@','21232f297a57a5a743894a0e4a801fc3','2021-05-16','2021-06-02',1,'1','2021-05-08 01:35:00','2021-05-11 22:11:54',1,3),
 (2,'carmen@','880cbc1ed48043cbcdaa7286e058ef7f','2021-05-02','2021-05-07',2,'1','2021-05-11 22:06:54','2021-05-11 22:06:54',1,1),
-(3,'ariel@','4900d0a19b6894a4a514e9ff3afcc2c0','2021-05-16','2021-06-02',1,'1','2021-05-11 22:11:21','2021-05-11 22:26:44',1,1);
+(3,'ariel@','4900d0a19b6894a4a514e9ff3afcc2c0','2021-05-16','2021-06-02',5,'1','2021-05-11 22:11:21','2021-05-11 22:26:44',1,1);
 
 UNLOCK TABLES;
 

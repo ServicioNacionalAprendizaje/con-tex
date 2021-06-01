@@ -112,6 +112,20 @@ if (isset ($accion)){
             $respuesta['accion']='CONSULTAR';
             echo json_encode($respuesta);
         break;
+        case 'RESTAURAR':
+            try {
+                $usuario = new Usuario();
+                $usuario->setIdUsuario($_POST['id']);
+                $usuario->setContrasenia(md5($_POST['contrasenia']));
+                $usuario->setIdUsuarioModificacion($_POST['id']);
+                $resultado = $usuario->Restablecer();
+                $respuesta['respuesta']="Se restableció la contraseña correctamente.";
+            } catch (Exception $e) {
+                $respuesta['respuesta']="Error, no fue posible restaurar la contraseña, consulte con el administrador.";
+            }
+            $respuesta['accion']='RESTAURAR';
+            echo json_encode($respuesta);
+        break;
     }
 }
 ?>

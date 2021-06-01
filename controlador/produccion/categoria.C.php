@@ -31,7 +31,7 @@ if (isset ($accion)){
                 $categoria->setEstado($_POST['estado']);  
                 $categoria->setIdUsuarioModificacion(1);              
                 $resultado = $categoria->Modificar();
-                $respuesta['respuesta']="La información se adicionó correctamente.";
+                $respuesta['respuesta']="La información se actualizó correctamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible modificar la información, consulte con el administrador.";
             }
@@ -43,7 +43,7 @@ if (isset ($accion)){
                 $categoria = new Categoria();
                 $categoria->setIdCategoria($_POST['id']);
                 $categoria = $categoria->Eliminar();
-                $respuesta['respuesta']="La información se adicionó correctamente.";
+                $respuesta['respuesta']="La información se eliminó correctamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible eliminar la información, consulte con el administrador.";
             }

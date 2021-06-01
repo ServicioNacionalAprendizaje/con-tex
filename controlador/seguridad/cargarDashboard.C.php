@@ -26,7 +26,7 @@ if (isset ($_SESSION['id_login'])){
                 $retorno="";
                 while($rowCarpeta = $carpeta->conn->obtenerObjeto()){                  
                     $retorno .= "<div class='btn-group'>
-                            <button type='button' class='btn btn btn-dark dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>".$rowCarpeta->modulo."</button>
+                            <button type='button' class='btn btn btn-outline-light dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>".$rowCarpeta->modulo."</button>
                             <div class='dropdown-menu'>";
         
                     $menu = new Formulario();                

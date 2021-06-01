@@ -216,6 +216,17 @@ $sentenciaSql = "CALL Agregar_empleado(
         $this->conn->ejecutar();
         return true;
     }
+
+    public function BuscarCorreo(){
+        $sentenciaSql = "SELECT 
+                            correo_institucional 
+                        FROM empleado 
+                        WHERE estado = '1'; 
+                        -- GROUP BY p.id_persona;";
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+        return true;
+    }
     
     private function obtenerCondicion()
     {

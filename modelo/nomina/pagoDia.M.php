@@ -116,7 +116,8 @@ class pagoDia
                             ,'$this->pagoDia'
                             ,'$this->fechaPago'
                             ,'$this->estado'
-                            ,'$this->idUsuarioCreacion')";
+                            ,'$this->idUsuarioCreacion'
+                            ,'$this->idUsuarioModificacion')";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -150,7 +151,7 @@ class pagoDia
                             pd.id_pago_dia
                             ,CONCAT(p.nombre,' ',p.apellido) AS nombre
                             ,pd.pago_dia
-                            ,pd.fecha_pago
+                            ,pd.fecha_pago_dia
                             ,pd.estado
                             ,e.id_empleado
                             ,e.id_persona
@@ -164,8 +165,50 @@ class pagoDia
         return true;
     }
 
+    public function BuscarEmpleado($nombre)
+    {
+        $sentenciaSql = "SELECT 
+                            CONCAT(p.nombre,' ',p.apellido) AS nombre
+                            ,e.id_empleado 
+                        FROM persona AS p 
+                            INNER JOIN empleado AS e ON p.id_persona = e.id_persona 
+                        WHERE p.estado = '1' AND e.estado = '1' AND nombre LIKE '%$nombre%'";
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+        return true;
+    }
+    
     private function obtenerCondicion()
     {
+        $whereAnd = " WHERE ";
+        $condicion = " ";
+        if($this->idPagoDia !=''){
+            $condicion=$whereAnd.$condicion." id_pago_dia  = $this->idPagoDia";
+            $whereAnd = ' AND ';
+        }
+        // if($this->idCargo !=''){
+        //         $condicion=$condicion.$whereAnd." descripcion LIKE '%$this->idCargo%' ";
+        //         $whereAnd = ' AND ';
+        // }        
+        // if($this->estado!=''){
+        //         if ($whereAnd == ' AND '){
+        //         $condicion=$condicion.$whereAnd." seg_usu.estado = '$this->estado'";
+        //         $whereAnd = ' AND ';
+        //         }
+        //         else{
+        //         $condicion=$whereAnd.$condicion." seg_usu.estado = '$this->estado'";
+        //         $whereAnd = ' AND ';
+        //         }
+        //     }
+        // if($this->fechaActivacion!=''){
+        //         $condicion=$condicion.$whereAnd." seg_usu.fecha_activacion = '$this->fechaActivacion' ";
+        //         $whereAnd = ' AND ';
+        // }
+        // if($this->fechaExpiracion!=''){
+        //         $condicion=$condicion.$whereAnd." seg_usu.fecha_expiracion = '$this->fechaExpiracion' ";
+        //         $whereAnd = ' AND ';
+        // }
+        return $condicion;
     }
 
     public function __destruct()

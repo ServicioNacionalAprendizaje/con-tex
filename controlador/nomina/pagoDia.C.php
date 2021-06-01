@@ -72,8 +72,9 @@ if (isset ($accion)){
                     if ($rowBuscar = $pagoDia->conn->ObtenerObjeto()){
                         $respuesta['idPagoDia'] = $rowBuscar->id_pago_dia;
                         $respuesta['idEmpleado'] = $rowBuscar->id_empleado;
+                        $respuesta['nombre'] = $rowBuscar->nombre;
                         $respuesta['pagoDia'] = $rowBuscar->pago_dia;
-                        $respuesta['estado'] = $rowBuscar->estado == 1 ? 'Activo':'Inactivo';
+                        $respuesta['estado'] = $rowBuscar->estado;
                         $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_pago_dia.")'>";
                     }
                 }else{

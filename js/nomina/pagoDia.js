@@ -36,6 +36,7 @@ function Enviar(accion,id){
                 if(respuesta['accion']=='CONSULTAR'){
                     $('#hidIdPagoDia').val(respuesta['idPagoDia']);
                     $('#hidIdEmpleado').val(respuesta['idEmpleado']);
+                    $('#txtEmpleado').val(respuesta['nombre']);
                     $('#numPagoDia').val(respuesta['pagoDia']);
                     $('#datFechaPago').val(respuesta['fechaPago']);
                     $('#cmbEstado').val(respuesta['estado']);
@@ -64,3 +65,13 @@ function Limpiar(){
     $('#datFechaPago').val("");
     $('#cmbEstado').val(""); 
 }
+
+$(function(){
+    //se carga el autocompleta
+     $("#txtEmpleado").autocomplete({
+        source:'../../busqueda/nomina/empleadoPagoDia.B.php',
+        select:function(event, ui){
+            $("#hidIdEmpleado").val(ui.item.id);
+        }
+     });
+});

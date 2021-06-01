@@ -1,21 +1,16 @@
 <?php
 require '../../entorno/conexion.php';
-require '../../modelo/seguridad/persona.M.php';
-require '../../modelo/nomina/empleado.M.php';
+require '../../modelo/nomina/pagoDia.M.php';
 
-$arrPersona = array();
+$arrPagoDia = array();
 $contador = 0;
-$persona = new Persona();
-$persona->setNombre($_REQUEST['term']);
-// $persona->setApellido($_REQUEST['term']);
-
-$persona->Consultar();
-$numeroRegistros = $persona->conn->obtenerNumeroRegistros();
-while($rowPersona = $persona->conn->obtenerObjeto()){
-    $arrPersona[$contador]['id'] = $rowPersona->id_persona;
-    $arrPersona[$contador]['value'] = $rowPersona->nombre.' '.$rowPersona->apellido;
-
+$pagoDia = new pagoDia();
+$pagoDia->BuscarEmpleado($_REQUEST['term']);
+$numeroRegistros = $pagoDia->conn->obtenerNumeroRegistros();
+while($rowPagoDia = $pagoDia->conn->obtenerObjeto()){
+    $arrPagoDia[$contador]['id'] = $rowPagoDia->id_empleado;
+    $arrPagoDia[$contador]['value'] = $rowPagoDia->nombre;
     $contador++;
 }
-echo json_encode($arrPersona);
+echo json_encode($arrPagoDia);
 ?>

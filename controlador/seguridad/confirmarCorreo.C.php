@@ -21,7 +21,7 @@
 // } else {
 //     $respuesta['respuesta'] = "El correo no se encuentra registrado.";
 //     $respuesta['estado'] = false;
-}
+// }
 
 // $aaa = array_column($registros, 0);
 // $llave = array_search($correo, array_column($registros, 0));

@@ -9,6 +9,7 @@ require 'correo/SMTP.php';
 class enviarCorreo
 {
     private $correo;
+    private $contrasenia;
 
     //correo
     public function getCorreo()
@@ -18,6 +19,15 @@ class enviarCorreo
     public function setCorreo($correo)
     {
         $this->correo = $correo;
+    }
+    //nueva contraseña
+    public function getContrasenia()
+    {
+        return $this->contrasenia;
+    }
+    public function setContrasenia($contrasenia)
+    {
+        $this->contrasenia = $contrasenia;
     }
 
     //conexion
@@ -31,7 +41,7 @@ class enviarCorreo
         unset($this->correo);
     }
 
-    public function enviarCorreo()
+    public function EnviarCorreo()
     {
         $respuesta = array();
 
@@ -58,26 +68,13 @@ class enviarCorreo
             // $mail->Port = 465; //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
             //Recipients
-            $mail->setFrom('videoqualityasessment@gmail.com', 'Video Quality Asessment');
-            $mail->addAddress('edurado.andres@gmail.com', 'Eduardo'); //Add a recipient
+            $mail->setFrom('videoqualityasessment@gmail.com', 'Aplicativo Con-Tex');
+            $mail->addAddress($this->correo); //Add a recipient
 
             //Content
             $mail->isHTML(true); //Set email format to HTML
-            $mail->Subject = 'Nueva evaluacion subjetiva enviada de direccion IP:'.$ip.'.';
-            $mail->Body = '
-            <h2>Formulario de evaluacion de calidad de video</h2></br></br>
-            <h3><b>Direccion de IP de evaluacion: </b>'.$ip.'</h3></br></br>
-            <h3><b>'.$secuencia1.': </b>'.$nombre1.'</h3></br>
-            <h3><b>Puntaje: </b>'.$valor1.'</h3><hr></br></br>
-            <h3><b>'.$secuencia2.': </b>'.$nombre2.'</h3></br>
-            <h3><b>Puntaje: </b>'.$valor2.'</h3><hr></br></br>
-            <h3><b>'.$secuencia3.': </b>'.$nombre3.'</h3></br>
-            <h3><b>Puntaje: </b>'.$valor3.'</h3><hr></br></br>
-            <h3><b>'.$secuencia4.': </b>'.$nombre4.'</h3></br>
-            <h3><b>Puntaje: </b>'.$valor4.'</h3><hr></br></br>
-            <h3><b>'.$secuencia5.': </b>'.$nombre5.'</h3></br>
-            <h3><b>Puntaje: </b>'.$valor5.'</h3><hr></br></br>
-            ';
+            $mail->Subject = utf8_decode('Actualización de contraseña');
+            $mail->Body = 'Su nueva contraseña es '.$this->contrasenia;
 
             $mail->send();
 

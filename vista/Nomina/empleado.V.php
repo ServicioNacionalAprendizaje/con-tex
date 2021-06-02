@@ -1,6 +1,6 @@
 <?php include_once ("../../componente/libreria/libreria.php"); ?>
 <script src="../../js/nomina/empleado.js"></script>
-<body>
+<body onload="Enviar('CONSULTAR',null)">
     <form name="frmEmpleado" id="frmEmpleado">
     <div class="margen" align="center">
         <label>

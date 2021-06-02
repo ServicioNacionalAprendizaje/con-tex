@@ -1,3 +1,4 @@
+// Enviar('CONSULTAR',null);
 function Enviar(accion,id){
     if(id===null){
 id=$('#hidIdEmpleado').val();
@@ -24,6 +25,9 @@ id=$('#hidIdEmpleado').val();
             success:  function (respuesta) { //procesa y devuelve la respuesta
                 // console.log(respuesta); 
                 
+                //Reiniciar datatable
+                $("#tableDatos").dataTable().fnDestroy();
+
                 //Respueta adicionar
                 if(respuesta['accion']=='ADICIONAR'){
                     if($("#txtCorreoInstitucional").val().indexOf('@', 0) == -1 || $("#txtCorreoInstitucional").val().indexOf('.', 0) == -1) {
@@ -63,7 +67,8 @@ id=$('#hidIdEmpleado').val();
                 });
                 //$('#divEliminar').html(respuesta['eliminar']).hide();
                 }
-                //Respuesta un registro
+
+                //Respuesta un registro                
                 if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']==1){                    
                     $('#hidIdEmpleado').val(respuesta['id']);
                     $('#hidIdCargo').val(respuesta['idCargo']);
@@ -81,8 +86,9 @@ id=$('#hidIdEmpleado').val();
                 }
                 //Respuesta modificar
                 if(respuesta['accion']=='MODIFICAR'){
-                    alert(respuesta['respuesta']);
+                    alert(respuesta['respuesta']);                                       
                     Limpiar();
+                    $("#btnBuscar").trigger("click");
                 }
                 
                 //Respuesta eliminar
@@ -93,6 +99,7 @@ id=$('#hidIdEmpleado').val();
             }
     });
 }
+
 $(function(){
     //se carga el autocompleta
      $("#txtPersona").autocomplete({

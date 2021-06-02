@@ -185,8 +185,7 @@ class Usuario
                         ,p.id_persona
                         ,CONCAT(p.nombre,' ',p.apellido) AS nombre
                     FROM 
-                        usuario AS u
-                        
+                        usuario AS u                        
                         INNER JOIN persona AS p ON u.id_persona = p.id_persona
                         $condicion";
         $this->conn->preparar($sentenciaSql);
@@ -233,7 +232,18 @@ class Usuario
             $condicion=$whereAnd.$condicion." u.id_usuario  = $this->idUsuario";
             $whereAnd = ' AND ';
         }        
-
+        if($this->usuario !=''){
+            $condicion=$condicion.$whereAnd." u.usuario = '$this->usuario' ";
+            $whereAnd = ' AND ';
+        } 
+        if($this->fechaActivacion !=''){
+            $condicion=$condicion.$whereAnd." u.fecha_activacion LIKE '%$this->fechaActivacion%' ";
+            $whereAnd = ' AND ';
+        } 
+        if($this->fechaExpiracion !=''){
+            $condicion=$condicion.$whereAnd." u.fecha_expiracion LIKE '%$this->fechaExpiracion%' ";
+            $whereAnd = ' AND ';
+        }     
         return $condicion;
     }
 

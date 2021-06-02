@@ -2,6 +2,7 @@
 // $ubicacionFormulario =  substr($_SERVER["SCRIPT_NAME"], 17);
 include '../../entorno/conexion.php';
 require '../../modelo/seguridad/usuario.M.php';
+require '../../modelo/seguridad/enviarCorreo.M.php';
 
 $respuesta = array();
 
@@ -66,7 +67,7 @@ if (isset ($accion)){
                 $usuario->setFechaActivacion($_POST['fechaActivacion']);
                 $usuario->setFechaExpiracion($_POST['fechaExpiracion']);
                 $usuario->setIdPersona($_POST['idPersona']);
-                $resultado = $usuario->consultar();
+                $resultado = $usuario->Consultar();
 
                 $numeroRegistros = $usuario->conn->obtenerNumeroRegistros();
                 if($numeroRegistros === 1){
@@ -115,15 +116,31 @@ if (isset ($accion)){
         case 'RESTAURAR':
             try {
                 $usuario = new Usuario();
-                $usuario->setIdUsuario($_POST['id']);
-                $usuario->setContrasenia(md5($_POST['contrasenia']));
-                $usuario->setIdUsuarioModificacion($_POST['id']);
-                $resultado = $usuario->Restablecer();
-                $respuesta['respuesta']="Se restableció la contraseña correctamente.";
+                $usuario->setUsuario($_POST['usuario']);
+                $resultado = $usuario->Consultar();
+                $numeroRegistros = $usuario->conn->obtenerNumeroRegistros();
+                if($numeroRegistros === 1){
+                    if ($rowBuscar = $usuario->conn->obtenerObjeto()){
+                        $nuevaClave=rand(1000, 9999);
+                        $usuario->setIdUsuario($rowBuscar->id_usuario);
+                        $usuario->setContrasenia(md5($nuevaClave));
+                        $usuario->setIdUsuarioModificacion($rowBuscar->id_usuario);
+                        $resultado = $usuario->Restablecer();
+
+                        // Enviar correo
+                        $correo = new enviarCorreo();
+                        $correo->setCorreo($_POST['usuario']);
+                        $correo->setContrasenia($nuevaClave);
+                        $resultado = $correo->EnviarCorreo();
+
+                    }                   
+                    $respuesta['respuesta']="Se restableció la contraseña correctamente.";
+                }                               
             } catch (Exception $e) {
                 $respuesta['respuesta']="Error, no fue posible restaurar la contraseña, consulte con el administrador.";
             }
             $respuesta['accion']='RESTAURAR';
+            $respuesta['ruta']= "login.html";
             echo json_encode($respuesta);
         break;
     }

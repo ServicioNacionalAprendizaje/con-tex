@@ -1,5 +1,5 @@
 <?php include_once ("../../componente/libreria/libreria.php"); ?>
-<body>
+<body onload="Enviar('CONSULTAR',null)">
     <form name="frmCategoria" id="frmCategoria">
         <div class="margen" align="center"> 
             <h1><label>Categoria</label></h1>

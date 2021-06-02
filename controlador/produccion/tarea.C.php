@@ -71,7 +71,7 @@ if(isset($accion)){
                 $tarea->setEstadoPago($_POST['estadoPago']);
                 $tarea->setEstado($_POST['estado']);
                 $tarea->setIdEmpleado($_POST['idEmpleado']);
-                $resultado = $tarea->consultar();
+                $resultado = $tarea->Consultar();
 
                 $numeroRegistros = $tarea->conn->obtenerNumeroRegistros();
                 if($numeroRegistros === 1){

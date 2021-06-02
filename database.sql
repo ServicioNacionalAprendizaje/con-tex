@@ -182,7 +182,8 @@ insert  into `empleado`(`id_empleado`,`id_cargo`,`correo_institucional`,`fecha_i
 (2,2,'yestov@contex.com','2021-05-08','Equidad Seguros','Comfamiliar','Colpesiones',2,1200000,'1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),
 (4,4,'aletov@context.com','2021-05-08','Equidad Seguros','Comfamiliar','Colpesiones',4,1200000,'1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),
 (7,1,'hola@mundo.co','2021-06-01','Seguros Bolivar','Sanitas','Proteccion',5,1789,'1','2021-05-27 13:58:47','2021-06-01 21:40:36',1,1),
-(8,3,'aletov@contex.com','2021-06-01','Equidad Seguros','Comfamiliar','Colpesiones',3,1200000,'1','2021-06-01 23:29:33','2021-06-01 23:29:33',1,1);
+(8,3,'aletov@contex.com','2021-06-01','Equidad Seguros','Comfamiliar','Colpesiones',3,1200000,'1','2021-06-01 23:29:33','2021-06-01 23:29:33',1,1),
+(9,1,'edurado.andres@gmail.com','2021-06-01','Sura','Nueva Eps','Colpesiones',11,3000000,'1','2021-06-01 23:33:55','2021-06-01 23:33:55',1,1);
 
 /*Table structure for table `formulario` */
 
@@ -204,22 +205,22 @@ CREATE TABLE `formulario` (
 /*Data for the table `formulario` */
 
 insert  into `formulario`(`id_formulario`,`descripcion`,`etiqueta`,`ubicacion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
-(1,'Formulario','Seguridad','./vista/seguridad/formulario.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(2,'Formularios de rol','Seguridad','./vista/seguridad/formularioRol.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(3,'Persona','Seguridad','./vista/seguridad/persona.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(4,'Rol','Seguridad','./vista/seguridad/rol.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(5,'Usuario','Seguridad','./vista/seguridad/usuario.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(6,'Cargo','Nomina','./vista/nomina/cargo.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(7,'Empleado','Nomina','./vista/nomina/empleado.V.php','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(8,'Generar pago','Nomina','./vista/nomina/generarPago.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(9,'Pago del dia','Nomina','./vista/nomina/pagoDia.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(10,'Categoria','Produccion','./vista/produccion/categoria.V.php','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(11,'Detalles de orden','Produccion','./vista/produccion/detalleOrden.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(12,'Insumo','Produccion','./vista/produccion/insumo.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(13,'Orden','Produccion','./vista/produccion/orden.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(14,'Producto','Produccion','./vista/produccion/producto.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(15,'Tarea','Produccion','./vista/produccion/tarea.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(16,'Rol de usuario','Seguridad','./vista/seguridad/usuarioRol.V.html','0','2021-05-10 22:22:00','2021-06-01 23:31:39',1,1);
+(1,'Formulario','Seguridad','./vista/seguridad/formulario.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(2,'Formularios de rol','Seguridad','./vista/seguridad/formularioRol.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(3,'Persona','Seguridad','./vista/seguridad/persona.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(4,'Rol','Seguridad','./vista/seguridad/rol.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(5,'Usuario','Seguridad','./vista/seguridad/usuario.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(6,'Cargo','Nomina','./vista/nomina/cargo.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(7,'Empleado','Nomina','./vista/nomina/empleado.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(8,'Generar pago','Nomina','./vista/nomina/generarPago.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(9,'Pago del dia','Nomina','./vista/nomina/pagoDia.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(10,'Categoria','Produccion','./vista/produccion/categoria.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(11,'Detalles de orden','Produccion','./vista/produccion/detalleOrden.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(12,'Insumo','Produccion','./vista/produccion/insumo.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(13,'Orden','Produccion','./vista/produccion/orden.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(14,'Producto','Produccion','./vista/produccion/producto.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(15,'Tarea','Produccion','./vista/produccion/tarea.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(16,'Rol de usuario','Seguridad','./vista/seguridad/usuarioRol.V.html','1','2021-05-10 22:22:00','2021-06-01 23:31:39',1,1);
 
 /*Table structure for table `formulario_rol` */
 
@@ -244,22 +245,22 @@ CREATE TABLE `formulario_rol` (
 /*Data for the table `formulario_rol` */
 
 insert  into `formulario_rol`(`id_formulario_rol`,`id_rol`,`id_formulario`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
-(1,1,1,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(2,1,2,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(3,1,3,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(4,1,4,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(5,1,5,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(6,1,6,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(7,1,7,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(8,1,8,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(9,1,9,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(10,1,10,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(11,1,11,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(12,1,12,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(13,1,13,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(14,1,14,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(15,1,15,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(19,4,3,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(1,1,1,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(2,1,2,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(3,1,3,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(4,1,4,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(5,1,5,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(6,1,6,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(7,1,7,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(8,1,8,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(9,1,9,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(10,1,10,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(11,1,11,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(12,1,12,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(13,1,13,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(14,1,14,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(15,1,15,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(19,4,3,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (20,1,16,'1','2021-06-01 23:32:08','2021-06-01 23:32:08',1,1);
 
 /*Table structure for table `generar_pago` */
@@ -378,7 +379,8 @@ insert  into `persona`(`id_persona`,`nombre`,`apellido`,`documento`,`edad`,`gene
 (7,'Cliente#3','ACliente#3',1075264427,103,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
 (8,'Cliente#4','ACliente#4',1075264428,104,'F','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
 (9,'Cliente#5','ACliente#5',1075264429,105,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
-(10,'Oscar Leonardo','Perdomo',1081158586,26,'M','1','2021-06-01 23:14:56','2021-06-01 23:14:56',1,1);
+(10,'Oscar Leonardo','Perdomo',1081158586,26,'M','1','2021-06-01 23:14:56','2021-06-01 23:14:56',1,1),
+(11,'Eduardo Andres','Peña Rojas',1075264436,28,'M','1','2021-06-01 23:30:41','2021-06-01 23:30:41',1,1);
 
 /*Table structure for table `producto` */
 
@@ -445,10 +447,10 @@ CREATE TABLE `rol` (
 /*Data for the table `rol` */
 
 insert  into `rol`(`id_rol`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
-(1,'Administrador','0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
-(2,'Contador','0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
-(3,'Vendedor','0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
-(4,'Empleado','0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
+(1,'Administrador','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+(2,'Contador','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+(3,'Vendedor','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+(4,'Empleado','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
 
 /*Table structure for table `tarea` */
 
@@ -525,7 +527,8 @@ insert  into `usuario`(`id_usuario`,`usuario`,`contrasenia`,`fecha_activacion`,`
 (1,'ariel5253@misena.edu.co','0a5c79b1eaf15445da252ada718857e9','2021-05-16','2021-06-02',1,'1','2021-05-08 01:35:00','2021-06-01 21:01:53',1,1),
 (2,'carmen@.com','9f564fef13bb8a7f9faa5f9071e4e045','2021-05-02','2021-05-07',2,'1','2021-05-11 22:06:54','2021-06-01 20:21:55',1,2),
 (3,'ariel5253@misena.edu.com','31784d9fc1fa0d25d04eae50ac9bf787','2021-05-16','2021-06-02',5,'1','2021-05-11 22:11:21','2021-06-01 20:45:25',1,3),
-(4,'olperdomo6@misena.edu.co','149815eb972b3c370dee3b89d645ae14','2021-06-01','2022-01-01',10,'1','2021-06-01 23:16:47','2021-06-01 23:16:47',1,1);
+(4,'olperdomo6@misena.edu.co','149815eb972b3c370dee3b89d645ae14','2021-06-01','2022-01-01',10,'1','2021-06-01 23:16:47','2021-06-01 23:16:47',1,1),
+(5,'edurado.andres@gmail.com','e44985980c9d3c5d70b6a548b14d773a','2021-06-01','2022-06-01',11,'1','2021-06-01 23:32:32','2021-06-01 23:42:46',1,1);
 
 /*Table structure for table `usuario_rol` */
 
@@ -550,9 +553,10 @@ CREATE TABLE `usuario_rol` (
 /*Data for the table `usuario_rol` */
 
 insert  into `usuario_rol`(`id_usuario_rol`,`id_usuario`,`id_rol`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
-(1,1,1,'0','2021-05-10 05:00:22','2021-05-12 05:00:24',1,1),
+(1,1,1,'1','2021-05-10 05:00:22','2021-05-12 05:00:24',1,1),
 (2,3,4,'0','2021-05-10 05:00:22','2021-05-12 05:00:24',1,1),
-(3,4,1,'1','2021-06-01 23:18:20','2021-06-01 23:18:20',1,1);
+(3,4,1,'1','2021-06-01 23:18:20','2021-06-01 23:18:20',1,1),
+(4,5,1,'1','2021-06-01 23:00:00','2022-06-01 23:00:00',1,1);
 
 /* Procedure structure for procedure `Agregar_cargo` */
 

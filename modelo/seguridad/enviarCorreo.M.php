@@ -39,6 +39,7 @@ class enviarCorreo
     public function __destruct()
     {
         unset($this->correo);
+        unset($this->contrasenia);
     }
 
     public function EnviarCorreo()

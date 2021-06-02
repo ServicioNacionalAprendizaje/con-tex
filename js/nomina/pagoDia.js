@@ -59,6 +59,7 @@ function Enviar(accion,id){
 }
 
 function Limpiar(){
+    $('#hidIdPagoDia').val("");
     $('#hidIdEmpleado').val("");
     $('#txtEmpleado').val("");   
     $('#numPagoDia').val("");  
@@ -75,3 +76,18 @@ $(function(){
         }
      });
 });
+
+// $(function(){
+//     $("#numPagoDia").on({
+//         "focus": function (event) {
+//             $(event.target).select();
+//         },
+//         "keyup": function (event) {
+//             $(event.target).val(function (index, value ) {
+//                 return value.replace(/\D/g, "")
+//                             .replace(/([0-9])([0-9]{2})$/, '$1.$2')
+//                             .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+//             });
+//         }
+//     });
+// });

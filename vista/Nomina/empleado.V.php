@@ -92,13 +92,13 @@
                         <table id="tableDatos" class="table table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
+                                    <td align="center">Persona</td>
                                     <td align="center">Cargo</td>
                                     <td align="center">Correo institucional</td>
                                     <td align="center">Fecha ingreso</td>
                                     <td align="center">ARL</td>
                                     <td align="center">Salud</td>
                                     <td align="center">Pensión</td>
-                                    <td align="center">Persona</td>
                                     <td align="center">Sueldo básico</td>
                                     <td align="center">Estado</td>
                                     <td align="center">Modificar</td>

@@ -145,13 +145,13 @@ class Tarea{
     {
         $sentenciaSql = "CALL Agregar_tarea(
                             '$this->descripcion'
-                            ,'$this->valorUnitario'
-                            ,'$this->cantidad'
+                            ,$this->valorUnitario
+                            ,$this->cantidad
                             ,'$this->fecha'
                             ,'$this->estadoPago'
                             , $this->idEmpleado
                             ,'$this->estado'
-                            ,'$this->idUsuarioCreacion'
+                            ,$this->idUsuarioCreacion
                             , $this->idUsuarioModificacion)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
@@ -201,7 +201,8 @@ class Tarea{
                             ,CONCAT(p.nombre,' ',p.apellido) AS nombre
                         FROM 
                             tarea AS t
-                            INNER JOIN persona AS p ON t.id_empleado = p.id_persona
+                            INNER JOIN empleado AS e ON t.id_empleado = e.id_empleado 
+                            INNER JOIN persona AS p ON e.id_persona = p.id_persona 
                             $condicion";        		
         
         $this->conn->preparar($sentenciaSql);

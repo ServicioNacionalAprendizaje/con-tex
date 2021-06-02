@@ -68,7 +68,7 @@ if (isset ($accion)){
                 $orden->setFechaEntrega($_POST['fechaEntrega']);
                 $orden->setDescripcion($_POST['descripcion']);
                 $orden->setEstado($_POST['estado']);
-                $resultado = $orden->consultar();
+                $resultado = $orden->Consultar();
                 $numeroRegistros = $orden->conn->ObtenerNumeroRegistros();
                 if($numeroRegistros === 1){
                     if ($rowBuscar = $orden->conn->ObtenerObjeto()){

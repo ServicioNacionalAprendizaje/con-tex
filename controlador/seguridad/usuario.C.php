@@ -89,8 +89,7 @@ if (isset ($accion)){
                         foreach($usuario->conn->ObtenerRegistros()AS $rowConsulta){
                             $retorno .= "<tr>
                                         <td><label>".$rowConsulta[7]."</label></td>                                          
-                                        <td><label>".$rowConsulta[1]."</label></td>                                             
-                                        <td><label>".$rowConsulta[2]."</label></td>                                        
+                                        <td><label>".$rowConsulta[1]."</label></td>                                        
                                         <td><label>".$rowConsulta[3]."</label></td>                                                                                               
                                         <td><label>".$rowConsulta[4]."</label></td>
                                         <td><label>".($rowConsulta[5]== 1 ? 'Activo':'Inactivo')."</label></td>

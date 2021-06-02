@@ -74,6 +74,7 @@ if (isset ($accion)){
                         $respuesta['idEmpleado'] = $rowBuscar->id_empleado;
                         $respuesta['nombre'] = $rowBuscar->nombre;
                         $respuesta['pagoDia'] = $rowBuscar->pago_dia;
+                        $respuesta['fechaPago'] = $rowBuscar->fecha_pago_dia;
                         $respuesta['estado'] = $rowBuscar->estado;
                         $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_pago_dia.")'>";
                     }
@@ -83,9 +84,9 @@ if (isset ($accion)){
                         foreach($pagoDia->conn->ObtenerRegistros() AS $rowConsulta){
                             $retorno .= "<tr>                                          
                                         <td><label>".$rowConsulta[1]."</label></td>                                             
-                                        <td><label>".$rowConsulta[2]."</label></td>
+                                        <td><label>$".$rowConsulta[2]."</label></td>
                                         <td><label>".$rowConsulta[3]."</label></td>                                        
-                                        <td><label>".($rowConsulta[4]== 1 ? 'Activo':'Inactivo')."</label></td>                                                                                              
+                                        <td><label>".($rowConsulta[4]== 1 ? 'Pagado':'Sin pagar')."</label></td>                                                                                              
                                         <td align='center'><a href='#' class='btn btn-warning'><i class='fas fa-edit' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></i></a></td>
                                         <td align='center'><a href='#' class='btn btn-danger'><i class='fas fa-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></i></a></td>                                         
                                         </tr>";

@@ -17,6 +17,9 @@ function Enviar(accion,id){
            
             success:  function (respuesta) { //procesa y devuelve la respuesta
                 // console.log(respuesta); 
+
+                //Reiniciar datatable
+                $("#tableDatos").dataTable().fnDestroy();
                 
                 //Respueta adicionar
                 if(respuesta['accion']=='ADICIONAR'){
@@ -66,6 +69,7 @@ function Enviar(accion,id){
                 if(respuesta['accion']=='MODIFICAR'){
                     alert(respuesta['respuesta']);
                     Limpiar();
+                    $("#btnBuscar").trigger("click");
                 }
                 
                 //Respuesta eliminar

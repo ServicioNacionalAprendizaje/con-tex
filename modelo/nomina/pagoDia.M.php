@@ -138,7 +138,7 @@ class pagoDia
 
     public function Eliminar()
     {
-        $sentenciaSql = "DELETE FROM pagoDia 
+        $sentenciaSql = "DELETE FROM pago_dia 
                             WHERE id_pago_dia = $this->idPagoDia";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
@@ -159,7 +159,8 @@ class pagoDia
                         FROM persona AS p
                         INNER JOIN empleado AS e ON e.id_persona = p.id_persona
                         INNER JOIN pago_dia AS pd ON pd.id_empleado = e.id_empleado
-                        $condicion";
+                        $condicion
+                        ORDER BY pd.fecha_pago_dia DESC";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -183,37 +184,26 @@ class pagoDia
         $whereAnd = " WHERE ";
         $condicion = " ";
         if($this->idPagoDia !=''){
-            $condicion=$whereAnd.$condicion." id_pago_dia  = $this->idPagoDia";
+            $condicion=$whereAnd.$condicion." pd.id_pago_dia  = $this->idPagoDia";
             $whereAnd = ' AND ';
         }
-        // if($this->idCargo !=''){
-        //         $condicion=$condicion.$whereAnd." descripcion LIKE '%$this->idCargo%' ";
-        //         $whereAnd = ' AND ';
-        // }        
-        // if($this->estado!=''){
-        //         if ($whereAnd == ' AND '){
-        //         $condicion=$condicion.$whereAnd." seg_usu.estado = '$this->estado'";
-        //         $whereAnd = ' AND ';
-        //         }
-        //         else{
-        //         $condicion=$whereAnd.$condicion." seg_usu.estado = '$this->estado'";
-        //         $whereAnd = ' AND ';
-        //         }
-        //     }
-        // if($this->fechaActivacion!=''){
-        //         $condicion=$condicion.$whereAnd." seg_usu.fecha_activacion = '$this->fechaActivacion' ";
-        //         $whereAnd = ' AND ';
-        // }
-        // if($this->fechaExpiracion!=''){
-        //         $condicion=$condicion.$whereAnd." seg_usu.fecha_expiracion = '$this->fechaExpiracion' ";
-        //         $whereAnd = ' AND ';
-        // }
+        if($this->idEmpleado!=''){
+            $condicion=$condicion.$whereAnd." pd.id_empleado = $this->idEmpleado ";
+            $whereAnd = ' AND ';
+        }
+        if($this->fechaPago!=''){
+            $condicion=$condicion.$whereAnd." pd.fecha_pago_dia = '$this->fechaPago' ";
+            $whereAnd = ' AND ';
+        }
+        if($this->estado!=''){
+            $condicion=$condicion.$whereAnd." pd.estado = '$this->estado' ";
+            $whereAnd = ' AND ';
+        }
         return $condicion;
     }
 
     public function __destruct()
     {
-
         unset($this->idPagoDia);
         unset($this->idEmpleado);
         unset($this->pagoDia);

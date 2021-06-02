@@ -97,13 +97,13 @@ if (isset ($accion)){
                         $retorno="<table>";
                         foreach($empleado->conn->ObtenerRegistros() AS $rowConsulta){
                             $retorno .= "<tr>                                          
-                                            <td><label>".$rowConsulta[8]."</label></td>                                             
-                                            <td><label>".$rowConsulta[1]."</label></td>                                        
-                                            <td><label>".$rowConsulta[2]."</label></td>     
-                                            <td><label>".$rowConsulta[3]."</label></td>                                             
-                                            <td><label>".$rowConsulta[4]."</label></td>                                        
+                                            <td><label>".$rowConsulta[11]."</label></td>                                             
+                                            <td><label>".$rowConsulta[8]."</label></td>                                        
+                                            <td><label>".$rowConsulta[1]."</label></td>     
+                                            <td><label>".$rowConsulta[2]."</label></td>                                             
+                                            <td><label>".$rowConsulta[3]."</label></td>                                        
+                                            <td><label>".$rowConsulta[4]."</label></td>
                                             <td><label>".$rowConsulta[5]."</label></td>
-                                            <td><label>".$rowConsulta[11]."</label></td>
                                             <td><label>".$rowConsulta[10]."</label></td>
                                             <td><label>".($rowConsulta[6]== 1 ? 'Activo' : 'Inactivo')."</label></td>
                                             <td align='center' style='cursor: pointer'><span class='icon-edit1' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></td>

@@ -1,8 +1,8 @@
 /*
-SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.5.5-10.4.18-MariaDB : Database - contex
+SQLyog Professional v12.5.1 (64 bit)
+MySQL - 10.4.18-MariaDB : Database - contex
 *********************************************************************
-*/
+*/
 
 /*!40101 SET NAMES utf8 */;
 
@@ -33,11 +33,11 @@ CREATE TABLE `cargo` (
 
 /*Data for the table `cargo` */
 
-LOCK TABLES `cargo` WRITE;
-
-insert  into `cargo`(`id_cargo`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'Administrador','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(2,'Contador','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(3,'Empleado','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(4,'Vendedor','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1);
-
-UNLOCK TABLES;
+insert  into `cargo`(`id_cargo`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+(1,'Administrador','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),
+(2,'Contador','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),
+(3,'Costurer@','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),
+(4,'Vendedor','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1);
 
 /*Table structure for table `categoria` */
 
@@ -56,11 +56,12 @@ CREATE TABLE `categoria` (
 
 /*Data for the table `categoria` */
 
-LOCK TABLES `categoria` WRITE;
-
-insert  into `categoria`(`id_categoria`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'Camisas','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(2,'Pantalones','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(3,'Vestidos','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(4,'Sueteres','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(5,'Interiores','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1);
-
-UNLOCK TABLES;
+insert  into `categoria`(`id_categoria`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+(1,'Camisas','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),
+(2,'Pantalones','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),
+(3,'Vestidos','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),
+(4,'Sueteres','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),
+(5,'Interiores','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1);
 
 /*Table structure for table `cliente` */
 
@@ -81,11 +82,12 @@ CREATE TABLE `cliente` (
 
 /*Data for the table `cliente` */
 
-LOCK TABLES `cliente` WRITE;
-
-insert  into `cliente`(`id_cliente`,`id_persona`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,5,'1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(2,6,'1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(3,7,'1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(4,8,'1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(5,9,'1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
-
-UNLOCK TABLES;
+insert  into `cliente`(`id_cliente`,`id_persona`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+(1,5,'1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+(2,6,'1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+(3,7,'1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+(4,8,'1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+(5,9,'1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
 
 /*Table structure for table `compra_venta` */
 
@@ -113,10 +115,6 @@ CREATE TABLE `compra_venta` (
 
 /*Data for the table `compra_venta` */
 
-LOCK TABLES `compra_venta` WRITE;
-
-UNLOCK TABLES;
-
 /*Table structure for table `detalle_orden` */
 
 DROP TABLE IF EXISTS `detalle_orden`;
@@ -142,11 +140,14 @@ CREATE TABLE `detalle_orden` (
 
 /*Data for the table `detalle_orden` */
 
-LOCK TABLES `detalle_orden` WRITE;
-
-insert  into `detalle_orden`(`id_detalle_orden`,`valor_inventario`,`valor_venta`,`cantidad`,`id_orden`,`id_producto`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,1100,2100,10,1,1,'1','2021-05-26 19:07:00','2021-05-26 19:07:00',1,1),(2,1200,2200,2,2,1,'1','2021-05-26 19:07:00','2021-05-26 19:07:00',1,1),(3,1100,2300,20,1,2,'1','2021-05-27 19:07:00','2021-05-27 19:07:00',1,1),(4,1300,2400,3,2,3,'1','2021-05-28 19:07:00','2021-05-28 19:07:00',1,1),(5,1400,2500,3,3,4,'1','2021-05-29 19:07:00','2021-05-29 19:07:00',1,1),(6,1500,2200,30,5,6,'0','2021-05-30 19:07:00','2021-05-30 19:07:00',1,1),(7,1600,2700,40,3,3,'0','2021-05-31 19:07:00','2021-05-31 19:07:00',1,1);
-
-UNLOCK TABLES;
+insert  into `detalle_orden`(`id_detalle_orden`,`valor_inventario`,`valor_venta`,`cantidad`,`id_orden`,`id_producto`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+(1,1100,2100,10,1,1,'1','2021-05-26 19:07:00','2021-05-26 19:07:00',1,1),
+(2,1200,2200,2,2,1,'1','2021-05-26 19:07:00','2021-05-26 19:07:00',1,1),
+(3,1100,2300,20,1,2,'1','2021-05-27 19:07:00','2021-05-27 19:07:00',1,1),
+(4,1300,2400,3,2,3,'1','2021-05-28 19:07:00','2021-05-28 19:07:00',1,1),
+(5,1400,2500,3,3,4,'1','2021-05-29 19:07:00','2021-05-29 19:07:00',1,1),
+(6,1500,2200,30,5,6,'0','2021-05-30 19:07:00','2021-05-30 19:07:00',1,1),
+(7,1600,2700,40,3,3,'0','2021-05-31 19:07:00','2021-05-31 19:07:00',1,1);
 
 /*Table structure for table `empleado` */
 
@@ -172,15 +173,16 @@ CREATE TABLE `empleado` (
   KEY `id_cargo` (`id_cargo`),
   CONSTRAINT `empleado_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`),
   CONSTRAINT `empleado_ibfk_2` FOREIGN KEY (`id_cargo`) REFERENCES `cargo` (`id_cargo`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `empleado` */
 
-LOCK TABLES `empleado` WRITE;
-
-insert  into `empleado`(`id_empleado`,`id_cargo`,`correo_institucional`,`fecha_ingreso`,`arl`,`salud`,`pension`,`id_persona`,`sueldo_basico`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,1,'cargon@contex.coma','2021-06-01','Equidad Seguros','Comfamiliar','Colpesiones',1,22,'1','2021-05-08 01:35:00','2021-06-01 21:39:51',1,1),(2,2,'yestov@contex.com','2021-05-08','Equidad Seguros','Comfamiliar','Colpesiones',2,1200000,'1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(3,3,'yestov@contex.com','2021-05-08','Equidad Seguros','Comfamiliar','Colpesiones',3,1200000,'1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(4,4,'aletov@context.com','2021-05-08','Equidad Seguros','Comfamiliar','Colpesiones',4,1200000,'1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),(7,1,'hola@mundo.co','2021-06-01','Seguros Bolivar','Sanitas','Proteccion',5,1789,'1','2021-05-27 13:58:47','2021-06-01 21:40:36',1,1);
-
-UNLOCK TABLES;
+insert  into `empleado`(`id_empleado`,`id_cargo`,`correo_institucional`,`fecha_ingreso`,`arl`,`salud`,`pension`,`id_persona`,`sueldo_basico`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+(1,1,'cargon@contex.coma','2021-06-01','Equidad Seguros','Comfamiliar','Colpesiones',1,22,'1','2021-05-08 01:35:00','2021-06-01 21:39:51',1,1),
+(2,2,'yestov@contex.com','2021-05-08','Equidad Seguros','Comfamiliar','Colpesiones',2,1200000,'1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),
+(4,4,'aletov@context.com','2021-05-08','Equidad Seguros','Comfamiliar','Colpesiones',4,1200000,'1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),
+(7,1,'hola@mundo.co','2021-06-01','Seguros Bolivar','Sanitas','Proteccion',5,1789,'1','2021-05-27 13:58:47','2021-06-01 21:40:36',1,1),
+(8,3,'aletov@contex.com','2021-06-01','Equidad Seguros','Comfamiliar','Colpesiones',3,1200000,'1','2021-06-01 23:29:33','2021-06-01 23:29:33',1,1);
 
 /*Table structure for table `formulario` */
 
@@ -201,11 +203,23 @@ CREATE TABLE `formulario` (
 
 /*Data for the table `formulario` */
 
-LOCK TABLES `formulario` WRITE;
-
-insert  into `formulario`(`id_formulario`,`descripcion`,`etiqueta`,`ubicacion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'Formulario','Seguridad','./vista/seguridad/formulario.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(2,'Formularios de rol','Seguridad','./vista/seguridad/formularioRol.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(3,'Persona','Seguridad','./vista/seguridad/persona.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(4,'Rol','Seguridad','./vista/seguridad/rol.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(5,'Usuario','Seguridad','./vista/seguridad/usuario.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(6,'Cargo','Nomina','./vista/nomina/cargo.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(7,'Empleado','Nomina','./vista/nomina/empleado.V.php','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(8,'Generar pago','Nomina','./vista/nomina/generarPago.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(9,'Pago del dia','Nomina','./vista/nomina/pagoDia.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(10,'Categoria','Produccion','./vista/produccion/categoria.V.php','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(11,'Detalles de orden','Produccion','./vista/produccion/detalleOrden.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(12,'Insumo','Produccion','./vista/produccion/insumo.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(13,'Orden','Produccion','./vista/produccion/orden.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(14,'Producto','Produccion','./vista/produccion/producto.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(15,'Tarea','Produccion','./vista/produccion/tarea.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(16,'Roles de Usuario','Seguridad','./vista/seguridad/usuarioRol.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1);
-
-UNLOCK TABLES;
+insert  into `formulario`(`id_formulario`,`descripcion`,`etiqueta`,`ubicacion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+(1,'Formulario','Seguridad','./vista/seguridad/formulario.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(2,'Formularios de rol','Seguridad','./vista/seguridad/formularioRol.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(3,'Persona','Seguridad','./vista/seguridad/persona.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(4,'Rol','Seguridad','./vista/seguridad/rol.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(5,'Usuario','Seguridad','./vista/seguridad/usuario.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(6,'Cargo','Nomina','./vista/nomina/cargo.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(7,'Empleado','Nomina','./vista/nomina/empleado.V.php','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(8,'Generar pago','Nomina','./vista/nomina/generarPago.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(9,'Pago del dia','Nomina','./vista/nomina/pagoDia.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(10,'Categoria','Produccion','./vista/produccion/categoria.V.php','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(11,'Detalles de orden','Produccion','./vista/produccion/detalleOrden.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(12,'Insumo','Produccion','./vista/produccion/insumo.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(13,'Orden','Produccion','./vista/produccion/orden.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(14,'Producto','Produccion','./vista/produccion/producto.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(15,'Tarea','Produccion','./vista/produccion/tarea.V.html','0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(16,'Rol de usuario','Seguridad','./vista/seguridad/usuarioRol.V.html','0','2021-05-10 22:22:00','2021-06-01 23:31:39',1,1);
 
 /*Table structure for table `formulario_rol` */
 
@@ -225,15 +239,28 @@ CREATE TABLE `formulario_rol` (
   KEY `id_formulario` (`id_formulario`),
   CONSTRAINT `formulario_rol_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`),
   CONSTRAINT `formulario_rol_ibfk_2` FOREIGN KEY (`id_formulario`) REFERENCES `formulario` (`id_formulario`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `formulario_rol` */
 
-LOCK TABLES `formulario_rol` WRITE;
-
-insert  into `formulario_rol`(`id_formulario_rol`,`id_rol`,`id_formulario`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,1,1,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(2,1,2,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(3,1,3,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(4,1,4,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(5,1,5,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(6,1,6,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(7,1,7,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(8,1,8,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(9,1,9,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(10,1,10,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(11,1,11,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(12,1,12,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(13,1,13,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(14,1,14,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(15,1,15,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),(19,4,3,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1);
-
-UNLOCK TABLES;
+insert  into `formulario_rol`(`id_formulario_rol`,`id_rol`,`id_formulario`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+(1,1,1,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(2,1,2,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(3,1,3,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(4,1,4,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(5,1,5,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(6,1,6,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(7,1,7,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(8,1,8,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(9,1,9,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(10,1,10,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(11,1,11,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(12,1,12,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(13,1,13,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(14,1,14,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(15,1,15,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(19,4,3,'0','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(20,1,16,'1','2021-06-01 23:32:08','2021-06-01 23:32:08',1,1);
 
 /*Table structure for table `generar_pago` */
 
@@ -257,10 +284,6 @@ CREATE TABLE `generar_pago` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `generar_pago` */
-
-LOCK TABLES `generar_pago` WRITE;
-
-UNLOCK TABLES;
 
 /*Table structure for table `orden` */
 
@@ -287,11 +310,12 @@ CREATE TABLE `orden` (
 
 /*Data for the table `orden` */
 
-LOCK TABLES `orden` WRITE;
-
-insert  into `orden`(`id_orden`,`fecha_orden`,`fecha_entrega`,`descripcion`,`id_cliente`,`id_empleado`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'2021-05-21 07:00:00','2021-06-21 07:00:00','Camisas x 10',5,1,'1','2021-05-21 07:00:00','2021-05-21 07:00:00',1,1),(2,'2021-05-22 08:00:00','2021-05-27 08:00:00','Pantalones x 2',4,2,'1','2021-05-22 08:00:00','2021-05-22 08:00:00',1,1),(3,'2021-05-22 09:00:00','2021-06-22 09:00:00','Medias x 20',3,3,'1','2021-05-22 09:00:00','2021-05-22 09:00:00',1,1),(4,'2021-05-23 10:00:00','2021-06-13 10:00:00','Vestidos x 3',2,4,'0','2021-05-23 10:00:00','2021-05-23 10:00:00',1,1),(5,'2021-05-23 11:00:00','2021-06-16 11:00:00','Sacos x 3',1,1,'1','2021-05-23 11:00:00','2021-05-23 11:00:00',1,1);
-
-UNLOCK TABLES;
+insert  into `orden`(`id_orden`,`fecha_orden`,`fecha_entrega`,`descripcion`,`id_cliente`,`id_empleado`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+(1,'2021-05-21 07:00:00','2021-06-21 07:00:00','Camisas x 10',5,1,'1','2021-05-21 07:00:00','2021-05-21 07:00:00',1,1),
+(2,'2021-05-22 08:00:00','2021-05-27 08:00:00','Pantalones x 2',4,2,'1','2021-05-22 08:00:00','2021-05-22 08:00:00',1,1),
+(3,'2021-05-22 09:00:00','2021-06-22 09:00:00','Medias x 20',3,3,'1','2021-05-22 09:00:00','2021-05-22 09:00:00',1,1),
+(4,'2021-05-23 10:00:00','2021-06-13 10:00:00','Vestidos x 3',2,4,'0','2021-05-23 10:00:00','2021-05-23 10:00:00',1,1),
+(5,'2021-05-23 11:00:00','2021-06-16 11:00:00','Sacos x 3',1,1,'1','2021-05-23 11:00:00','2021-05-23 11:00:00',1,1);
 
 /*Table structure for table `pago_dia` */
 
@@ -302,6 +326,7 @@ CREATE TABLE `pago_dia` (
   `id_empleado` int(11) NOT NULL,
   `pago_dia` double NOT NULL,
   `estado` enum('0','1') NOT NULL,
+  `fecha_pago_dia` date NOT NULL,
   `fecha_creacion` datetime NOT NULL,
   `fecha_modificacion` datetime NOT NULL,
   `id_usuario_creacion` int(11) NOT NULL,
@@ -309,13 +334,17 @@ CREATE TABLE `pago_dia` (
   PRIMARY KEY (`id_pago_dia`),
   KEY `id_empleado` (`id_empleado`),
   CONSTRAINT `pago_dia_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `pago_dia` */
 
-LOCK TABLES `pago_dia` WRITE;
-
-UNLOCK TABLES;
+insert  into `pago_dia`(`id_pago_dia`,`id_empleado`,`pago_dia`,`estado`,`fecha_pago_dia`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+(1,1,45000,'1','2021-05-31','2021-06-01 23:24:33','2021-06-01 23:24:33',1,1),
+(2,2,35000,'0','2021-06-01','2021-06-01 23:25:04','2021-06-01 23:25:04',1,1),
+(3,1,42000,'1','2021-05-12','2021-06-01 23:26:09','2021-06-01 23:26:09',1,1),
+(4,1,42000,'1','2021-05-13','2021-06-01 23:26:32','2021-06-01 23:26:32',1,1),
+(5,1,42000,'0','2021-05-22','2021-06-01 23:26:55','2021-06-01 23:26:55',1,1),
+(6,8,50000,'0','2021-04-16','2021-06-01 23:30:00','2021-06-01 23:30:00',1,1);
 
 /*Table structure for table `persona` */
 
@@ -335,15 +364,21 @@ CREATE TABLE `persona` (
   `id_usuario_modificacion` int(11) NOT NULL,
   PRIMARY KEY (`id_persona`),
   UNIQUE KEY `documento` (`documento`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `persona` */
 
-LOCK TABLES `persona` WRITE;
-
-insert  into `persona`(`id_persona`,`nombre`,`apellido`,`documento`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'Yesica','Tovar',1075264421,26,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),(2,'Carmenza','Gonzalez',1075264422,42,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),(3,'Alejandra','Tovar',1075264423,22,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),(4,'Costurera','SiDatos',1075264424,11,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),(5,'Cliente#1','ACliente#1',1075264425,101,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(6,'Cliente#2','ACliente#2',1075264426,102,'F','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(7,'Cliente#3','ACliente#3',1075264427,103,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(8,'Cliente#4','ACliente#4',1075264428,104,'F','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(9,'Cliente#5','ACliente#5',1075264429,105,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
-
-UNLOCK TABLES;
+insert  into `persona`(`id_persona`,`nombre`,`apellido`,`documento`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+(1,'Yesica','Tovar',1075264421,26,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),
+(2,'Carmenza','Gonzalez',1075264422,42,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),
+(3,'Alejandra','Tovar',1075264423,22,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),
+(4,'Costurera','SiDatos',1075264424,11,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),
+(5,'Cliente#1','ACliente#1',1075264425,101,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+(6,'Cliente#2','ACliente#2',1075264426,102,'F','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+(7,'Cliente#3','ACliente#3',1075264427,103,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+(8,'Cliente#4','ACliente#4',1075264428,104,'F','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+(9,'Cliente#5','ACliente#5',1075264429,105,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+(10,'Oscar Leonardo','Perdomo',1081158586,26,'M','1','2021-06-01 23:14:56','2021-06-01 23:14:56',1,1);
 
 /*Table structure for table `producto` */
 
@@ -366,11 +401,12 @@ CREATE TABLE `producto` (
 
 /*Data for the table `producto` */
 
-LOCK TABLES `producto` WRITE;
-
-insert  into `producto`(`id_producto`,`descripcion`,`talla`,`estado`,`id_categoria`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'camisa','L','1',1,'2021-05-26 19:07:00','2021-05-26 19:07:00',1,1),(2,'pantalon','32','1',2,'2021-05-26 19:07:00','2021-05-26 19:07:00',1,1),(3,'medias','43','1',3,'2021-05-26 19:07:00','2021-05-26 19:07:00',1,1),(4,'vestido','S','1',4,'2021-05-26 19:07:00','2021-05-26 19:07:00',1,1),(5,'saco','L','1',5,'2021-05-26 19:07:00','2021-05-26 19:07:00',1,1);
-
-UNLOCK TABLES;
+insert  into `producto`(`id_producto`,`descripcion`,`talla`,`estado`,`id_categoria`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+(1,'camisa','L','1',1,'2021-05-26 19:07:00','2021-05-26 19:07:00',1,1),
+(2,'pantalon','32','1',2,'2021-05-26 19:07:00','2021-05-26 19:07:00',1,1),
+(3,'medias','43','1',3,'2021-05-26 19:07:00','2021-05-26 19:07:00',1,1),
+(4,'vestido','S','1',4,'2021-05-26 19:07:00','2021-05-26 19:07:00',1,1),
+(5,'saco','L','1',5,'2021-05-26 19:07:00','2021-05-26 19:07:00',1,1);
 
 /*Table structure for table `proveedor` */
 
@@ -391,10 +427,6 @@ CREATE TABLE `proveedor` (
 
 /*Data for the table `proveedor` */
 
-LOCK TABLES `proveedor` WRITE;
-
-UNLOCK TABLES;
-
 /*Table structure for table `rol` */
 
 DROP TABLE IF EXISTS `rol`;
@@ -412,11 +444,11 @@ CREATE TABLE `rol` (
 
 /*Data for the table `rol` */
 
-LOCK TABLES `rol` WRITE;
-
-insert  into `rol`(`id_rol`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'Administrador','0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(2,'Contador','0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(3,'Vendedor','0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),(4,'Empleado','0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
-
-UNLOCK TABLES;
+insert  into `rol`(`id_rol`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+(1,'Administrador','0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+(2,'Contador','0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+(3,'Vendedor','0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+(4,'Empleado','0','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
 
 /*Table structure for table `tarea` */
 
@@ -442,11 +474,11 @@ CREATE TABLE `tarea` (
 
 /*Data for the table `tarea` */
 
-LOCK TABLES `tarea` WRITE;
-
-insert  into `tarea`(`id_tarea`,`descripcion`,`valor_unitario`,`cantidad`,`fecha`,`estado_pago`,`id_empleado`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'Hola',10000,10,'2021-05-17 00:00:00','Por pagar',2,'1','2021-05-12 22:36:37','2021-05-12 22:36:37',1,1),(14,'Hola',10000,10,'0000-00-00 00:00:00','Por pagar',1,'1','2021-05-29 21:59:45','2021-05-29 21:59:45',1,1),(15,'Chao',2334234,3242342,'2021-05-29 00:00:00','Pagado',3,'0','2021-05-29 22:04:04','2021-05-29 22:04:04',1,1),(16,'dsfsdgds',3454235,45453245,'2021-05-30 00:00:00','Por pagar',1,'1','2021-05-29 22:18:35','2021-05-29 22:18:35',1,1);
-
-UNLOCK TABLES;
+insert  into `tarea`(`id_tarea`,`descripcion`,`valor_unitario`,`cantidad`,`fecha`,`estado_pago`,`id_empleado`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+(1,'Hola',10000,10,'2021-05-17 00:00:00','Por pagar',2,'1','2021-05-12 22:36:37','2021-05-12 22:36:37',1,1),
+(14,'Hola',10000,10,'0000-00-00 00:00:00','Por pagar',1,'1','2021-05-29 21:59:45','2021-05-29 21:59:45',1,1),
+(15,'Chao',2334234,3242342,'2021-05-29 00:00:00','Pagado',3,'0','2021-05-29 22:04:04','2021-05-29 22:04:04',1,1),
+(16,'dsfsdgds',3454235,45453245,'2021-05-30 00:00:00','Por pagar',1,'1','2021-05-29 22:18:35','2021-05-29 22:18:35',1,1);
 
 /*Table structure for table `tipo_pago` */
 
@@ -464,10 +496,6 @@ CREATE TABLE `tipo_pago` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tipo_pago` */
-
-LOCK TABLES `tipo_pago` WRITE;
-
-UNLOCK TABLES;
 
 /*Table structure for table `usuario` */
 
@@ -489,15 +517,15 @@ CREATE TABLE `usuario` (
   UNIQUE KEY `id_persona_UNIQUE` (`id_persona`),
   KEY `id_persona` (`id_persona`),
   CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `usuario` */
 
-LOCK TABLES `usuario` WRITE;
-
-insert  into `usuario`(`id_usuario`,`usuario`,`contrasenia`,`fecha_activacion`,`fecha_expiracion`,`id_persona`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,'ariel5253@misena.edu.co','0a5c79b1eaf15445da252ada718857e9','2021-05-16','2021-06-02',1,'1','2021-05-08 01:35:00','2021-06-01 21:01:53',1,1),(2,'carmen@.com','9f564fef13bb8a7f9faa5f9071e4e045','2021-05-02','2021-05-07',2,'1','2021-05-11 22:06:54','2021-06-01 20:21:55',1,2),(3,'ariel5253@misena.edu.com','31784d9fc1fa0d25d04eae50ac9bf787','2021-05-16','2021-06-02',5,'1','2021-05-11 22:11:21','2021-06-01 20:45:25',1,3);
-
-UNLOCK TABLES;
+insert  into `usuario`(`id_usuario`,`usuario`,`contrasenia`,`fecha_activacion`,`fecha_expiracion`,`id_persona`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+(1,'ariel5253@misena.edu.co','0a5c79b1eaf15445da252ada718857e9','2021-05-16','2021-06-02',1,'1','2021-05-08 01:35:00','2021-06-01 21:01:53',1,1),
+(2,'carmen@.com','9f564fef13bb8a7f9faa5f9071e4e045','2021-05-02','2021-05-07',2,'1','2021-05-11 22:06:54','2021-06-01 20:21:55',1,2),
+(3,'ariel5253@misena.edu.com','31784d9fc1fa0d25d04eae50ac9bf787','2021-05-16','2021-06-02',5,'1','2021-05-11 22:11:21','2021-06-01 20:45:25',1,3),
+(4,'olperdomo6@misena.edu.co','149815eb972b3c370dee3b89d645ae14','2021-06-01','2022-01-01',10,'1','2021-06-01 23:16:47','2021-06-01 23:16:47',1,1);
 
 /*Table structure for table `usuario_rol` */
 
@@ -517,15 +545,14 @@ CREATE TABLE `usuario_rol` (
   KEY `id_rol` (`id_rol`),
   CONSTRAINT `usuario_rol_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
   CONSTRAINT `usuario_rol_ibfk_2` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `usuario_rol` */
 
-LOCK TABLES `usuario_rol` WRITE;
-
-insert  into `usuario_rol`(`id_usuario_rol`,`id_usuario`,`id_rol`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values (1,1,1,'0','2021-05-10 05:00:22','2021-05-12 05:00:24',1,1),(2,3,4,'0','2021-05-10 05:00:22','2021-05-12 05:00:24',1,1);
-
-UNLOCK TABLES;
+insert  into `usuario_rol`(`id_usuario_rol`,`id_usuario`,`id_rol`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+(1,1,1,'0','2021-05-10 05:00:22','2021-05-12 05:00:24',1,1),
+(2,3,4,'0','2021-05-10 05:00:22','2021-05-12 05:00:24',1,1),
+(3,4,1,'1','2021-06-01 23:18:20','2021-06-01 23:18:20',1,1);
 
 /* Procedure structure for procedure `Agregar_cargo` */
 
@@ -854,14 +881,20 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_pago_dia`(IN idEmpleado INT(11)
-																		,IN pagoDia DOUBLE
-																		,IN idUsuarioCreacion INT(11)
-																		,IN idUsuarioModificacion INT(11)
-																		)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_pago_dia`(
+	IN `idEmpleado` INT(11),
+	IN `pagoDia` DOUBLE,
+	IN `fechaPago` DATE,
+	IN `estado` ENUM('0','1'),
+	IN `idUsuarioCreacion` INT(11),
+	IN `idUsuarioModificacion` INT(11)
+)
 BEGIN
-	INSERT INTO pago_dia(id_empleado
+	INSERT INTO pago_dia(
+						id_empleado
 						,pago_dia
+						,fecha_pago_dia
+						,estado
 						,fecha_creacion
 						,fecha_modificacion
 						,id_usuario_creacion
@@ -869,6 +902,8 @@ BEGIN
 						) 
 	VALUES (idEmpleado
 			,pagoDia
+			,fechaPago
+			,estado
 			,NOW()
 			,NOW()
 			,idUsuarioCreacion
@@ -1356,16 +1391,19 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_pago_dia`(IN idEmpleado INT(11)
-																			,IN pagoDia DOUBLE
-																			,IN estado ENUM('0','1')
-																			,IN idUsuarioModificacion INT(11)
-																			,IN idPagoDia INT(11)
-																			)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_pago_dia`(
+	IN `idEmpleado` INT(11),
+	IN `pagoDia` DOUBLE,
+	IN `fechaPago` DATE,
+	IN `estado` ENUM('0','1'),
+	IN `idUsuarioModificacion` INT(11),
+	IN `idPagoDia` INT(11)
+)
 BEGIN
 	UPDATE pago_dia 
 	SET id_empleado = idEmpleado
 		,pago_dia = pagoDia
+		,fecha_pago_dia = fechaPago
 		,estado = estado
 		,fecha_modificacion = NOW()
 		,id_usuario_modificacion = idUsuarioModificacion 

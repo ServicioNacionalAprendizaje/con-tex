@@ -30,6 +30,7 @@ function Enviar(accion,id){
                 //Respuesta muchos registros
                 if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']>1){
                     $("#resultado").html(respuesta['tablaRegistro']);
+                    
                     //Código para DataTable
 
                 //Para inicializar datatable de la manera más simple

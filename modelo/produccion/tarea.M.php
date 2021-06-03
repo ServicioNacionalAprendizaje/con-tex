@@ -209,7 +209,64 @@ class Tarea{
         $this->conn->ejecutar();
         return true;
     }
-    private function obtenerCondicion(){}
+
+    public function BuscarEmpleado(){
+        $sentenciaSql = "SELECT 
+                            CONCAT(p.nombre,' ',p.apellido) AS nombre
+                            ,e.id_empleado 
+                        FROM persona AS p 
+                            INNER JOIN empleado AS e ON p.id_persona = e.id_persona 
+                        WHERE p.estado = '1' AND e.estado = '1' AND nombre LIKE '%$this->descripcion%' 
+                        -- GROUP BY p.id_persona;";
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+        return true;
+
+    }
+    private function obtenerCondicion()
+    {
+        $whereAnd = " WHERE ";
+        $condicion = " ";
+        if($this->idTarea !=''){
+            $condicion=$whereAnd.$condicion." id_tarea  = $this->idTarea";
+            $whereAnd = ' AND ';
+        }
+        if($this->descripcion !=''){
+            $condicion=$condicion.$whereAnd." descripcion LIKE '%$this->descripcion%' ";
+            $whereAnd = ' AND ';
+        }        
+        if($this->estado!=''){
+                if ($whereAnd == ' AND '){
+                $condicion=$condicion.$whereAnd." estado = '$this->estado'";
+                $whereAnd = ' AND ';
+                }
+                else{
+                $condicion=$whereAnd.$condicion." estado = '$this->estado'";
+                $whereAnd = ' AND ';
+                }
+            }
+        if($this->valorUnitario!=''){
+                $condicion=$condicion.$whereAnd." valor_unitario = $this->valorUnitario ";
+                $whereAnd = ' AND ';
+        }
+        if($this->cantidad!=''){
+                $condicion=$condicion.$whereAnd." cantidad = $this->$cantidad ";
+                $whereAnd = ' AND ';
+        }
+        if($this->idEmpleado!=''){
+            $condicion=$condicion.$whereAnd." id_empleado = $this->$idEmpleado ";
+            $whereAnd = ' AND ';
+        }
+        if($this->fecha!=''){
+            $condicion=$condicion.$whereAnd." fecha = '$this->$fecha' ";
+            $whereAnd = ' AND ';
+        }
+        if($this->estadoPago!=''){
+            $condicion=$condicion.$whereAnd." estadoPago = '$this->$estadoPago' ";
+            $whereAnd = ' AND ';
+        }
+        return $condicion;
+    }
 
     public function __destruct() {
         

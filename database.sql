@@ -1500,7 +1500,7 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_tarea`(IN `descripcion` VARCHAR(100), IN `valorUnitario` DOUBLE, IN `cantidad` INT(11), IN `fecha` DATETIME, IN `estadoPago` ENUM('Pagado','Por pagar'), IN `idEmpleado` INT(11), IN `estado` ENUM('0','1'), IN `idUsuarioModificacion` INT(11), IN `idTarea` INT(11))
 BEGIN
-	UPDATE rol
+	UPDATE tarea
 	set descripcion = descripcion
 		,valor_unitario = valorUnitario
 		,cantidad = cantidad

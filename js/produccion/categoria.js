@@ -52,7 +52,8 @@ function Enviar(accion,id){
                                 "sPrevious": "Anterior"
                                 },
                                 "sProcessing":"Procesando...",
-                            }
+                            },
+                            "paging":   false
                     });     
                 });
                     //$('#divEliminar').html(respuesta['eliminar']).hide();

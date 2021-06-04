@@ -165,12 +165,12 @@ class Tarea{
                             '$this->descripcion'
                             ,'$this->valorUnitario'
                             ,'$this->cantidad'
-                            ,'$this->idEmpleado'
                             ,'$this->fecha'
                             ,'$this->estadoPago'
+                            ,'$this->idEmpleado'
                             ,'$this->estado'
                             ,'$this->idUsuarioModificacion'
-                            ,'$this->idTarea')";
+                            ,'$this->idTarea')";  
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -250,19 +250,19 @@ class Tarea{
                 $whereAnd = ' AND ';
         }
         if($this->cantidad!=''){
-                $condicion=$condicion.$whereAnd." cantidad = $this->$cantidad ";
+                $condicion=$condicion.$whereAnd." cantidad = $this->cantidad ";
                 $whereAnd = ' AND ';
         }
         if($this->idEmpleado!=''){
-            $condicion=$condicion.$whereAnd." id_empleado = $this->$idEmpleado ";
+            $condicion=$condicion.$whereAnd." id_empleado = $this->idEmpleado ";
             $whereAnd = ' AND ';
         }
         if($this->fecha!=''){
-            $condicion=$condicion.$whereAnd." fecha = '$this->$fecha' ";
+            $condicion=$condicion.$whereAnd." fecha = '$this->fecha' ";
             $whereAnd = ' AND ';
         }
         if($this->estadoPago!=''){
-            $condicion=$condicion.$whereAnd." estadoPago = '$this->$estadoPago' ";
+            $condicion=$condicion.$whereAnd." estadoPago = '$this->estadoPago' ";
             $whereAnd = ' AND ';
         }
         return $condicion;

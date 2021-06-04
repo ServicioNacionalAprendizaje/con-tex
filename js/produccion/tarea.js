@@ -56,15 +56,16 @@ id=$('#hidIdTarea').val();
                                 "sPrevious": "Anterior"
                                 },
                                 "sProcessing":"Procesando...",
-                            }
+                            },
+                            "dom": '<"top"f>rt<"bottom"ip><"clear">'
                     });     
                 });
                     //$('#divEliminar').html(respuesta['eliminar']).hide();
                 }
                 //Respuesta un registro
                 if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']==1){  
-                    // $('#hidIdTarea').val(respuesta['idTarea']);                  
-                    $('#hidIdEmpleado').val(respuesta['id']);                    
+                    $('#hidIdTarea').val(respuesta['id']);                  
+                    $('#hidIdEmpleado').val(respuesta['idEmpleado']);                    
                     $('#txtEmpleado').val(respuesta['empleado']);
                     $('#numValorUnitario').val(respuesta['valorUnitario']);
                     $('#datFecha').val(respuesta['fecha']);

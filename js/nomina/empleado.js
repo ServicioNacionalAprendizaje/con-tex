@@ -62,7 +62,8 @@ id=$('#hidIdEmpleado').val();
                                 "sPrevious": "Anterior"
                                 },
                                 "sProcessing":"Procesando...",
-                            }
+                            },
+                            "paging":   false
                     });     
                 });
                 //$('#divEliminar').html(respuesta['eliminar']).hide();

@@ -173,7 +173,7 @@ CREATE TABLE `empleado` (
   KEY `id_cargo` (`id_cargo`),
   CONSTRAINT `empleado_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`),
   CONSTRAINT `empleado_ibfk_2` FOREIGN KEY (`id_cargo`) REFERENCES `cargo` (`id_cargo`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `empleado` */
 
@@ -260,7 +260,6 @@ insert  into `formulario_rol`(`id_formulario_rol`,`id_rol`,`id_formulario`,`esta
 (13,1,13,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (14,1,14,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (15,1,15,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(19,4,3,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (20,1,16,'1','2021-06-01 23:32:08','2021-06-01 23:32:08',1,1);
 
 /*Table structure for table `generar_pago` */
@@ -355,9 +354,10 @@ CREATE TABLE `persona` (
   `id_persona` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
   `apellido` varchar(100) NOT NULL,
+  `tipo_documento` set('CC','TI','CE','PEP') NOT NULL DEFAULT '',
   `documento` int(11) NOT NULL,
   `edad` int(11) NOT NULL,
-  `genero` enum('M','F') NOT NULL,
+  `genero` enum('M','F','O') NOT NULL,
   `estado` enum('0','1') NOT NULL,
   `fecha_creacion` datetime NOT NULL,
   `fecha_modificacion` datetime NOT NULL,
@@ -365,22 +365,22 @@ CREATE TABLE `persona` (
   `id_usuario_modificacion` int(11) NOT NULL,
   PRIMARY KEY (`id_persona`),
   UNIQUE KEY `documento` (`documento`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `persona` */
 
-insert  into `persona`(`id_persona`,`nombre`,`apellido`,`documento`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
-(1,'Yesica','Tovar',1075264421,26,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),
-(2,'Carmenza','Gonzalez',1075264422,42,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),
-(3,'Alejandra','Tovar',1075264423,22,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),
-(4,'Costurera','SiDatos',1075264424,11,'F','0','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),
-(5,'Cliente#1','ACliente#1',1075264425,101,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
-(6,'Cliente#2','ACliente#2',1075264426,102,'F','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
-(7,'Cliente#3','ACliente#3',1075264427,103,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
-(8,'Cliente#4','ACliente#4',1075264428,104,'F','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
-(9,'Cliente#5','ACliente#5',1075264429,105,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
-(10,'Oscar Leonardo','Perdomo',1081158586,26,'M','1','2021-06-01 23:14:56','2021-06-01 23:14:56',1,1),
-(11,'Eduardo Andres','Peña Rojas',1075264436,28,'M','1','2021-06-01 23:30:41','2021-06-01 23:30:41',1,1);
+insert  into `persona`(`id_persona`,`nombre`,`apellido`,`tipo_documento`,`documento`,`edad`,`genero`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+(1,'Yesica','Tovar','CC',10101010,26,'F','1','2021-04-22 00:00:00','2021-06-07 15:35:35',1,1),
+(2,'Carmenza','Gonzalez','CC',1075264422,42,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),
+(3,'Alejandra','Tovar','CC',1075264423,22,'F','1','2021-04-22 00:00:00','2021-04-22 00:00:00',1,1),
+(4,'Costurera','SinDatos','CC',1075264424,11,'M','0','2021-04-22 00:00:00','2021-06-07 16:16:42',1,1),
+(5,'Cliente#1','ACliente#1','TI',1075264425,17,'O','0','2021-05-10 20:00:00','2021-06-07 15:51:07',1,1),
+(6,'Cliente#2','ACliente#2','CC',1075264426,102,'F','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+(7,'Cliente#3','ACliente#3','TI',1075264427,18,'O','1','2021-05-10 20:00:00','2021-06-07 15:55:47',1,1),
+(8,'Cliente#4','ACliente#4','CC',1075264428,104,'F','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+(9,'Cliente#5','ACliente#5','CC',1075264429,105,'M','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
+(10,'Oscar Leonardo','Perdomo','CC',1081158586,26,'M','1','2021-06-01 23:14:56','2021-06-01 23:14:56',1,1),
+(11,'Eduardo Andres','Peña Rojas','CC',1075264436,28,'M','1','2021-06-01 23:30:41','2021-06-01 23:30:41',1,1);
 
 /*Table structure for table `producto` */
 
@@ -399,16 +399,17 @@ CREATE TABLE `producto` (
   PRIMARY KEY (`id_producto`),
   KEY `fk_producto_categoria` (`id_categoria`),
   CONSTRAINT `fk_producto_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `producto` */
 
 insert  into `producto`(`id_producto`,`descripcion`,`talla`,`estado`,`id_categoria`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
-(1,'camisa','L','1',1,'2021-05-26 19:07:00','2021-05-26 19:07:00',1,1),
-(2,'pantalon','32','1',2,'2021-05-26 19:07:00','2021-05-26 19:07:00',1,1),
+(1,'Camisa cuadros','L','1',1,'2021-05-26 19:07:00','2021-06-07 13:37:16',1,1),
+(2,'pantalon','32','0',2,'2021-05-26 19:07:00','2021-06-07 13:51:47',1,1),
 (3,'medias','43','1',3,'2021-05-26 19:07:00','2021-05-26 19:07:00',1,1),
 (4,'vestido','S','1',4,'2021-05-26 19:07:00','2021-05-26 19:07:00',1,1),
-(5,'saco','L','1',5,'2021-05-26 19:07:00','2021-05-26 19:07:00',1,1);
+(5,'saco','L','0',5,'2021-05-26 19:07:00','2021-06-07 13:52:00',1,1),
+(6,'Camisa rayas','0','1',1,'2021-06-07 12:57:45','2021-06-07 12:57:45',1,1);
 
 /*Table structure for table `proveedor` */
 
@@ -449,8 +450,7 @@ CREATE TABLE `rol` (
 insert  into `rol`(`id_rol`,`descripcion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
 (1,'Administrador','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
 (2,'Contador','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
-(3,'Vendedor','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1),
-(4,'Empleado','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
+(3,'Vendedor','1','2021-05-10 20:00:00','2021-05-10 20:00:00',1,1);
 
 /*Table structure for table `tarea` */
 
@@ -519,7 +519,7 @@ CREATE TABLE `usuario` (
   UNIQUE KEY `id_persona_UNIQUE` (`id_persona`),
   KEY `id_persona` (`id_persona`),
   CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `usuario` */
 
@@ -548,13 +548,12 @@ CREATE TABLE `usuario_rol` (
   KEY `id_rol` (`id_rol`),
   CONSTRAINT `usuario_rol_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
   CONSTRAINT `usuario_rol_ibfk_2` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `usuario_rol` */
 
 insert  into `usuario_rol`(`id_usuario_rol`,`id_usuario`,`id_rol`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
 (1,1,1,'1','2021-05-10 05:00:22','2021-05-12 05:00:24',1,1),
-(2,3,4,'0','2021-05-10 05:00:22','2021-05-12 05:00:24',1,1),
 (3,4,1,'1','2021-06-01 23:18:20','2021-06-01 23:18:20',1,1),
 (4,5,1,'1','2021-06-01 23:00:00','2022-06-01 23:00:00',1,1);
 
@@ -922,18 +921,21 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_persona`(IN nombre VARCHAR(100)
-																		,IN apellido VARCHAR(100)
-																		,IN documento INT(11)
-																		,IN edad INT(11)
-																		,IN genero ENUM('M','F')
-																		,IN estado ENUM('0','1')
-																		,IN idUsuarioCreacion INT(11)
-																		,IN idUsuarioModificacion INT(11)
-																		)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_persona`(
+	IN `nombre` VARCHAR(100),
+	IN `apellido` VARCHAR(100),
+	IN `tipoDocumento` SET('CC','TI','CE','PEP'),
+	IN `documento` INT(11),
+	IN `edad` INT(11),
+	IN `genero` ENUM('M','F','O'),
+	IN `estado` ENUM('0','1'),
+	IN `idUsuarioCreacion` INT(11),
+	IN `idUsuarioModificacion` INT(11)
+)
 BEGIN
 INSERT INTO persona(nombre
 					,apellido
+					,tipo_documento
 					,documento
 					,edad
 					,genero
@@ -945,6 +947,7 @@ INSERT INTO persona(nombre
 					) 
 VALUES (nombre
 		,apellido
+		,tipoDocumento
 		,documento
 		,edad
 		,genero
@@ -1422,19 +1425,22 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_persona`(IN nombre VARCHAR(100)
-																		,IN apellido VARCHAR(100)
-																		,IN documento INT(11)
-																		,IN edad INT(11)
-																		,IN genero ENUM('M','F')
-																		,IN estado ENUM('0','1')
-																		,IN idUsuarioModificacion INT(11)
-																		,IN idPersona INT(11)
-																		)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_persona`(
+	IN `nombre` VARCHAR(100),
+	IN `apellido` VARCHAR(100),
+	IN `tipoDocumento` SET('CC','TI','CE','PEP'),
+	IN `documento` INT(11),
+	IN `edad` INT(11),
+	IN `genero` ENUM('M','F','O'),
+	IN `estado` ENUM('0','1'),
+	IN `idUsuarioModificacion` INT(11),
+	IN `idPersona` INT(11)
+)
 BEGIN
 	UPDATE persona 
 	SET nombre = nombre
 		,apellido = apellido
+		,tipo_documento = tipoDocumento
 		,documento = documento
 		,edad = edad
 		,genero = genero

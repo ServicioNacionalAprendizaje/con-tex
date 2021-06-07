@@ -40,6 +40,7 @@ function Enviar(accion,id){
                     $('#txtUbicacion').val(respuesta['ubicacion']);
                     $('#cmbEstado').val(respuesta['estado']);
                     $('#divEliminar').html(respuesta['eliminar']);
+                    $('#txtEtiqueta').focus();
                 }
 
                 //Respuesta modificar

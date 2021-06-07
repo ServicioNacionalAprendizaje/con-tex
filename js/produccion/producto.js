@@ -19,6 +19,7 @@ function Enviar(accion,id){
         "talla":$('#txtTalla').val(),
         "estado":$('#cmbEstado').val(),
         "idCategoria":$('#hidIdCategoria').val(),
+        "categoria":$('#txtCategoria').val(),
         "accion" : accion
     }; 
 
@@ -34,6 +35,7 @@ function Enviar(accion,id){
                 //Respueta adicionar
                 if(respuesta['accion']=='ADICIONAR'){
                     alert(respuesta['respuesta']);
+                    Limpiar();
                 }
                 
                 //Respuesta muchos registros
@@ -48,19 +50,32 @@ function Enviar(accion,id){
                     $('#txtDescripcion').val(respuesta['descripcion']);
                     $('#txtTalla').val(respuesta['talla']);
                     $('#cmbEstado').val(respuesta['estado']);
-                    $('#txtCategoria').val(respuesta['idCategoria']);
+                    $('#hidIdCategoria').val(respuesta['idCategoria']);
+                    $('#txtCategoria').val(respuesta['categoria']);
                     $('#divEliminar').html(respuesta['eliminar']);
+                    $('#txtCategoria').focus();
                 }
 
                 //Respuesta modificar
                 if(respuesta['accion']=='MODIFICAR'){
                     alert(respuesta['respuesta']);
+                    Limpiar();
                 }
                 
                 //Respuesta eliminar
                 if(respuesta['accion']=='ELIMINAR'){
                     alert(respuesta['respuesta']);
+                    Limpiar();
                 }
             }
     });
+}
+
+function Limpiar(){
+    $('#hidIdProducto').val("");
+    $('#hidIdCategoria').val("");
+    $('#txtCategoria').val("");
+    $('#txtDescripcion').val("");
+    $('#txtTalla').val("");
+    $('#cmbEstado').val("");
 }

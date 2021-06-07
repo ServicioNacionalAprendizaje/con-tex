@@ -6,9 +6,10 @@ function Enviar(accion,id){
         "id" : id,
         "nombre":$('#txtNombre').val(),
         "apellido":$('#txtApellido').val(),
+        "tipoDocumento":$('#cmbTipoDocumento').val(),
         "documento":$('#numDocumento').val(),
-        "edad":$('#numEdad').val(),       
-        "genero" :$('#radGenero').val(),       
+        "edad":$('#numEdad').val(),  
+        "genero" :$('#cmbGenero').val(),       
         "estado":$('#cmbEstado').val(),
         "accion" : accion
     }; 
@@ -39,11 +40,13 @@ function Enviar(accion,id){
                     $('#hidIdPersona').val(respuesta['id']);
                     $('#txtNombre').val(respuesta['nombre']);
                     $('#txtApellido').val(respuesta['apellido']);
+                    $('#cmbTipoDocumento').val(respuesta['tipoDocumento']);
                     $('#numDocumento').val(respuesta['documento']);
                     $('#numEdad').val(respuesta['edad']);
-                    $('#radGenero').val(respuesta['genero']);
+                    $('#cmbGenero').val(respuesta['genero']);
                     $('#cmbEstado').val(respuesta['estado']);
                     $('#divEliminar').html(respuesta['eliminar']);
+                    $('#txtNombre').focus();
                 }
 
                 //Respuesta modificar
@@ -64,8 +67,9 @@ function Limpiar(){
     $('#hidIdPersona').val("");  
     $('#txtNombre').val("");  
     $('#txtApellido').val(""); 
+    $('#cmbTipoDocumento').val("");
     $('#numDocumento').val("");     
     $('#numEdad').val("");    
-    $('#radGenero').val("");
+    $('#cmbGenero').val("");
     $('#cmbEstado').val("");
 }

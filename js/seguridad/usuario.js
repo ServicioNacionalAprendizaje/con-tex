@@ -45,6 +45,7 @@ function Enviar(accion, id) {
                 $('#txtPersona').val(respuesta['persona']);
                 $('#cmbEstado').val(respuesta['estado']);
                 $('#divEliminar').html(respuesta['eliminar']);
+                $('#txtUsario').focus();
             }
 
             //Respuesta modificar

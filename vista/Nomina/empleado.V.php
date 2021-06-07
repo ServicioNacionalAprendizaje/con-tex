@@ -71,59 +71,60 @@
                 </div> 
                 </div>
             </div>
-        <div class="row">
-            <div class="col-12 col-sm-3">
-                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado" onclick="Enviar('CONSULTAR',null);">
-            </div>
-            <div class="col-12 col-sm-3">
-                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick=" Enviar('ADICIONAR',null);">
-            </div>
-            <div class="col-12 col-sm-3">
-                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnModificar" value="ACTUALIZAR" id="btnModificar" placeholder="Descripción" onclick=" Enviar('MODIFICAR',null);">
-            </div>
-            <div class="col-12 col-sm-3">
-                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnLimpiar" value="LIMPIAR" id="btnLimpiar" onclick="Limpiar()" />
-            </div>
-        </div>
-        <br></br>
             <div class="row">
-                <div class="col">
-                    <div class="table-responsive">
-                        <table id="tableDatos" class="table table-striped table-bordered table-hover">
-                            <thead>
-                                <tr>
-                                    <td align="center">Persona</td>
-                                    <td align="center">Cargo</td>
-                                    <td align="center">Correo institucional</td>
-                                    <td align="center">Fecha ingreso</td>
-                                    <td align="center">ARL</td>
-                                    <td align="center">Salud</td>
-                                    <td align="center">Pensión</td>
-                                    <td align="center">Sueldo básico</td>
-                                    <td align="center">Estado</td>
-                                    <td align="center">Modificar</td>
-                                    <td align="center">Eliminar</td>
-                                </tr>
-                            </thead>
-                            <tbody id="resultado">
-                                <!-- <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td align="center"><span class="icon-edit1"></span></td>
-                                    <td align="center"><span class="icon-trash"></span></td>
-                                </tr> -->
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="col-12 col-sm-2"></div>
+                <div class="col-12 col-sm-2">
+                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado" onclick="Enviar('CONSULTAR',null);">
+                </div>
+                <div class="col-12 col-sm-2">
+                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick=" Enviar('ADICIONAR',null);">
+                </div>
+                <div class="col-12 col-sm-2">
+                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnModificar" value="MODIFICAR" id="btnModificar" placeholder="Modificar" onclick=" Enviar('MODIFICAR',null);">
+                </div>
+                <div class="col-12 col-sm-2">
+                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnLimpiar" value="LIMPIAR" id="btnLimpiar" placeholder="Limpiar" onclick=" Limpiar();">
                 </div>
             </div>
+            <br></br>
+                <div class="row">
+                    <div class="col">
+                        <div class="table-responsive">
+                            <table id="tableDatos" class="table table-striped table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <td align="center">Persona</td>
+                                        <td align="center">Cargo</td>
+                                        <td align="center">Correo institucional</td>
+                                        <td align="center">Fecha ingreso</td>
+                                        <td align="center">ARL</td>
+                                        <td align="center">Salud</td>
+                                        <td align="center">Pensión</td>
+                                        <td align="center">Sueldo básico</td>
+                                        <td align="center">Estado</td>
+                                        <td align="center">Modificar</td>
+                                        <td align="center">Eliminar</td>
+                                    </tr>
+                                </thead>
+                                <tbody id="resultado">
+                                    <!-- <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td align="center"><span class="icon-edit1"></span></td>
+                                        <td align="center"><span class="icon-trash"></span></td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

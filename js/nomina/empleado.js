@@ -1,4 +1,3 @@
-// Enviar('CONSULTAR',null);
 function Enviar(accion,id){
     if(id===null){
 id=$('#hidIdEmpleado').val();
@@ -63,7 +62,7 @@ id=$('#hidIdEmpleado').val();
                                 },
                                 "sProcessing":"Procesando...",
                             },
-                            "paging":   false
+                            "dom": '<"top"f>rt<"bottom"ip><"clear">'
                     });     
                 });
                 //$('#divEliminar').html(respuesta['eliminar']).hide();

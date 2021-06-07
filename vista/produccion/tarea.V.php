@@ -69,7 +69,6 @@
                     <div class="row">
                         <div class="col">
                             <div class="table-responsive">
-                                <!-- <div class="dataTables_length" id="tableDatos_length"> ==$0</div> -->
                                 <table id="tableDatos" class="table table-striped table-bordered table-hover">  
                                     <thead>
                                         <tr>

@@ -23,7 +23,7 @@ id=$('#hidIdTarea').val();
                 // console.log(respuesta); 
 
                 //Reiniciar datatable
-                // $("#tableDatos").dataTable().fnDestroy();
+                $("#tableDatos").dataTable().fnDestroy();
                 
                 //Respueta adicionar
                 if(respuesta['accion']=='ADICIONAR'){
@@ -79,16 +79,18 @@ id=$('#hidIdTarea').val();
                 if(respuesta['accion']=='MODIFICAR'){
                     alert(respuesta['respuesta']);
                     Limpiar();
-                    // $("#btnBuscar").trigger("click");
+                    $("#btnBuscar").trigger("click");
                 }
                 
                 //Respuesta eliminar
                 if(respuesta['accion']=='ELIMINAR'){
                     alert(respuesta['respuesta']);
+                    Limpiar();
                 }
             }
     });
 }
+
 $(function(){
     //se carga el autocompleta del contratista
      $("#txtEmpleado").autocomplete({

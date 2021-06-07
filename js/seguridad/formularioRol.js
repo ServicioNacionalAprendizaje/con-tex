@@ -42,6 +42,7 @@ function Enviar(accion,id){
                     $('#datfechaCreacion').val(respuesta['datfechaCreacion']);
                     $('#datModificacion').val(respuesta['datModificacion']);
                     $('#divEliminar').html(respuesta['eliminar']);
+                    $('#txtRol').focus();
                 }
 
                 //Respuesta modificar

@@ -5,6 +5,7 @@ class Persona
     private $idPersona;
     private $nombre;
     private $apellido;
+    private $tipoDocumento;
     private $documento;
     private $edad;
     private $genero;
@@ -42,6 +43,16 @@ class Persona
     public function setApellido($apellido)
     {
         $this->apellido = $apellido;
+    }
+
+    //tipoDocumento
+    public function getTipoDocumento()
+    {
+        return $this->tipoDocumento;
+    }
+    public function setTipoDocumento($tipoDocumento)
+    {
+        $this->tipoDocumento = $tipoDocumento;
     }
 
     //documento
@@ -111,7 +122,7 @@ class Persona
     {
         return $this->idUsuarioCreacion;
     }
-    public function setIdUsuarioCreacion($idUsuarioCreacion = 1)
+    public function setIdUsuarioCreacion($idUsuarioCreacion)
     {
         $this->idUsuarioCreacion = $idUsuarioCreacion;
     }
@@ -121,7 +132,7 @@ class Persona
     {
         return $this->idUsuarioModificacion;
     }
-    public function setIdUsuarioModificacion($idUsuarioModificacion = 1)
+    public function setIdUsuarioModificacion($idUsuarioModificacion)
     {
         $this->idUsuarioModificacion = $idUsuarioModificacion;
     }
@@ -137,6 +148,7 @@ class Persona
         $sentenciaSql = "CALL Agregar_persona(
                              '$this->nombre'
                             ,'$this->apellido'
+                            ,'$this->tipoDocumento'
                             , $this->documento
                             , $this->edad
                             ,'$this->genero'
@@ -153,6 +165,7 @@ class Persona
         $sentenciaSql = "CALL Modificar_persona(
                              '$this->nombre'
                             ,'$this->apellido'
+                            ,'$this->tipoDocumento'
                             , $this->documento
                             , $this->edad
                             ,'$this->genero'
@@ -198,7 +211,23 @@ class Persona
         if($this->apellido !=''){
             $condicion=$condicion.$whereAnd." apellido LIKE '%$this->apellido%' ";
             $whereAnd = ' AND ';
-    }          
+        }
+        if($this->tipoDocumento !=''){
+            $condicion=$condicion.$whereAnd." tipo_documento = '$this->tipoDocumento' ";
+            $whereAnd = ' AND ';
+        }
+        if($this->documento !=''){
+            $condicion=$condicion.$whereAnd." documento = $this->documento ";
+            $whereAnd = ' AND ';
+        }   
+        if($this->genero !=''){
+            $condicion=$condicion.$whereAnd." genero = '$this->genero' ";
+            $whereAnd = ' AND ';
+        }  
+        if($this->edad !=''){
+            $condicion=$condicion.$whereAnd." edad LIKE '%$this->edad%' ";
+            $whereAnd = ' AND ';
+        }      
         // if($this->estado!=''){
         //         if ($whereAnd == ' AND '){
         //         $condicion=$condicion.$whereAnd." seg_usu.estado = '$this->estado'";
@@ -226,6 +255,7 @@ class Persona
         unset($this->idPersona);
         unset($this->nombre);
         unset($this->apellido);
+        unset($this->tipoDocumento);
         unset($this->documento);
         unset($this->edad);
         unset($this->genero);

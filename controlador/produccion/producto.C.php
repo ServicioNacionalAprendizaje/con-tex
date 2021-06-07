@@ -15,6 +15,7 @@ if (isset ($accion)){
                 $producto->setTalla($_POST['talla']);
                 $producto->setEstado($_POST['estado']);
                 $producto->setIdCategoria($_POST['idCategoria']);
+                $producto->setCategoria($_POST['categoria']);
                 $producto->setIdUsuarioCreacion(1);
                 $producto->setIdUsuarioModificacion(1);
                 $producto = $producto->Agregar();
@@ -33,6 +34,7 @@ if (isset ($accion)){
                 $producto->setTalla($_POST['talla']);
                 $producto->setEstado($_POST['estado']);
                 $producto->setIdCategoria($_POST['idCategoria']);
+                $producto->setCategoria($_POST['categoria']);
                 $producto->setIdUsuarioModificacion();
                 $resultado = $producto->Modificar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
@@ -62,6 +64,7 @@ if (isset ($accion)){
                 $producto->setTalla($_POST['talla']);
                 $producto->setEstado($_POST['estado']);
                 $producto->setIdCategoria($_POST['idCategoria']);
+                $producto->setCategoria($_POST['categoria']);
                 $resultado = $producto->Consultar();
 
                 $numeroRegistros = $producto->conn->obtenerNumeroRegistros();
@@ -69,9 +72,10 @@ if (isset ($accion)){
                     if ($rowBuscar = $producto->conn->obtenerObjeto()){
                         $respuesta['id'] = $rowBuscar->id_producto;
                         $respuesta['descripcion'] = $rowBuscar->descripcion;
+                        $respuesta['idCategoria'] = $rowBuscar->id_categoria;
+                        $respuesta['categoria'] = $rowBuscar->descripcion_cat;
                         $respuesta['talla'] = $rowBuscar->talla;
                         $respuesta['estado'] = $rowBuscar->estado;
-                        $respuesta['idCategoria'] = $rowBuscar->id_categoria;
                         $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_producto.")'>";
                      }
                 }else{
@@ -80,9 +84,9 @@ if (isset ($accion)){
                         foreach($producto->conn->ObtenerRegistros() AS $rowConsulta){
                             $retorno .= "<tr>
                                         <td><label>".$rowConsulta[1]."</label></td>
-                                        <td><label>".$rowConsulta[4]."</label></td>
-                                        <td><label>".$rowConsulta[2]."</label></td>      
-                                        <td><label>".($rowConsulta[3] == 1 ? 'Activo' : 'Inactivo')."</label></td>                                           
+                                        <td><label>".$rowConsulta[3]."</label></td>
+                                        <td><label>".$rowConsulta[4]."</label></td>      
+                                        <td><label>".($rowConsulta[5] == 1 ? 'Activo' : 'Inactivo')."</label></td>                                           
                                         <td align='center' style='cursor: pointer'><span class='icon-edit1' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></td>
                                         <td align='center' style='cursor: pointer'><span class='icon-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></td> 
                                     </tr>";

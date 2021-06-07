@@ -84,6 +84,7 @@ id=$('#hidIdEmpleado').val();
                     $('#numSueldoBasico').val(respuesta['sueldoBasico']);
                     $('#cmbEstado').val(respuesta['estado']);
                     $('#divEliminar').html(respuesta['eliminar']);
+                    $('#txtCargo').focus();
                 }
                 //Respuesta modificar
                 if(respuesta['accion']=='MODIFICAR'){

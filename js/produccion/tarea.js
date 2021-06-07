@@ -74,6 +74,7 @@ id=$('#hidIdTarea').val();
                     $('#txtDescripcion').val(respuesta['descripcion']);
                     $('#cmbEstado').val(respuesta['estado']);
                     $('#divEliminar').html(respuesta['eliminar']);
+                    $('#txtEmpleado').focus();
                 }
                 //Respuesta modificar
                 if(respuesta['accion']=='MODIFICAR'){

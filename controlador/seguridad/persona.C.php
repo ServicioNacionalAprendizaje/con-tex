@@ -13,6 +13,7 @@ if (isset ($accion)){
                 $persona= new Persona();
                 $persona->setNombre($_POST['nombre']);
                 $persona->setApellido($_POST['apellido']);
+                $persona->setTipoDocumento($_POST['tipoDocumento']);
                 $persona->setDocumento($_POST['documento']);
                 $persona->setEdad($_POST['edad']);
                 $persona->setGenero($_POST['genero']);
@@ -33,10 +34,12 @@ if (isset ($accion)){
                 $persona->setIdPersona($_POST['id']);
                 $persona->setNombre($_POST['nombre']);
                 $persona->setApellido($_POST['apellido']);
+                $persona->setTipoDocumento($_POST['tipoDocumento']);
                 $persona->setDocumento($_POST['documento']);
                 $persona->setEdad($_POST['edad']);
                 $persona->setGenero($_POST['genero']);
                 $persona->setEstado($_POST['estado']);
+                $persona->setIdUsuarioModificacion(1);
                 $resultado = $persona->Modificar();
                 $respuesta['respuesta']="La información se modificó correctamente.";
             }catch(Exception $e){
@@ -63,6 +66,7 @@ if (isset ($accion)){
                 $persona->setIdPersona($_POST['id']);
                 $persona->setNombre($_POST['nombre']);
                 $persona->setApellido($_POST['apellido']);
+                $persona->setTipoDocumento($_POST['tipoDocumento']);
                 $persona->setDocumento($_POST['documento']);
                 $persona->setEdad($_POST['edad']);
                 $persona->setGenero($_POST['genero']);                              
@@ -74,6 +78,7 @@ if (isset ($accion)){
                         $respuesta['id'] = $rowBuscar->id_persona;
                         $respuesta['nombre'] = $rowBuscar->nombre;
                         $respuesta['apellido'] = $rowBuscar->apellido;
+                        $respuesta['tipoDocumento'] = $rowBuscar->tipo_documento;
                         $respuesta['documento'] = $rowBuscar->documento;
                         $respuesta['edad'] = $rowBuscar->edad;                           
                         $respuesta['genero'] = $rowBuscar->genero;
@@ -87,10 +92,11 @@ if (isset ($accion)){
                             $retorno .= "<tr>                                          
                                         <td><label>".$rowConsulta[1]."</label></td>                                             
                                         <td><label>".$rowConsulta[2]."</label></td>  
-                                        <td><label>".$rowConsulta[3]."</label></td>                                         
-                                        <td><label>".$rowConsulta[4]."</label></td>                                                                                               
-                                        <td><label>".($rowConsulta[5]== 'M' ? 'Masculino':'Femenino')."</label></td>
-                                        <td><label>".($rowConsulta[6]== 1 ? 'Activo' : 'Inactivo')."</label></td>
+                                        <td><label>".$rowConsulta[3]."</label></td> 
+                                        <td><label>".$rowConsulta[4]."</label></td>                                        
+                                        <td><label>".$rowConsulta[5]."</label></td>                                                                                               
+                                        <td><label>".($rowConsulta[6]== 'M' ? 'Masculino' : ($rowConsulta[6]== 'F' ? 'Femenino' : 'Otro'))."</label></td>
+                                        <td><label>".($rowConsulta[7]== 1 ? 'Activo' : 'Inactivo')."</label></td>
                                         <td align='center' style='cursor: pointer'><span class='icon-edit1' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></td>
                                         <td align='center' style='cursor: pointer'><span class='icon-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></td>                                                                                
                                     </tr>";

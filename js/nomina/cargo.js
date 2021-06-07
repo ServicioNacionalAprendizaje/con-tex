@@ -37,6 +37,7 @@ function Enviar(accion,id){
                     $('#cmbEstado').val(respuesta['estado']);
                     // $('#cmbEstado').val(respuesta['estado'] == 'Activo' ? 1 : ('Inactivo' ? 0 : ''));
                     $('#divEliminar').html(respuesta['eliminar']);
+                    $('#txtDescripcion').focus();
                 }
 
                 //Respuesta modificar

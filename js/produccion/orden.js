@@ -47,6 +47,7 @@ function Enviar(accion,id){
                     $('#datFechaEntrega').val(respuesta['fechaEntrega']);
                     $('#txtDescripcion').val(respuesta['descripcion']);
                     $('#cmbEstado').val(respuesta['estado']);
+                    $('#txtEmpleado').focus();
                     // $('#cmbEstado').val(respuesta['estado'] == 'Activo' ? 1 : ('Inactivo' ? 0 : ''));
                     $('#divEliminar').html(respuesta['eliminar']);
                 }

@@ -1,7 +1,7 @@
 <?php
 // $ubicacionFormulario =  substr($_SERVER["SCRIPT_NAME"], 17);
 include '../../entorno/conexion.php';
-require '../../modelo/produccion/orden.M.php';
+require '../../modelo/produccion/detalleOrden.M.php';
 
 $respuesta = array();
 
@@ -10,12 +10,12 @@ if (isset ($accion)){
     switch($accion){
         case 'ADICIONAR':
             try{
-                $orden= new Orden();
-                $orden->setIdEmpleado($_POST['idEmpleado']);
-                $orden->setIdCliente($_POST['idCliente']);
-                $orden->setFechaOrden($_POST['fechaOrden']);
-                $orden->setFechaEntrega($_POST['fechaEntrega']);
-                $orden->setDescripcion($_POST['descripcion']);
+                $orden= new DetalleOrden();
+                $orden->setIdOrden($_POST['idOrden']);
+                $orden->setValorInventario($_POST['valInven']);
+                $orden->setValorVenta($_POST['ValVenta']);
+                $orden->setCantidad($_POST['cantidad']);
+                $orden->setIdProducto($_POST['hidIdProducto']);
                 $orden->setEstado($_POST['estado']);
                 $orden->setIdUsuarioCreacion(1); // Obtener id del orden con la variable session
                 $orden->setIdUsuarioModificacion(1); // Obtener id del orden con la variable session

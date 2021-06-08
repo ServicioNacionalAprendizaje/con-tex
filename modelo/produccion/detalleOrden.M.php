@@ -1,42 +1,42 @@
 <?php
 
-class Orden{
+class DetalleOrden{
 
+    private $idDetalleOrden;
+    private $valorInventario;
+    private $valorVenta;
+    private $cantidad;
     private $idOrden;
-    private $fechaOrden;
-    private $fechaEntrega;
-    private $descripcion;
-    private $idCliente;
-    private $idEmpleado;
+    private $idProducto;
     private $estado;
     private $fechaCreacion;
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
     
+    //idDetalleOrden
+    public function getIdDetalleOrden(){return $this->idDetalleOrden;}
+    public function setIdDetalleOrden($idDetalleOrden){return $this->idDetalleOrden=$idDetalleOrden;}
+
+    //valorInventario
+    public function getValorInventario(){return $this->valorInventario;}
+    public function setValorInventario($valorInventario){return $this->valorInventario=$valorInventario;}
+
+    //valorVenta
+    public function getValorVenta(){return $this->valorVenta;}
+    public function setValorVenta($valorVenta){return $this->valorVenta=$valorVenta;}
+
+    //cantidad
+    public function getCantidad(){return $this->cantidad;}
+    public function setCantidad($cantidad){return $this->cantidad=$cantidad;}
+
     //idOrden
     public function getIdOrden(){return $this->idOrden;}
     public function setIdOrden($idOrden){return $this->idOrden=$idOrden;}
 
-    //fechaOrden
-    public function getFechaOrden(){return $this->fechaOrden;}
-    public function setFechaOrden($fechaOrden){return $this->fechaOrden=$fechaOrden;}
-
-    //fechaEntrega
-    public function getFechaEntrega(){return $this->fechaEntrega;}
-    public function setFechaEntrega($fechaEntrega){return $this->fechaEntrega=$fechaEntrega;}
-
-    //descripcion
-    public function getDescripcion(){return $this->descripcion;}
-    public function setDescripcion($descripcion){return $this->descripcion = $descripcion;}
-
-    //idCcliente
-    public function getIdCliente(){return $this->idCliente;}
-    public function setIdCliente($idCliente){return $this->idCliente=$idCliente;}
-
-    //idEmpleado
-    public function getIdEmpleado(){return $this->idEmpleado;}
-    public function setIdEmpleado($idEmpleado){return $this->idEmpleado = $idEmpleado;}
+    //idProducto
+    public function getIdProducto(){return $this->idProducto;}
+    public function setIdProducto($idProducto){return $this->idProducto=$idProducto;}
 
     //estado
     public function getEstado(){ return $this->estado;}
@@ -68,13 +68,11 @@ class Orden{
 
     public function Agregar()
     {
-        $ordenDate = date("Y-m-d H:i:s", strtotime($this->fechaOrden));
-        $entregaDate = date("Y-m-d H:i:s", strtotime($this->fechaEntrega));
-        $sentenciaSql = "CALL Agregar_orden('$ordenDate'
-                                            ,'$entregaDate'
-                                            ,'$this->descripcion'
-                                            ,$this->idCliente
-                                            ,$this->idEmpleado
+        $sentenciaSql = "CALL Agregar_detalle_orden($this->valorInventario
+                                            ,$this->valorVenta
+                                            ,$this->cantidad
+                                            ,$this->idOrden
+                                            ,$this->idProducto
                                             ,'$this->estado'
                                             ,$this->idUsuarioCreacion
                                             ,$this->idUsuarioModificacion)";
@@ -134,26 +132,12 @@ class Orden{
         return true;
     }
 
-    public function BuscarEmpleado(){
+    public function BuscarProducto(){
         $sentenciaSql = "SELECT 
-                            CONCAT(p.nombre,' ',p.apellido) AS nombre
-                            ,e.id_empleado 
-                        FROM persona AS p 
-                            INNER JOIN empleado AS e ON p.id_persona = e.id_persona 
-                        WHERE p.estado = '1' AND e.estado = '1' AND nombre LIKE '%$this->descripcion%' 
-                        -- GROUP BY p.id_persona;";
-        $this->conn->preparar($sentenciaSql);
-        $this->conn->ejecutar();
-        return true;
-    }
-
-    public function BuscarCliente(){
-        $sentenciaSql = "SELECT 
-                            CONCAT(p.nombre,' ',p.apellido) AS nombre
-                            ,c.id_cliente 
-                        FROM persona AS p 
-                        INNER JOIN cliente AS c ON p.id_persona = c.id_persona 
-                        WHERE p.estado = '1' AND c.estado = '1' AND nombre LIKE '%$this->descripcion%' 
+                            p.descripcion 
+                            ,p.id_producto 
+                        FROM producto AS p 
+                        WHERE p.estado = '1' AND p.descripcion LIKE '%$this->idProducto%'
                         -- GROUP BY p.id_persona;";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
@@ -221,12 +205,12 @@ class Orden{
 
     public function __destruct() {
         
+        unset($this->idDetalleOrden);
+        unset($this->valorInventario);
+        unset($this->valorVenta);
+        unset($this->cantidad);
         unset($this->idOrden);
-        unset($this->fechaOrden);
-        unset($this->fechaEntrega);
-        unset($this->descripcion);
-        unset($this->idCliente);
-        unset($this->idEmpleado);
+        unset($this->idProducto);
         unset($this->estado);
         unset($this->fechaCreacion);
         unset($this->fechaModificacion);

@@ -31,7 +31,8 @@ if(isset($accion)){
         case 'MODIFICAR':
             try {
                 $tarea=new Tarea();
-                $tarea->setIdTarea(['id']);
+                $tarea->setIdTarea($_POST['id']);
+                $tarea->setIdEmpleado($_POST['idEmpleado']);
                 $tarea->setValorUnitario($_POST['valorUnitario']);
                 $tarea->setDescripcion($_POST['descripcion']);
                 $tarea->setCantidad($_POST['cantidad']);
@@ -39,8 +40,8 @@ if(isset($accion)){
                 $tarea->setEstadoPago($_POST['estadoPago']);
                 $tarea->setEstado($_POST['estado']);
                 //$tarea->setIdUsuarioCreacion();
-                $tarea->setIdUsuarioModificacion();
-                $resultado=$tarea->Agregar();
+                $tarea->setIdUsuarioModificacion(1);
+                $resultado=$tarea->Modificar();
                 $respuesta['respuesta']="La información se modificoó correctamente";
             } catch (Exception $e) {
                 $respuesta['respuesta']="Error, no fué posible modificar la información, consulte con el administrador.";
@@ -63,7 +64,7 @@ if(isset($accion)){
         case 'CONSULTAR':
             try{
                 $tarea=new Tarea();
-                $tarea->setIdTarea(['id']);
+                $tarea->setIdTarea($_POST['id']);
                 $tarea->setValorUnitario($_POST['valorUnitario']);
                 $tarea->setDescripcion($_POST['descripcion']);
                 $tarea->setCantidad($_POST['cantidad']);

@@ -38,6 +38,7 @@ function Enviar(accion,id){
                     $('#txtDescripcion').val(respuesta['descripcion']);
                     $('#cmbEstado').val(respuesta['estado']);
                     $('#divEliminar').html(respuesta['eliminar']);
+                    $('#txtDescripcion').focus();
                 }
 
                 //Respuesta modificar

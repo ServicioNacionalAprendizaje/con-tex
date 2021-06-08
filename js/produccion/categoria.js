@@ -30,6 +30,7 @@ function Enviar(accion,id){
                 //Respuesta muchos registros
                 if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']>1){
                     $("#resultado").html(respuesta['tablaRegistro']);
+                    
                     //Código para DataTable
 
                 //Para inicializar datatable de la manera más simple
@@ -51,7 +52,8 @@ function Enviar(accion,id){
                                 "sPrevious": "Anterior"
                                 },
                                 "sProcessing":"Procesando...",
-                            }
+                            },
+                            "paging":   false
                     });     
                 });
                     //$('#divEliminar').html(respuesta['eliminar']).hide();
@@ -63,6 +65,7 @@ function Enviar(accion,id){
                     $('#txtDescripcion').val(respuesta['descripcion']);
                     $('#cmbEstado').val(respuesta['estado']);
                     $('#divEliminar').html(respuesta['eliminar']);
+                    $('#txtDescripcion').focus();
                 }
 
                 //Respuesta modificar

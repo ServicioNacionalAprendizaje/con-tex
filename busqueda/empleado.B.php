@@ -1,20 +1,20 @@
 <?php
 require '../entorno/conexion.php';
-require '../modelo/seguridad/persona.M.php';
+require '../modelo/produccion/tarea.M.php';
 
-$arrPersona = array();
+$arrTarea = array();
 $contador = 0;
-$persona = new Persona();
-$persona->setNombre($_REQUEST['term']);
-// $persona->setApellido($_REQUEST['term']);
+$tarea = new Tarea();
+$tarea->setDescripcion($_REQUEST['term']);
+// $tarea->setApellido($_REQUEST['term']);
 
-$persona->Consultar();
-$numeroRegistros = $persona->conn->obtenerNumeroRegistros();
-while($rowPersona = $persona->conn->obtenerObjeto()){
-    $arrPersona[$contador]['id'] = $rowPersona->id_persona;
-    $arrPersona[$contador]['value'] = $rowPersona->nombre.' '.$rowPersona->apellido ;
+$tarea->BuscarEmpleado();
+$numeroRegistros = $tarea->conn->obtenerNumeroRegistros();
+while($rowTarea = $tarea->conn->obtenerObjeto()){
+    $arrTarea[$contador]['id'] = $rowTarea->id_empleado;
+    $arrTarea[$contador]['value'] = $rowTarea->nombre;
 
     $contador++;
 }
-echo json_encode($arrPersona);
+echo json_encode($arrTarea);
 ?>

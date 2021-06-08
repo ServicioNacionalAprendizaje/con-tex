@@ -35,20 +35,21 @@ function Enviar(accion,id){
                 //     //$('#divEliminar').html(respuesta['eliminar']).hide();
                 // }
 
-                // //Respuesta un registro
-                // if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']==1){
-                //     $('#hidIdOrden').val(respuesta['id']);
-                //     $('#hidIdEmpleado').val(respuesta['idEmpleado']);
-                //     $('#hidIdCliente').val(respuesta['idCliente']);
-                //     $('#txtEmpleado').val(respuesta['nombreEmpleado']);
-                //     $('#txtCliente').val(respuesta['nombreCliente']);
-                //     $('#datFechaOrden').val(respuesta['fechaOrden']);
-                //     $('#datFechaEntrega').val(respuesta['fechaEntrega']);
-                //     $('#txtDescripcion').val(respuesta['descripcion']);
-                //     $('#cmbEstado').val(respuesta['estado']);
-                //     // $('#cmbEstado').val(respuesta['estado'] == 'Activo' ? 1 : ('Inactivo' ? 0 : ''));
-                //     $('#divEliminar').html(respuesta['eliminar']);
-                // }
+                //Respuesta un registro
+                if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']==1){
+                    $('#hidIdOrden').val(respuesta['id']);
+                    $('#hidIdEmpleado').val(respuesta['idEmpleado']);
+                    $('#hidIdCliente').val(respuesta['idCliente']);
+                    $('#txtEmpleado').val(respuesta['nombreEmpleado']);
+                    $('#txtCliente').val(respuesta['nombreCliente']);
+                    $('#datFechaOrden').val(respuesta['fechaOrden']);
+                    $('#datFechaEntrega').val(respuesta['fechaEntrega']);
+                    $('#txtDescripcion').val(respuesta['descripcion']);
+                    $('#cmbEstado').val(respuesta['estado']);
+                    $('#txtEmpleado').focus();
+                    // $('#cmbEstado').val(respuesta['estado'] == 'Activo' ? 1 : ('Inactivo' ? 0 : ''));
+                    $('#divEliminar').html(respuesta['eliminar']);
+                }
 
                 // //Respuesta modificar
                 // if(respuesta['accion']=='MODIFICAR'){

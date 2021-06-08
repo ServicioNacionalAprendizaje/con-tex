@@ -2,7 +2,7 @@
 <body onload="Enviar('CONSULTAR',null)">
     <form name="frmCategoria" id="frmCategoria">
         <div class="margen" align="center"> 
-            <h1><label>Categoria</label></h1>
+            <label><h1>Categoria</h1></label>
             <div class="container form-group">
                 <div class="row">
                     <div class="col-12 col-sm-6">
@@ -20,19 +20,20 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 col-sm-3">
+                <div class="row">
+                <div class="col-12 col-sm-2"></div>
+                <div class="col-12 col-sm-2">
                     <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado" onclick="Enviar('CONSULTAR',null);">
                 </div>
-                <div class="col-12 col-sm-3">
-                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick="Enviar('ADICIONAR',null);">
+                <div class="col-12 col-sm-2">
+                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick=" Enviar('ADICIONAR',null);">
                 </div>
-                <div class="col-12 col-sm-3">
-                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnModificar" value="ACTUALIZAR" id="btnModificar" placeholder="Descripción" onclick=" Enviar('MODIFICAR',null);">
-            </div>
-            <div class="col-12 col-sm-3">
-                <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnLimpiar" value="LIMPIAR" id="btnLimpiar" onclick="Limpiar()" />
-            </div>
+                <div class="col-12 col-sm-2">
+                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnModificar" value="MODIFICAR" id="btnModificar" placeholder="Modificar" onclick=" Enviar('MODIFICAR',null);">
+                </div>
+                <div class="col-12 col-sm-2">
+                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnLimpiar" value="LIMPIAR" id="btnLimpiar" placeholder="Limpiar" onclick=" Limpiar();">
+                </div>
             </div>
             <br></br>
             <div class="table-responsive">

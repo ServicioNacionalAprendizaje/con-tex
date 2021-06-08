@@ -1,4 +1,3 @@
-// Enviar('CONSULTAR',null);
 function Enviar(accion,id){
     if(id===null){
 id=$('#hidIdEmpleado').val();
@@ -62,7 +61,8 @@ id=$('#hidIdEmpleado').val();
                                 "sPrevious": "Anterior"
                                 },
                                 "sProcessing":"Procesando...",
-                            }
+                            },
+                            "dom": '<"top"f>rt<"bottom"ip><"clear">'
                     });     
                 });
                 //$('#divEliminar').html(respuesta['eliminar']).hide();
@@ -83,6 +83,7 @@ id=$('#hidIdEmpleado').val();
                     $('#numSueldoBasico').val(respuesta['sueldoBasico']);
                     $('#cmbEstado').val(respuesta['estado']);
                     $('#divEliminar').html(respuesta['eliminar']);
+                    $('#txtCargo').focus();
                 }
                 //Respuesta modificar
                 if(respuesta['accion']=='MODIFICAR'){

@@ -41,6 +41,7 @@ function Enviar(accion,id){
                     $('#datFechaPago').val(respuesta['fechaPago']);
                     $('#cmbEstado').val(respuesta['estado']);
                     $('#divEliminar').html(respuesta['eliminar']);
+                    $('#txtEmpleado').focus();
                 }
 
                 //Respuesta modificar

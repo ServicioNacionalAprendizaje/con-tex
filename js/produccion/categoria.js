@@ -23,8 +23,13 @@ function Enviar(accion,id){
                 
                 //Respueta adicionar
                 if(respuesta['accion']=='ADICIONAR'){
-                    alert(respuesta['respuesta']);
+                    Swal.fire(
+                        'Good job!',
+                        'You clicked the button!',
+                        'success'
+                      )
                     Limpiar();
+                    $("#btnBuscar").trigger("click");
                 }
                 
                 //Respuesta muchos registros
@@ -78,6 +83,8 @@ function Enviar(accion,id){
                 //Respuesta eliminar
                 if(respuesta['accion']=='ELIMINAR'){
                     alert(respuesta['respuesta']);
+                    Limpiar();
+                    $("#btnBuscar").trigger("click");
                 }
             }
     });

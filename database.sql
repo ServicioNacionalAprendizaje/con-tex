@@ -205,7 +205,7 @@ CREATE TABLE `formulario` (
 /*Data for the table `formulario` */
 
 insert  into `formulario`(`id_formulario`,`descripcion`,`etiqueta`,`ubicacion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
-(1,'Formulario','Seguridad','./vista/seguridad/formulario.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(1,'Formulario','Seguridad','./vista/seguridad/formulario.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (2,'Formularios de rol','Seguridad','./vista/seguridad/formularioRol.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (3,'Persona','Seguridad','./vista/seguridad/persona.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (4,'Rol','Seguridad','./vista/seguridad/rol.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),

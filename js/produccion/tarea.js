@@ -57,11 +57,12 @@ id=$('#hidIdTarea').val();
                                 },
                                 "sProcessing":"Procesando...",
                             },
-                            "dom": '<"top"f>rt<"bottom"ip><"clear">'
+                            "paging":   false
                     });     
                 });
                     //$('#divEliminar').html(respuesta['eliminar']).hide();
                 }
+                
                 //Respuesta un registro
                 if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']==1){  
                     $('#hidIdTarea').val(respuesta['id']);                  

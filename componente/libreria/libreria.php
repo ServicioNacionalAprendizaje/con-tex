@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <title>Con-tex</title>
     <!-- Llamado al CSS Global -->
     <link rel='stylesheet' type='text/css' media='screen' href='../../componente/css/goblal.css'>
     <!-- Iconos de las tablas -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
     <link rel="stylesheet" href="../../componente/fonts/style.css">
+    <!-- <link rel="stylesheet" href="../../componente/libreria/jquey/jquery-3.6.0.min.js"> -->
+    <link rel="stylesheet" href="../../componente/bootstrap/css/bootstrap.min.css">
+    <!-- <script src="../../popper.min.js"></script> -->
+    <script src="../../componente/bootstrap/js/bootstrap.min.js"></script>    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"> -->
     <!-- Marco de la tabla -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -21,6 +27,6 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-    <!-- Auto complete -->
-    <title>Con-tex</title>
+    <!-- SweetAlert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>

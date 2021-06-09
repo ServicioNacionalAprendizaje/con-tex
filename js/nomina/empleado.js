@@ -35,6 +35,7 @@ id=$('#hidIdEmpleado').val();
                     }
                     alert(respuesta['respuesta']);
                     Limpiar();
+                    $("#btnBuscar").trigger("click");
                 }
                 
                 //Respuesta muchos registros
@@ -62,10 +63,10 @@ id=$('#hidIdEmpleado').val();
                                 },
                                 "sProcessing":"Procesando...",
                             },
-                            "dom": '<"top"f>rt<"bottom"ip><"clear">'
+                            "paging":   false
                     });     
                 });
-                //$('#divEliminar').html(respuesta['eliminar']).hide();
+                    //$('#divEliminar').html(respuesta['eliminar']).hide();
                 }
 
                 //Respuesta un registro                
@@ -96,6 +97,7 @@ id=$('#hidIdEmpleado').val();
                 if(respuesta['accion']=='ELIMINAR'){
                     alert(respuesta['respuesta']);
                     Limpiar();
+                    $("#btnBuscar").trigger("click");
                 }
             }
     });

@@ -1,15 +1,15 @@
 function Enviar(accion,id){
     if(id===null){
-        id=$('#hidIdOrden').val();
+        id=$('#hidIdDetalleOrden').val();
     }
     var parametros = {
         "id" : id,
         "idOrden":$('#idOrden').val(),
         "hidIdProducto":$('#hidIdProducto').val(),
-        "Producto":$('#txtProducto').val(),
+        "producto":$('#txtProducto').val(),
         "cantidad":$('#numCantidad').val(),
         "valInven":$('#numValorinven').val(),
-        "ValVenta":$('#numValorventa').val(),
+        "valVenta":$('#numValorventa').val(),
         "estado":$('#cmbEstado').val(),
         "accion" : accion
     }; 
@@ -29,26 +29,23 @@ function Enviar(accion,id){
                     Limpiar();
                 }
                 
-                // //Respuesta muchos registros
-                // if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']>1){
-                //     $("#resultado").html(respuesta['tablaRegistro']);
-                //     //$('#divEliminar').html(respuesta['eliminar']).hide();
-                // }
+                //Respuesta muchos registros
+                if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']>1){
+                    $("#resultado").html(respuesta['tablaRegistro']);
+                    //$('#divEliminar').html(respuesta['eliminar']).hide();
+                }
 
                 //Respuesta un registro
                 if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']==1){
-                    $('#hidIdOrden').val(respuesta['id']);
-                    $('#hidIdEmpleado').val(respuesta['idEmpleado']);
-                    $('#hidIdCliente').val(respuesta['idCliente']);
-                    $('#txtEmpleado').val(respuesta['nombreEmpleado']);
-                    $('#txtCliente').val(respuesta['nombreCliente']);
-                    $('#datFechaOrden').val(respuesta['fechaOrden']);
-                    $('#datFechaEntrega').val(respuesta['fechaEntrega']);
-                    $('#txtDescripcion').val(respuesta['descripcion']);
-                    $('#cmbEstado').val(respuesta['estado']);
-                    $('#txtEmpleado').focus();
-                    // $('#cmbEstado').val(respuesta['estado'] == 'Activo' ? 1 : ('Inactivo' ? 0 : ''));
-                    $('#divEliminar').html(respuesta['eliminar']);
+                    $('#hidIdDetalleOrden').val(respuesta['id']);
+                    $('#hidIdOrden').val(respuesta['idOrden']);
+                    $('#hidIdProducto').val(respuesta['hidIdProducto']);
+                    $('#txtProducto').val(respuesta['producto']);
+                    $('#numCantidad').val(respuesta['cantidad']);
+                    $('#numValorinven').val(respuesta['valInven']);
+                    $('#numValorventa').val(respuesta['valVenta']);
+                    $('#cmbEstado').val(respuesta['estado'] == 'Activo' ? 1 : ('Inactivo' ? 0 : ''));
+                    // $('#divEliminar').html(respuesta['eliminar']);
                 }
 
                 // //Respuesta modificar

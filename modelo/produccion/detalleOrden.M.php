@@ -84,9 +84,7 @@ class DetalleOrden{
     
     public function Modificar()
     {
-        $ordenDate = date("Y-m-d H:i:s", strtotime($this->fechaOrden));
-        $entregaDate = date("Y-m-d H:i:s", strtotime($this->fechaEntrega));
-        $sentenciaSql = "CALL Modificar_orden('$ordenDate'
+        $sentenciaSql = "CALL Modificar_orden('$detalleOrdenDate'
                                              ,'$entregaDate'
                                              ,'$this->descripcion'
                                              ,$this->idCliente
@@ -112,21 +110,17 @@ class DetalleOrden{
     public function Consultar(){
         $condicion = $this->obtenerCondicion();
         $sentenciaSql = "SELECT 
-                                o.id_orden
-                                ,o.id_empleado
-                                ,o.id_cliente
-                                ,o.fecha_orden
-                                ,o.fecha_entrega
-                                ,o.descripcion
-                                ,o.estado
-                                ,CONCAT(pe.nombre,' ',pe.apellido) AS nombreEmpleado
-                                ,CONCAT(pc.nombre,' ',pc.apellido) AS nombreCliente
+                            d.id_detalle_orden
+                            ,d.valor_inventario
+                            ,d.valor_venta
+                            ,d.cantidad
+                            ,d.id_orden
+                            ,d.id_producto
+                            ,d.estado
+                            ,p.descripcion AS nombre_producto 
                         FROM 
-                             orden AS o
-                             INNER JOIN empleado AS e ON o.id_empleado = e.id_empleado
-                             INNER JOIN cliente AS c ON o.id_cliente = c.id_cliente
-                             INNER JOIN persona AS pe ON e.id_persona = pe.id_persona
-                             INNER JOIN persona AS pc ON c.id_persona = pc.id_persona ".$condicion;
+                            detalle_orden AS d 
+                            INNER JOIN producto AS p ON d.id_producto = p.id_producto ".$condicion;
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -148,56 +142,54 @@ class DetalleOrden{
     {
         $whereAnd = " WHERE ";
         $condicion = " ";
+        if($this->idDetalleOrden !=''){
+            $condicion=$whereAnd.$condicion." d.id_detalle_orden  = $this->idDetalleOrden";
+            $whereAnd = ' AND ';
+        }
+        if($this->valorInventario !=''){
+            $condicion=$condicion.$whereAnd." d.valor_inventario = $this->valorInventario";
+            $whereAnd = ' AND ';
+        }
+        if($this->valorVenta !=''){
+            $condicion=$condicion.$whereAnd." d.valor_venta = $this->valorVenta";
+            $whereAnd = ' AND ';
+        }
+        if($this->cantidad !=''){
+            $condicion=$condicion.$whereAnd." d.cantidad = $this->cantidad";
+            $whereAnd = ' AND ';
+        }
         if($this->idOrden !=''){
-            $condicion=$whereAnd.$condicion." o.id_orden  = $this->idOrden";
+            $condicion=$condicion.$whereAnd." d.id_orden = $this->idOrden";
             $whereAnd = ' AND ';
         }
-        if($this->fechaOrden !=''){
-                $ordenDate = date("Y-m-d", strtotime($this->fechaOrden));
-                $condicion=$condicion.$whereAnd." o.fecha_orden LIKE '%$ordenDate%' ";
-                $whereAnd = ' AND ';
-        }
-        if($this->fechaEntrega !=''){
-            $entregaDate = date("Y-m-d", strtotime($this->fechaEntrega));
-            $condicion=$condicion.$whereAnd." o.fecha_entrega LIKE '%$entregaDate%' ";
-            $whereAnd = ' AND ';
-        }
-        if($this->descripcion !=''){
-            $condicion=$condicion.$whereAnd." o.descripcion LIKE '%$this->descripcion%' ";
-            $whereAnd = ' AND ';
-        }
-        if($this->idCliente !=''){
-            $condicion=$condicion.$whereAnd." o.id_cliente = $this->idCliente ";
-            $whereAnd = ' AND ';
-        }
-        if($this->idEmpleado !=''){
-            $condicion=$condicion.$whereAnd." o.id_empleado = $this->idEmpleado ";
+        if($this->idProducto !=''){
+            $condicion=$condicion.$whereAnd." d.id_producto = $this->idProducto";
             $whereAnd = ' AND ';
         }
         if($this->estado!=''){
                 if ($whereAnd == ' AND '){
-                $condicion=$condicion.$whereAnd." o.estado = '$this->estado'";
+                $condicion=$condicion.$whereAnd." d.estado = '$this->estado'";
                 $whereAnd = ' AND ';
                 }
                 else{
-                $condicion=$whereAnd.$condicion." o.estado = '$this->estado'";
+                $condicion=$whereAnd.$condicion." d.estado = '$this->estado'";
                 $whereAnd = ' AND ';
                 }
             }
         if($this->fechaCreacion!=''){
-                $condicion=$condicion.$whereAnd." o.fecha_creacion LIKE '%$this->fechaCreacion%' ";
+                $condicion=$condicion.$whereAnd." d.fecha_creacion LIKE '%$this->fechaCreacion%' ";
                 $whereAnd = ' AND ';
         }
         if($this->fechaModificacion!=''){
-                $condicion=$condicion.$whereAnd." o.fecha_modificacion LIKE '%$this->fechaModificacion%' ";
+                $condicion=$condicion.$whereAnd." d.fecha_modificacion LIKE '%$this->fechaModificacion%' ";
                 $whereAnd = ' AND ';
         }
         if($this->idUsuarioCreacion!=''){
-            $condicion=$condicion.$whereAnd." o.id_usuario_creacion = $this->idUsuarioCreacion ";
+            $condicion=$condicion.$whereAnd." d.id_usuario_creacion = $this->idUsuarioCreacion ";
             $whereAnd = ' AND ';
         }
         if($this->idUsuarioModificacion!=''){
-            $condicion=$condicion.$whereAnd." o.id_usuario_modificacion = $this->idUsuarioModificacion ";
+            $condicion=$condicion.$whereAnd." d.id_usuario_modificacion = $this->idUsuarioModificacion ";
             $whereAnd = ' AND ';
         }
         return $condicion;

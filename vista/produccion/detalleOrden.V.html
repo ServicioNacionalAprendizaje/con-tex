@@ -14,18 +14,24 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/css/bootstrap.min.css" integrity="sha512-N415hCJJdJx+1UBfULt+i+ihvOn42V/kOjOpp1UTh4CZ70Hx5bDlKryWaqEKfY/8EYOu/C2MuyaluJryK1Lb5Q==" crossorigin="anonymous" />    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/js/bootstrap.min.js" integrity="sha512-mp3VeMpuFKbgxm/XMUU4QQUcJX4AZfV5esgX72JQr7H7zWusV6lLP1S78wZnX2z9dwvywil1VHkHZAqfGOW7Nw==" crossorigin="anonymous"></script>
+    <script src="../../js/produccion/detalleOrden.js"></script>
+    <!-- Auto complete -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Auto complete -->
 </head>
 
 <body>
     <form name="frmDetalleO" id="frmDetalleO">
         <div class="margen" align="center">
-            <h1><label>Detalle orden</label></h1>
+            <h1><label>Detalles de orden</label></h1>
             <div class="container form-group">
                 <div class="row">
                     <div class="col-12 col-sm-4">
-                        <label class="col-form-label">Orden</label>
-                        <input type="hidden" name="hidIdOrden" id="hidIdOrden" value=""><br>
-                        <input type="text" name="txtOrden" id="txtOrden" value="" class="caja form-control"
+                        <label class="col-form-label">Id de Orden</label>
+                        <input type="hidden" name="hidIdDetalleOrden" id="hidIdDetalleOrden" value=""><br>
+                        <input type="number" name="idOrden" id="idOrden" value="" class="caja form-control"
                             placeholder="Orden">
                     </div>
                     <div class="col-12 col-sm-4">
@@ -55,8 +61,8 @@
                         <label for="cmbEstado">Estado</label>
                         <select class="lista form-control" id="cmbEstado">
                             <option value="" selected="selected">--Seleccione--</option>
-                            <option value="0">Activo</option>
-                            <option value="1">Inactivo</option>
+                            <option value="1">Activo</option>
+                            <option value="0">Inactivo</option>
                         </select>
                     </div>
                 </div>
@@ -83,7 +89,7 @@
                                     <thead>
                                         <tr>
                                             <td align="center">Id orden</td>
-                                            <td align="center">Id producto</td>
+                                            <td align="center">Producto</td>
                                             <td align="center">Cantidad</td>
                                             <td align="center">Valor inventario</td>
                                             <td align="center">Valor venta</td>
@@ -92,8 +98,8 @@
                                             <td align="center">Eliminar</td>
                                         </tr>
                                     </thead>
-                                    <!-- <tbody>
-                                        <tr>
+                                    <tbody id="resultado">
+                                        <!-- <tr>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -106,8 +112,8 @@
                                             <td align="center"><a href="#" class="btn btn-danger"><i
                                                         class="fas fa-trash"></i></a>
                                             </td>
-                                        </tr>
-                                    </tbody> -->
+                                        </tr> -->
+                                    </tbody>
                                 </table>
                             </div>
                     </div>

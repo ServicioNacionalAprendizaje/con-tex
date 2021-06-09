@@ -1,7 +1,7 @@
 <?php
 // $ubicacionFormulario =  substr($_SERVER["SCRIPT_NAME"], 17);
 include '../../entorno/conexion.php';
-require '../../modelo/produccion/orden.M.php';
+require '../../modelo/produccion/detalleOrden.M.php';
 
 $respuesta = array();
 
@@ -10,16 +10,16 @@ if (isset ($accion)){
     switch($accion){
         case 'ADICIONAR':
             try{
-                $orden= new Orden();
-                $orden->setIdEmpleado($_POST['idEmpleado']);
-                $orden->setIdCliente($_POST['idCliente']);
-                $orden->setFechaOrden($_POST['fechaOrden']);
-                $orden->setFechaEntrega($_POST['fechaEntrega']);
-                $orden->setDescripcion($_POST['descripcion']);
-                $orden->setEstado($_POST['estado']);
-                $orden->setIdUsuarioCreacion(1); // Obtener id del orden con la variable session
-                $orden->setIdUsuarioModificacion(1); // Obtener id del orden con la variable session
-                $resultado = $orden->Agregar();
+                $detalleOrden= new DetalleOrden();
+                $detalleOrden->setValorInventario($_POST['valInven']);
+                $detalleOrden->setValorVenta($_POST['ValVenta']);
+                $detalleOrden->setCantidad($_POST['cantidad']);
+                $detalleOrden->setIdOrden($_POST['idOrden']);
+                $detalleOrden->setIdProducto($_POST['hidIdProducto']);
+                $detalleOrden->setEstado($_POST['estado']);
+                $detalleOrden->setIdUsuarioCreacion(1); // Obtener id del orden con la variable session
+                $detalleOrden->setIdUsuarioModificacion(1); // Obtener id del orden con la variable session
+                $resultado = $detalleOrden->Agregar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible adicionar la información, consulte con el administrador.";
@@ -29,16 +29,16 @@ if (isset ($accion)){
         break;
         case 'MODIFICAR':
             try{
-                $orden = new Orden();
-                $orden->setIdOrden($_POST['id']);
-                $orden->setIdEmpleado($_POST['idEmpleado']);
-                $orden->setIdCliente($_POST['idCliente']);
-                $orden->setFechaOrden($_POST['fechaOrden']);
-                $orden->setFechaEntrega($_POST['fechaEntrega']);
-                $orden->setDescripcion($_POST['descripcion']);
-                $orden->setEstado($_POST['estado']);
-                $orden->setIdUsuarioModificacion(2);
-                $resultado = $orden->Modificar();
+                $detalleOrden = new DetalleOrden();
+                $detalleOrden->setIdDetalleOrden($_POST['id']);
+                $detalleOrden->setValorInventario($_POST['valInven']);
+                $detalleOrden->setValorVenta($_POST['ValVenta']);
+                $detalleOrden->setCantidad($_POST['cantidad']);
+                $detalleOrden->setIdOrden($_POST['idOrden']);
+                $detalleOrden->setIdProducto($_POST['hidIdProducto']);
+                $detalleOrden->setEstado($_POST['estado']);
+                $detalleOrden->setIdUsuarioModificacion(2);
+                $resultado = $detalleOrden->Modificar();
                 $respuesta['respuesta']="La información se modificó correctamente, para refrescar la tabla busque nuevamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible modificar la información, consulte con el administrador.";
@@ -48,9 +48,9 @@ if (isset ($accion)){
         break;
         case 'ELIMINAR':
             try{
-                $orden = new Orden();
-                $orden->setIdOrden($_POST['id']);
-                $resultado = $orden->Eliminar();
+                $detalleOrden = new DetalleOrden();
+                $detalleOrden->setIdDetalleOrden($_POST['id']);
+                $resultado = $detalleOrden->Eliminar();
                 $respuesta['respuesta']="La información se eliminó correctamente, para refrescar la tabla busque nuevamente.";
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible eliminar la información, consulte con el administrador.";
@@ -60,39 +60,38 @@ if (isset ($accion)){
         break;
         case 'CONSULTAR':
             try{
-                $orden = new Orden();
-                $orden->setIdOrden($_POST['id']);
-                $orden->setIdEmpleado($_POST['idEmpleado']);
-                $orden->setIdCliente($_POST['idCliente']);
-                $orden->setFechaOrden($_POST['fechaOrden']);
-                $orden->setFechaEntrega($_POST['fechaEntrega']);
-                $orden->setDescripcion($_POST['descripcion']);
-                $orden->setEstado($_POST['estado']);
-                $resultado = $orden->consultar();
-                $numeroRegistros = $orden->conn->ObtenerNumeroRegistros();
+                $detalleOrden = new DetalleOrden();
+                $detalleOrden->setIdDetalleOrden($_POST['id']);
+                $detalleOrden->setValorInventario($_POST['valInven']);
+                $detalleOrden->setValorVenta($_POST['valVenta']);
+                $detalleOrden->setCantidad($_POST['cantidad']);
+                $detalleOrden->setIdOrden($_POST['idOrden']);
+                $detalleOrden->setIdProducto($_POST['hidIdProducto']);
+                $detalleOrden->setEstado($_POST['estado']);
+                $resultado = $detalleOrden->consultar();
+                $numeroRegistros = $detalleOrden->conn->ObtenerNumeroRegistros();
                 if($numeroRegistros === 1){
-                    if ($rowBuscar = $orden->conn->ObtenerObjeto()){
-                        $respuesta['id'] = $rowBuscar->id_orden;
-                        $respuesta['idEmpleado'] = $rowBuscar->id_empleado;
-                        $respuesta['nombreEmpleado'] = $rowBuscar->nombreEmpleado;
-                        $respuesta['idCliente'] = $rowBuscar->id_cliente;
-                        $respuesta['nombreCliente'] = $rowBuscar->nombreCliente;
-                        $respuesta['fechaOrden'] = date("Y-m-d", strtotime($rowBuscar->fecha_orden)).'T'.date("H:i", strtotime($rowBuscar->fecha_orden));
-                        $respuesta['fechaEntrega'] = date("Y-m-d", strtotime($rowBuscar->fecha_entrega)).'T'.date("H:i", strtotime($rowBuscar->fecha_entrega));
-                        $respuesta['descripcion'] = $rowBuscar->descripcion;
+                    if ($rowBuscar = $detalleOrden->conn->ObtenerObjeto()){
+                        $respuesta['id'] = $rowBuscar->id_detalle_orden;
+                        $respuesta['idOrden'] = $rowBuscar->id_orden;
+                        $respuesta['hidIdProducto'] = $rowBuscar->id_producto;
+                        $respuesta['producto'] = $rowBuscar->nombre_producto;
+                        $respuesta['cantidad'] = $rowBuscar->cantidad;
+                        $respuesta['valInven'] = $rowBuscar->valor_inventario;
+                        $respuesta['valVenta'] = $rowBuscar->valor_venta;
                         $respuesta['estado'] = $rowBuscar->estado;
-                        $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_orden.")'>";
+                        // $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_orden.")'>";
                     }
                 }else{
                     if(isset($resultado)){
                         $retorno="<table>";
-                        foreach($orden->conn->ObtenerRegistros() AS $rowConsulta){
+                        foreach($detalleOrden->conn->ObtenerRegistros() AS $rowConsulta){
                             $retorno .= "<tr>                                          
-                                        <td><label>".$rowConsulta[7]."</label></td>
-                                        <td><label>".$rowConsulta[8]."</label></td>
-                                        <td><label>".$rowConsulta[3]."</label></td>
                                         <td><label>".$rowConsulta[4]."</label></td>
-                                        <td><label>".$rowConsulta[5]."</label></td>
+                                        <td><label>".$rowConsulta[7]."</label></td>
+                                        <td><label>".$rowConsulta[3]."</label></td>
+                                        <td><label>".$rowConsulta[1]."</label></td>
+                                        <td><label>".$rowConsulta[2]."</label></td>
                                         <td><label>".($rowConsulta[6]== 1 ? 'Activo':'Inactivo')."</label></td>
                                         <td align='center'><span class='icon-edit1' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></td>
                                         <td align='center'><span class='icon-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></td>                                         
@@ -108,9 +107,7 @@ if (isset ($accion)){
                     }else{                                         
                         $respuesta['tablaRegistro']='No existen datos!!!';
                     }
-                }                                        
-               
-                
+                }
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible consultar la información, consulte con el administrador.";
             }

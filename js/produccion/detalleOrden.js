@@ -44,7 +44,8 @@ function Enviar(accion,id){
                     $('#numCantidad').val(respuesta['cantidad']);
                     $('#numValorinven').val(respuesta['valInven']);
                     $('#numValorventa').val(respuesta['valVenta']);
-                    $('#cmbEstado').val(respuesta['estado'] == 'Activo' ? 1 : ('Inactivo' ? 0 : ''));
+                    // Test
+                    // $('#cmbEstado').val(respuesta['estado'] == 'Activo' ? 1 : ('Inactivo' ? 0 : ''));
                     // $('#divEliminar').html(respuesta['eliminar']);
                 }
 

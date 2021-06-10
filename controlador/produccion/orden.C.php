@@ -81,27 +81,28 @@ if (isset ($accion)){
                         $respuesta['fechaEntrega'] = date("Y-m-d", strtotime($rowBuscar->fecha_entrega)).'T'.date("H:i", strtotime($rowBuscar->fecha_entrega));
                         $respuesta['descripcion'] = $rowBuscar->descripcion;
                         $respuesta['estado'] = $rowBuscar->estado;
-                        $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_orden.")'>";
+                        $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar1(\"ELIMINAR\",".$rowBuscar->id_orden.")'>";
                     }
                 }else{
                     if(isset($resultado)){
                         $retorno="<table>";
                         foreach($orden->conn->ObtenerRegistros() AS $rowConsulta){
-                            $retorno .= "<tr>                                          
+                            $retorno .= "<tr>
+                                        <td><label>".$rowConsulta[0]."</label></td>                                          
                                         <td><label>".$rowConsulta[7]."</label></td>
                                         <td><label>".$rowConsulta[8]."</label></td>
                                         <td><label>".$rowConsulta[3]."</label></td>
                                         <td><label>".$rowConsulta[4]."</label></td>
                                         <td><label>".$rowConsulta[5]."</label></td>
                                         <td><label>".($rowConsulta[6]== 1 ? 'Activo':'Inactivo')."</label></td>
-                                        <td align='center' style='cursor: pointer'><span class='icon-edit1' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></td>
-                                        <td align='center' style='cursor: pointer'><span class='icon-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></td>                                         
+                                        <td align='center' style='cursor: pointer'><span class='icon-edit1' onclick='Enviar1(\"CONSULTAR\",".$rowConsulta[0].")'></td>
+                                        <td align='center' style='cursor: pointer'><span class='icon-trash' onclick='Enviar1(\"ELIMINAR\",".$rowConsulta[0].")'></td>                                         
                                        
                                     </tr>";
                         }  
                             //     <td>
-                            //     <input type='button' name='editar' value='Editar' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'>
-                            //     <input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'>
+                            //     <input type='button' name='editar' value='Editar' onclick='Enviar1(\"CONSULTAR\",".$rowConsulta[0].")'>
+                            //     <input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar1(\"ELIMINAR\",".$rowConsulta[0].")'>
                             // </td>
                         $retorno .= "</table>";
                         $respuesta['tablaRegistro']=$retorno;

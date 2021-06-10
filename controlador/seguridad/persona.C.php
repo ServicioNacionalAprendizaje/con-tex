@@ -69,7 +69,8 @@ if (isset ($accion)){
                 $persona->setTipoDocumento($_POST['tipoDocumento']);
                 $persona->setDocumento($_POST['documento']);
                 $persona->setEdad($_POST['edad']);
-                $persona->setGenero($_POST['genero']);                              
+                $persona->setGenero($_POST['genero']);
+                $persona->setEstado($_POST['estado']);                              
                 $resultado = $persona->consultar();
 
                 $numeroRegistros = $persona->conn->ObtenerNumeroRegistros();

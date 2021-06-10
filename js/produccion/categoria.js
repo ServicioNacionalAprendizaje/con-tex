@@ -23,11 +23,11 @@ function Enviar(accion,id){
                 
                 //Respueta adicionar
                 if(respuesta['accion']=='ADICIONAR'){
-                    Swal.fire(
-                        'Resgitro con exito',
-                        'Clik en ok para continuar',
-                        'success'
-                      )
+                  Swal.fire(
+                    'Registro con exito',
+                    'Click en ok para continuar',
+                    'success'
+                  )
                     Limpiar();
                     $("#btnBuscar").trigger("click");
                 }
@@ -76,17 +76,17 @@ function Enviar(accion,id){
                 //Respuesta modificar
                 if(respuesta['accion']=='MODIFICAR'){
                     Swal.fire({
-                        title: 'Do you want to save the changes?',
+                        title: '¿Quieres guardar los cambios?',
                         showDenyButton: true,
                         showCancelButton: true,
-                        confirmButtonText: `Save`,
-                        denyButtonText: `Don't save`,
+                        confirmButtonText: `Guardar`,
+                        denyButtonText: `No guardar`,
                       }).then((result) => {
                         /* Read more about isConfirmed, isDenied below */
                         if (result.isConfirmed) {
-                          Swal.fire('Saved!', '', 'success')
+                          Swal.fire('Registro actualizado', '', 'success')
                         } else if (result.isDenied) {
-                          Swal.fire('Changes are not saved', '', 'info')
+                          Swal.fire('Los cambios no se guardaran', '', 'info')
                         }
                       })
                     Limpiar();
@@ -104,18 +104,18 @@ function Enviar(accion,id){
                       })
                       
                       swalWithBootstrapButtons.fire({
-                        title: 'Are you sure?',
-                        text: "You won't be able to revert this!",
+                        title: '¡Estas seguro!',
+                        text: "¡No podrás revertir esto!",
                         icon: 'warning',
                         showCancelButton: true,
-                        confirmButtonText: 'Yes, delete it!',
-                        cancelButtonText: 'No, cancel!',
+                        confirmButtonText: '¡Sí, bórralo!',
+                        cancelButtonText: '¡No, cancela!',
                         reverseButtons: true
                       }).then((result) => {
                         if (result.isConfirmed) {
                           swalWithBootstrapButtons.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
+                            'Registro Eliminado',
+                            'Su archivo ha sido eliminado.',
                             'success'
                           )
                         } else if (
@@ -123,8 +123,8 @@ function Enviar(accion,id){
                           result.dismiss === Swal.DismissReason.cancel
                         ) {
                           swalWithBootstrapButtons.fire(
-                            'Cancelled',
-                            'Your imaginary file is safe :)',
+                            'Cancelado',
+                            'Su archivo ha sido salvado',
                             'error'
                           )
                         }

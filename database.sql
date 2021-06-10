@@ -209,7 +209,7 @@ insert  into `formulario`(`id_formulario`,`descripcion`,`etiqueta`,`ubicacion`,`
 (2,'Formularios de rol','Seguridad','./vista/seguridad/formularioRol.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (3,'Persona','Seguridad','./vista/seguridad/persona.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (4,'Rol','Seguridad','./vista/seguridad/rol.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(5,'Usuario','Seguridad','./vista/seguridad/usuario.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(5,'Usuario','Seguridad','./vista/seguridad/usuario.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (6,'Cargo','Nomina','./vista/nomina/cargo.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (7,'Empleado','Nomina','./vista/nomina/empleado.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (8,'Generar pago','Nomina','./vista/nomina/generarPago.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),

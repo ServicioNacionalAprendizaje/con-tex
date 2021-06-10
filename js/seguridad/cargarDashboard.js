@@ -13,6 +13,7 @@ function CargarDashboard(sesion){
             //Respuesta muchos registros
             if( respuesta['numeroRegistros']>=1){
                 $("#cargarDashboard").html(respuesta['menu_recursivo']);
+                $("#usserLogin").html(respuesta['usser_login']);
             }
             if( respuesta['respuesta']=='cerrar_sesion'){
                 window.location =respuesta['ruta'];

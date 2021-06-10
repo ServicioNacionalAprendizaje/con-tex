@@ -38,7 +38,7 @@ if (isset ($_SESSION['id_login'])){
                     $retorno .= "</div></div>";
                     $contador++;                        
                 }     
-                     
+                $respuesta['usser_login']=$_SESSION['nombre_login'];     
                 $respuesta['menu_recursivo']=$retorno;
                 $respuesta['numeroRegistros']=$contador;
                 

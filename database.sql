@@ -206,9 +206,9 @@ CREATE TABLE `formulario` (
 
 insert  into `formulario`(`id_formulario`,`descripcion`,`etiqueta`,`ubicacion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
 (1,'Formulario','Seguridad','./vista/seguridad/formulario.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(2,'Formularios de rol','Seguridad','./vista/seguridad/formularioRol.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(2,'Formularios de rol','Seguridad','./vista/seguridad/formularioRol.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (3,'Persona','Seguridad','./vista/seguridad/persona.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(4,'Rol','Seguridad','./vista/seguridad/rol.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(4,'Rol','Seguridad','./vista/seguridad/rol.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (5,'Usuario','Seguridad','./vista/seguridad/usuario.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (6,'Cargo','Nomina','./vista/nomina/cargo.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (7,'Empleado','Nomina','./vista/nomina/empleado.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
@@ -218,7 +218,7 @@ insert  into `formulario`(`id_formulario`,`descripcion`,`etiqueta`,`ubicacion`,`
 (11,'Detalles de orden','Produccion','./vista/produccion/detalleOrden.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (12,'Insumo','Produccion','./vista/produccion/insumo.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (13,'Orden','Produccion','./vista/produccion/orden.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(14,'Producto','Produccion','./vista/produccion/producto.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(14,'Producto','Produccion','./vista/produccion/producto.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (15,'Tarea','Produccion','./vista/produccion/tarea.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (16,'Rol de usuario','Seguridad','./vista/seguridad/usuarioRol.V.html','1','2021-05-10 22:22:00','2021-06-01 23:31:39',1,1);
 

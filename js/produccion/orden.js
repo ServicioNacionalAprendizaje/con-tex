@@ -1,17 +1,17 @@
-function Enviar1(accion,id){
+function Enviar(accion,id){
     if(id===null){
-        id=$('#hidIdOrden1').val();
+        id=$('#hidIdOrden').val();
     }
     var parametros = {
         "id" : id,
-        "idEmpleado":$('#hidIdEmpleado1').val(),
-        "nombreEmpleado":$('#txtEmpleado1').val(),
-        "idCliente":$('#hidIdCliente1').val(),
-        "nombreCliente":$('#txtCliente1').val(),
-        "fechaOrden":$('#datFechaOrden1').val(),
-        "fechaEntrega":$('#datFechaEntrega1').val(),
-        "descripcion":$('#txtDescripcion1').val(),
-        "estado":$('#cmbEstado1').val(),
+        "idEmpleado":$('#hidIdEmpleado').val(),
+        "nombreEmpleado":$('#txtEmpleado').val(),
+        "idCliente":$('#hidIdCliente').val(),
+        "nombreCliente":$('#txtCliente').val(),
+        "fechaOrden":$('#datFechaOrden').val(),
+        "fechaEntrega":$('#datFechaEntrega').val(),
+        "descripcion":$('#txtDescripcion').val(),
+        "estado":$('#cmbEstado').val(),
         "accion" : accion
     }; 
 
@@ -32,24 +32,24 @@ function Enviar1(accion,id){
                 
                 //Respuesta muchos registros
                 if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']>1){
-                    $("#resultado1").html(respuesta['tablaRegistro']);
+                    $("#resultado").html(respuesta['tablaRegistro']);
                     //$('#divEliminar').html(respuesta['eliminar']).hide();
                 }
 
                 //Respuesta un registro
                 if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']==1){
-                    $('#hidIdOrden1').val(respuesta['id']);
-                    $('#hidIdEmpleado1').val(respuesta['idEmpleado']);
-                    $('#hidIdCliente1').val(respuesta['idCliente']);
-                    $('#txtEmpleado1').val(respuesta['nombreEmpleado']);
-                    $('#txtCliente1').val(respuesta['nombreCliente']);
-                    $('#datFechaOrden1').val(respuesta['fechaOrden']);
-                    $('#datFechaEntrega1').val(respuesta['fechaEntrega']);
-                    $('#txtDescripcion1').val(respuesta['descripcion']);
-                    $('#cmbEstado1').val(respuesta['estado']);
-                    // $('#txtEmpleado1').focus();
+                    $('#hidIdOrden').val(respuesta['id']);
+                    $('#hidIdEmpleado').val(respuesta['idEmpleado']);
+                    $('#hidIdCliente').val(respuesta['idCliente']);
+                    $('#txtEmpleado').val(respuesta['nombreEmpleado']);
+                    $('#txtCliente').val(respuesta['nombreCliente']);
+                    $('#datFechaOrden').val(respuesta['fechaOrden']);
+                    $('#datFechaEntrega').val(respuesta['fechaEntrega']);
+                    $('#txtDescripcion').val(respuesta['descripcion']);
+                    $('#cmbEstado').val(respuesta['estado']);
+                    $('#txtEmpleado').focus();
                     // $('#cmbEstado').val(respuesta['estado'] == 'Activo' ? 1 : ('Inactivo' ? 0 : ''));
-                    // $('#divEliminar').html(respuesta['eliminar']);
+                    $('#divEliminar').html(respuesta['eliminar']);
                 }
 
                 //Respuesta modificar
@@ -67,30 +67,30 @@ function Enviar1(accion,id){
 }
 $(function(){
     //se carga el autocompleta del contratista
-     $("#txtEmpleado1").autocomplete({
+     $("#txtEmpleado").autocomplete({
         source:'../../busqueda/produccion/empleado.B.php',
         select:function(event, ui){
-            $("#hidIdEmpleado1").val(ui.item.id);
+            $("#hidIdEmpleado").val(ui.item.id);
         }
      }); 
 });
 $(function(){
     //se carga el autocompleta del contratista
-     $("#txtCliente1").autocomplete({
+     $("#txtCliente").autocomplete({
         source:'../../busqueda/produccion/cliente.B.php',
         select:function(event, ui){
-            $("#hidIdCliente1").val(ui.item.id);
+            $("#hidIdCliente").val(ui.item.id);
         }
      }); 
 });
-function Limpiar1() {
-    document.getElementById('hidIdOrden1').value = '';
-    document.getElementById('hidIdEmpleado1').value = '';
-    document.getElementById('hidIdCliente1').value = '';
-    document.getElementById('txtEmpleado1').value = '';
-    document.getElementById('txtCliente1').value = '';
-    document.getElementById('datFechaOrden1').value = '';
-    document.getElementById('datFechaEntrega1').value = '';
-    document.getElementById('txtDescripcion1').value = '';
-    document.getElementById('cmbEstado1').value = '';
+function Limpiar() {
+    document.getElementById('hidIdOrden').value = '';
+    document.getElementById('hidIdEmpleado').value = '';
+    document.getElementById('hidIdCliente').value = '';
+    document.getElementById('txtEmpleado').value = '';
+    document.getElementById('txtCliente').value = '';
+    document.getElementById('datFechaOrden').value = '';
+    document.getElementById('datFechaEntrega').value = '';
+    document.getElementById('txtDescripcion').value = '';
+    document.getElementById('cmbEstado').value = '';
 }

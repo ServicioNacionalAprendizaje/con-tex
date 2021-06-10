@@ -1,5 +1,4 @@
 <?php include_once ("../../componente/libreria/libreria.php"); ?>
-<script src="../../js/produccion/categoria.js"></script>
 <body onload="Enviar('CONSULTAR',null)">
     <form name="frmCategoria" id="frmCategoria">
         <div class="margen" align="center"> 
@@ -48,9 +47,18 @@
                         </tr>
                     </thead>
                     <tbody id="resultado">
+                        <!-- <tr>
+                            <td></td>
+                            <td></td>
+                            <td align="center"><a href="#" class="btn btn-warning"><i
+                                        class="fas fa-edit"></i></a></td>
+                            <td align="center"><a href="#" class="btn btn-danger"><i
+                                        class="fas fa-trash"></i></a></td>
+                        </tr> -->
                     </tbody>
                 </table>
-            </div>                    
+            </div>
+                    
         </div>
     </form>
 </body>

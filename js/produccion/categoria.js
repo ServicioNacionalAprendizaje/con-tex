@@ -24,8 +24,8 @@ function Enviar(accion,id){
                 //Respueta adicionar
                 if(respuesta['accion']=='ADICIONAR'){
                     Swal.fire(
-                        'Good job!',
-                        'You clicked the button!',
+                        'Resgitro con exito',
+                        'Clik en ok para continuar',
                         'success'
                       )
                     Limpiar();
@@ -75,14 +75,60 @@ function Enviar(accion,id){
 
                 //Respuesta modificar
                 if(respuesta['accion']=='MODIFICAR'){
-                    alert(respuesta['respuesta']);
+                    Swal.fire({
+                        title: 'Do you want to save the changes?',
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: `Save`,
+                        denyButtonText: `Don't save`,
+                      }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                          Swal.fire('Saved!', '', 'success')
+                        } else if (result.isDenied) {
+                          Swal.fire('Changes are not saved', '', 'info')
+                        }
+                      })
                     Limpiar();
                     $("#btnBuscar").trigger("click");
                 }
                 
                 //Respuesta eliminar
                 if(respuesta['accion']=='ELIMINAR'){
-                    alert(respuesta['respuesta']);
+                    const swalWithBootstrapButtons = Swal.mixin({
+                        customClass: {
+                          confirmButton: 'btn btn-success',
+                          cancelButton: 'btn btn-danger'
+                        },
+                        buttonsStyling: false
+                      })
+                      
+                      swalWithBootstrapButtons.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes, delete it!',
+                        cancelButtonText: 'No, cancel!',
+                        reverseButtons: true
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                          swalWithBootstrapButtons.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                          )
+                        } else if (
+                          /* Read more about handling dismissals below */
+                          result.dismiss === Swal.DismissReason.cancel
+                        ) {
+                          swalWithBootstrapButtons.fire(
+                            'Cancelled',
+                            'Your imaginary file is safe :)',
+                            'error'
+                          )
+                        }
+                      })
                     Limpiar();
                     $("#btnBuscar").trigger("click");
                 }

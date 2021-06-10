@@ -1,29 +1,6 @@
-    <!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8'>
-    <title>Formulario Rol</title>
-    <link rel='stylesheet' type='text/css' media='screen' href='../../componente/css/goblal.css'>
-    <!-- Iconos de las tablas -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="../../componente/fonts/style.css">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/css/bootstrap.min.css" integrity="sha512-N415hCJJdJx+1UBfULt+i+ihvOn42V/kOjOpp1UTh4CZ70Hx5bDlKryWaqEKfY/8EYOu/C2MuyaluJryK1Lb5Q==" crossorigin="anonymous" />    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/js/bootstrap.min.js" integrity="sha512-mp3VeMpuFKbgxm/XMUU4QQUcJX4AZfV5esgX72JQr7H7zWusV6lLP1S78wZnX2z9dwvywil1VHkHZAqfGOW7Nw==" crossorigin="anonymous"></script>
+    <?php include_once ("../../componente/libreria/libreria.php"); ?>
     <script src="../../js/seguridad/formularioRol.js"></script>
-
-    <!-- Auto complete -->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <!-- Auto complete -->    
-    
-</head>
-
-<body>
+    <body onload="Enviar('CONSULTAR',null)">
     <form name="fmrFormularioRol" id="frmFormularioRol"> 
         <div class="margen" align="center">
             <label>
@@ -71,7 +48,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover">
+                            <table id="tableDatos" class="table table-striped table-bordered table-hover"> 
                                 <thead>
                                     <tr>
                                         <td align="center">Id</td>
@@ -85,22 +62,11 @@
                                     </tr>
                                 </thead>
                                 <tbody id="resultado">
-                                    <tr>
-                                        <!-- <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td align="center"><a href="#" class="btn btn-warning"><i
-                                                    class="fas fa-edit"></i></a></td>
-                                        <td align="center"><a href="#" class="btn btn-danger"><i
-                                                    class="fas fa-trash"></i></a></td>
-                                    </tr>-->
                                 </tbody>
                             </table>
                         </div>
+                    </div>
                 </div>
-            </div>
         </div>
     </form>
 </body>
-</html>

@@ -92,7 +92,6 @@ if (isset ($accion)){
                                             <td><label>".$rowConsulta[4]."</label></td>                                             
                                             <td><label>".$rowConsulta[6]."</label></td>                                        
                                             <td><label>".$rowConsulta[7]."</label></td>                                                                                               
-
                                             <td><label>".($rowConsulta[5]== 1 ? 'Activo':'Inactivo')."</label></td>
                                             <td align='center' style='cursor: pointer'><span class='icon-edit1' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></td>
                                             <td align='center' style='cursor: pointer'><span class='icon-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></td>                                                                                
@@ -108,7 +107,6 @@ if (isset ($accion)){
             }catch(Exception $e){
                 $respuesta['respuesta']="Error, no fué posible consultar la información, consulte con el administrador.";
             }
-            // json_encode($respuesta);
             $respuesta['numeroRegistros']=$numeroRegistros;
             $respuesta['accion']='CONSULTAR';
             echo json_encode($respuesta);

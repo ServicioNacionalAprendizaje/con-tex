@@ -23,11 +23,11 @@ function Enviar(accion,id){
                 
                 //Respueta adicionar
                 if(respuesta['accion']=='ADICIONAR'){
-                    Swal.fire(
-                        'Good job!',
-                        'You clicked the button!',
-                        'success'
-                      )
+                  Swal.fire(
+                    'Registro con exito',
+                    'Click en ok para continuar',
+                    'success'
+                  )
                     Limpiar();
                     $("#btnBuscar").trigger("click");
                 }
@@ -75,14 +75,60 @@ function Enviar(accion,id){
 
                 //Respuesta modificar
                 if(respuesta['accion']=='MODIFICAR'){
-                    alert(respuesta['respuesta']);
+                    Swal.fire({
+                        title: '¿Quieres guardar los cambios?',
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: `Guardar`,
+                        denyButtonText: `No guardar`,
+                      }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                          Swal.fire('Registro actualizado', '', 'success')
+                        } else if (result.isDenied) {
+                          Swal.fire('Los cambios no se guardaran', '', 'info')
+                        }
+                      })
                     Limpiar();
                     $("#btnBuscar").trigger("click");
                 }
                 
                 //Respuesta eliminar
                 if(respuesta['accion']=='ELIMINAR'){
-                    alert(respuesta['respuesta']);
+                    const swalWithBootstrapButtons = Swal.mixin({
+                        customClass: {
+                          confirmButton: 'btn btn-success',
+                          cancelButton: 'btn btn-danger'
+                        },
+                        buttonsStyling: false
+                      })
+                      
+                      swalWithBootstrapButtons.fire({
+                        title: '¡Estas seguro!',
+                        text: "¡No podrás revertir esto!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: '¡Sí, bórralo!',
+                        cancelButtonText: '¡No, cancela!',
+                        reverseButtons: true
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                          swalWithBootstrapButtons.fire(
+                            'Registro Eliminado',
+                            'Su archivo ha sido eliminado.',
+                            'success'
+                          )
+                        } else if (
+                          /* Read more about handling dismissals below */
+                          result.dismiss === Swal.DismissReason.cancel
+                        ) {
+                          swalWithBootstrapButtons.fire(
+                            'Cancelado',
+                            'Su archivo ha sido salvado',
+                            'error'
+                          )
+                        }
+                      })
                     Limpiar();
                     $("#btnBuscar").trigger("click");
                 }

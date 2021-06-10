@@ -16,8 +16,8 @@ if (isset ($accion)){
                 $formulario->setEtiqueta($_POST['etiqueta']);
                 $formulario->setUbicacion($_POST['ubicacion']);
                 $formulario->setEstado($_POST['estado']);
-                $formulario->setIdUsuarioCreacion();
-                $formulario->setIdUsuarioModificacion();
+                $formulario->setIdUsuarioCreacion(1);
+                $formulario->setIdUsuarioModificacion(1);
                 $resultado = $formulario->Agregar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             }catch(Exception $e){
@@ -34,7 +34,7 @@ if (isset ($accion)){
                 $formulario->setEtiqueta($_POST['etiqueta']);
                 $formulario->setUbicacion($_POST['ubicacion']);
                 $formulario->setEstado($_POST['estado']);               
-                $formulario->setIdUsuarioModificacion();
+                $formulario->setIdUsuarioModificacion(1);
 
                 $resultado = $formulario->Modificar();
                 $respuesta['respuesta']="La información se adicionó correctamente.";
@@ -68,7 +68,7 @@ if (isset ($accion)){
                 // $formulario->setFechaModificacion($_POST['fechaModificacion']);
                 // $formulario->setIdUsuarioCreacion($_POST['idUsuarioCreacion']);
                 // $formulario->setIdUsuarioModificacion($_POST['idUsuarioModificacion']);
-                $resultado = $formulario->consultar();
+                $resultado = $formulario->Consultar();
 
                 $numeroRegistros = $formulario->conn->obtenerNumeroRegistros();
                 if($numeroRegistros === 1){

@@ -88,7 +88,7 @@ class Formulario
     {
         return $this->idUsuarioCreacion;
     }
-    public function setIdUsuarioCreacion($idUsuarioCreacion = 1)
+    public function setIdUsuarioCreacion($idUsuarioCreacion)
     {
         $this->idUsuarioCreacion = $idUsuarioCreacion;
     }
@@ -98,7 +98,7 @@ class Formulario
     {
         return $this->idUsuarioModificacion;
     }
-    public function setIdUsuarioModificacion($idUsuarioModificacion = 1)
+    public function setIdUsuarioModificacion($idUsuarioModificacion)
     {
         $this->idUsuarioModificacion = $idUsuarioModificacion;
     }
@@ -150,7 +150,9 @@ class Formulario
     {
         $condicion = $this->obtenerCondicion();
         $sentenciaSql = "SELECT * 
-                            FROM formulario $condicion";
+                            FROM formulario
+                            $condicion
+                            ORDER BY etiqueta DESC";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -177,7 +179,11 @@ class Formulario
         if($this->descripcion !=''){
                 $condicion=$condicion.$whereAnd." descripcion LIKE '%$this->descripcion%' ";
                 $whereAnd = ' AND ';
-        }        
+        }
+        if($this->etiqueta !=''){
+            $condicion=$condicion.$whereAnd." etiqueta LIKE '%$this->etiqueta%' ";
+            $whereAnd = ' AND ';
+    }        
         
         return $condicion;
     }

@@ -84,14 +84,14 @@ class DetalleOrden{
     
     public function Modificar()
     {
-        $sentenciaSql = "CALL Modificar_orden('$detalleOrdenDate'
-                                             ,'$entregaDate'
-                                             ,'$this->descripcion'
-                                             ,$this->idCliente
-                                             ,$this->idEmpleado
+        $sentenciaSql = "CALL Modificar_detalle_orden($this->valorInventario
+                                             ,$this->valorVenta
+                                             ,$this->cantidad
+                                             ,$this->idOrden
+                                             ,$this->idProducto
                                              ,'$this->estado'
                                              ,$this->idUsuarioModificacion
-                                             ,$this->idOrden)";
+                                             ,$this->idDetalleOrden)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -100,9 +100,9 @@ class DetalleOrden{
 
     public function Eliminar(){
         $sentenciaSql = "DELETE FROM 
-            orden 
+            detalle_orden 
         WHERE 
-            id_orden = $this->idOrden";        
+            id_detalle_orden = $this->idDetalleOrden";        
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }

@@ -656,6 +656,7 @@ DELIMITER $$
 																			,IN cantidad INT(11)
 																			,IN idOrden INT(11)
 																			,IN idProducto INT(11)
+																			,IN estado ENUM('0','1')
 																			,IN idUsuarioCreacion INT(11)
 																			,IN idUsuarioModificacion INT(11)
 																			)
@@ -665,6 +666,7 @@ BEGIN
 							 ,cantidad
 							 ,id_orden
 							 ,id_producto
+							 ,estado
 							 ,fecha_creacion
 							 ,fecha_modificacion
 							 ,id_usuario_creacion
@@ -675,6 +677,7 @@ BEGIN
 			,cantidad
 			,idOrden
 			,idProducto
+			,estado
 			,NOW()
 			,NOW()
 			,idUsuarioCreacion
@@ -1232,13 +1235,14 @@ DELIMITER ;
 DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_detalle_orden`(
-		IN `valorInventario` DOUBLE,
-		IN `valorVenta` DOUBLE,
-		IN `cantidad` INT(11),
-		IN `idOrden` INT(11),
-		IN `idProducto` INT(11),
-		IN `idUsuarioModificacion` INT(11),
-		IN `idDetalleOrden` INT(11)
+		IN valorInventario DOUBLE,
+		IN valorVenta DOUBLE,
+		IN cantidad INT(11),
+		IN idOrden INT(11),
+		IN idProducto INT(11),
+		IN estado ENUM('0','1'),
+		IN idUsuarioModificacion INT(11),
+		IN idDetalleOrden INT(11)
 	)
 BEGIN
 	UPDATE detalle_orden 
@@ -1248,6 +1252,7 @@ BEGIN
 			,cantidad = cantidad
 			,id_orden = idOrden
 			,id_producto = idProducto
+			,estado = estado
 			,fecha_modificacion = NOW()
 			,id_usuario_modificacion = idUsuarioModificacion 
 		WHERE id_detalle_orden = idDetalleOrden;

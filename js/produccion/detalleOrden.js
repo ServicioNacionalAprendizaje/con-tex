@@ -38,27 +38,25 @@ function Enviar(accion,id){
                 //Respuesta un registro
                 if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']==1){
                     $('#hidIdDetalleOrden').val(respuesta['id']);
-                    $('#hidIdOrden').val(respuesta['idOrden']);
+                    $('#idOrden').val(respuesta['idOrden']);
                     $('#hidIdProducto').val(respuesta['hidIdProducto']);
                     $('#txtProducto').val(respuesta['producto']);
                     $('#numCantidad').val(respuesta['cantidad']);
                     $('#numValorinven').val(respuesta['valInven']);
                     $('#numValorventa').val(respuesta['valVenta']);
-                    // Test
-                    // $('#cmbEstado').val(respuesta['estado'] == 'Activo' ? 1 : ('Inactivo' ? 0 : ''));
-                    // $('#divEliminar').html(respuesta['eliminar']);
+                    $('#cmbEstado').val(respuesta['estado']);
                 }
 
-                // //Respuesta modificar
-                // if(respuesta['accion']=='MODIFICAR'){
-                //     alert(respuesta['respuesta']);
-                //     Limpiar();
-                // }
+                //Respuesta modificar
+                if(respuesta['accion']=='MODIFICAR'){
+                    alert(respuesta['respuesta']);
+                    Limpiar();
+                }
                 
-                // //Respuesta eliminar
-                // if(respuesta['accion']=='ELIMINAR'){
-                //     alert(respuesta['respuesta']);
-                // }
+                //Respuesta eliminar
+                if(respuesta['accion']=='ELIMINAR'){
+                    alert(respuesta['respuesta']);
+                }
             }
     });
 }

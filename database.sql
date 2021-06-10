@@ -210,17 +210,16 @@ insert  into `formulario`(`id_formulario`,`descripcion`,`etiqueta`,`ubicacion`,`
 (3,'Persona','Seguridad','./vista/seguridad/persona.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (4,'Rol','Seguridad','./vista/seguridad/rol.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (5,'Usuario','Seguridad','./vista/seguridad/usuario.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(6,'Cargo','Nomina','./vista/nomina/cargo.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(6,'Cargo','Nomina','./vista/nomina/cargo.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (7,'Empleado','Nomina','./vista/nomina/empleado.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (8,'Generar pago','Nomina','./vista/nomina/generarPago.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (9,'Pago del dia','Nomina','./vista/nomina/pagoDia.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (10,'Categoria','Produccion','./vista/produccion/categoria.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (11,'Detalles de orden','Produccion','./vista/produccion/detalleOrden.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(12,'Insumo','Produccion','./vista/produccion/insumo.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(13,'Orden','Produccion','./vista/produccion/orden.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(14,'Producto','Produccion','./vista/produccion/producto.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(15,'Tarea','Produccion','./vista/produccion/tarea.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(16,'Rol de usuario','Seguridad','./vista/seguridad/usuarioRol.V.html','1','2021-05-10 22:22:00','2021-06-01 23:31:39',1,1);
+(12,'Orden','Produccion','./vista/produccion/orden.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(13,'Producto','Produccion','./vista/produccion/producto.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(14,'Tarea','Produccion','./vista/produccion/tarea.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(15,'Rol de usuario','Seguridad','./vista/seguridad/usuarioRol.V.php','1','2021-05-10 22:22:00','2021-06-01 23:31:39',1,1);
 
 /*Table structure for table `formulario_rol` */
 

@@ -525,7 +525,7 @@ CREATE TABLE `usuario` (
 /*Data for the table `usuario` */
 
 insert  into `usuario`(`id_usuario`,`usuario`,`contrasenia`,`fecha_activacion`,`fecha_expiracion`,`id_persona`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
-(1,'ariel5253@misena.edu.co','0a5c79b1eaf15445da252ada718857e9','2021-05-16','2021-06-02',1,'1','2021-05-08 01:35:00','2021-06-01 21:01:53',1,1),
+(1,'u20152142462@usco.edu.co','0a5c79b1eaf15445da252ada718857e9','2021-05-16','2021-06-02',1,'1','2021-05-08 01:35:00','2021-06-01 21:01:53',1,1),
 (2,'carmen@.com','9f564fef13bb8a7f9faa5f9071e4e045','2021-05-02','2021-05-07',2,'1','2021-05-11 22:06:54','2021-06-01 20:21:55',1,2),
 (3,'ariel5253@misena.edu.com','31784d9fc1fa0d25d04eae50ac9bf787','2021-05-16','2021-06-02',5,'1','2021-05-11 22:11:21','2021-06-01 20:45:25',1,3),
 (4,'olperdomo6@misena.edu.co','149815eb972b3c370dee3b89d645ae14','2021-06-01','2022-01-01',11,'1','2021-06-01 23:16:47','2021-06-01 23:16:47',1,1),

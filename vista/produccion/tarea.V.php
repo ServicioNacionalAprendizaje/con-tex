@@ -3,7 +3,7 @@
 <body onload="Enviar('CONSULTAR',null)">
     <form name="frmTarea" id="frmTarea">
         <div class="margen" align="center">
-            <h1><label>Tarea</label></h1>
+            <h1>Tarea</h1>
             <div class="container form-group">
                 <div class="row">
                     <div class="col-12 col-sm-4">

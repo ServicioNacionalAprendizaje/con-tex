@@ -50,7 +50,7 @@
                             </li>                           
                             <div class="d-none d-sm-block topbar-divider"></div>
                             <li class="nav-item dropdown no-arrow">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small"><div id="usserLogin">sghdsfg</div></span><img class="border rounded-circle img-profile" src="https://png.pngtree.com/element_origin_min_pic/00/00/06/12575cb97a22f0f.jpg"></a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small"><div id="usserLogin"></div></span><img class="border rounded-circle img-profile" src="https://png.pngtree.com/element_origin_min_pic/00/00/06/12575cb97a22f0f.jpg"></a>
                                     <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in">
                                         <a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Perfil</a>
                                         <a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Configuración</a>                                        

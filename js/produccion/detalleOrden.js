@@ -93,10 +93,12 @@ function Enviar(accion,id){
             }
     });
 }
-$(function(){
+// $(document).ready(function(){
+    $(function(){
     //se carga el autocompleta del contratista
      $("#txtProducto").autocomplete({
         source:'../../busqueda/produccion/producto.B.php',
+        appendTo : "#staticBackdrop",
         select:function(event, ui){
             $("#hidIdProducto").val(ui.item.id);
         }

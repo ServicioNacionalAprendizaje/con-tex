@@ -21,7 +21,7 @@
                     </div>
                 </div>
             </div>
-                <div class="row">
+            <div class="row">
                 <div class="col-12 col-sm-2"></div>
                 <div class="col-12 col-sm-2">
                     <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado" onclick="Enviar('CONSULTAR',null);">

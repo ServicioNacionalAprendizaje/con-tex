@@ -13,7 +13,7 @@ body{
 label{
     font-family: Verdana, Arial, Helvetica, sans-serif;
     /* font-weight: bold; */
-    color: #8AA7B8;
+    color: #396680;
 }
 
 /* div{
@@ -23,7 +23,7 @@ label{
 td{
     font-weight: bold;
     font-family: Verdana, Arial, Helvetica, sans-serif;
-    color: #30566B;
+    color: #396680;
 }
 
 .margen{
@@ -34,7 +34,7 @@ td{
 }
 
 h1{
-    color: #757575;
+    color: #B39062;
 }
 
 .caja{

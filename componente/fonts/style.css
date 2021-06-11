@@ -1197,3 +1197,7 @@ span{
 .icon-edit1:before {
   content: "\ea82";
 }
+span.swal2-success-line-tip, span.swal2-success-line-long{
+  margin-right: 0px !important;
+  font-size: 16px !important;
+}

@@ -3,7 +3,7 @@
 <head>
     <title>Con-tex</title>
     <!-- CSS Global -->
-    <link rel='stylesheet' type='text/css' media='screen' href='../../componente/css/goblal.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../../componente/css/global.css'>
     <!-- Iconos de las tablas -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

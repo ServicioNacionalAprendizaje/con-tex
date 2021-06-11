@@ -11,9 +11,9 @@ body{
 }
 
 label{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-weight: bold;
-    color: #757575;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    /* font-weight: bold; */
+    color: #8AA7B8;
 }
 
 div{
@@ -22,8 +22,8 @@ div{
 
 td{
     font-weight: bold;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    color: #4d4d4d;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #30566B;
 }
 
 .margen{

@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Clase Persona
+ */
 class Persona
 {
     private $idPersona;
@@ -14,32 +17,65 @@ class Persona
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
-
-    //idpersona
+    
+    /**
+     * Obtiene el id de persona
+     * @access public
+     * @return integer $idPersona
+     */
     public function getIdPersona()
     {
         return $this->idPersona;
     }
+
+    /**
+     * Coloca el id de persona
+     * @access public
+     * @param integer $idPersona
+     * @return void
+     */
     public function setIdPersona($idPersona)
     {
         $this->idPersona = $idPersona;
     }
-
-    //nombre
+    
+    /**
+     * Obtiene el nombre de persona
+     * @access public
+     * @return string $nombre
+     */
     public function getNombre()
     {
         return $this->nombre;
     }
+        
+    /**
+     * Coloca el nombre de persona
+     * @access public
+     * @param string $nombre
+     * @return void
+     */
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
     }
 
-    //apellido
+    /**
+     * Obtiene el apellido de persona
+     * @access public
+     * @return string $apellido
+     */
     public function getApellido()
     {
         return $this->apellido;
     }
+    
+    /**
+     * setApellido
+     * @access public
+     * @param mixed $apellido
+     * @return void
+     */
     public function setApellido($apellido)
     {
         $this->apellido = $apellido;
@@ -200,38 +236,38 @@ class Persona
         $whereAnd = " WHERE ";
         $condicion = " ";
 
-        if($this->idPersona !=''){
+        if ($this->idPersona !='') {
             $condicion=$whereAnd.$condicion." id_persona  = $this->idPersona";
             $whereAnd = ' AND ';
         }
-        if($this->nombre !=''){
-                $condicion=$condicion.$whereAnd." nombre LIKE '%$this->nombre%' ";
-                $whereAnd = ' AND ';
+        if ($this->nombre !='') {
+            $condicion=$condicion.$whereAnd." nombre LIKE '%$this->nombre%' ";
+            $whereAnd = ' AND ';
         }
-        if($this->apellido !=''){
+        if ($this->apellido !='') {
             $condicion=$condicion.$whereAnd." apellido LIKE '%$this->apellido%' ";
             $whereAnd = ' AND ';
         }
-        if($this->tipoDocumento !=''){
+        if ($this->tipoDocumento !='') {
             $condicion=$condicion.$whereAnd." tipo_documento = '$this->tipoDocumento' ";
             $whereAnd = ' AND ';
         }
-        if($this->documento !=''){
+        if ($this->documento !='') {
             $condicion=$condicion.$whereAnd." documento = $this->documento ";
             $whereAnd = ' AND ';
-        }   
-        if($this->genero !=''){
+        }
+        if ($this->genero !='') {
             $condicion=$condicion.$whereAnd." genero = '$this->genero' ";
             $whereAnd = ' AND ';
-        }  
-        if($this->edad !=''){
+        }
+        if ($this->edad !='') {
             $condicion=$condicion.$whereAnd." edad LIKE '%$this->edad%' ";
             $whereAnd = ' AND ';
         }
-        if($this->estado !=''){
+        if ($this->estado !='') {
             $condicion=$condicion.$whereAnd." estado = '$this->estado' ";
             $whereAnd = ' AND ';
-        }      
+        }
         // if($this->estado!=''){
         //         if ($whereAnd == ' AND '){
         //         $condicion=$condicion.$whereAnd." seg_usu.estado = '$this->estado'";
@@ -255,7 +291,6 @@ class Persona
 
     public function __destruct()
     {
-
         unset($this->idPersona);
         unset($this->nombre);
         unset($this->apellido);

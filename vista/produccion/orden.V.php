@@ -76,23 +76,23 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 col-sm-3">
+            <div class="row justify-content-sm-center">
+                <div class="col-12 col-sm-2">
                     <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar"
                         id="btnBuscar" value="BUSCAR"
                         onclick="Enviar1('CONSULTAR',null);">
                 </div>
-                <div class="col-12 col-sm-3">
+                <div class="col-12 col-sm-2">
                     <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar"
                         value="REGISTRAR" id="btnRegistrar"
                         onclick=" Enviar1('ADICIONAR',null);">
                 </div>
-                <div class="col-12 col-sm-3">
+                <div class="col-12 col-sm-2">
                     <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnModificar"
                         value="MODIFICAR" id="btnModificar"
                         onclick=" Enviar1('MODIFICAR',null);">
                 </div>
-                <div class="col-12 col-sm-3">
+                <div class="col-12 col-sm-2">
                     <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnLimpiar"
                         value="LIMPIAR" id="btnLimpiar" onclick=" Limpiar1();">
                 </div>
@@ -101,7 +101,7 @@
                 <div class="col-12 col-sm-12">
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Detalle de orden
+                    DETALLE DE ORDEN
                     </button>
 
                     <!-- Modal -->

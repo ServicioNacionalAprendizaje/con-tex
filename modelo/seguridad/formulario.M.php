@@ -158,6 +158,23 @@ class Formulario
         return true;
     }
 
+    public function validarFormulario()
+    {        
+        $sentenciaSql = "SELECT 
+                            COUNT(f.ubicacion) AS cantidad
+                        FROM 
+                            formulario AS f
+                            INNER JOIN formulario_rol AS fr ON f.id_formulario = fr.id_formulario
+                            INNER JOIN rol AS r ON fr.id_rol = r.id_rol
+                            INNER JOIN usuario_rol AS ur ON r.id_rol = ur.id_rol
+                            INNER JOIN usuario AS u ON ur.id_usuario = u.id_usuario
+                        WHERE f.ubicacion LIKE '%./vista/seguridad/formulario.V.php%'
+                    ";
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+        return true;
+    }
+
     public function construirDashboard()
     {      
         $id_usuario = $_SESSION['id_login'];  
@@ -183,8 +200,11 @@ class Formulario
         if($this->etiqueta !=''){
             $condicion=$condicion.$whereAnd." etiqueta LIKE '%$this->etiqueta%' ";
             $whereAnd = ' AND ';
-    }        
-        
+        }
+        if($this->ubicacion !=''){
+            $condicion=$condicion.$whereAnd." ubicacion LIKE '%$this->ubicacion%' ";
+            $whereAnd = ' AND ';
+        }                
         return $condicion;
     }
 

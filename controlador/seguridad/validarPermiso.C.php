@@ -11,9 +11,9 @@ if (isset ( $_SESSION['id_login'])){
         $formulario->validarFormulario();
         
         if ($rowBuscar = $formulario->conn->ObtenerObjeto()){
-            if(intval($rowBuscar->autenticado)===1)
+            if(intval($rowBuscar->cantidad)===1)
             {
-                $_SESSION['autenticado'] = $rowBuscar->autenticado;                
+                $_SESSION['autenticado'] = $rowBuscar->cantidad;                
                 $respuesta['respuesta']= "dashboard.php";
             } 
         }         

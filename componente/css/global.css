@@ -1,5 +1,5 @@
 /* *{
-    margin: o;
+    margin: 0;
     padding: 0;
 } */
 
@@ -16,9 +16,9 @@ label{
     color: #396680;
 }
 
-/* div{
-    padding: 1em;
-} */
+div{
+    padding: 0.5em;
+}
 
 td{
     font-weight: bold;

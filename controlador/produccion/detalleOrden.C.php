@@ -12,7 +12,7 @@ if (isset ($accion)){
             try{
                 $detalleOrden= new DetalleOrden();
                 $detalleOrden->setValorInventario($_POST['valInven']);
-                $detalleOrden->setValorVenta($_POST['ValVenta']);
+                $detalleOrden->setValorVenta($_POST['valVenta']);
                 $detalleOrden->setCantidad($_POST['cantidad']);
                 $detalleOrden->setIdOrden($_POST['idOrden']);
                 $detalleOrden->setIdProducto($_POST['hidIdProducto']);
@@ -32,7 +32,7 @@ if (isset ($accion)){
                 $detalleOrden = new DetalleOrden();
                 $detalleOrden->setIdDetalleOrden($_POST['id']);
                 $detalleOrden->setValorInventario($_POST['valInven']);
-                $detalleOrden->setValorVenta($_POST['ValVenta']);
+                $detalleOrden->setValorVenta($_POST['valVenta']);
                 $detalleOrden->setCantidad($_POST['cantidad']);
                 $detalleOrden->setIdOrden($_POST['idOrden']);
                 $detalleOrden->setIdProducto($_POST['hidIdProducto']);

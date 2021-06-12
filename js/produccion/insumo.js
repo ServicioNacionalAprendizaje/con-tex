@@ -1,27 +1,42 @@
+
+            $(function(){
+                //se carga el autocompleta d
+                $("#txtCategoria").autocomplete({
+                    source:'../../busqueda/produccion/categoria.B.php',
+                    select:function(event, ui){
+                        $("#hidIdCategoria").val(ui.item.id);
+                    }
+                 }); 
+            });
+
 function Enviar(accion,id){
     if(id===null){
-        id =  $('#hidIdFormularioRol').val();
+        id=$('#hidIdInsumo').val();
     }
     var parametros = {
-        "idFormularioRol" : id,
-        "idRol": $('#hidIdRol').val(),
-        "idFormulario": $('#hidIdFormulario').val(),
+        "id" : id,
+        "descripcion":$('#txtDescripcion').val(),
         "estado":$('#cmbEstado').val(),
+        "idCategoria":$('#hidIdCategoria').val(),
+        "categoria":$('#txtCategoria').val(),
+        "operacion":$('#cmbOperacion').val(),
+        "numOperacion":$('#numOperacion').val(),
+        "cantidad":$('#numCantidad').val(),
         "accion" : accion
     }; 
 
     $.ajax({
             data: parametros, //datos que se van a enviar al ajax
-            url: '../../controlador/seguridad/formularioRol.C.php', //archivo php que recibe los datos
+            url: '../../controlador/produccion/insumo.C.php', //archivo php que recibe los datos
             type: 'post', //método para enviar los datos
             dataType: 'json',//Recibe el array desde php
            
             success:  function (respuesta) { //procesa y devuelve la respuesta
                 // console.log(respuesta); 
-
+                
                 //Reiniciar datatable
                 $("#tableDatos").dataTable().fnDestroy();
-                
+
                 //Respueta adicionar
                 if(respuesta['accion']=='ADICIONAR'){
                     alert(respuesta['respuesta']);
@@ -63,27 +78,25 @@ function Enviar(accion,id){
 
                 //Respuesta un registro
                 if(respuesta['accion']=='CONSULTAR'){
-                    $('#hidIdFormularioRol').val(respuesta['idFormularioRol']);
-                    $('#hidIdRol').val(respuesta['idRol']);
-                    $('#txtRol').val(respuesta['descripcionRol']);
-                    $('#hidIdFormulario').val(respuesta['idFormulario']);
-                    $('#txtFormulario').val(respuesta['descripcionFormulario']);
+                    $('#hidIdInsumo').val(respuesta['id']);
+                    $('#txtDescripcion').val(respuesta['descripcion']);
+                    $('#hidIdCategoria').val(respuesta['idCategoria']);
+                    $('#txtCategoria').val(respuesta['categoria']);
+                    $('#numCantidad').val(respuesta['cantidad']);
                     $('#cmbEstado').val(respuesta['estado']);
-                    $('#datfechaCreacion').val(respuesta['datfechaCreacion']);
-                    $('#datModificacion').val(respuesta['datModificacion']);
                     $('#divEliminar').html(respuesta['eliminar']);
-                    $('#txtRol').focus();
+                    $('#txtDescripcion').focus();
                 }
 
                 //Respuesta modificar
-                if (respuesta['accion'] == 'MODIFICAR') {
+                if(respuesta['accion']=='MODIFICAR'){
                     alert(respuesta['respuesta']);
                     Limpiar();
                     $("#btnBuscar").trigger("click");
                 }
                 
                 //Respuesta eliminar
-                if (respuesta['accion'] == 'ELIMINAR') {
+                if(respuesta['accion']=='ELIMINAR'){
                     alert(respuesta['respuesta']);
                     Limpiar();
                     $("#btnBuscar").trigger("click");
@@ -92,32 +105,13 @@ function Enviar(accion,id){
     });
 }
 
-$(function(){
-    //se carga el autocompleta d
-    $("#txtRol").autocomplete({
-        source:'../../busqueda/seguridad/rol.B.php',
-        select:function(event, ui){
-            $("#hidIdRol").val(ui.item.id);
-        }
-     }); 
-});
-//
-$(function(){
-    //se carga el autocompleta 
-    $("#txtFormulario").autocomplete({
-        source:'../../busqueda/seguridad/formulario.B.php',
-        select:function(event, ui){
-            $("#hidIdFormulario").val(ui.item.id);
-    //i
-        }
-     }); 
-});
-
 function Limpiar(){
-    $('#hidIdFormularioRol').val("");
-    $('#hidIdRol').val("");
-    $('#txtRol').val("");
-    $('#hidIdFormulario').val("");
-    $('#txtFormulario').val("");
+    $('#hidIdInsumo').val("");
+    $('#hidIdCategoria').val("");
+    $('#txtCategoria').val("");
+    $('#txtDescripcion').val("");
+    $('#numCantidad').val("");
     $('#cmbEstado').val("");
+    $('#cmbOperacion').val("");
+    $('#numOperacion').val("");
 }

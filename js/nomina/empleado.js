@@ -41,31 +41,32 @@ id=$('#hidIdEmpleado').val();
                 //Respuesta muchos registros
                 if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']>1){
                     $("#resultado").html(respuesta['tablaRegistro']);
-                //Código para DataTable
+                    
+                    //Código para DataTable
 
-                //Para inicializar datatable de la manera más simple
+                    //Para inicializar datatable de la manera más simple
 
-                $(document).ready(function() {    
-                    $('#tableDatos').DataTable({
-                    //para cambiar el lenguaje a español
-                        "language": {
-                                "lengthMenu": "Mostrar _MENU_ registros",
-                                "zeroRecords": "No se encontraron resultados",
-                                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                                "sSearch": "Buscar:",
-                                "oPaginate": {
-                                "sFirst": "Primero",
-                                "sLast":"Último",
-                                "sNext":"Siguiente",
-                                "sPrevious": "Anterior"
+                    $(document).ready(function() {    
+                        $('#tableDatos').DataTable({
+                        //para cambiar el lenguaje a español
+                            "language": {
+                                    "lengthMenu": "Mostrar _MENU_ registros",
+                                    "zeroRecords": "No se encontraron resultados",
+                                    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                                    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                                    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                                    "sSearch": "Buscar:",
+                                    "oPaginate": {
+                                    "sFirst": "Primero",
+                                    "sLast":"Último",
+                                    "sNext":"Siguiente",
+                                    "sPrevious": "Anterior"
+                                    },
+                                    "sProcessing":"Procesando...",
                                 },
-                                "sProcessing":"Procesando...",
-                            },
-                            "paging":   false
-                    });     
-                });
+                                "paging":   false
+                        });     
+                    });
                     //$('#divEliminar').html(respuesta['eliminar']).hide();
                 }
 

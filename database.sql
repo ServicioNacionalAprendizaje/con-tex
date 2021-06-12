@@ -200,27 +200,27 @@ CREATE TABLE `formulario` (
   `id_usuario_creacion` int(11) NOT NULL,
   `id_usuario_modificacion` int(11) NOT NULL,
   PRIMARY KEY (`id_formulario`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `formulario` */
 
 insert  into `formulario`(`id_formulario`,`descripcion`,`etiqueta`,`ubicacion`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
 (1,'Formulario','Seguridad','./vista/seguridad/formulario.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(2,'Formularios de rol','Seguridad','./vista/seguridad/formularioRol.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(2,'Formularios de rol','Seguridad','./vista/seguridad/formularioRol.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (3,'Persona','Seguridad','./vista/seguridad/persona.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(4,'Rol','Seguridad','./vista/seguridad/rol.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(4,'Rol','Seguridad','./vista/seguridad/rol.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (5,'Usuario','Seguridad','./vista/seguridad/usuario.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(6,'Cargo','Nomina','./vista/nomina/cargo.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(6,'Cargo','Nomina','./vista/nomina/cargo.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (7,'Empleado','Nomina','./vista/nomina/empleado.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (8,'Generar pago','Nomina','./vista/nomina/generarPago.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (9,'Pago del dia','Nomina','./vista/nomina/pagoDia.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (10,'Categoria','Produccion','./vista/produccion/categoria.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(11,'Detalles de orden','Produccion','./vista/produccion/detalleOrden.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(12,'Insumo','Produccion','./vista/produccion/insumo.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(13,'Orden','Produccion','./vista/produccion/orden.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(14,'Producto','Produccion','./vista/produccion/producto.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(15,'Tarea','Produccion','./vista/produccion/tarea.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(16,'Rol de usuario','Seguridad','./vista/seguridad/usuarioRol.V.html','1','2021-05-10 22:22:00','2021-06-01 23:31:39',1,1);
+(11,'Detalles de orden','Produccion','./vista/produccion/detalleOrden.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(12,'Orden','Produccion','./vista/produccion/orden.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(13,'Producto','Produccion','./vista/produccion/producto.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(14,'Tarea','Produccion','./vista/produccion/tarea.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(15,'Rol de usuario','Seguridad','./vista/seguridad/usuarioRol.V.php','1','2021-05-10 22:22:00','2021-06-01 23:31:39',1,1),
+(17,'Insumo','Produccion','./vista/produccion/insumo.V.php','1','2021-06-11 00:24:18','2021-06-11 00:24:18',1,1);
 
 /*Table structure for table `formulario_rol` */
 
@@ -240,7 +240,7 @@ CREATE TABLE `formulario_rol` (
   KEY `id_formulario` (`id_formulario`),
   CONSTRAINT `formulario_rol_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`),
   CONSTRAINT `formulario_rol_ibfk_2` FOREIGN KEY (`id_formulario`) REFERENCES `formulario` (`id_formulario`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `formulario_rol` */
 
@@ -260,7 +260,8 @@ insert  into `formulario_rol`(`id_formulario_rol`,`id_rol`,`id_formulario`,`esta
 (13,1,13,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (14,1,14,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (15,1,15,'1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(20,1,16,'1','2021-06-01 23:32:08','2021-06-01 23:32:08',1,1);
+(20,1,16,'1','2021-06-01 23:32:08','2021-06-01 23:32:08',1,1),
+(21,1,17,'1','2021-06-11 00:25:07','2021-06-11 00:25:07',1,1);
 
 /*Table structure for table `generar_pago` */
 
@@ -284,6 +285,31 @@ CREATE TABLE `generar_pago` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `generar_pago` */
+
+/*Table structure for table `insumo` */
+
+DROP TABLE IF EXISTS `insumo`;
+
+CREATE TABLE `insumo` (
+  `id_insumo` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(50) CHARACTER SET utf8mb4 NOT NULL,
+  `id_categoria` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `estado` enum('0','1') CHARACTER SET utf8mb4 NOT NULL,
+  `fecha_creacion` datetime NOT NULL,
+  `fecha_modificacion` datetime NOT NULL,
+  `id_usuario_creacion` int(11) NOT NULL,
+  `id_usuario_modificacion` int(11) NOT NULL,
+  PRIMARY KEY (`id_insumo`),
+  KEY `fk_insumo_categoria` (`id_categoria`),
+  CONSTRAINT `fk_insumo_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+/*Data for the table `insumo` */
+
+insert  into `insumo`(`id_insumo`,`descripcion`,`id_categoria`,`cantidad`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+(1,'Boton azul',1,14,'1','2021-06-10 21:27:19','2021-06-11 00:14:45',1,1),
+(2,'Agujas 2',2,8,'0','2021-06-10 23:19:40','2021-06-11 00:28:50',1,1);
 
 /*Table structure for table `orden` */
 
@@ -525,10 +551,10 @@ CREATE TABLE `usuario` (
 /*Data for the table `usuario` */
 
 insert  into `usuario`(`id_usuario`,`usuario`,`contrasenia`,`fecha_activacion`,`fecha_expiracion`,`id_persona`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
-(1,'ariel5253@misena.edu.co','0a5c79b1eaf15445da252ada718857e9','2021-05-16','2021-06-02',1,'1','2021-05-08 01:35:00','2021-06-01 21:01:53',1,1),
+(1,'u20152142462@usco.edu.co','0a5c79b1eaf15445da252ada718857e9','2021-05-16','2021-06-02',1,'1','2021-05-08 01:35:00','2021-06-01 21:01:53',1,1),
 (2,'carmen@.com','9f564fef13bb8a7f9faa5f9071e4e045','2021-05-02','2021-05-07',2,'1','2021-05-11 22:06:54','2021-06-01 20:21:55',1,2),
 (3,'ariel5253@misena.edu.com','31784d9fc1fa0d25d04eae50ac9bf787','2021-05-16','2021-06-02',5,'1','2021-05-11 22:11:21','2021-06-01 20:45:25',1,3),
-(4,'olperdomo6@misena.edu.co','149815eb972b3c370dee3b89d645ae14','2021-06-01','2022-01-01',10,'1','2021-06-01 23:16:47','2021-06-01 23:16:47',1,1),
+(4,'olperdomo6@misena.edu.co','149815eb972b3c370dee3b89d645ae14','2021-06-01','2022-01-01',11,'1','2021-06-01 23:16:47','2021-06-01 23:16:47',1,1),
 (5,'edurado.andres@gmail.com','e44985980c9d3c5d70b6a548b14d773a','2021-06-01','2022-06-01',12,'1','2021-06-01 23:32:32','2021-06-01 23:42:46',1,1);
 
 /*Table structure for table `usuario_rol` */
@@ -656,6 +682,7 @@ DELIMITER $$
 																			,IN cantidad INT(11)
 																			,IN idOrden INT(11)
 																			,IN idProducto INT(11)
+																			,IN estado ENUM('0','1')
 																			,IN idUsuarioCreacion INT(11)
 																			,IN idUsuarioModificacion INT(11)
 																			)
@@ -665,6 +692,7 @@ BEGIN
 							 ,cantidad
 							 ,id_orden
 							 ,id_producto
+							 ,estado
 							 ,fecha_creacion
 							 ,fecha_modificacion
 							 ,id_usuario_creacion
@@ -675,6 +703,7 @@ BEGIN
 			,cantidad
 			,idOrden
 			,idProducto
+			,estado
 			,NOW()
 			,NOW()
 			,idUsuarioCreacion
@@ -830,6 +859,42 @@ BEGIN
 			,fechaInicio
 			,fechaFin
 			,idEmpleado
+			,NOW()
+			,NOW()
+			,idUsuarioCreacion
+			,idUsuarioModificacion
+			);
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `Agregar_insumo` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Agregar_insumo` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_insumo`(
+	IN `descripcion` VARCHAR(50),
+	IN `cantidad` INT(11),
+	IN `idCategoria` INT(11),
+	IN `estado` ENUM('1','0'),
+	IN `idUsuarioCreacion` INT(11),
+	IN `idUsuarioModificacion` INT(11)
+)
+BEGIN
+	INSERT INTO insumo(descripcion
+						,cantidad
+						,id_categoria
+						,estado
+						,fecha_creacion
+						,fecha_modificacion
+						,id_usuario_creacion
+						,id_usuario_modificacion
+						) 
+	VALUES (descripcion
+			,cantidad
+			,idCategoria
+			,estado
 			,NOW()
 			,NOW()
 			,idUsuarioCreacion
@@ -1232,13 +1297,14 @@ DELIMITER ;
 DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_detalle_orden`(
-		IN `valorInventario` DOUBLE,
-		IN `valorVenta` DOUBLE,
-		IN `cantidad` INT(11),
-		IN `idOrden` INT(11),
-		IN `idProducto` INT(11),
-		IN `idUsuarioModificacion` INT(11),
-		IN `idDetalleOrden` INT(11)
+		IN valorInventario DOUBLE,
+		IN valorVenta DOUBLE,
+		IN cantidad INT(11),
+		IN idOrden INT(11),
+		IN idProducto INT(11),
+		IN estado ENUM('0','1'),
+		IN idUsuarioModificacion INT(11),
+		IN idDetalleOrden INT(11)
 	)
 BEGIN
 	UPDATE detalle_orden 
@@ -1248,6 +1314,7 @@ BEGIN
 			,cantidad = cantidad
 			,id_orden = idOrden
 			,id_producto = idProducto
+			,estado = estado
 			,fecha_modificacion = NOW()
 			,id_usuario_modificacion = idUsuarioModificacion 
 		WHERE id_detalle_orden = idDetalleOrden;
@@ -1361,6 +1428,32 @@ BEGIN
 		,fecha_modificacion = NOW()
 		,id_usuario_modificacion = idUsuarioModificacion 
 	WHERE id_generar_pago = idGenerarPago;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `Modificar_insumo` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Modificar_insumo` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_insumo`(
+	IN `descripcion` VARCHAR(50),
+	IN `cantidadO` INT(11),
+	IN `idCategoria` INT(11),
+	IN `estado` ENUM('1','0'),
+	IN `idUsuarioModificacion` INT(11),
+	IN `idInsumo` CHAR(1)
+)
+BEGIN
+	UPDATE insumo 
+    SET descripcion = descripcion
+		,cantidad = cantidad + cantidadO
+		,id_categoria = idCategoria
+		,estado = estado
+		,fecha_modificacion = NOW()
+		,id_usuario_modificacion = idUsuarioModificacion 
+	WHERE id_insumo = idInsumo;
 END */$$
 DELIMITER ;
 

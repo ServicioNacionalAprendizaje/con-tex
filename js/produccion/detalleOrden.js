@@ -22,50 +22,83 @@ function Enviar(accion,id){
            
             success:  function (respuesta) { //procesa y devuelve la respuesta
                 // console.log(respuesta); 
+
+                //Reiniciar datatable
+                $("#tableDatos").dataTable().fnDestroy();
                 
                 //Respueta adicionar
                 if(respuesta['accion']=='ADICIONAR'){
                     alert(respuesta['respuesta']);
                     Limpiar();
+                    $("#btnBuscar").trigger("click");
                 }
                 
                 //Respuesta muchos registros
                 if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']>1){
                     $("#resultado").html(respuesta['tablaRegistro']);
+                    
+                    //Código para DataTable
+
+                    //Para inicializar datatable de la manera más simple
+
+                    $(document).ready(function() {    
+                        $('#tableDatos').DataTable({
+                        //para cambiar el lenguaje a español
+                            "language": {
+                                    "lengthMenu": "Mostrar _MENU_ registros",
+                                    "zeroRecords": "No se encontraron resultados",
+                                    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                                    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                                    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                                    "sSearch": "Buscar:",
+                                    "oPaginate": {
+                                    "sFirst": "Primero",
+                                    "sLast":"Último",
+                                    "sNext":"Siguiente",
+                                    "sPrevious": "Anterior"
+                                    },
+                                    "sProcessing":"Procesando...",
+                                },
+                                "paging":   false
+                        });     
+                    });
                     //$('#divEliminar').html(respuesta['eliminar']).hide();
                 }
 
                 //Respuesta un registro
                 if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']==1){
                     $('#hidIdDetalleOrden').val(respuesta['id']);
-                    $('#hidIdOrden').val(respuesta['idOrden']);
+                    $('#idOrden').val(respuesta['idOrden']);
                     $('#hidIdProducto').val(respuesta['hidIdProducto']);
                     $('#txtProducto').val(respuesta['producto']);
                     $('#numCantidad').val(respuesta['cantidad']);
                     $('#numValorinven').val(respuesta['valInven']);
                     $('#numValorventa').val(respuesta['valVenta']);
-                    // Test
-                    // $('#cmbEstado').val(respuesta['estado'] == 'Activo' ? 1 : ('Inactivo' ? 0 : ''));
-                    // $('#divEliminar').html(respuesta['eliminar']);
+                    $('#cmbEstado').val(respuesta['estado']);
                 }
 
-                // //Respuesta modificar
-                // if(respuesta['accion']=='MODIFICAR'){
-                //     alert(respuesta['respuesta']);
-                //     Limpiar();
-                // }
+                //Respuesta modificar
+                if(respuesta['accion']=='MODIFICAR'){
+                    alert(respuesta['respuesta']);
+                    Limpiar();
+                    $("#btnBuscar").trigger("click");
+                }
                 
-                // //Respuesta eliminar
-                // if(respuesta['accion']=='ELIMINAR'){
-                //     alert(respuesta['respuesta']);
-                // }
+                //Respuesta eliminar
+                if(respuesta['accion']=='ELIMINAR'){
+                    alert(respuesta['respuesta']);
+                    Limpiar();
+                    $("#btnBuscar").trigger("click");
+                }
             }
     });
 }
-$(function(){
+// $(document).ready(function(){
+    $(function(){
     //se carga el autocompleta del contratista
      $("#txtProducto").autocomplete({
         source:'../../busqueda/produccion/producto.B.php',
+        appendTo : "#staticBackdrop",
         select:function(event, ui){
             $("#hidIdProducto").val(ui.item.id);
         }

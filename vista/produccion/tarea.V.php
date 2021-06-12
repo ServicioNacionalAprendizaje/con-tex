@@ -16,11 +16,10 @@
                         <label class="col-form-label">Valor unitario</label>
                         <input type="number" class="caja form-control" name="numValorUnitario" value="" id="numValorUnitario" placeholder="Valor unitario">
                     </div>
-                        <div class="col-12 col-sm-4">
-                            <label class="col-form-label">Fecha</label>
-                            <input type="date" name="datFecha" id="datFecha" value=""
-                                class="caja form-control" placeholder="Fecha">
-                        </div>
+                    <div class="col-12 col-sm-4">
+                        <label class="col-form-label">Fecha</label>
+                        <input type="date" name="datFecha" id="datFecha" value=""
+                            class="caja form-control" placeholder="Fecha">
                     </div>
                     <div class="row">
                         <div class="col-12 col-sm-4">

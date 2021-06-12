@@ -40,7 +40,7 @@
                             <label class="col-form-label">Descripción</label>
                             <input type="text" class="caja form-control" name="txtDescripcion" value=""
                                 id="txtDescripcion" placeholder="Descripción">
-                        </div>
+                    
                     </div>
                     <div class="col-12 col-sm-4">
                         <label for="cmbEstado">Estado</label>

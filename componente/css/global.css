@@ -16,7 +16,9 @@ label{
     color: #396680;
 }
 
-div{
+/* Con el :not([]) se hace una excepción a la clase de la animacion del chulo*/
+/* Falta identificar que descuadra la animacion de la X */
+div:not([class="swal2-icon swal2-success swal2-icon-show"]){
     padding: 0.5em;
 }
 

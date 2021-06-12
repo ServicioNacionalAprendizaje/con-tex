@@ -96,14 +96,14 @@
                     <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnLimpiar"
                         value="LIMPIAR" id="btnLimpiar" onclick=" Limpiar1();">
                 </div>
+                <div class="col-12 col-sm-2">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="boton form-control btn-light btn-outline-primary"
+                    data-bs-toggle="modal" data-bs-target="#staticBackdrop">DETALLE DE ORDEN</button>
+                </div>
             </div>
             <div class="row">
                 <div class="col-12 col-sm-12">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    DETALLE DE ORDEN
-                    </button>
-
                     <!-- Modal -->
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl">

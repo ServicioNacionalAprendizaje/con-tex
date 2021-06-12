@@ -126,3 +126,8 @@ select{
 .switch > input:checked + label:before {
 	left:56px;
 }
+
+/* El siguiente arregla la animacion de la x, creo */
+span.swal2-x-mark{
+    margin-right: 17px;
+}

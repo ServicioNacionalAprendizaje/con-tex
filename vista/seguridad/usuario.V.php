@@ -1,4 +1,9 @@
-<?php include_once ("../../componente/libreria/libreria.php"); ?>
+<?php 
+    include_once ("../../componente/libreria/libreria.php"); 
+    session_start();
+    $_SESSION['ruta_formulario']= basename( __FILE__ );
+    include  '../../controlador/seguridad/validarPermiso.C.php'
+?>
 <script src="../../js/seguridad/usuario.js"></script>
 <body onload="Enviar('CONSULTAR',null)">
     <form name="frmUsuario" id="frmUsuario">

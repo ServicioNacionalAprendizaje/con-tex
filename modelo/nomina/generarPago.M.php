@@ -5,9 +5,9 @@ class GenerarPago
 
     private $idGenerarPago;
     private $valorPago;
-    private $deduccion;
     private $fechaInicio;
     private $fechaFin;
+    private $fechaPago;
     private $idEmpleado;
     private $fechaCreacion;
     private $fechaModificacion;
@@ -34,15 +34,6 @@ class GenerarPago
         $this->valorPago = $valorPago;
     }
 
-    //deduccion
-    public function getDeduccion()
-    {
-        return $this->deduccion;
-    }
-    public function setDeduccion($deduccion)
-    {
-        $this->deduccion = $deduccion;
-    }
 
     //fechaInicio
     public function getFechaInicio()
@@ -63,7 +54,15 @@ class GenerarPago
     {
         $this->fechaFin = $fechaFin;
     }
-
+    //fechaPago
+    public function getFechaPago()
+    {
+        return $this->fechaPago;
+    }
+    public function setFechaPago($fechaPago)
+    {
+        $this->fechaPago = $fechaPago;
+    }
     //idEmpleado
     public function getIdEmpleado()
     {
@@ -124,9 +123,9 @@ class GenerarPago
     public function Agregar()
     {
         $sentenciaSql = "CALL Agregar_generar_pago('$this->valorPago'
-                            ,'$this->deduccion'
                             ,'$this->fechaInicio'
                             ,'$this->fechaFin'
+                            ,'$this->fechaPago'
                             ,'$this->idEmpleado'
                             ,'$this->idUsuarioCreacion')";
         $this->conn->preparar($sentenciaSql);
@@ -137,9 +136,9 @@ class GenerarPago
     public function Modificar()
     {
         $sentenciaSql = "CALL Modificar_generar_pago('$this->valorPago'
-                            ,'$this->deduccion'
                             ,'$this->fechaInicio'
                             ,'$this->fechaFin'
+                            ,'$this->fechaPago'
                             ,'$this->idEmpleado'
                             ,'$this->idUsuarioModificacion'
                             ,'$this->idGenerarPago')";
@@ -174,9 +173,9 @@ class GenerarPago
 
         unset($this->idGenerarPago);
         unset($this->valorPago);
-        unset($this->deduccion);
         unset($this->fechaInicio);
         unset($this->fechaFin);
+        unset($this->fechaPago);
         unset($this->idEmpleado);
         unset($this->conn);
     }

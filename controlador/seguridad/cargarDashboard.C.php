@@ -14,7 +14,7 @@ if (isset ($_SESSION['id_login'])){
         case "cerrar_sesion":
             session_destroy();
             $respuesta['respuesta']= "cerrar_sesion";
-            $respuesta['ruta']= "login.html";
+            $respuesta['ruta']= "index.html";
         break;
         case "":
             try{
@@ -50,7 +50,7 @@ if (isset ($_SESSION['id_login'])){
     echo json_encode($respuesta);
 }else{
     $respuesta['respuesta']= "cerrar_sesion";
-    $respuesta['ruta']= "login.html";
+    $respuesta['ruta']= "index.html";
     echo json_encode($respuesta);
 }
 ?>

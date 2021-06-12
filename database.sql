@@ -269,12 +269,11 @@ DROP TABLE IF EXISTS `generar_pago`;
 
 CREATE TABLE `generar_pago` (
   `id_generar_pago` int(11) NOT NULL AUTO_INCREMENT,
-  `valor_pago` double NOT NULL,
-  `deduccion` double NOT NULL,
   `fecha_inicio` datetime NOT NULL,
   `fecha_fin` datetime NOT NULL,
+  `valor_pago` double NOT NULL,
+  `fecha_pago` datetime NOT NULL,
   `id_empleado` int(11) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
   `fecha_creacion` datetime NOT NULL,
   `fecha_modificacion` datetime NOT NULL,
   `id_usuario_creacion` int(11) NOT NULL,
@@ -836,18 +835,18 @@ DELIMITER ;
 DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_generar_pago`(IN valorPago DOUBLE
-																			,IN deduccion DOUBLE
 																			,IN fechaInicio DATETIME
 																			,IN fechaFin DATETIME
+																			,IN fechaPago DATETIME
 																			,IN idEmpleado INT(11)
 																			,IN idUsuarioCreacion INT(11)
 																			,IN idUsuarioModificacion INT(11)
 																			)
 BEGIN
 	INSERT INTO generar_pago(valor_pago
-							,deduccion
 							,fecha_inicio
 							,fecha_fin
+							,fecha_pago
 							,id_empleado
 							,fecha_creacion
 							,fecha_modificacion
@@ -855,9 +854,9 @@ BEGIN
 							,id_usuario_modificacion
 							) 
 	VALUES (valorPago
-			,deduccion
 			,fechaInicio
 			,fechaFin
+			,fechaPago
 			,idEmpleado
 			,NOW()
 			,NOW()
@@ -1411,9 +1410,9 @@ DELIMITER ;
 DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_generar_pago`(IN valorPago DOUBLE
-																				,IN deduccion DOUBLE
 																				,IN fechaInicio DATETIME
 																				,IN fechaFin DATETIME
+																				,IN fechaPago DATETIME
 																				,IN idEmpleado INT(11)
 																				,IN idUsuarioModificacion INT(11)
 																				,IN idGenerarPago INT(11)
@@ -1421,9 +1420,9 @@ DELIMITER $$
 BEGIN
 	UPDATE generar_pago 
 	SET valor_pago = valorPago
-		,deduccion = deduccion
 		,fecha_inicio = fechaInicio
 		,fecha_fin = fechaFin
+		,fecha_pago = fechaPago
 		,id_empleado = idEmpleado
 		,fecha_modificacion = NOW()
 		,id_usuario_modificacion = idUsuarioModificacion 

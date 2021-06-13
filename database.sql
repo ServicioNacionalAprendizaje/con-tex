@@ -491,7 +491,7 @@ CREATE TABLE `tarea` (
   `descripcion` varchar(100) NOT NULL,
   `valor_unitario` double NOT NULL,
   `cantidad` int(11) NOT NULL,
-  `fecha` datetime NOT NULL,
+  `fecha` date NOT NULL,
   `estado_pago` enum('Pagado','Por pagar') NOT NULL,
   `id_empleado` int(11) NOT NULL,
   `estado` enum('0','1') NOT NULL,
@@ -1099,7 +1099,7 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_tarea`(IN `descripcion` VARCHAR(100), IN `valorUnitario` DOUBLE, IN `cantidad` INT(11), IN `fecha` DATETIME, IN `estadoPago` ENUM('Pagado','Por pagar'), IN `idEmpleado` INT(11), IN `estado` ENUM('0','1'), IN `idUsuarioCreacion` INT(11), IN `idUsuarioModificacion` INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_tarea`(IN `descripcion` VARCHAR(100), IN `valorUnitario` DOUBLE, IN `cantidad` INT(11), IN `fecha` DATE, IN `estadoPago` ENUM('Pagado','Por pagar'), IN `idEmpleado` INT(11), IN `estado` ENUM('0','1'), IN `idUsuarioCreacion` INT(11), IN `idUsuarioModificacion` INT(11))
 BEGIN
 	INSERT INTO tarea (descripcion
 					,valor_unitario
@@ -1601,7 +1601,7 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_tarea`(IN `descripcion` VARCHAR(100), IN `valorUnitario` DOUBLE, IN `cantidad` INT(11), IN `fecha` DATETIME, IN `estadoPago` ENUM('Pagado','Por pagar'), IN `idEmpleado` INT(11), IN `estado` ENUM('0','1'), IN `idUsuarioModificacion` INT(11), IN `idTarea` INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_tarea`(IN `descripcion` VARCHAR(100), IN `valorUnitario` DOUBLE, IN `cantidad` INT(11), IN `fecha` DATE, IN `estadoPago` ENUM('Pagado','Por pagar'), IN `idEmpleado` INT(11), IN `estado` ENUM('0','1'), IN `idUsuarioModificacion` INT(11), IN `idTarea` INT(11))
 BEGIN
 	UPDATE tarea
 	set descripcion = descripcion

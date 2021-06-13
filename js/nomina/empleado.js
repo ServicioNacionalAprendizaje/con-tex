@@ -1,3 +1,41 @@
+function eliminar(id) {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: '¿Quieres eliminar este archivo?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, bórralo',
+      cancelButtonText: 'Cancelar',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Enviar("ELIMINAR",id)
+        swalWithBootstrapButtons.fire(
+          'Eliminado',
+          'Tu archivo ha sido eliminado.',
+          'success'
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelado',
+          'Tu archivo está seguro',
+          'error'
+        )
+      }
+    })
+  }
+
 function Enviar(accion,id){
     if(id===null){
 id=$('#hidIdEmpleado').val();
@@ -33,10 +71,14 @@ id=$('#hidIdEmpleado').val();
                         alert('El correo electrónico introducido no es correcto.');
                         return false;
                     }
-                    alert(respuesta['respuesta']);
+                        Swal.fire(
+                        'Registro con exito',
+                        'Click en ok para continuar',
+                        'success'
+                    )
                     Limpiar();
                     $("#btnBuscar").trigger("click");
-                }
+                    }
                 
                 //Respuesta muchos registros
                 if(respuesta['accion']=='CONSULTAR' && respuesta['numeroRegistros']>1){
@@ -96,7 +138,6 @@ id=$('#hidIdEmpleado').val();
                 
                 //Respuesta eliminar
                 if(respuesta['accion']=='ELIMINAR'){
-                    alert(respuesta['respuesta']);
                     Limpiar();
                     $("#btnBuscar").trigger("click");
                 }

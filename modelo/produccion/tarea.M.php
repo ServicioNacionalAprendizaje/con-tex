@@ -258,7 +258,7 @@ class Tarea{
             $whereAnd = ' AND ';
         }
         if($this->fecha!=''){
-            $condicion=$condicion.$whereAnd." fecha = '$this->fecha' ";
+            $condicion=$condicion.$whereAnd." fecha = $this->fecha "; 
             $whereAnd = ' AND ';
         }
         if($this->estadoPago!=''){

@@ -39,7 +39,6 @@ if(isset($accion)){
                 $tarea->setFecha($_POST['fecha']);
                 $tarea->setEstadoPago($_POST['estadoPago']);
                 $tarea->setEstado($_POST['estado']);
-                //$tarea->setIdUsuarioCreacion();
                 $tarea->setIdUsuarioModificacion(1);
                 $resultado=$tarea->Modificar();
                 $respuesta['respuesta']="La información se modificoó correctamente";

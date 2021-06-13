@@ -71,10 +71,9 @@
                 </div> 
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 col-sm-2"></div>
-                <div class="col-12 col-sm-2">
-                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado" onclick="Enviar('CONSULTAR',null);">
+            <div class="row justify-content-sm-center">
+                <div>
+                    <input type="hidden" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado" onclick="Enviar('CONSULTAR',null);">
                 </div>
                 <div class="col-12 col-sm-2">
                     <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick=" Enviar('ADICIONAR',null);">
@@ -107,19 +106,6 @@
                                     </tr>
                                 </thead>
                                 <tbody id="resultado">
-                                    <!-- <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td align="center"><span class="icon-edit1"></span></td>
-                                        <td align="center"><span class="icon-trash"></span></td>
-                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>

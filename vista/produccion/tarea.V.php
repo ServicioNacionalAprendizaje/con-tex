@@ -19,14 +19,15 @@
                     <div class="col-12 col-sm-4">
                         <label class="col-form-label">Fecha</label>
                         <input type="date" name="datFecha" id="datFecha" value=""
-                            class="caja form-control" placeholder="Fecha">
+                            class="caja form-control">
                     </div>
-                    <div class="row">
-                        <div class="col-12 col-sm-4">
-                            <label class="col-form-label">Cantidad</label>
-                            <input type="number" class="caja form-control" name="numCantidad" value="" id="numCantidad"
-                                placeholder="Cantidad">
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-4">
+                        <label class="col-form-label">Cantidad</label>
+                        <input type="number" class="caja form-control" name="numCantidad" value="" id="numCantidad"
+                            placeholder="Cantidad">
+                    </div>
                     <div class="col-12 col-sm-4">
                         <label for="cmbEstadoPago">Estado Pago</label>
                         <select class="lista form-control" id="cmbEstadoPago">
@@ -39,8 +40,9 @@
                             <label class="col-form-label">Descripción</label>
                             <input type="text" class="caja form-control" name="txtDescripcion" value=""
                                 id="txtDescripcion" placeholder="Descripción">
-                    
                     </div>
+                </div>
+                <div class="row justify-content-sm-center">
                     <div class="col-12 col-sm-4">
                         <label for="cmbEstado">Estado</label>
                         <select class="lista form-control" id="cmbEstado">
@@ -54,16 +56,16 @@
             <div class="row">
                 <div class="col-12 col-sm-2"></div>
                 <div class="col-12 col-sm-2">
-                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado" onclick="Enviar('CONSULTAR',null);">
+                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" onclick="Enviar('CONSULTAR',null);">
                 </div>
                 <div class="col-12 col-sm-2">
-                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" placeholder="Descripción" onclick=" Enviar('ADICIONAR',null);">
+                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" onclick=" Enviar('ADICIONAR',null);">
                 </div>
                 <div class="col-12 col-sm-2">
-                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnModificar" value="MODIFICAR" id="btnModificar" placeholder="Modificar" onclick=" Enviar('MODIFICAR',null);">
+                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnModificar" value="MODIFICAR" id="btnModificar" onclick=" Enviar('MODIFICAR',null);">
                 </div>
                 <div class="col-12 col-sm-2">
-                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnLimpiar" value="LIMPIAR" id="btnLimpiar" placeholder="Limpiar" onclick=" Limpiar();">
+                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnLimpiar" value="LIMPIAR" id="btnLimpiar" onclick=" Limpiar();">
                 </div>
             </div>
             <br></br>

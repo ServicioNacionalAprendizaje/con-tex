@@ -36,9 +36,9 @@ swalWithBootstrapButtons.fire({
 })
 }
 function Enviar(accion,id){
-  if(id===null){
-id=$('#hidIdTarea').val();
-}
+    if(id===null){
+    id=$('#hidIdTarea').val();
+    }
   var parametros = {
       "id" : id,
       "idEmpleado":$('#hidIdEmpleado').val(),
@@ -57,8 +57,8 @@ id=$('#hidIdTarea').val();
           dataType: 'json',//Recibe el array desde php
           
           success: function (respuesta) { //procesa y devuelve la respuesta
-              // console.log(respuesta); 
-      
+              // console.log(respuesta);
+
               //Reiniciar datatable
               $("#tableDatos").dataTable().fnDestroy();
       
@@ -119,30 +119,18 @@ id=$('#hidIdTarea').val();
                   $('#divEliminar').html(respuesta['eliminar']);
                   $('#txtEmpleado').focus();
               }
+
               //Respuesta modificar
-              if (respuesta['accion'] == 'MODIFICAR') {
-                Swal.fire({
-                  title: '¿Quieres guardar los cambios?',
-                  showDenyButton: true,
-                  showCancelButton: true,
-                  confirmButtonText: `Guardar`,
-                  denyButtonText: `No guardar`,
-                }).then((result) => {
-                  /* Read more about isConfirmed, isDenied below */
-                  if (result.isConfirmed) {
-                    Swal.fire('Registro actualizado', '', 'success')
-                  } else if (result.isDenied) {
-                    Swal.fire('Los cambios no se guardaran', '', 'info')
-                  }
-                })
-                Limpiar();          
+              if(respuesta['accion']=='MODIFICAR'){
+                alert(respuesta['respuesta']);
+                Limpiar();
                 $("#btnBuscar").trigger("click");
               }
               
               //Respuesta eliminar
               if(respuesta['accion']=='ELIMINAR'){
-                  Limpiar();
-                  $("#btnBuscar").trigger("click");
+                Limpiar();
+                $("#btnBuscar").trigger("click");
               }
           }
   });

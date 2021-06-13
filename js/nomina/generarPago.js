@@ -8,8 +8,8 @@ function Enviar(accion, id) {
         "empleado": $('#txtEmpleado').val(),
         "fechaInicio": $('#datFechaInicio').val(),
         "fechaFin": $('#datFechaFin').val(),
-        "valorPago": $('#numValorPago').val(),
         "fechaPago": $('#datFechaPago').val(),
+        "valorPago": $('#numValorPago').val(),
         "accion": accion
     };
 
@@ -21,6 +21,9 @@ function Enviar(accion, id) {
 
         success: function(respuesta) { //procesa y devuelve la respuesta
             // console.log(respuesta); 
+            if (respuesta['accion'] == 'GENERAR'){
+                $('#numValorPago').val(respuesta['valorPago']);       
+            }
 
             //Respueta adicionar
             if (respuesta['accion'] == 'ADICIONAR') {
@@ -31,23 +34,42 @@ function Enviar(accion, id) {
             //Respuesta muchos registros
             if (respuesta['accion'] == 'CONSULTAR' && respuesta['numeroRegistros'] > 1) {
                 $("#resultado").html(respuesta['tablaRegistro']);
+
+                $(document).ready(function() {    
+                    $('#tableDatos').DataTable({
+                    //para cambiar el lenguaje a español
+                        "language": {
+                                "lengthMenu": "Mostrar _MENU_ registros",
+                                "zeroRecords": "No se encontraron resultados",
+                                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                                "sSearch": "Buscar:",
+                                "oPaginate": {
+                                "sFirst": "Primero",
+                                "sLast":"Último",
+                                "sNext":"Siguiente",
+                                "sPrevious": "Anterior"
+                                },
+                                "sProcessing":"Procesando...",
+                            },
+                            "paging":   false
+                    });     
+                });
                 //$('#divEliminar').html(respuesta['eliminar']).hide();
             }
 
             //Respuesta un registro
             if (respuesta['accion'] == 'CONSULTAR') {
-                $('#hidIdEmpleado').val(respuesta['id']);
-                $('#numCodigo').val(respuesta['codigoCargo']);
+                $('#hidIdGenerarPago').val(respuesta['id']);
+                $('#hidIdEmpleado').val(respuesta['idEmpleado']);
                 $('#txtEmpleado').val(respuesta['empleado']);
                 $('#datFechaInicio').val(respuesta['fechaInicio']);
                 $('#datFechaFin').val(respuesta['fechaFin']);
-                $('#numValorPago').val(respuesta['valorPago']);
                 $('#datFechaPago').val(respuesta['fechaPago']);
+                $('#numValorPago').val(respuesta['valorPago']);
                 $('#divEliminar').html(respuesta['eliminar']);
                 $('#txtEmpleado').focus();
-
-
-
             }
 
             //Respuesta modificar
@@ -66,6 +88,7 @@ function Enviar(accion, id) {
 }
 
 function Limpiar() {
+    $('#hidIdGenerarPago').val("");
     $('#hidIdEmpleado').val("");
     $('#txtEmpleado').val("");
     $('#datFechaInicio').val("");

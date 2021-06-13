@@ -2,18 +2,17 @@
 
 class GenerarPago
 {
-
     private $idGenerarPago;
-    private $valorPago;
+    private $idEmpleado;
     private $fechaInicio;
     private $fechaFin;
     private $fechaPago;
-    private $idEmpleado;
+    private $valorPago;
     private $fechaCreacion;
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
-
+    
     //idGenerarPago
     public function getIdGenerarPago()
     {
@@ -119,6 +118,20 @@ class GenerarPago
         $this->conn = new Conexion();
     }
 
+    //Generar valor pago
+    public function Generar()
+    {
+        $sentenciaSql = "SELECT 
+                            SUM(pago_dia) AS valor_pago
+                        FROM pago_dia
+                        WHERE
+                            id_empleado = $this->idEmpleado
+                        AND estado = '0'
+                        AND fecha_pago_dia BETWEEN $this->fechaInicio AND $this->fechaFin";
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+    }
+
     //Agregar
     public function Agregar()
     {
@@ -166,11 +179,16 @@ class GenerarPago
 
     private function obtenerCondicion()
     {
+        // $whereAnd = " WHERE ";
+        // $condicion = " ";
+        // if($this->idEmpleado !=''){
+        //     $condicion=$whereAnd.$condicion." pd.id_pago_dia  = $this->idPagoDia";
+        //     $whereAnd = ' AND ';
+        // }
     }
 
     public function __destruct()
     {
-
         unset($this->idGenerarPago);
         unset($this->valorPago);
         unset($this->fechaInicio);

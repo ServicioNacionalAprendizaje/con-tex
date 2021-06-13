@@ -200,7 +200,7 @@ CREATE TABLE `formulario` (
   `id_usuario_creacion` int(11) NOT NULL,
   `id_usuario_modificacion` int(11) NOT NULL,
   PRIMARY KEY (`id_formulario`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `formulario` */
 
@@ -212,7 +212,7 @@ insert  into `formulario`(`id_formulario`,`descripcion`,`etiqueta`,`ubicacion`,`
 (5,'Usuario','Seguridad','./vista/seguridad/usuario.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (6,'Cargo','Nomina','./vista/nomina/cargo.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (7,'Empleado','Nomina','./vista/nomina/empleado.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(8,'Generar pago','Nomina','./vista/nomina/generarPago.V.html','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(8,'Generar pago','Nomina','./vista/nomina/generarPago.V.php','1','2021-05-10 22:22:00','2021-06-12 20:48:28',1,1),
 (9,'Pago del dia','Nomina','./vista/nomina/pagoDia.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (10,'Categoria','Produccion','./vista/produccion/categoria.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (11,'Detalles de orden','Produccion','./vista/produccion/detalleOrden.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
@@ -240,7 +240,7 @@ CREATE TABLE `formulario_rol` (
   KEY `id_formulario` (`id_formulario`),
   CONSTRAINT `formulario_rol_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`),
   CONSTRAINT `formulario_rol_ibfk_2` FOREIGN KEY (`id_formulario`) REFERENCES `formulario` (`id_formulario`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `formulario_rol` */
 
@@ -269,11 +269,11 @@ DROP TABLE IF EXISTS `generar_pago`;
 
 CREATE TABLE `generar_pago` (
   `id_generar_pago` int(11) NOT NULL AUTO_INCREMENT,
-  `fecha_inicio` datetime NOT NULL,
-  `fecha_fin` datetime NOT NULL,
-  `valor_pago` double NOT NULL,
-  `fecha_pago` datetime NOT NULL,
   `id_empleado` int(11) NOT NULL,
+  `fecha_inicio` date NOT NULL,
+  `fecha_fin` date NOT NULL,
+  `fecha_pago` date NOT NULL,
+  `valor_pago` double NOT NULL,
   `fecha_creacion` datetime NOT NULL,
   `fecha_modificacion` datetime NOT NULL,
   `id_usuario_creacion` int(11) NOT NULL,
@@ -281,9 +281,12 @@ CREATE TABLE `generar_pago` (
   PRIMARY KEY (`id_generar_pago`),
   KEY `id_empleado` (`id_empleado`),
   CONSTRAINT `generar_pago_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `generar_pago` */
+
+insert  into `generar_pago`(`id_generar_pago`,`id_empleado`,`fecha_inicio`,`fecha_fin`,`fecha_pago`,`valor_pago`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
+(1,1,'2021-05-12','2021-05-31','2021-06-05',120000,'2021-06-12 18:51:07','2021-06-12 18:51:07',1,1);
 
 /*Table structure for table `insumo` */
 
@@ -359,7 +362,7 @@ CREATE TABLE `pago_dia` (
   PRIMARY KEY (`id_pago_dia`),
   KEY `id_empleado` (`id_empleado`),
   CONSTRAINT `pago_dia_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `pago_dia` */
 
@@ -369,7 +372,8 @@ insert  into `pago_dia`(`id_pago_dia`,`id_empleado`,`pago_dia`,`estado`,`fecha_p
 (3,1,42000,'1','2021-05-12','2021-06-01 23:26:09','2021-06-01 23:26:09',1,1),
 (4,1,42000,'1','2021-05-13','2021-06-01 23:26:32','2021-06-01 23:26:32',1,1),
 (5,1,42000,'0','2021-05-22','2021-06-01 23:26:55','2021-06-01 23:26:55',1,1),
-(6,8,50000,'0','2021-04-16','2021-06-01 23:30:00','2021-06-01 23:30:00',1,1);
+(6,8,50000,'0','2021-04-06','2021-06-01 23:30:00','2021-06-01 23:30:00',1,1),
+(7,2,36000,'1','2021-06-12','2021-06-12 18:32:53','2021-06-12 18:32:53',1,1);
 
 /*Table structure for table `persona` */
 

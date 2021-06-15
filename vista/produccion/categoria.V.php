@@ -11,7 +11,7 @@
                         <label class="col-form-label">Descripción</label>
                         <input type="text" class="caja form-control" name="txtDescripcion" id="txtDescripcion" value="" placeholder="Descripción">
                     </div>
-                    <div class="col-12 col-sm-6 form-group">
+                    <div class="col-12 col-sm-6">
                         <label for="cmbEstado">Estado</label>
                         <select class="lista form-control" id="cmbEstado">
                             <option value="" selected="selected">--Seleccione--</option>

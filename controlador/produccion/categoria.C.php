@@ -55,7 +55,7 @@ if (isset ($accion)){
                 $categoria = new Categoria();
                 $categoria->setIdCategoria($_POST['id']);
                 $categoria->setDescripcion($_POST['descripcion']);
-                $resultado = $categoria->consultar();
+                $resultado = $categoria->Consultar();
 
                 $numeroRegistros = $categoria->conn->obtenerNumeroRegistros();
                 if($numeroRegistros === 1){

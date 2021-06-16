@@ -148,6 +148,7 @@ $(function(){
 
 
 function Limpiar(){
+    $('#hidIdTarea').val(""); 
     $('#hidIdEmpleado').val("");  
     $('#txtEmpleado').val("");  
     $('#numValorUnitario').val("");      

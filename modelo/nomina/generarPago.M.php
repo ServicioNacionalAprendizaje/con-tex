@@ -1,40 +1,39 @@
 <?php
 
-class GenerarPago
+class generarPago
 {
     private $idGenerarPago;
     private $idEmpleado;
     private $fechaInicio;
     private $fechaFin;
     private $fechaPago;
-    private $valorPago;
     private $fechaCreacion;
+    private $valorPago;
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
-    
-    //idGenerarPago
+
+    //idPagoDia
     public function getIdGenerarPago()
     {
-        return $this->idGenerarPago;
+        return $this->IdGenerarPago;
     }
     public function setIdGenerarPago($idGenerarPago)
     {
         $this->idGenerarPago = $idGenerarPago;
     }
 
-    //valorPago
-    public function getValorPago()
+    //idEmpleado
+    public function getIdEmpleado()
     {
-        return $this->valorPago;
+        return $this->idEmpleado;
     }
-    public function setValorPago($valorPago)
+    public function setIdEmpleado($idEmpleado)
     {
-        $this->valorPago = $valorPago;
+        $this->idEmpleado = $idEmpleado;
     }
 
-
-    //fechaInicio
+    //pagoInicio
     public function getFechaInicio()
     {
         return $this->fechaInicio;
@@ -53,6 +52,7 @@ class GenerarPago
     {
         $this->fechaFin = $fechaFin;
     }
+
     //fechaPago
     public function getFechaPago()
     {
@@ -62,14 +62,15 @@ class GenerarPago
     {
         $this->fechaPago = $fechaPago;
     }
-    //idEmpleado
-    public function getIdEmpleado()
+
+    //valorPago
+    public function getValorPago()
     {
-        return $this->idEmpleado;
+        return $this->valorPago;
     }
-    public function setIdEmpleado($idEmpleado)
+    public function setValorPago($valorPago)
     {
-        $this->idEmpleado = $idEmpleado;
+        $this->valorPago = $valorPago;
     }
 
     //fechaCreacion
@@ -97,7 +98,7 @@ class GenerarPago
     {
         return $this->idUsuarioCreacion;
     }
-    public function setIdUsuarioCreacion($idUsuarioCreacion)
+    public function setIdUsuarioCreacion($idUsuarioCreacion = 1)
     {
         $this->idUsuarioCreacion = $idUsuarioCreacion;
     }
@@ -107,40 +108,41 @@ class GenerarPago
     {
         return $this->idUsuarioModificacion;
     }
-    public function setIdUsuarioModificacion($idUsuarioModificacion)
+    public function setIdUsuarioModificacion($idUsuarioModificacion = 1)
     {
         $this->idUsuarioModificacion = $idUsuarioModificacion;
     }
 
     //conexion
-    public function __contruct()
+    public function __construct()
     {
         $this->conn = new Conexion();
     }
 
-    //Generar valor pago
-    public function Generar()
+    public function GenerarPago()
     {
         $sentenciaSql = "SELECT 
                             SUM(pago_dia) AS valor_pago
-                        FROM pago_dia
-                        WHERE
-                            id_empleado = $this->idEmpleado
-                        AND estado = '0'
-                        AND fecha_pago_dia BETWEEN $this->fechaInicio AND $this->fechaFin";
+                            FROM pago_dia
+                            WHERE
+                                id_empleado = $this->idEmpleado
+                            AND estado = 0
+                            AND fecha_pago_dia BETWEEN $this->fechaInicio AND $this->fechaFin";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
+        return true;
     }
 
-    //Agregar
     public function Agregar()
     {
-        $sentenciaSql = "CALL Agregar_generar_pago('$this->valorPago'
+        $sentenciaSql = "CALL Agregar_pago_dia(
+                            '$this->idEmpleado'
                             ,'$this->fechaInicio'
                             ,'$this->fechaFin'
                             ,'$this->fechaPago'
-                            ,'$this->idEmpleado'
-                            ,'$this->idUsuarioCreacion')";
+                            ,'$this->valorPago'
+                            ,'$this->idUsuarioCreacion'
+                            ,'$this->idUsuarioModificacion')";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -148,11 +150,12 @@ class GenerarPago
 
     public function Modificar()
     {
-        $sentenciaSql = "CALL Modificar_generar_pago('$this->valorPago'
+        $sentenciaSql = "CALL Modificar_pago_dia(
+                            '$this->idEmpleado'
                             ,'$this->fechaInicio'
                             ,'$this->fechaFin'
                             ,'$this->fechaPago'
-                            ,'$this->idEmpleado'
+                            ,'$this->valorPago'
                             ,'$this->idUsuarioModificacion'
                             ,'$this->idGenerarPago')";
         $this->conn->preparar($sentenciaSql);
@@ -161,17 +164,20 @@ class GenerarPago
 
     public function Eliminar()
     {
-        $sentenciaSql = "DELETE FROM generar_pago
-                            WHERE id_generar_pago = $this->idGenerarPago";
+        $sentenciaSql = "DELETE FROM generar_pago 
+                            WHERE generar_pago = $this->idGenerarPago";
         $this->conn->preparar($sentenciaSql);
-        $this->conn->ejectutar();
+        $this->conn->ejecutar();
     }
 
     public function Consultar()
     {
         $condicion = $this->obtenerCondicion();
-        $sentenciaSql = "SELECT * 
-                            FROM generar_pago $condicion";
+        $sentenciaSql = "SELECT
+                            *	
+                        FROM generar_pago
+                        WHERE
+                        ORDER BY id_empleado DESC";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -181,20 +187,32 @@ class GenerarPago
     {
         // $whereAnd = " WHERE ";
         // $condicion = " ";
-        // if($this->idEmpleado !=''){
+        // if($this->idGenerarPago !=''){
         //     $condicion=$whereAnd.$condicion." pd.id_pago_dia  = $this->idPagoDia";
         //     $whereAnd = ' AND ';
         // }
+        // if($this->idEmpleado!=''){
+        //     $condicion=$condicion.$whereAnd." pd.id_empleado = $this->idEmpleado ";
+        //     $whereAnd = ' AND ';
+        // }
+        // if($this->fechaPago!=''){
+        //     $condicion=$condicion.$whereAnd." pd.fecha_pago_dia = '$this->fechaPago' ";
+        //     $whereAnd = ' AND ';
+        // }
+        // if($this->estado!=''){
+        //     $condicion=$condicion.$whereAnd." pd.estado = '$this->estado' ";
+        //     $whereAnd = ' AND ';
+        // }
+        // return $condicion;
     }
 
     public function __destruct()
     {
-        unset($this->idGenerarPago);
-        unset($this->valorPago);
+        unset($this->idPagoDia);
+        unset($this->idEmpleado);
         unset($this->fechaInicio);
         unset($this->fechaFin);
         unset($this->fechaPago);
-        unset($this->idEmpleado);
-        unset($this->conn);
+        unset($this->valorPago);
     }
 }

@@ -6,6 +6,7 @@
 /* html{
     background-color: #20a0ff;
 } */
+
 body{
     background: url(../img/966271.jpg);
 }
@@ -18,8 +19,16 @@ label{
 
 /* Con el :not([]) se hace una excepción a la clase de la animacion del chulo*/
 /* Falta identificar que descuadra la animacion de la X */
-div:not([class="swal2-icon swal2-success swal2-icon-show"]){
+div{
     padding: 0.5em;
+}
+/* div:not([class="swal2-icon swal2-success swal2-icon-show"], [class=""]){
+    padding: 0.5em;
+} */
+
+/* Ahora si, esta clase cuadra TODO lo del SweetAlert2 */
+.swal2-popup *{
+    padding: 0em;
 }
 
 td{
@@ -128,6 +137,6 @@ select{
 }
 
 /* El siguiente arregla la animacion de la x, creo */
-span.swal2-x-mark{
+/* span.swal2-x-mark{
     margin-right: 17px;
-}
+} */

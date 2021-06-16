@@ -25,7 +25,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-span{
+span:not(.swal2-popup *){
   color: rgb(0, 26, 255);
   margin-right: 20px;
   font-size: 45px;
@@ -1197,17 +1197,17 @@ span{
 .icon-edit1:before {
   content: "\ea82";
 }
-span.swal2-success-line-tip, span.swal2-success-line-long{
+/* span.swal2-success-line-tip, span.swal2-success-line-long{
   margin-right: 0px !important;
   font-size: 16px !important;
-}
-span.swal2-x-mark-line-left, span.swal2-x-mark-line-right{
-  margin-right: -15px !important;
-  font-size: 16px !important;
-}
-div.swal2-success-ring{
+} */
+/* span.swal2-x-mark-line-left, span.swal2-x-mark-line-right{
+  margin-right: -20px !important;
+  font-size: 17px !important;
+} */
+/* div.swal2-success-ring{
   padding: 0px;
 }
 div.swal2-error{
   padding: 0px;
-}
+} */

@@ -10,11 +10,14 @@ if (isset($accion)) {
     switch ($accion) {
         case 'GENERAR':
             try {
-                $generarPago = new GenerarPago();
+                $generarPago = new generarPago();
                 $generarPago->setIdEmpleado(1);
                 $generarPago->setFechaInicio(str_replace('-', '', $_POST['fechaInicio']));
                 $generarPago->setFechaFin(str_replace('-', '', $_POST['fechaFin']));
-                $resultado = $generarPago->Generar();
+                $resultado = $generarPago->GenerarPago();
+                $numeroRegistros = $generarPago->conn->ObtenerNumeroRegistros();
+                $generarPago->conn->ObtenerRegistros() as $rowConsulta
+                $respuesta['valorPago'] = $rowConsulta[0];
             } catch (Exception $e) {
                 $respuesta['respuesta']="Error, no fué posible adicionar la información, consulte con el administrador.";
             }
@@ -24,7 +27,7 @@ if (isset($accion)) {
         break;
         case 'ADICIONAR':
             try {
-                $generarPago = new GenerarPago();
+                $generarPago = new generarPago();
                 $generarPago->setIdGenerarPago($_POST['id']);
                 $generarPago->setIdEmpleado(1);
                 $generarPago->setFechaInicio($_POST['fechaInicio']);
@@ -43,7 +46,7 @@ if (isset($accion)) {
         break;
         case 'MODIFICAR':
             try {
-                $generarPago = new GenerarPago();
+                $generarPago = new generarPago();
                 $generarPago->setIdGenerarPago($_POST['id']);
                 $generarPago->setIdEmpleado($_POST['idEmpleado']);
                 $generarPago->setFechaInicio($_POST['fechaInicio']);
@@ -61,7 +64,7 @@ if (isset($accion)) {
         break;
         case 'ELIMINAR':
             try {
-                $generarPago = new GenerarPago();
+                $generarPago = new generarPago();
                 $generarPago->setIdGenerarPago($_POST['id']);
                 $resultado = $generarPago->Eliminar();
                 $respuesta['respuesta']="La información se eliminó correctamente.";
@@ -73,7 +76,7 @@ if (isset($accion)) {
         break;
         case 'CONSULTAR':
             try {
-                $generarPago = new GenerarPago();
+                $generarPago = new generarPago();
                 $generarPago->setIdGenerarPago($_POST['id']);
                 $generarPago->setIdEmpleado($_POST['idEmpleado']);
                 $generarPago->setFechaInicio($_POST['fechaInicio']);

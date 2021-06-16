@@ -12,7 +12,7 @@ if (isset ($accion)){
             try{
                 $insumo = new Insumo();
                 $insumo->setDescripcion($_POST['descripcion']);
-                $insumo->setCantidad($_POST['cantidad']);
+                $insumo->setCantidad($_POST['operacion'].$_POST['numOperacion']);
                 $insumo->setEstado($_POST['estado']);
                 $insumo->setIdCategoria($_POST['idCategoria']);
                 $insumo->setCategoria($_POST['categoria']);

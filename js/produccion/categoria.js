@@ -1,41 +1,3 @@
-function eliminar(id) {
-  const swalWithBootstrapButtons = Swal.mixin({
-    customClass: {
-      confirmButton: 'btn btn-success',
-      cancelButton: 'btn btn-danger'
-    },
-    buttonsStyling: false
-  })
-  
-  swalWithBootstrapButtons.fire({
-    title: '¿Quieres eliminar este archivo?',
-    text: "¡No podrás revertir esto!",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonText: 'Sí, bórralo',
-    cancelButtonText: 'Cancelar',
-    reverseButtons: true
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Enviar("ELIMINAR",id)
-      swalWithBootstrapButtons.fire(
-        'Eliminado',
-        'Tu archivo ha sido eliminado.',
-        'success'
-      )
-    } else if (
-      /* Read more about handling dismissals below */
-      result.dismiss === Swal.DismissReason.cancel
-    ) {
-      swalWithBootstrapButtons.fire(
-        'Cancelado',
-        'Tu archivo está seguro',
-        'error'
-      )
-    }
-  })
-}
-
 function Enviar(accion, id) {
   if (id === null) {
     id = $('#hidIdCategoria').val();
@@ -80,7 +42,7 @@ function Enviar(accion, id) {
 
           $(document).ready(function () {
             $('#tableDatos').DataTable({
-              //para cambiar el lenguaje a español
+              //Para cambiar el lenguaje a español
               "language": {
                 "lengthMenu": "Mostrar _MENU_ registros",
                 "zeroRecords": "No se encontraron resultados",
@@ -99,7 +61,6 @@ function Enviar(accion, id) {
               "paging": false
             });
           });
-          //$('#divEliminar').html(respuesta['eliminar']).hide();
         }
 
         //Respuesta un registro
@@ -110,35 +71,72 @@ function Enviar(accion, id) {
           $('#divEliminar').html(respuesta['eliminar']);
           $('#txtDescripcion').focus();
         }
-          
-        //Respuesta modificar
-        if (respuesta['accion'] == 'MODIFICAR') {
-          Swal.fire({
-            title: '¿Quieres guardar los cambios?',
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: `Guardar`,
-            denyButtonText: `No guardar`,
-          }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-              Swal.fire('Registro actualizado', '', 'success')
-            } else if (result.isDenied) {
-              Swal.fire('Los cambios no se guardaran', '', 'info')
-            }
-          })
-          Limpiar();          
-          $("#btnBuscar").trigger("click");
-        }
-
-        //Respuesta eliminar
-        if (respuesta['accion'] == 'ELIMINAR') {
-          Limpiar();
-          $("#btnBuscar").trigger("click");
-        }
       }
     });
 
+}
+function modificar(accion,id){
+  // console.log(modificar)
+  Swal.fire({
+    title: '¿Quieres guardar los cambios?',
+    showDenyButton: true,
+    // showCancelButton: true,
+    confirmButtonText: `Guardar`,
+    denyButtonText: `No guardar`,
+  }).then((result) => {
+    /* Actuliza los datos */
+    if (result.isConfirmed) {
+      Enviar('MODIFICAR',id)
+      Swal.fire('Registro actualizado', '', 'success')
+      Limpiar();          
+      $("#btnBuscar").trigger("click");
+    } else if (result.isDenied) {
+      Swal.fire('Acción cancelada', '', 'info')
+      Limpiar(); 
+      $("#btnBuscar").trigger("click");
+    }
+  })
+}
+function eliminar(id) {
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+    confirmButton: 'btn btn-success',
+    cancelButton: 'btn btn-danger'
+    },
+    buttonsStyling: false
+  })
+  
+  swalWithBootstrapButtons.fire({
+    title: '¿Quieres eliminar este archivo?',
+    text: "¡No podrás revertir esto!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Sí, bórralo',
+    cancelButtonText: 'Cancelar',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Enviar("ELIMINAR",id)
+      // Elimina registro
+      swalWithBootstrapButtons.fire(
+        'Eliminado',
+        'Tu archivo ha sido eliminado.',
+        'success'
+      )
+      Limpiar();
+      $("#btnBuscar").trigger("click");
+    } else if (
+      /* Cancela la acción */
+      result.dismiss === Swal.DismissReason.cancel
+    ) {
+      swalWithBootstrapButtons.fire(
+        'Cancelado',
+        'Tu archivo está seguro',
+        'error'
+      )
+      Limpiar();
+    }
+  })
 }
 function Limpiar() {
   $('#hidIdCategoria').val("");

@@ -1,6 +1,6 @@
 <?php include_once ("../../componente/libreria/libreria.php"); ?>
 <script src="../../js/produccion/orden.js"></script>
-<body onload="Enviar('CONSULTAR',null)">
+<body onload="Enviar1('CONSULTAR',null)">
     <form name="frmOrden" id="frmOrden">
         <div class="margen" align="center">
             <h1>Orden</h1>
@@ -69,7 +69,7 @@
                 <div class="col-12 col-sm-2">
                     <!-- Button trigger modal -->
                     <button type="button" class="boton form-control btn-light btn-outline-primary"
-                    data-bs-toggle="modal" data-bs-target="#staticBackdrop">DETALLE DE ORDEN</button>
+                    data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="Enviar('CONSULTAR',null)">DETALLE DE ORDEN</button>
                 </div>
             </div>
             <div class="row">
@@ -145,7 +145,7 @@
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="table-responsive">
-                                                        <table class="table table-striped table-bordered table-hover">
+                                                        <table id="tableDatos" class="table table-striped table-bordered table-hover">
                                                             <thead>
                                                                 <tr>
                                                                     <td align="center">Id orden</td>
@@ -178,7 +178,7 @@
             <div class="row">
                 <div class="col">
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover">
+                        <table id="tableDatos1" class="table table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <td align="center">Id Orden</td>

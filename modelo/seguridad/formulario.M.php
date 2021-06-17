@@ -168,7 +168,7 @@ class Formulario
                             INNER JOIN rol AS r ON fr.id_rol = r.id_rol
                             INNER JOIN usuario_rol AS ur ON r.id_rol = ur.id_rol
                             INNER JOIN usuario AS u ON ur.id_usuario = u.id_usuario
-                        WHERE f.ubicacion LIKE '%./vista/seguridad/formulario.V.php%'
+                        WHERE f.ubicacion LIKE '%$this->ubicacion%' AND u.id_usuario = $_SESSION[id_login]
                     ";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();

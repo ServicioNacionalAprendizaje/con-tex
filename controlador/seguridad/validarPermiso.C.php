@@ -7,14 +7,15 @@ require '../../modelo/seguridad/formulario.M.php';
 if (isset ( $_SESSION['id_login'])){  
     try{
         $formulario = new Formulario();                
-        $formulario->setUbicacion(basename( __FILE__ ));               
+        $formulario->setUbicacion($_SESSION['ruta_formulario']);               
         $formulario->validarFormulario();
         
         if ($rowBuscar = $formulario->conn->ObtenerObjeto()){
-            if(intval($rowBuscar->cantidad)===1)
-            {
-                $_SESSION['autenticado'] = $rowBuscar->cantidad;                
-                $respuesta['respuesta']= "dashboard.php";
+            if(intval($rowBuscar->cantidad)!==1)
+            {                
+                header("Location: http://localhost/con-tex/");
+                session_destroy();
+                exit;                
             } 
         }         
     }catch(Exception $e){
@@ -22,5 +23,8 @@ if (isset ( $_SESSION['id_login'])){
         $respuesta['estado']=1;   
     }
     
+}else{
+    header("Location: http://localhost/con-tex/");
+    exit;
 }
 ?>

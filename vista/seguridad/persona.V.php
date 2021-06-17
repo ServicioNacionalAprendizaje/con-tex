@@ -1,4 +1,8 @@
-<?php include_once ("../../componente/libreria/libreria.php"); ?>
+<?php 
+    session_start();
+    $_SESSION['ruta_formulario']= basename( __FILE__ );
+    require ("../../componente/libreria/libreria.php"); 
+?>
 <script src="../../js/seguridad/persona.js"></script>
 <body onload="Enviar('CONSULTAR',null)">
     <form name="frmPersona" id="frmPersona"> 

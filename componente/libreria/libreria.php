@@ -28,3 +28,6 @@
     <!-- SweetAlert -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
+<?php    
+    include_once  '../../controlador/seguridad/validarPermiso.C.php'
+?>

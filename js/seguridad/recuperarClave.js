@@ -14,12 +14,12 @@ function Enviar(accion, id) {
         dataType: 'json', //Recibe el array desde php
 
         success: function(respuesta) { //procesa y devuelve la respuesta
-            //console.log(respuesta)
+            console.log(respuesta)
 
             //Respuesta eliminar
             if (respuesta['accion'] == 'RESTAURAR') {
                 alert(respuesta['respuesta']);
-                window.location =respuesta['ruta'];
+                window.location = respuesta['ruta'];
             }
         }
     });

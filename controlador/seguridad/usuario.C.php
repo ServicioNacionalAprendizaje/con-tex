@@ -139,7 +139,7 @@ if (isset ($accion)){
                 $respuesta['respuesta']="Error, no fue posible restaurar la contraseña, consulte con el administrador.";
             }
             $respuesta['accion']='RESTAURAR';
-            $respuesta['ruta']= "login.html";
+            $respuesta['ruta'] = 'index.html';
             echo json_encode($respuesta);
         break;
     }

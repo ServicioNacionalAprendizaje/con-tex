@@ -13,7 +13,7 @@ if (isset ( $_SESSION['id_login'])){
         if ($rowBuscar = $formulario->conn->ObtenerObjeto()){
             if(intval($rowBuscar->cantidad)!==1)
             {                
-                header("Location: http://localhost/con-tex/");
+                header("Location: ../../");
                 session_destroy();
                 exit;                
             } 
@@ -24,7 +24,7 @@ if (isset ( $_SESSION['id_login'])){
     }
     
 }else{
-    header("Location: http://localhost/con-tex/");
+    header("Location: ../../");
     exit;
 }
 ?>

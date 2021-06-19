@@ -12,6 +12,11 @@
                 <div class="row">
                     <div class="col-12 col-sm-3">
                         <input type="hidden" name="hidIdProducto" id="hidIdProducto" value="">
+                        <label class="col-form-label">Descripción</label>
+                        <input type="text" name="txtDescripcion" id="txtDescripcion" value="" class="caja form-control"
+                            placeholder="Descripción">
+                    </div>
+                    <div class="col-12 col-sm-3">
                         <label class="col-form-label">Categoria</label>
                         <input type="hidden" name="hidIdCategoria" id="hidIdCategoria" value=""><br>
                         <input type="text" name="txtCategoria" id="txtCategoria" value="" class="caja form-control"
@@ -21,11 +26,6 @@
                         <label class="col-form-label">Talla</label>
                         <input type="text" name="txtTalla" id="txtTalla" value="" class="caja form-control"
                             placeholder="Talla">
-                    </div>
-                    <div class="col-12 col-sm-3">
-                        <label class="col-form-label">Descripción</label>
-                        <input type="text" name="txtDescripcion" id="txtDescripcion" value="" class="caja form-control"
-                            placeholder="Descripción">
                     </div>
                     <div class="col-12 col-sm-3 form-group">
                         <label for="cmbEstado">Estado</label>

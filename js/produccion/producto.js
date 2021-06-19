@@ -83,7 +83,7 @@ function Enviar(accion,id){
                     $('#hidIdCategoria').val(respuesta['idCategoria']);
                     $('#txtCategoria').val(respuesta['categoria']);
                     $('#divEliminar').html(respuesta['eliminar']);
-                    $('#txtCategoria').focus();
+                    $('#txtDescripcion').focus();
                 }
 
                 //Respuesta modificar

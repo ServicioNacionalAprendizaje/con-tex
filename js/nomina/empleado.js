@@ -71,11 +71,12 @@ id=$('#hidIdEmpleado').val();
                         alert('El correo electrónico introducido no es correcto.');
                         return false;
                     }
-                        Swal.fire(
-                        'Registro con exito',
-                        'Click en ok para continuar',
-                        'success'
-                    )
+                    alert(respuesta['respuesta']);
+                    //     Swal.fire(
+                    //     'Registro con exito',
+                    //     'Click en ok para continuar',
+                    //     'success'
+                    // )
                     Limpiar();
                     $("#btnBuscar").trigger("click");
                     }
@@ -138,6 +139,7 @@ id=$('#hidIdEmpleado').val();
                 
                 //Respuesta eliminar
                 if(respuesta['accion']=='ELIMINAR'){
+                    alert(respuesta['respuesta']);
                     Limpiar();
                     $("#btnBuscar").trigger("click");
                 }

@@ -135,7 +135,14 @@ class generarPago
 
     public function Agregar()
     {
-        $sentenciaSql = "CALL Agregar_pago_dia(
+        $sentenciaSql = "UPDATE
+                            pago_dia
+                        SET estado = 1
+                        WHERE id_empleado = $this->idEmpleado
+                        AND estado = 0
+                        AND fecha_pago_dia BETWEEN $this->fechaInicio AND $this->fechaFin;
+
+                        CALL Agregar_pago_dia(
                             '$this->idEmpleado'
                             ,'$this->fechaInicio'
                             ,'$this->fechaFin'

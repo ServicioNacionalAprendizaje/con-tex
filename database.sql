@@ -52,7 +52,7 @@ CREATE TABLE `categoria` (
   `id_usuario_creacion` int(11) NOT NULL,
   `id_usuario_modificacion` int(11) NOT NULL,
   PRIMARY KEY (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `categoria` */
 
@@ -61,7 +61,9 @@ insert  into `categoria`(`id_categoria`,`descripcion`,`estado`,`fecha_creacion`,
 (2,'Pantalones','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),
 (3,'Vestidos','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),
 (4,'Sueteres','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),
-(5,'Interiores','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1);
+(5,'Interiores','1','2021-05-08 01:35:00','2021-05-08 01:35:00',1,1),
+(8,'Resortes','1','2021-06-18 13:01:40','2021-06-18 13:01:40',1,1),
+(9,'Botones','1','2021-06-18 13:02:06','2021-06-18 13:02:06',1,1);
 
 /*Table structure for table `cliente` */
 
@@ -216,7 +218,7 @@ insert  into `formulario`(`id_formulario`,`descripcion`,`etiqueta`,`ubicacion`,`
 (9,'Pago del dia','Nomina','./vista/nomina/pagoDia.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (10,'Categoria','Produccion','./vista/produccion/categoria.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (11,'Detalles de orden','Produccion','./vista/produccion/detalleOrden.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
-(12,'Orden','Produccion','./vista/produccion/orden.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
+(12,'Orden de produccion','Produccion','./vista/produccion/orden.V.php','1','2021-05-10 22:22:00','2021-06-18 13:04:47',1,1),
 (13,'Producto','Produccion','./vista/produccion/producto.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (14,'Tarea','Produccion','./vista/produccion/tarea.V.php','1','2021-05-10 22:22:00','2021-05-10 22:22:00',1,1),
 (15,'Rol de usuario','Seguridad','./vista/seguridad/usuarioRol.V.php','1','2021-05-10 22:22:00','2021-06-01 23:31:39',1,1),
@@ -281,12 +283,15 @@ CREATE TABLE `generar_pago` (
   PRIMARY KEY (`id_generar_pago`),
   KEY `id_empleado` (`id_empleado`),
   CONSTRAINT `generar_pago_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `generar_pago` */
 
 insert  into `generar_pago`(`id_generar_pago`,`id_empleado`,`fecha_inicio`,`fecha_fin`,`fecha_pago`,`valor_pago`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
-(1,1,'2021-05-12','2021-05-31','2021-06-05',120000,'2021-06-12 18:51:07','2021-06-12 18:51:07',1,1);
+(19,1,'2021-05-01','2021-05-22','2021-06-19',126000,'2021-06-19 17:48:36','2021-06-19 17:48:36',1,1),
+(20,1,'2021-05-01','2021-05-31','2021-06-19',171000,'2021-06-19 17:53:45','2021-06-19 17:53:45',1,1),
+(21,1,'2021-05-01','2021-05-31','2021-06-18',171000,'2021-06-19 17:55:00','2021-06-19 17:55:00',1,1),
+(22,1,'2021-05-01','2021-05-31','2021-06-19',171000,'2021-06-19 18:03:27','2021-06-19 18:03:27',1,1);
 
 /*Table structure for table `insumo` */
 
@@ -310,8 +315,8 @@ CREATE TABLE `insumo` (
 /*Data for the table `insumo` */
 
 insert  into `insumo`(`id_insumo`,`descripcion`,`id_categoria`,`cantidad`,`estado`,`fecha_creacion`,`fecha_modificacion`,`id_usuario_creacion`,`id_usuario_modificacion`) values 
-(1,'Boton azul',1,14,'1','2021-06-10 21:27:19','2021-06-11 00:14:45',1,1),
-(2,'Agujas 2',2,8,'0','2021-06-10 23:19:40','2021-06-11 00:28:50',1,1);
+(1,'Boton azul',9,14,'1','2021-06-10 21:27:19','2021-06-18 13:02:41',1,1),
+(2,'Agujas 2',2,15,'0','2021-06-10 23:19:40','2021-06-18 13:00:16',1,1);
 
 /*Table structure for table `orden` */
 
@@ -371,7 +376,7 @@ insert  into `pago_dia`(`id_pago_dia`,`id_empleado`,`pago_dia`,`estado`,`fecha_p
 (2,2,35000,'0','2021-06-01','2021-06-01 23:25:04','2021-06-01 23:25:04',1,1),
 (3,1,42000,'1','2021-05-12','2021-06-01 23:26:09','2021-06-01 23:26:09',1,1),
 (4,1,42000,'1','2021-05-13','2021-06-01 23:26:32','2021-06-01 23:26:32',1,1),
-(5,1,42000,'0','2021-05-22','2021-06-01 23:26:55','2021-06-01 23:26:55',1,1),
+(5,1,42000,'1','2021-05-22','2021-06-01 23:26:55','2021-06-01 23:26:55',1,1),
 (6,8,50000,'0','2021-04-06','2021-06-01 23:30:00','2021-06-01 23:30:00',1,1),
 (7,2,36000,'1','2021-06-12','2021-06-12 18:32:53','2021-06-12 18:32:53',1,1);
 
@@ -491,7 +496,7 @@ CREATE TABLE `tarea` (
   `descripcion` varchar(100) NOT NULL,
   `valor_unitario` double NOT NULL,
   `cantidad` int(11) NOT NULL,
-  `fecha` date NOT NULL,
+  `fecha` datetime NOT NULL,
   `estado_pago` enum('Pagado','Por pagar') NOT NULL,
   `id_empleado` int(11) NOT NULL,
   `estado` enum('0','1') NOT NULL,
@@ -838,30 +843,33 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_generar_pago`(IN valorPago DOUBLE
-																			,IN fechaInicio DATETIME
-																			,IN fechaFin DATETIME
-																			,IN fechaPago DATETIME
-																			,IN idEmpleado INT(11)
-																			,IN idUsuarioCreacion INT(11)
-																			,IN idUsuarioModificacion INT(11)
-																			)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_generar_pago`(
+	IN `idEmpleado` INT(11),
+	IN `fechaInicio` DATE,
+	IN `fechaFin` DATE,
+	IN `fechaPago` DATE,
+	IN `valorPago` DOUBLE,
+	IN `idUsuarioCreacion` INT(11),
+	IN `idUsuarioModificacion` INT(11)
+)
 BEGIN
-	INSERT INTO generar_pago(valor_pago
+	INSERT INTO generar_pago(
+							id_empleado
 							,fecha_inicio
 							,fecha_fin
 							,fecha_pago
-							,id_empleado
+							,valor_pago
 							,fecha_creacion
 							,fecha_modificacion
 							,id_usuario_creacion
 							,id_usuario_modificacion
 							) 
-	VALUES (valorPago
+	VALUES (
+			idEmpleado
 			,fechaInicio
 			,fechaFin
 			,fechaPago
-			,idEmpleado
+			,valorPago
 			,NOW()
 			,NOW()
 			,idUsuarioCreacion
@@ -1099,7 +1107,7 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_tarea`(IN `descripcion` VARCHAR(100), IN `valorUnitario` DOUBLE, IN `cantidad` INT(11), IN `fecha` DATE, IN `estadoPago` ENUM('Pagado','Por pagar'), IN `idEmpleado` INT(11), IN `estado` ENUM('0','1'), IN `idUsuarioCreacion` INT(11), IN `idUsuarioModificacion` INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar_tarea`(IN `descripcion` VARCHAR(100), IN `valorUnitario` DOUBLE, IN `cantidad` INT(11), IN `fecha` DATETIME, IN `estadoPago` ENUM('Pagado','Por pagar'), IN `idEmpleado` INT(11), IN `estado` ENUM('0','1'), IN `idUsuarioCreacion` INT(11), IN `idUsuarioModificacion` INT(11))
 BEGIN
 	INSERT INTO tarea (descripcion
 					,valor_unitario
@@ -1413,21 +1421,23 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_generar_pago`(IN valorPago DOUBLE
-																				,IN fechaInicio DATETIME
-																				,IN fechaFin DATETIME
-																				,IN fechaPago DATETIME
-																				,IN idEmpleado INT(11)
-																				,IN idUsuarioModificacion INT(11)
-																				,IN idGenerarPago INT(11)
-																				)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_generar_pago`(
+	IN `idEmpleado` INT(11),
+	IN `fechaInicio` DATE,
+	IN `fechaFin` DATE,
+	IN `fechaPago` DATE,
+	IN `valorPago` DOUBLE,
+	IN `idUsuarioModificacion` INT(11),
+	IN `idGenerarPago` INT(11)
+)
 BEGIN
 	UPDATE generar_pago 
-	SET valor_pago = valorPago
+	SET 
+		id_empleado = idEmpleado
 		,fecha_inicio = fechaInicio
 		,fecha_fin = fechaFin
 		,fecha_pago = fechaPago
-		,id_empleado = idEmpleado
+		,valor_pago = valorPago
 		,fecha_modificacion = NOW()
 		,id_usuario_modificacion = idUsuarioModificacion 
 	WHERE id_generar_pago = idGenerarPago;
@@ -1601,7 +1611,7 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_tarea`(IN `descripcion` VARCHAR(100), IN `valorUnitario` DOUBLE, IN `cantidad` INT(11), IN `fecha` DATE, IN `estadoPago` ENUM('Pagado','Por pagar'), IN `idEmpleado` INT(11), IN `estado` ENUM('0','1'), IN `idUsuarioModificacion` INT(11), IN `idTarea` INT(11))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modificar_tarea`(IN `descripcion` VARCHAR(100), IN `valorUnitario` DOUBLE, IN `cantidad` INT(11), IN `fecha` DATETIME, IN `estadoPago` ENUM('Pagado','Por pagar'), IN `idEmpleado` INT(11), IN `estado` ENUM('0','1'), IN `idUsuarioModificacion` INT(11), IN `idTarea` INT(11))
 BEGIN
 	UPDATE tarea
 	set descripcion = descripcion

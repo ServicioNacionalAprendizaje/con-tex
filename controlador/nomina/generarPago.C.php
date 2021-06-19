@@ -10,12 +10,14 @@ if (isset($accion)) {
     switch ($accion) {
         case 'GENERAR':
             try {
-                $generarPago = new generarPago();
+                $generarPago = new GenerarPago();
                 $generarPago->setIdEmpleado(1);
                 $generarPago->setFechaInicio(str_replace('-', '', $_POST['fechaInicio']));
                 $generarPago->setFechaFin(str_replace('-', '', $_POST['fechaFin']));
                 $resultado = $generarPago->GenerarPago();
-                $rowBuscar = $generarPago->conn->obtenerObjeto();
+                $rowBuscar = $generarPago->conn->ObtenerObjeto();
+                $respuesta['valorPago'] = $rowBuscar->valor_pago;
+
              } catch (Exception $e) {
                 $respuesta['respuesta']="Error, no fué posible adicionar la información, consulte con el administrador.";
             }
@@ -24,16 +26,17 @@ if (isset($accion)) {
         break;
         case 'ADICIONAR':
             try {
-                $generarPago = new generarPago();
+                $generarPago = new GenerarPago();
                 $generarPago->setIdGenerarPago($_POST['id']);
                 $generarPago->setIdEmpleado(1);
                 $generarPago->setFechaInicio($_POST['fechaInicio']);
                 $generarPago->setFechaFin($_POST['fechaFin']);
-                $generarPago->setValorPago(42000);
+                $generarPago->setValorPago($_POST['valorPago']);
                 $generarPago->setFechaPago($_POST['fechaPago']);
                 $generarPago->setIdUsuarioCreacion(1); // Obtener id del cargo con la variable session
                 $generarPago->setIdUsuarioModificacion(1); // Obtener id del cargo con la variable session
                 $resultado = $generarPago->Agregar();
+                $generarPago->pagarDias(str_replace('-', '', $_POST['fechaInicio']),str_replace('-', '', $_POST['fechaFin']));
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             } catch (Exception $e) {
                 $respuesta['respuesta']="Error, no fué posible adicionar la información, consulte con el administrador.";
@@ -43,7 +46,7 @@ if (isset($accion)) {
         break;
         case 'MODIFICAR':
             try {
-                $generarPago = new generarPago();
+                $generarPago = new GenerarPago();
                 $generarPago->setIdGenerarPago($_POST['id']);
                 $generarPago->setIdEmpleado($_POST['idEmpleado']);
                 $generarPago->setFechaInicio($_POST['fechaInicio']);
@@ -61,7 +64,7 @@ if (isset($accion)) {
         break;
         case 'ELIMINAR':
             try {
-                $generarPago = new generarPago();
+                $generarPago = new GenerarPago();
                 $generarPago->setIdGenerarPago($_POST['id']);
                 $resultado = $generarPago->Eliminar();
                 $respuesta['respuesta']="La información se eliminó correctamente.";
@@ -73,14 +76,14 @@ if (isset($accion)) {
         break;
         case 'CONSULTAR':
             try {
-                $generarPago = new generarPago();
+                $generarPago = new GenerarPago();
                 $generarPago->setIdGenerarPago($_POST['id']);
                 $generarPago->setIdEmpleado($_POST['idEmpleado']);
                 $generarPago->setFechaInicio($_POST['fechaInicio']);
                 $generarPago->setFechaFin($_POST['fechaFin']);
                 $generarPago->setValorPago($_POST['valorPago']);
                 $generarPago->setFechaPago($_POST['fechaPago']);
-                $resultado = $generarPago->consultar();
+                $resultado = $generarPago->Consultar();
 
                 $numeroRegistros = $generarPago->conn->ObtenerNumeroRegistros();
                 if ($numeroRegistros === 1) {
@@ -100,7 +103,9 @@ if (isset($accion)) {
                             $retorno .= "<tr>                                          
                                         <td><label>".$rowConsulta[1]."</label></td>                                             
                                         <td><label>".$rowConsulta[2]."</label></td>                                        
-                                        <td><label>".$rowConsulta[3]."</label></td>                                                                                              
+                                        <td><label>".$rowConsulta[3]."</label></td>
+                                        <td><label>$".$rowConsulta[4]."</label></td> 
+                                        <td><label>".$rowConsulta[5]."</label></td>                                                                                               
                                         <td align='center' style='cursor: pointer'><span class='icon-edit1' onclick='Enviar(\"CONSULTAR\",".$rowConsulta[0].")'></td>
                                         <td align='center' style='cursor: pointer'><span class='icon-trash' onclick='Enviar(\"ELIMINAR\",".$rowConsulta[0].")'></td>                                         
                                        

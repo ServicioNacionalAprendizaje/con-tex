@@ -29,14 +29,14 @@
                             placeholder="Fecha Fin">
                     </div>
                     <div class="col-12 col-sm-2">
+                        <label class="col-form-label">Valor</label>
+                        <input type="number" class="caja form-control" name="numValorPago" value="" id="numValorPago"
+                            placeholder="Valor Pago" disabled>
+                    </div>
+                    <div class="col-12 col-sm-2">
                         <label class="col-form-label">Fecha de pago</label>
                         <input type="date" class="caja form-control" name="datFechaPago" value="" id="datFechaPago"
                             placeholder="Fecha Pago">
-                    </div>
-                    <div class="col-12 col-sm-2">
-                        <label class="col-form-label">Valor</label>
-                        <input type="number" class="caja form-control" name="numValorPago" value="" id="numValorPago disabled"
-                            placeholder="Valor Pago" disabled>
                     </div>
                     <div class="col-12 col-sm-auto">
                         <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnGenerar" id="btnGenerar" value="Generar valor" 
@@ -65,8 +65,10 @@
                                 <thead>
                                     <tr>
                                         <td align="center">Empleado</td>
-                                        <td align="center">Valor pago</td>
-                                        <td align="center">Fecha</td>
+                                        <td align="center">Fecha Inicio</td>
+                                        <td align="center">FechaFin</td>
+                                        <td align="center">Valor Pago</td>
+                                        <td align="center">Fecha Pago</td>
                                         <td align="center">Modificar</td>
                                         <td align="center">Eliminar</td>
                                     </tr>

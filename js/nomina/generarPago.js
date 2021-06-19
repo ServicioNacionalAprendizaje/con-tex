@@ -22,7 +22,7 @@ function Enviar(accion, id) {
         success: function(respuesta) { //procesa y devuelve la respuesta
             // console.log(respuesta); 
             if (respuesta['accion'] == 'GENERAR'){
-                $('#numValorPago').val(respuesta['valorPago']);       
+                $('#numValorPago').val(respuesta['valorPago']);     
             }
 
             //Respueta adicionar
@@ -96,3 +96,13 @@ function Limpiar() {
     $('#numValorPago').val("");
     $('#datFechaPago').val("");
 }
+
+$(function(){
+    //se carga el autocompleta
+     $("#txtEmpleado").autocomplete({
+        source:'../../busqueda/nomina/empleadoGenerarPago.B.php',
+        select:function(event, ui){
+            $("#hidIdEmpleado").val(ui.item.id);
+        }
+     });
+});

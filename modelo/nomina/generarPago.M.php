@@ -126,27 +126,28 @@ class GenerarPago
                             FROM pago_dia
                             WHERE
                                 id_empleado = $this->idEmpleado
-                            AND estado = 0
-                            AND fecha_pago_dia BETWEEN 20210501 AND 20210531";
+                            AND estado = '0'
+                            AND fecha_pago_dia BETWEEN $this->fechaInicio AND $this->fechaFin";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
     }
 
-    public function Agregar()
+    public function pagarDias($fechaInicio,$fechaFin)
     {
-<<<<<<< Updated upstream
         $sentenciaSql = "UPDATE
                             pago_dia
-                        SET estado = 1
+                        SET estado = '1'
                         WHERE id_empleado = $this->idEmpleado
-                        AND estado = 0
-                        AND fecha_pago_dia BETWEEN $this->fechaInicio AND $this->fechaFin;
+                        AND estado = '0'
+                        AND fecha_pago_dia BETWEEN $fechaInicio AND $fechaFin";
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+    }
 
-                        CALL Agregar_pago_dia(
-=======
+    public function Agregar()
+    {
         $sentenciaSql = "CALL Agregar_generar_pago(
->>>>>>> Stashed changes
                             '$this->idEmpleado'
                             ,'$this->fechaInicio'
                             ,'$this->fechaFin'
@@ -185,10 +186,33 @@ class GenerarPago
     {
         $condicion = $this->obtenerCondicion();
         $sentenciaSql = "SELECT
-                            *	
-                        FROM generar_pago
-                        WHERE
-                        ORDER BY id_empleado DESC";
+                            gp.id_generar_pago
+                            ,CONCAT(p.nombre,' ',p.apellido) AS nombre
+                            ,gp.fecha_inicio
+                            ,gp.fecha_fin
+                            ,gp.valor_pago
+                            ,gp.fecha_pago
+                            ,e.id_empleado
+                            ,e.id_persona
+                            ,p.id_persona	
+                        FROM persona AS p
+                        INNER JOIN empleado AS e ON e.id_persona = p.id_persona
+                        INNER JOIN generar_pago AS gp ON gp.id_empleado = e.id_empleado
+                        $condicion
+                        ORDER BY gp.fecha_pago DESC";
+        $this->conn->preparar($sentenciaSql);
+        $this->conn->ejecutar();
+        return true;
+    }
+
+    public function BuscarEmpleado($nombre)
+    {
+        $sentenciaSql = "SELECT 
+                            CONCAT(p.nombre,' ',p.apellido) AS nombre
+                            ,e.id_empleado 
+                        FROM persona AS p 
+                            INNER JOIN empleado AS e ON p.id_persona = e.id_persona 
+                        WHERE p.estado = '1' AND e.estado = '1' AND nombre LIKE '%$nombre%'";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -196,25 +220,33 @@ class GenerarPago
 
     private function obtenerCondicion()
     {
-        // $whereAnd = " WHERE ";
-        // $condicion = " ";
-        // if($this->idGenerarPago !=''){
-        //     $condicion=$whereAnd.$condicion." pd.id_pago_dia  = $this->idPagoDia";
-        //     $whereAnd = ' AND ';
-        // }
-        // if($this->idEmpleado!=''){
-        //     $condicion=$condicion.$whereAnd." pd.id_empleado = $this->idEmpleado ";
-        //     $whereAnd = ' AND ';
-        // }
-        // if($this->fechaPago!=''){
-        //     $condicion=$condicion.$whereAnd." pd.fecha_pago_dia = '$this->fechaPago' ";
-        //     $whereAnd = ' AND ';
-        // }
-        // if($this->estado!=''){
-        //     $condicion=$condicion.$whereAnd." pd.estado = '$this->estado' ";
-        //     $whereAnd = ' AND ';
-        // }
-        // return $condicion;
+        $whereAnd = " WHERE ";
+        $condicion = " ";
+        if($this->idGenerarPago !=''){
+            $condicion=$whereAnd.$condicion." gp.id_generar_pago  = $this->idGenerarPago";
+            $whereAnd = ' AND ';
+        }
+        if($this->idEmpleado!=''){
+            $condicion=$condicion.$whereAnd." gp.id_empleado = $this->idEmpleado ";
+            $whereAnd = ' AND ';
+        }
+        if($this->fechaInicio!=''){
+            $condicion=$condicion.$whereAnd." gp.fecha_inicio = '$this->fechaInicio' ";
+            $whereAnd = ' AND ';
+        }
+        if($this->fechaFin!=''){
+            $condicion=$condicion.$whereAnd." gp.fecha_fin = '$this->fechaFin' ";
+            $whereAnd = ' AND ';
+        }
+        if($this->valorPago!=''){
+            $condicion=$condicion.$whereAnd." gp.valor_pago = '$this->valorPago' ";
+            $whereAnd = ' AND ';
+        }
+        if($this->fechaPago!=''){
+            $condicion=$condicion.$whereAnd." gp.fecha_pago = '$this->fechaPago' ";
+            $whereAnd = ' AND ';
+        }
+        return $condicion;
     }
 
     public function __destruct()
@@ -225,5 +257,6 @@ class GenerarPago
         unset($this->fechaFin);
         unset($this->fechaPago);
         unset($this->valorPago);
+        unset($this->conn);
     }
 }

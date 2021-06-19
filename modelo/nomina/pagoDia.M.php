@@ -1,6 +1,6 @@
 <?php
 
-class pagoDia
+class PagoDia
 {
 
     private $idPagoDia;

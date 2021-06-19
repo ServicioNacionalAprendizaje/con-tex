@@ -1,14 +1,14 @@
 <?php
 
-class generarPago
+class GenerarPago
 {
     private $idGenerarPago;
     private $idEmpleado;
     private $fechaInicio;
     private $fechaFin;
     private $fechaPago;
-    private $fechaCreacion;
     private $valorPago;
+    private $fechaCreacion;
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
@@ -121,13 +121,13 @@ class generarPago
 
     public function GenerarPago()
     {
-        $sentenciaSql = "SELECT 
+        $sentenciaSql = "SELECT
                             SUM(pago_dia) AS valor_pago
                             FROM pago_dia
                             WHERE
                                 id_empleado = $this->idEmpleado
                             AND estado = 0
-                            AND fecha_pago_dia BETWEEN $this->fechaInicio AND $this->fechaFin";
+                            AND fecha_pago_dia BETWEEN 20210501 AND 20210531";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -135,6 +135,7 @@ class generarPago
 
     public function Agregar()
     {
+<<<<<<< Updated upstream
         $sentenciaSql = "UPDATE
                             pago_dia
                         SET estado = 1
@@ -143,6 +144,9 @@ class generarPago
                         AND fecha_pago_dia BETWEEN $this->fechaInicio AND $this->fechaFin;
 
                         CALL Agregar_pago_dia(
+=======
+        $sentenciaSql = "CALL Agregar_generar_pago(
+>>>>>>> Stashed changes
                             '$this->idEmpleado'
                             ,'$this->fechaInicio'
                             ,'$this->fechaFin'
@@ -157,7 +161,7 @@ class generarPago
 
     public function Modificar()
     {
-        $sentenciaSql = "CALL Modificar_pago_dia(
+        $sentenciaSql = "CALL Modificar_generar_pago(
                             '$this->idEmpleado'
                             ,'$this->fechaInicio'
                             ,'$this->fechaFin'

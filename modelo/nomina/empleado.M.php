@@ -222,8 +222,7 @@ $sentenciaSql = "CALL Agregar_empleado(
                         FROM empleado AS e 
                         INNER JOIN persona AS p ON e.id_persona = p.id_persona 
                         INNER JOIN usuario AS u ON u.id_persona = e.id_persona 
-                        WHERE e.estado = '1'; 
-                        -- GROUP BY p.id_persona;";
+                        WHERE e.estado = '1'";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;

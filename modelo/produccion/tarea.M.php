@@ -1,7 +1,7 @@
 <?php
 
-class Tarea{
-
+class Tarea
+{
     private $idTarea;
     private $descripcion;
     private $valorUnitario;
@@ -87,56 +87,56 @@ class Tarea{
 
     //Estado
     public function getEstado()
-    { 
+    {
         return $this->estado;
     }
     public function setEstado($estado)
-    { 
+    {
         $this->estado =$estado;
     }
 
     //FechaCreacion
     public function getFechaCreacion()
-    { 
+    {
         return $this->fechaCreacion;
     }
-    public function setFechaCreacion($fechaCreacion) 
-    { 
+    public function setFechaCreacion($fechaCreacion)
+    {
         $this->fechaCreacion =$fechaCreacion;
     }
 
     //FechaModificacion
-     public function getFechaModificacion()
-    { 
-         return $this->fechaModificacion;
+    public function getFechaModificacion()
+    {
+        return $this->fechaModificacion;
     }
-     public function setFechaModificacion($fechaModificacion) 
-    { 
+    public function setFechaModificacion($fechaModificacion)
+    {
         $this->fechaModificacion =$fechaModificacion;
     }
 
     //IdUsuarioCreacion
     public function getIdUsuarioCreacion()
-    { 
+    {
         return $this->idUsuarioCreacion;
     }
     public function setIdUsuarioCreacion($idUsuarioCreacion = 1)
-    { 
+    {
         $this->idUsuarioCreacion =$idUsuarioCreacion;
     }
 
     //IdUsuarioModificacion
     public function getIdUsuarioModificacion()
-    { 
+    {
         return $this->idUsuarioModificacion;
     }
-    public function setIdUsuarioModificacion($idUsuarioModificacion = 1) 
-    { 
+    public function setIdUsuarioModificacion($idUsuarioModificacion = 1)
+    {
         $this->idUsuarioModificacion =$idUsuarioModificacion;
     }
 
     //conexion
-    public function __construct() 
+    public function __construct()
     {
         $this->conn = new Conexion;
     }
@@ -170,23 +170,25 @@ class Tarea{
                             ,'$this->idEmpleado'
                             ,'$this->estado'
                             ,'$this->idUsuarioModificacion'
-                            ,'$this->idTarea')";  
+                            ,'$this->idTarea')";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
     }
     
 
-    public function Eliminar(){
+    public function Eliminar()
+    {
         $sentenciaSql = "DELETE FROM 
             tarea 
         WHERE 
-            id_tarea = $this->idTarea";        
+            id_tarea = $this->idTarea";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }
 
-    public function Consultar(){
+    public function Consultar()
+    {
         $condicion = $this->obtenerCondicion();
         $sentenciaSql = "SELECT
                             t.id_tarea
@@ -203,73 +205,71 @@ class Tarea{
                             tarea AS t
                             INNER JOIN empleado AS e ON t.id_empleado = e.id_empleado 
                             INNER JOIN persona AS p ON e.id_persona = p.id_persona 
-                            $condicion";        		
+                            $condicion";
         
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
     }
 
-    public function BuscarEmpleado(){
+    public function BuscarEmpleado()
+    {
         $sentenciaSql = "SELECT 
                             CONCAT(p.nombre,' ',p.apellido) AS nombre
                             ,e.id_empleado 
                         FROM persona AS p 
                             INNER JOIN empleado AS e ON p.id_persona = e.id_persona 
-                        WHERE p.estado = '1' AND e.estado = '1' AND nombre LIKE '%$this->descripcion%' 
-                        -- GROUP BY p.id_persona;";
+                        WHERE p.estado = '1' AND e.estado = '1' AND nombre LIKE '%$this->descripcion%'";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
-
     }
     private function obtenerCondicion()
     {
         $whereAnd = " WHERE ";
         $condicion = " ";
-        if($this->idTarea !=''){
+        if ($this->idTarea !='') {
             $condicion=$whereAnd.$condicion." id_tarea  = $this->idTarea";
             $whereAnd = ' AND ';
         }
-        if($this->descripcion !=''){
+        if ($this->descripcion !='') {
             $condicion=$condicion.$whereAnd." descripcion LIKE '%$this->descripcion%' ";
             $whereAnd = ' AND ';
-        }        
-        if($this->estado!=''){
-                if ($whereAnd == ' AND '){
+        }
+        if ($this->estado!='') {
+            if ($whereAnd == ' AND ') {
                 $condicion=$condicion.$whereAnd." estado = '$this->estado'";
                 $whereAnd = ' AND ';
-                }
-                else{
+            } else {
                 $condicion=$whereAnd.$condicion." estado = '$this->estado'";
                 $whereAnd = ' AND ';
-                }
             }
-        if($this->valorUnitario!=''){
-                $condicion=$condicion.$whereAnd." valor_unitario = $this->valorUnitario ";
-                $whereAnd = ' AND ';
         }
-        if($this->cantidad!=''){
-                $condicion=$condicion.$whereAnd." cantidad = $this->cantidad ";
-                $whereAnd = ' AND ';
+        if ($this->valorUnitario!='') {
+            $condicion=$condicion.$whereAnd." valor_unitario = $this->valorUnitario ";
+            $whereAnd = ' AND ';
         }
-        if($this->idEmpleado!=''){
+        if ($this->cantidad!='') {
+            $condicion=$condicion.$whereAnd." cantidad = $this->cantidad ";
+            $whereAnd = ' AND ';
+        }
+        if ($this->idEmpleado!='') {
             $condicion=$condicion.$whereAnd." id_empleado = $this->idEmpleado ";
             $whereAnd = ' AND ';
         }
-        if($this->fecha!=''){
-            $condicion=$condicion.$whereAnd." fecha = $this->fecha "; 
+        if ($this->fecha!='') {
+            $condicion=$condicion.$whereAnd." fecha = $this->fecha ";
             $whereAnd = ' AND ';
         }
-        if($this->estadoPago!=''){
+        if ($this->estadoPago!='') {
             $condicion=$condicion.$whereAnd." estadoPago = '$this->estadoPago' ";
             $whereAnd = ' AND ';
         }
         return $condicion;
     }
 
-    public function __destruct() {
-        
+    public function __destruct()
+    {
         unset($this->idTarea);
         unset($this->descripcion);
         unset($this->valorUnitario);
@@ -282,6 +282,5 @@ class Tarea{
         unset($this->idUsuarioCreacion);
         unset($this->idUsuarioModificacion);
         unset($this->conn);
-    }       
+    }
 }
-?>

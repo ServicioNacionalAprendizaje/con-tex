@@ -71,31 +71,47 @@ class Persona
     }
     
     /**
-     * setApellido
+     * Coloca el apellido de persona
      * @access public
-     * @param mixed $apellido
+     * @param string $apellido
      * @return void
      */
     public function setApellido($apellido)
     {
         $this->apellido = $apellido;
     }
-
-    //tipoDocumento
+    
+    /**
+     * Obtiene el tipo de documento de persona
+     * @access public
+     * @return mixed $tipoDocumento
+     */
     public function getTipoDocumento()
     {
         return $this->tipoDocumento;
     }
+
+    /**
+     * Coloca el tipo de ducumento a persona
+     * @param mixed $tipoDocumento
+     * @return void
+     */
     public function setTipoDocumento($tipoDocumento)
     {
         $this->tipoDocumento = $tipoDocumento;
     }
 
-    //documento
+        
+    /**
+     * Obtiene el documento de persona
+     * @access public
+     * @return int $documento
+     */
     public function getDocumento()
     {
         return $this->documento;
     }
+
     public function setDocumento($documento)
     {
         $this->documento = $documento;

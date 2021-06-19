@@ -15,13 +15,10 @@ if (isset($accion)) {
                 $generarPago->setFechaInicio(str_replace('-', '', $_POST['fechaInicio']));
                 $generarPago->setFechaFin(str_replace('-', '', $_POST['fechaFin']));
                 $resultado = $generarPago->GenerarPago();
-                $numeroRegistros = $generarPago->conn->ObtenerNumeroRegistros();
-                $generarPago->conn->ObtenerRegistros() as $rowConsulta
-                $respuesta['valorPago'] = $rowConsulta[0];
-            } catch (Exception $e) {
+                $rowBuscar = $generarPago->conn->obtenerObjeto();
+             } catch (Exception $e) {
                 $respuesta['respuesta']="Error, no fué posible adicionar la información, consulte con el administrador.";
             }
-            $respuesta['valorPago']=$resultado;
             $respuesta['accion']='GENERAR';
             echo json_encode($respuesta);
         break;

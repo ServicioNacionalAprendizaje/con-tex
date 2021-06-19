@@ -1,7 +1,7 @@
 <?php
 
-class Orden{
-
+class Orden
+{
     private $idOrden;
     private $fechaOrden;
     private $fechaEntrega;
@@ -15,53 +15,119 @@ class Orden{
     private $idUsuarioModificacion;
     
     //idOrden
-    public function getIdOrden(){return $this->idOrden;}
-    public function setIdOrden($idOrden){return $this->idOrden=$idOrden;}
+    public function getIdOrden()
+    {
+        return $this->idOrden;
+    }
+    public function setIdOrden($idOrden)
+    {
+        return $this->idOrden=$idOrden;
+    }
 
     //fechaOrden
-    public function getFechaOrden(){return $this->fechaOrden;}
-    public function setFechaOrden($fechaOrden){return $this->fechaOrden=$fechaOrden;}
+    public function getFechaOrden()
+    {
+        return $this->fechaOrden;
+    }
+    public function setFechaOrden($fechaOrden)
+    {
+        return $this->fechaOrden=$fechaOrden;
+    }
 
     //fechaEntrega
-    public function getFechaEntrega(){return $this->fechaEntrega;}
-    public function setFechaEntrega($fechaEntrega){return $this->fechaEntrega=$fechaEntrega;}
+    public function getFechaEntrega()
+    {
+        return $this->fechaEntrega;
+    }
+    public function setFechaEntrega($fechaEntrega)
+    {
+        return $this->fechaEntrega=$fechaEntrega;
+    }
 
     //descripcion
-    public function getDescripcion(){return $this->descripcion;}
-    public function setDescripcion($descripcion){return $this->descripcion = $descripcion;}
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+    public function setDescripcion($descripcion)
+    {
+        return $this->descripcion = $descripcion;
+    }
 
     //idCcliente
-    public function getIdCliente(){return $this->idCliente;}
-    public function setIdCliente($idCliente){return $this->idCliente=$idCliente;}
+    public function getIdCliente()
+    {
+        return $this->idCliente;
+    }
+    public function setIdCliente($idCliente)
+    {
+        return $this->idCliente=$idCliente;
+    }
 
     //idEmpleado
-    public function getIdEmpleado(){return $this->idEmpleado;}
-    public function setIdEmpleado($idEmpleado){return $this->idEmpleado = $idEmpleado;}
+    public function getIdEmpleado()
+    {
+        return $this->idEmpleado;
+    }
+    public function setIdEmpleado($idEmpleado)
+    {
+        return $this->idEmpleado = $idEmpleado;
+    }
 
     //estado
-    public function getEstado(){ return $this->estado;}
-    public function setEstado($estado) { $this->estado =$estado;}
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+    public function setEstado($estado)
+    {
+        $this->estado =$estado;
+    }
 
 
     //fechaCreacion
-    public function getfechaCreacion(){ return $this->fechaCreacion;}
-    public function setfechaCreacion($fechaCreacion) { $this->fechaCreacion =$fechaCreacion;}
+    public function getfechaCreacion()
+    {
+        return $this->fechaCreacion;
+    }
+    public function setfechaCreacion($fechaCreacion)
+    {
+        $this->fechaCreacion =$fechaCreacion;
+    }
 
     //fechaModificacion
-    public function getfechaModificacion(){ return $this->fechaModificacion;}
-    public function setfechaModificacion($fechaModificacion) { $this->fechaModificacion =$fechaModificacion;}
+    public function getfechaModificacion()
+    {
+        return $this->fechaModificacion;
+    }
+    public function setfechaModificacion($fechaModificacion)
+    {
+        $this->fechaModificacion =$fechaModificacion;
+    }
 
 
     //idUsuarioCreacion
-    public function getIdUsuarioCreacion(){ return $this->idUsuarioCreacion;}
-    public function setIdUsuarioCreacion($idUsuarioCreacion) { $this->idUsuarioCreacion =$idUsuarioCreacion;}
+    public function getIdUsuarioCreacion()
+    {
+        return $this->idUsuarioCreacion;
+    }
+    public function setIdUsuarioCreacion($idUsuarioCreacion)
+    {
+        $this->idUsuarioCreacion =$idUsuarioCreacion;
+    }
 
     //idUsuarioModificacion
-    public function getIdUsuarioModificacion(){ return $this->idUsuarioModificacion;}
-    public function setIdUsuarioModificacion($idUsuarioModificacion) { $this->idUsuarioModificacion =$idUsuarioModificacion;}
+    public function getIdUsuarioModificacion()
+    {
+        return $this->idUsuarioModificacion;
+    }
+    public function setIdUsuarioModificacion($idUsuarioModificacion)
+    {
+        $this->idUsuarioModificacion =$idUsuarioModificacion;
+    }
 
     //conexion
-    public function __construct() 
+    public function __construct()
     {
         $this->conn = new Conexion;
     }
@@ -102,16 +168,18 @@ class Orden{
     }
     
 
-    public function Eliminar(){
+    public function Eliminar()
+    {
         $sentenciaSql = "DELETE FROM 
             orden 
         WHERE 
-            id_orden = $this->idOrden";        
+            id_orden = $this->idOrden";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }
 
-    public function Consultar(){
+    public function Consultar()
+    {
         $condicion = $this->obtenerCondicion();
         $sentenciaSql = "SELECT 
                                 o.id_orden
@@ -134,27 +202,27 @@ class Orden{
         return true;
     }
 
-    public function BuscarEmpleado(){
+    public function BuscarEmpleado()
+    {
         $sentenciaSql = "SELECT 
                             CONCAT(p.nombre,' ',p.apellido) AS nombre
-                            ,e.id_empleado 
-                        FROM persona AS p 
-                            INNER JOIN empleado AS e ON p.id_persona = e.id_persona 
-                        WHERE p.estado = '1' AND e.estado = '1' AND nombre LIKE '%$this->descripcion%' 
-                        -- GROUP BY p.id_persona;";
+                            ,e.id_empleado
+                        FROM persona AS p
+                            INNER JOIN empleado AS e ON p.id_persona = e.id_persona
+                        WHERE p.estado = '1' AND e.estado = '1' AND nombre LIKE '%$this->descripcion%'";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
     }
 
-    public function BuscarCliente(){
+    public function BuscarCliente()
+    {
         $sentenciaSql = "SELECT 
                             CONCAT(p.nombre,' ',p.apellido) AS nombre
                             ,c.id_cliente 
                         FROM persona AS p 
                         INNER JOIN cliente AS c ON p.id_persona = c.id_persona 
-                        WHERE p.estado = '1' AND c.estado = '1' AND nombre LIKE '%$this->descripcion%' 
-                        -- GROUP BY p.id_persona;";
+                        WHERE p.estado = '1' AND c.estado = '1' AND nombre LIKE '%$this->descripcion%'";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
@@ -164,63 +232,62 @@ class Orden{
     {
         $whereAnd = " WHERE ";
         $condicion = " ";
-        if($this->idOrden !=''){
+        if ($this->idOrden !='') {
             $condicion=$whereAnd.$condicion." o.id_orden  = $this->idOrden";
             $whereAnd = ' AND ';
         }
-        if($this->fechaOrden !=''){
-                $ordenDate = date("Y-m-d", strtotime($this->fechaOrden));
-                $condicion=$condicion.$whereAnd." o.fecha_orden LIKE '%$ordenDate%' ";
-                $whereAnd = ' AND ';
+        if ($this->fechaOrden !='') {
+            $ordenDate = date("Y-m-d", strtotime($this->fechaOrden));
+            $condicion=$condicion.$whereAnd." o.fecha_orden LIKE '%$ordenDate%' ";
+            $whereAnd = ' AND ';
         }
-        if($this->fechaEntrega !=''){
+        if ($this->fechaEntrega !='') {
             $entregaDate = date("Y-m-d", strtotime($this->fechaEntrega));
             $condicion=$condicion.$whereAnd." o.fecha_entrega LIKE '%$entregaDate%' ";
             $whereAnd = ' AND ';
         }
-        if($this->descripcion !=''){
+        if ($this->descripcion !='') {
             $condicion=$condicion.$whereAnd." o.descripcion LIKE '%$this->descripcion%' ";
             $whereAnd = ' AND ';
         }
-        if($this->idCliente !=''){
+        if ($this->idCliente !='') {
             $condicion=$condicion.$whereAnd." o.id_cliente = $this->idCliente ";
             $whereAnd = ' AND ';
         }
-        if($this->idEmpleado !=''){
+        if ($this->idEmpleado !='') {
             $condicion=$condicion.$whereAnd." o.id_empleado = $this->idEmpleado ";
             $whereAnd = ' AND ';
         }
-        if($this->estado!=''){
-                if ($whereAnd == ' AND '){
+        if ($this->estado!='') {
+            if ($whereAnd == ' AND ') {
                 $condicion=$condicion.$whereAnd." o.estado = '$this->estado'";
                 $whereAnd = ' AND ';
-                }
-                else{
+            } else {
                 $condicion=$whereAnd.$condicion." o.estado = '$this->estado'";
                 $whereAnd = ' AND ';
-                }
             }
-        if($this->fechaCreacion!=''){
-                $condicion=$condicion.$whereAnd." o.fecha_creacion LIKE '%$this->fechaCreacion%' ";
-                $whereAnd = ' AND ';
         }
-        if($this->fechaModificacion!=''){
-                $condicion=$condicion.$whereAnd." o.fecha_modificacion LIKE '%$this->fechaModificacion%' ";
-                $whereAnd = ' AND ';
+        if ($this->fechaCreacion!='') {
+            $condicion=$condicion.$whereAnd." o.fecha_creacion LIKE '%$this->fechaCreacion%' ";
+            $whereAnd = ' AND ';
         }
-        if($this->idUsuarioCreacion!=''){
+        if ($this->fechaModificacion!='') {
+            $condicion=$condicion.$whereAnd." o.fecha_modificacion LIKE '%$this->fechaModificacion%' ";
+            $whereAnd = ' AND ';
+        }
+        if ($this->idUsuarioCreacion!='') {
             $condicion=$condicion.$whereAnd." o.id_usuario_creacion = $this->idUsuarioCreacion ";
             $whereAnd = ' AND ';
         }
-        if($this->idUsuarioModificacion!=''){
+        if ($this->idUsuarioModificacion!='') {
             $condicion=$condicion.$whereAnd." o.id_usuario_modificacion = $this->idUsuarioModificacion ";
             $whereAnd = ' AND ';
         }
         return $condicion;
     }
 
-    public function __destruct() {
-        
+    public function __destruct()
+    {
         unset($this->idOrden);
         unset($this->fechaOrden);
         unset($this->fechaEntrega);
@@ -233,6 +300,5 @@ class Orden{
         unset($this->idUsuarioCreacion);
         unset($this->idUsuarioModificacion);
         unset($this->conn);
-    }       
+    }
 }
-?>

@@ -20,8 +20,6 @@ function Enviar(accion, id) {
 
         //Reiniciar datatable
         $("#tableDatos").dataTable().fnDestroy();
-        // var table = $('#example').DataTable();
-        // table.clear();
 
         //Respueta adicionar
         if (respuesta['accion'] == 'ADICIONAR') {
@@ -73,32 +71,39 @@ function Enviar(accion, id) {
           $('#divEliminar').html(respuesta['eliminar']);
           $('#txtDescripcion').focus();
         }
+
+        //Respuesta modificar
+        if(respuesta['accion']=='MODIFICAR'){
+          alert(respuesta['respuesta']);
+          Limpiar();
+          $("#btnBuscar").trigger("click");
+        }    
       }
     });
 
 }
-function modificar(accion,id){
-  // console.log(modificar)
-  Swal.fire({
-    title: '¿Quieres guardar los cambios?',
-    showDenyButton: true,
-    // showCancelButton: true,
-    confirmButtonText: `Guardar`,
-    denyButtonText: `No guardar`,
-  }).then((result) => {
-    /* Actuliza los datos */
-    if (result.isConfirmed) {
-      Enviar('MODIFICAR',id)
-      Swal.fire('Registro actualizado', '', 'success')
-      Limpiar();          
-      $("#btnBuscar").trigger("click");
-    } else if (result.isDenied) {
-      Swal.fire('Acción cancelada', '', 'info')
-      Limpiar(); 
-      $("#btnBuscar").trigger("click");
-    }
-  })
-}
+// function modificar(accion,id){
+//   // console.log(modificar)
+//   Swal.fire({
+//     title: '¿Quieres guardar los cambios?',
+//     showDenyButton: true,
+//     // showCancelButton: true,
+//     confirmButtonText: `Guardar`,
+//     denyButtonText: `No guardar`,
+//   }).then((result) => {
+//     /* Actuliza los datos */
+//     if (result.isConfirmed) {
+//       Enviar('MODIFICAR',id)
+//       Swal.fire('Registro actualizado', '', 'success')
+//       Limpiar();          
+//       $("#btnBuscar").trigger("click");
+//     } else if (result.isDenied) {
+//       Swal.fire('Acción cancelada', '', 'info')
+//       Limpiar(); 
+//       $("#btnBuscar").trigger("click");
+//     }
+//   })
+// }
 function eliminar(id) {
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {

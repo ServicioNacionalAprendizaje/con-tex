@@ -20,8 +20,6 @@ function Enviar(accion, id) {
 
         //Reiniciar datatable
         $("#tableDatos").dataTable().fnDestroy();
-        // var table = $('#example').DataTable();
-        // table.clear();
 
         //Respueta adicionar
         if (respuesta['accion'] == 'ADICIONAR') {

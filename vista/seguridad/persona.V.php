@@ -4,6 +4,7 @@
     require ("../../componente/libreria/libreria.php"); 
 ?>
 <script src="../../js/seguridad/persona.js"></script>
+<script src="../../js/compraventa/cliente.js"></script>
 <body onload="Enviar('CONSULTAR',null)">
     <form name="frmPersona" id="frmPersona"> 
     <div class="margen" align="center">
@@ -11,20 +12,20 @@
             <h1>Persona</h1>
         </label><br>
         <div class="container form-group">
-            <div class="row">
-                <div class="col-12 col-sm-3">
+            <div class="row justify-content-sm-center">
+                <div class="col-12 col-sm-2">
                     <input type="hidden" name="hidIdPersona" id="hidIdPersona" value="">
                     <label class="col-form-label">Nombre</label>
                     <input type="text" name="txtNombre" id="txtNombre" value="" class="caja form-control"
                         placeholder="Nombre">
                 </div>
-                <div class="col-12 col-sm-3">
+                <div class="col-12 col-sm-2">
                     <label class="col-form-label">Apellido</label>                    
                     <input type="text" name="txtApellido" id="txtApellido" value="" class="caja form-control"
                         placeholder="Apellido">
                 </div>
-                <div class="col-12 col-sm-3">
-                    <label for="cmbEstado">Tipo de documento</label>
+                <div class="col-12 col-sm-2">
+                    <label for="cmbTipoDocumento">Tipo de documento</label>
                     <select class="lista form-control" id="cmbTipoDocumento">
                         <option value="" selected="selected">--Seleccione--</option>
                         <option value="CC">Cedula de ciudadania - CC</option>
@@ -33,18 +34,19 @@
                         <option value="PEP">Permiso especial de permanencia - PEP</option>
                     </select>
                 </div>
-                <div class="col-12 col-sm-3">
+                <div class="col-12 col-sm-2">
                     <label class="col-form-label">Nº Documento</label>
                     <input type="number" name="numDocumento" id="numDocumento" value="" class="caja form-control"
                         placeholder="Documento">
                 </div>
-                <div class="col-12 col-sm-2"></div>
+            </div>
+            <div class="row justify-content-sm-center">
                 <div class="col-12 col-sm-2">
                     <label class="col-form-label">Edad</label>
                     <input type="number" name="numEdad" id="numEdad" value="" class="caja form-control"
                         placeholder="Edad">
                 </div>
-                <div class="col-12 col-sm-3">
+                <div class="col-12 col-sm-2">
                     <label for="cmbGenero">Genero</label>
                     <select class="lista form-control" id="cmbGenero">
                         <option value="" selected="selected">--Seleccione--</option>
@@ -53,18 +55,26 @@
                         <option value="O">Otro</option>
                     </select>
                 </div>
-                <div class="col-12 col-sm-3">
+                <div class="col-12 col-sm-2">
                     <label for="cmbEstado">Estado</label>
                     <select class="lista form-control" id="cmbEstado">
                         <option value="" selected="selected">--Seleccione--</option>
                         <option value="1">Activo</option>
                         <option value="0">Inactivo</option>
                     </select>
+                </div>
+                <div class="col-12 col-sm-2">
+                    <input type="hidden" name="hidIdCliente" id="hidIdCliente" value="">
+                    <label for="cmbCliente">¿Es cliente?</label>
+                    <select class="lista form-control" id="cmbCliente">
+                        <option value="" selected="selected">--Seleccione--</option>
+                        <option value="1">Si</option>
+                        <option value="0">No</option>
+                    </select>
                 </div>   
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 col-sm-2"></div>
+        <div class="row justify-content-sm-center">
             <div class="col-12 col-sm-2">
                 <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" placeholder="Código del empleado" onclick="Enviar('CONSULTAR',null);">
             </div>

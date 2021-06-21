@@ -11,6 +11,7 @@ function Enviar(accion,id){
         "edad":$('#numEdad').val(),  
         "genero" :$('#cmbGenero').val(),       
         "estado":$('#cmbEstado').val(),
+        "cliente":$('#cmbCliente').val(),
         "accion" : accion
     }; 
 

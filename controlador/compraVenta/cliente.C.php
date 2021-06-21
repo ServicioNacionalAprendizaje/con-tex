@@ -1,22 +1,15 @@
 <?php
 // $ubicacionFormulario =  substr($_SERVER["SCRIPT_NAME"], 17);
 include '../../entorno/conexion.php';
-require '../../modelo/nomina/empleado.M.php';
+require '../../modelo/compraVenta/cliente.M.php';
 $respuesta = array();
 $accion = $_POST['accion'];
 if (isset ($accion)){
     switch($accion){
         case 'ADICIONAR':
             try{
-                $empleado = new Empleado();
-                $empleado->setIdCargo($_POST['idCargo']);
-                $empleado->setCorreoInstitucional($_POST['correoInstitucional']);
-                $empleado->setFechaIngreso($_POST['fechaIngreso']);
-                $empleado->setArl($_POST['arl']);
-                $empleado->setSalud($_POST['salud']);
-                $empleado->setPension($_POST['pension']);
+                $empleado = new Cliente();
                 $empleado->setIdPersona($_POST['idPersona']);
-                $empleado->setSueldoBasico($_POST['sueldoBasico']);
                 $empleado->setEstado($_POST['estado']);
                 $empleado->setIdUsuarioCreacion(1); // Obtener id de la persona con la variable session
                 $empleado->setIdUsuarioModificacion(1); // Obtener id de la persona con la variable session
@@ -30,16 +23,9 @@ if (isset ($accion)){
         break;
         case 'MODIFICAR':
             try{
-                $empleado = new Empleado();
-                $empleado->setIdEmpleado($_POST['id']);
-                $empleado->setIdCargo($_POST['idCargo']);
-                $empleado->setCorreoInstitucional($_POST['correoInstitucional']);
-                $empleado->setFechaIngreso($_POST['fechaIngreso']);
-                $empleado->setArl($_POST['arl']);
-                $empleado->setSalud($_POST['salud']);
-                $empleado->setPension($_POST['pension']);
+                $empleado = new Cliente();
+                $empleado->setIdCliente($_POST['hidIdCliente']);
                 $empleado->setIdPersona($_POST['idPersona']);
-                $empleado->setSueldoBasico($_POST['sueldoBasico']);
                 $empleado->setEstado($_POST['estado']);  
                 $empleado->setIdUsuarioModificacion(1);              
                 $resultado = $empleado->Modificar();
@@ -53,7 +39,7 @@ if (isset ($accion)){
         case 'ELIMINAR':
             try{
                 $empleado = new Empleado();
-                $empleado->setIdEmpleado($_POST['id']);
+                $empleado->setIdEmpleado($_POST['hidIdCliente']);
                 $resultado = $empleado->Eliminar();
                 $respuesta['respuesta']="La información se eliminó correctamente.";
             }catch(Exception $e){

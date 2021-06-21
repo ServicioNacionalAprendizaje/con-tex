@@ -91,27 +91,27 @@ insert  into `cliente`(`id_cliente`,`id_persona`,`estado`,`fecha_creacion`,`fech
 
 /*Table structure for table `compra_venta` */
 
-DROP TABLE IF EXISTS `compra_venta`;
+-- DROP TABLE IF EXISTS `compra_venta`;
 
-CREATE TABLE `compra_venta` (
-  `id_compra_venta` int(11) NOT NULL AUTO_INCREMENT,
-  `control` enum('Compra','Venta','Cotizacion') NOT NULL,
-  `fecha` datetime NOT NULL,
-  `descuento` double DEFAULT NULL,
-  `valor` double NOT NULL,
-  `id_cliente` int(11) NOT NULL,
-  `id_proveedor` int(11) NOT NULL,
-  `estado` enum('0','1') NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  `id_usuario_creacion` int(11) NOT NULL,
-  `id_usuario_modificacion` int(11) NOT NULL,
-  PRIMARY KEY (`id_compra_venta`),
-  KEY `id_cliente` (`id_cliente`),
-  KEY `id_proveedor` (`id_proveedor`),
-  CONSTRAINT `compra_venta_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`),
-  CONSTRAINT `compra_venta_ibfk_2` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+-- CREATE TABLE `compra_venta` (
+--   `id_compra_venta` int(11) NOT NULL AUTO_INCREMENT,
+--   `control` enum('Compra','Venta','Cotizacion') NOT NULL,
+--   `fecha` datetime NOT NULL,
+--   `descuento` double DEFAULT NULL,
+--   `valor` double NOT NULL,
+--   `id_cliente` int(11) NOT NULL,
+--   `id_proveedor` int(11) NOT NULL,
+--   `estado` enum('0','1') NOT NULL,
+--   `fecha_creacion` datetime NOT NULL,
+--   `fecha_modificacion` datetime NOT NULL,
+--   `id_usuario_creacion` int(11) NOT NULL,
+--   `id_usuario_modificacion` int(11) NOT NULL,
+--   PRIMARY KEY (`id_compra_venta`),
+--   KEY `id_cliente` (`id_cliente`),
+--   KEY `id_proveedor` (`id_proveedor`),
+--   CONSTRAINT `compra_venta_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`),
+--   CONSTRAINT `compra_venta_ibfk_2` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `compra_venta` */
 

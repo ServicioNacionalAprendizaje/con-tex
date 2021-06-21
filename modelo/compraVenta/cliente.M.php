@@ -1,83 +1,22 @@
 <?php
-class Empleado
+class Cliente
 {
-    private $idEmpleado;
-    private $idCargo;
-    private $correoInstitucional;
-    private $fechaIngreso;
-    private $arl;
-    private $salud;
-    private $pension;
+    private $idCliente;
     private $idPersona;
-    private $sueldoBasico;
     private $estado;
     private $fechaCreacion;
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
 
-    //idEmpleado
-    public function getIdEmpleado()
+    //idCliente
+    public function getIdCliente()
     {
-        return $this->idFormulario;
+        return $this->idCliente;
     }
-    public function setIdEmpleado($idEmpleado)
+    public function setIdCliente($idCliente)
     {
-        $this->idEmpleado = $idEmpleado;
-    }
-    //idCargo
-    public function getIdCargo()
-    {
-        return $this->idCargo;
-    }
-    public function setIdCargo($idCargo)
-    {
-        $this->idCargo = $idCargo;
-    }
-    //correoInstitucional
-    public function getCorreoInstitucional()
-    {
-        return $this->correoInstitucional;
-    }
-    public function setCorreoInstitucional($correoInstitucional)
-    {
-        $this->correoInstitucional = $correoInstitucional;
-    }
-    //fechaIngreso
-    public function getFechaIngreso()
-    {
-        return $this->fechaIngreso;
-    }
-    public function setFechaIngreso($fechaIngreso)
-    {
-        $this->fechaIngreso = $fechaIngreso;
-    }
-    //arl
-    public function getArl()
-    {
-        return $this->arl;
-    }
-    public function setArl($arl)
-    {
-        $this->arl = $arl;
-    }
-    //salud
-    public function getSalud()
-    {
-        return $this->salud;
-    }
-    public function setSalud($salud)
-    {
-        $this->salud = $salud;
-    }
-    //pension
-    public function getPension()
-    {
-        return $this->pension;
-    }
-    public function setPension($pension)
-    {
-        $this->pension = $pension;
+        $this->idCliente = $idCliente;
     }
     //idPersona
     public function getIdPersona()
@@ -87,15 +26,6 @@ class Empleado
     public function setIdPersona($idPersona)
     {
         $this->idPersona = $idPersona;
-    }
-    //sueldoBasico
-    public function getSueldoBasico()
-    {
-        return $this->sueldoBasico;
-    }
-    public function setSueldoBasico($sueldoBasico)
-    {
-        $this->sueldoBasico = $sueldoBasico;
     }
     //estado
     public function getEstado()
@@ -150,115 +80,42 @@ class Empleado
 
 public function Agregar()
     {
-$sentenciaSql = "CALL Agregar_empleado(
-                            $this->idCargo
-                            ,'$this->correoInstitucional'
-                            ,'$this->fechaIngreso'
-                            ,'$this->arl'
-                            ,'$this->salud'
-                            ,'$this->pension'
-                             ,$this->idPersona
-                             ,$this->sueldoBasico
+$sentenciaSql = "CALL Agregar_cliente(
+                            $this->idPersona
                             ,'$this->estado'
-                            ,$this->idUsuarioCreacion)";
+                            ,$this->idUsuarioCreacion
+                            ,$this->idUsuarioModificacion)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
     }
     public function Modificar()
     {
-        $sentenciaSql = "CALL Modificar_empleado('$this->idCargo'
-                            ,'$this->correoInstitucional'
-                            ,'$this->fechaIngreso'
-                            ,'$this->arl'
-                            ,'$this->salud'
-                            ,'$this->pension'
-                            ,$this->idPersona
-                            ,$this->sueldoBasico
+        $sentenciaSql = "CALL Modificar_cliente($this->idPersona
                             ,'$this->estado'
                             ,$this->idUsuarioModificacion
-                            ,$this->idEmpleado)";
+                            ,$this->idCliente)";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
     }
     public function Eliminar()
     {
-        $sentenciaSql = "DELETE FROM empleado 
-                            WHERE id_empleado = $this->idEmpleado";
+        $sentenciaSql = "DELETE FROM cliente 
+                            WHERE id_ciente = $this->idCliente";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
-    }
-    public function Consultar()
-    {
-        $condicion = $this->obtenerCondicion();
-        $sentenciaSql = "SELECT 
-                            e.id_empleado
-                            ,e.correo_institucional
-                            ,e.fecha_ingreso
-                            ,e.arl
-                            ,e.salud
-                            ,e.pension
-                            ,e.estado
-                            ,c.id_cargo
-                            ,c.descripcion
-                            ,p.id_persona
-                            ,e.sueldo_basico
-                            ,CONCAT(p.nombre,' ',p.apellido) AS nombre
-                        FROM 
-                            empleado AS e
-                            INNER JOIN cargo AS c ON e.id_cargo = c.id_cargo
-                            INNER JOIN persona AS p ON e.id_persona = p.id_persona 
-                        $condicion";
-        $this->conn->preparar($sentenciaSql);
-        $this->conn->ejecutar();
-        return true;
-    }
-    
-    private function obtenerCondicion()
-    {
-        $whereAnd = " WHERE ";
-        $condicion = " ";
-        if($this->idEmpleado !=''){
-            $condicion=$whereAnd.$condicion." id_empleado  = $this->idEmpleado";
-            $whereAnd = ' AND ';
-        }
-        // if($this->idCargo !=''){
-        //         $condicion=$condicion.$whereAnd." descripcion LIKE '%$this->idCargo%' ";
-        //         $whereAnd = ' AND ';
-        // }        
-        // if($this->estado!=''){
-        //         if ($whereAnd == ' AND '){
-        //         $condicion=$condicion.$whereAnd." seg_usu.estado = '$this->estado'";
-        //         $whereAnd = ' AND ';
-        //         }
-        //         else{
-        //         $condicion=$whereAnd.$condicion." seg_usu.estado = '$this->estado'";
-        //         $whereAnd = ' AND ';
-        //         }
-        //     }
-        // if($this->fechaActivacion!=''){
-        //         $condicion=$condicion.$whereAnd." seg_usu.fecha_activacion = '$this->fechaActivacion' ";
-        //         $whereAnd = ' AND ';
-        // }
-        // if($this->fechaExpiracion!=''){
-        //         $condicion=$condicion.$whereAnd." seg_usu.fecha_expiracion = '$this->fechaExpiracion' ";
-        //         $whereAnd = ' AND ';
-        // }
-        return $condicion;
     }
     public function __destruct()
     {
-        unset($this->idEmpleado);
-        unset($this->idCargo);
-        unset($this->correoInstitucional);
-        unset($this->fechaIngreso);
-        unset($this->arl);
-        unset($this->salud);
-        unset($this->pension);
+        unset($this->idCliente);
         unset($this->idPersona);
         unset($this->estado);
+        unset($this->fechaCreacion);
+        unset($this->fechaModificacion);
+        unset($this->idUsuarioCreacion);
+        unset($this->idUsuarioModificacion);
         unset($this->conn);
     }
 }

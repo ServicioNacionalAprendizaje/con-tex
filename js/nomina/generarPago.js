@@ -21,6 +21,11 @@ function Enviar(accion, id) {
 
         success: function(respuesta) { //procesa y devuelve la respuesta
             // console.log(respuesta); 
+
+            //Reiniciar datatable
+            $("#tableDatos").dataTable().fnDestroy();
+            $('#txtEmpleado').focus();
+
             if (respuesta['accion'] == 'GENERAR'){
                 $('#numValorPago').val(respuesta['valorPago']);     
             }
@@ -29,6 +34,7 @@ function Enviar(accion, id) {
             if (respuesta['accion'] == 'ADICIONAR') {
                 alert(respuesta['respuesta']);
                 Limpiar();
+                $("#btnBuscar").trigger("click");
             }
 
             //Respuesta muchos registros
@@ -76,12 +82,14 @@ function Enviar(accion, id) {
             if (respuesta['accion'] == 'MODIFICAR') {
                 alert(respuesta['respuesta']);
                 Limpiar();
+                $("#btnBuscar").trigger("click");
             }
 
             //Respuesta eliminar
             if (respuesta['accion'] == 'ELIMINAR') {
                 alert(respuesta['respuesta']);
                 Limpiar();
+                $("#btnBuscar").trigger("click");
             }
         }
     });
@@ -95,6 +103,7 @@ function Limpiar() {
     $('#datFechaFin').val("");
     $('#numValorPago').val("");
     $('#datFechaPago').val("");
+    $('#txtEmpleado').focus();
 }
 
 $(function(){

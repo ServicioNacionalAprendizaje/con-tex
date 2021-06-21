@@ -159,7 +159,7 @@ class PagoDia
                         FROM persona AS p
                         INNER JOIN empleado AS e ON e.id_persona = p.id_persona
                         INNER JOIN pago_dia AS pd ON pd.id_empleado = e.id_empleado
-                        $condicion
+                        $condicion 
                         ORDER BY pd.fecha_pago_dia DESC";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
@@ -209,5 +209,6 @@ class PagoDia
         unset($this->pagoDia);
         unset($this->fechaPago);
         unset($this->estado);
+        unset($this->conn);
     }
 }

@@ -228,28 +228,31 @@ class Usuario
         $whereAnd = " WHERE ";
         $condicion = " ";
 
-        if($this->idUsuario !=''){
+        if ($this->idUsuario !='') {
             $condicion=$whereAnd.$condicion." u.id_usuario  = $this->idUsuario";
             $whereAnd = ' AND ';
-        }        
-        if($this->usuario !=''){
-            $condicion=$condicion.$whereAnd." u.usuario = '$this->usuario' ";
+        }
+        if ($this->usuario !='') {
+            $condicion=$condicion.$whereAnd." u.usuario LIKE '%$this->usuario%' ";
             $whereAnd = ' AND ';
-        } 
-        if($this->fechaActivacion !=''){
+        }
+        if ($this->fechaActivacion !='') {
             $condicion=$condicion.$whereAnd." u.fecha_activacion LIKE '%$this->fechaActivacion%' ";
             $whereAnd = ' AND ';
-        } 
-        if($this->fechaExpiracion !=''){
+        }
+        if ($this->fechaExpiracion !='') {
             $condicion=$condicion.$whereAnd." u.fecha_expiracion LIKE '%$this->fechaExpiracion%' ";
             $whereAnd = ' AND ';
-        }     
+        }
+        if ($this->estado !='') {
+            $condicion=$condicion.$whereAnd." u.estado = '$this->estado' ";
+            $whereAnd = ' AND ';
+        }
         return $condicion;
     }
 
     public function __destruct()
     {
-
         unset($this->idUsuario);
         unset($this->usuario);
         unset($this->contrasenia);

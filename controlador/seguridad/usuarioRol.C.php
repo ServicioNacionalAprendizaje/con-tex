@@ -1,7 +1,7 @@
 <?php
 // $ubicacionFormulario =  substr($_SERVER["SCRIPT_NAME"], 17);
 include '../../entorno/conexion.php';
-require '../../modelo/seguridad/UsuarioRol.M.php';
+require '../../modelo/seguridad/usuarioRol.M.php';
 
 $respuesta = array();
 

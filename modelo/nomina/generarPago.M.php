@@ -133,7 +133,7 @@ class GenerarPago
         return true;
     }
 
-    public function pagarDias($fechaInicio,$fechaFin)
+    public function pagarDias($fechaInicio, $fechaFin)
     {
         $sentenciaSql = "UPDATE
                             pago_dia
@@ -177,7 +177,7 @@ class GenerarPago
     public function Eliminar()
     {
         $sentenciaSql = "DELETE FROM generar_pago 
-                            WHERE generar_pago = $this->idGenerarPago";
+                            WHERE id_generar_pago = $this->idGenerarPago";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }
@@ -198,7 +198,7 @@ class GenerarPago
                         FROM persona AS p
                         INNER JOIN empleado AS e ON e.id_persona = p.id_persona
                         INNER JOIN generar_pago AS gp ON gp.id_empleado = e.id_empleado
-                        $condicion
+                        $condicion 
                         ORDER BY gp.fecha_pago DESC";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
@@ -222,27 +222,27 @@ class GenerarPago
     {
         $whereAnd = " WHERE ";
         $condicion = " ";
-        if($this->idGenerarPago !=''){
+        if ($this->idGenerarPago !='') {
             $condicion=$whereAnd.$condicion." gp.id_generar_pago  = $this->idGenerarPago";
             $whereAnd = ' AND ';
         }
-        if($this->idEmpleado!=''){
+        if ($this->idEmpleado!='') {
             $condicion=$condicion.$whereAnd." gp.id_empleado = $this->idEmpleado ";
             $whereAnd = ' AND ';
         }
-        if($this->fechaInicio!=''){
+        if ($this->fechaInicio!='') {
             $condicion=$condicion.$whereAnd." gp.fecha_inicio = '$this->fechaInicio' ";
             $whereAnd = ' AND ';
         }
-        if($this->fechaFin!=''){
+        if ($this->fechaFin!='') {
             $condicion=$condicion.$whereAnd." gp.fecha_fin = '$this->fechaFin' ";
             $whereAnd = ' AND ';
         }
-        if($this->valorPago!=''){
+        if ($this->valorPago!='') {
             $condicion=$condicion.$whereAnd." gp.valor_pago = '$this->valorPago' ";
             $whereAnd = ' AND ';
         }
-        if($this->fechaPago!=''){
+        if ($this->fechaPago!='') {
             $condicion=$condicion.$whereAnd." gp.fecha_pago = '$this->fechaPago' ";
             $whereAnd = ' AND ';
         }

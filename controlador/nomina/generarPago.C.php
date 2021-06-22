@@ -11,14 +11,13 @@ if (isset($accion)) {
         case 'GENERAR':
             try {
                 $generarPago = new GenerarPago();
-                $generarPago->setIdEmpleado(1);
+                $generarPago->setIdEmpleado($_POST['idEmpleado']);
                 $generarPago->setFechaInicio(str_replace('-', '', $_POST['fechaInicio']));
                 $generarPago->setFechaFin(str_replace('-', '', $_POST['fechaFin']));
                 $resultado = $generarPago->GenerarPago();
                 $rowBuscar = $generarPago->conn->ObtenerObjeto();
                 $respuesta['valorPago'] = $rowBuscar->valor_pago;
-
-             } catch (Exception $e) {
+            } catch (Exception $e) {
                 $respuesta['respuesta']="Error, no fué posible adicionar la información, consulte con el administrador.";
             }
             $respuesta['accion']='GENERAR';
@@ -28,7 +27,7 @@ if (isset($accion)) {
             try {
                 $generarPago = new GenerarPago();
                 $generarPago->setIdGenerarPago($_POST['id']);
-                $generarPago->setIdEmpleado(1);
+                $generarPago->setIdEmpleado($_POST['idEmpleado']);
                 $generarPago->setFechaInicio($_POST['fechaInicio']);
                 $generarPago->setFechaFin($_POST['fechaFin']);
                 $generarPago->setValorPago($_POST['valorPago']);
@@ -36,7 +35,7 @@ if (isset($accion)) {
                 $generarPago->setIdUsuarioCreacion(1); // Obtener id del cargo con la variable session
                 $generarPago->setIdUsuarioModificacion(1); // Obtener id del cargo con la variable session
                 $resultado = $generarPago->Agregar();
-                $generarPago->pagarDias(str_replace('-', '', $_POST['fechaInicio']),str_replace('-', '', $_POST['fechaFin']));
+                $generarPago->pagarDias(str_replace('-', '', $_POST['fechaInicio']), str_replace('-', '', $_POST['fechaFin']));
                 $respuesta['respuesta']="La información se adicionó correctamente.";
             } catch (Exception $e) {
                 $respuesta['respuesta']="Error, no fué posible adicionar la información, consulte con el administrador.";
@@ -89,12 +88,13 @@ if (isset($accion)) {
                 if ($numeroRegistros === 1) {
                     if ($rowBuscar = $generarPago->conn->ObtenerObjeto()) {
                         $respuesta['id'] = $rowBuscar->id_generar_pago;
-                        $respuesta['empleado'] = $rowBuscar->empleado;
+                        $respuesta['idEmpleado'] = $rowBuscar->id_empleado;
+                        $respuesta['empleado'] = $rowBuscar->nombre;
                         $respuesta['fechaInicio'] = $rowBuscar->fecha_inicio;
                         $respuesta['fechaFin'] = $rowBuscar->fecha_fin;
                         $respuesta['valorPago'] = $rowBuscar->valor_pago;
                         $respuesta['fechaPago'] = $rowBuscar->fecha_pago;
-                        $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_cargo.")'>";
+                        $respuesta['eliminar'] = "<input type='button' name='eliminar' class='eliminar' value='Eliminar' onclick='Enviar(\"ELIMINAR\",".$rowBuscar->id_generar_pago.")'>";
                     }
                 } else {
                     if (isset($resultado)) {

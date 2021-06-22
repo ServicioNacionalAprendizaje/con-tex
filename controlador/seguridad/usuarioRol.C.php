@@ -4,7 +4,6 @@ include '../../entorno/conexion.php';
 require '../../modelo/seguridad/usuarioRol.M.php';
 
 $respuesta = array();
-
 $accion = $_POST['accion'];
 
 if (isset ($accion)){

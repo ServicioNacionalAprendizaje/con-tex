@@ -100,7 +100,6 @@ class Persona
     {
         $this->tipoDocumento = $tipoDocumento;
     }
-
         
     /**
      * Obtiene el documento de persona
@@ -112,53 +111,94 @@ class Persona
         return $this->documento;
     }
 
+     /**
+     * Coloca el documento de persona
+     * @param  mixed $documento
+     * @return void
+     */
     public function setDocumento($documento)
     {
         $this->documento = $documento;
     }
-
-    //edad
+    
+    /**
+     * Obtienes la edad de persona
+     * @access public
+     * @return void
+     */
     public function getEdad()
     {
         return $this->edad;
-    }
+    }    
+    /**
+     * Coloca la edad de persona
+     * @param  mixed $edad
+     * @return void
+     */
     public function setEdad($edad)
     {
         $this->edad = $edad;
     }
 
-    //genero
+    /**
+     * Obtiene el genero de persona
+     * @access public
+     * @return void
+     */
     public function getGenero()
     {
         return $this->genero;
-    }
+    }    
+    /**
+     * Coloca el genero
+     * @param  mixed $genero
+     * @return void
+     */
     public function setGenero($genero)
     {
         $this->genero = $genero;
     }
-
-    //estado
+    
+    /**
+     * Obtiene el estado de persona
+     * @access public
+     * @return void
+     */
     public function getEstado()
     {
         return $this->estado;
-    }
+    }    
+    /**
+     * Coloca el estado de persona
+     * @param  mixed $estado
+     * @return void
+     */
     public function setEstado($estado)
     {
         $this->estado = $estado;
     }
 
-
-    //fechaCreacion
+    
+    /**
+     * Obtiene la fecha de creacion de persona
+     * @access public
+     * @return void
+     */
     public function getfechaCreacion()
     {
         return $this->fechaCreacion;
-    }
+    }    
+    /**
+     * Coloca la fecha de creación de persona
+     * @param  mixed $fechaCreacion
+     * @return void
+     */
     public function setfechaCreacion($fechaCreacion)
     {
         $this->fechaCreacion = $fechaCreacion;
     }
 
-    //fechaModificacion
+    Obtener
     public function getfechaModificacion()
     {
         return $this->fechaModificacion;

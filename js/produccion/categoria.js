@@ -76,7 +76,7 @@ function Enviar(accion, id) {
 
 }
 function modificar(accion,id){
-  // console.log(modificar)
+
   if (id === null) {
     id = $('#hidIdCategoria').val();
   }
@@ -86,15 +86,6 @@ function modificar(accion,id){
     "estado": $('#cmbEstado').val(),
     "accion": accion
   };
-  console.log(modificar); 
-  $.ajax({
-    data: parametros, //datos que se van a enviar al ajax
-    url: '../../controlador/produccion/categoria.C.php', //archivo php que recibe los datos
-    type: 'post', //método para enviar los datos
-    dataType: 'json',//Recibe el array desde php
-
-    success: function (id) { //procesa y devuelve la respuesta
-
       Swal.fire({
       title: '¿Quieres guardar los cambios?',
       showDenyButton: true,
@@ -103,18 +94,28 @@ function modificar(accion,id){
       denyButtonText: `No guardar`,
       }).then((result) => {
       /* Actuliza los datos */
-      if (result.isConfirmed) {
-        Enviar('MODIFICAR',id)
-        Swal.fire('Registro actualizado', '', 'success')
-        Limpiar();          
-        $("#btnBuscar").trigger("click");
-      } else if (result.isDenied) {
-        Swal.fire('Acción cancelada', '', 'info')
-        Limpiar(); 
-        $("#btnBuscar").trigger("click");
-        }
-      })
-    }
+      
+        if (result.isConfirmed) {
+          $.ajax({
+            data: parametros, //datos que se van a enviar al ajax
+            url: '../../controlador/produccion/categoria.C.php', //archivo php que recibe los datos
+            type: 'post', //método para enviar los datos
+            dataType: 'json',//Recibe el array desde php
+        
+            success: function (respuesta) { //procesa y devuelve la respuesta
+              $("#resultado").html(respuesta['tablaRegistro']);
+            }
+          });
+          Enviar('MODIFICAR',id)
+          Swal.fire('Registro actualizado', '', 'success')
+          Limpiar();          
+          $("#btnBuscar").trigger("click");
+          }else if (result.isDenied) {
+          Swal.fire('Acción cancelada', '', 'info')
+          Limpiar(); 
+          $("#btnBuscar").trigger("click");
+          }
+      
   });
 }
 

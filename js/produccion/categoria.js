@@ -87,14 +87,13 @@ function modificar(accion,id){
     "accion": accion
   };
       Swal.fire({
-      title: '¿Quieres guardar los cambios?',
-      showDenyButton: true,
-      // showCancelButton: true,
-      confirmButtonText: `Guardar`,
-      denyButtonText: `No guardar`,
+        title: '¿Quieres guardar los cambios?',
+        showDenyButton: true,
+        // showCancelButton: true,
+        confirmButtonText: `Guardar`,
+        denyButtonText: `No guardar`,
       }).then((result) => {
-      /* Actuliza los datos */
-      
+        /* Actuliza los datos */
         if (result.isConfirmed) {
           $.ajax({
             data: parametros, //datos que se van a enviar al ajax
@@ -106,17 +105,16 @@ function modificar(accion,id){
               $("#resultado").html(respuesta['tablaRegistro']);
             }
           });
-          Enviar('MODIFICAR',id)
+          modificar('MODIFICAR',id)
           Swal.fire('Registro actualizado', '', 'success')
           Limpiar();          
           $("#btnBuscar").trigger("click");
-          }else if (result.isDenied) {
+        }else if (result.isDenied) {
           Swal.fire('Acción cancelada', '', 'info')
           Limpiar(); 
           $("#btnBuscar").trigger("click");
-          }
-      
-  });
+        }
+      });
 }
 
 function eliminar(id) {

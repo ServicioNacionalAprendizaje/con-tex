@@ -50,9 +50,9 @@
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-sm-center">
+            <div class="row">
                 <div class="col-12 col-sm-2">
-                    <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnBuscar"
+                    <input type="hidden" class="boton form-control btn-light btn-outline-primary" name="btnBuscar"
                         id="btnBuscar" value="BUSCAR"
                         onclick="Enviar1('CONSULTAR',null);">
                 </div>

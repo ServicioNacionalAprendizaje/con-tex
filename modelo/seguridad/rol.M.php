@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Rol
+ */
 class Rol
 {
     private $idRol;
@@ -9,79 +11,160 @@ class Rol
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
-
-    //idRol
+    
+    /**
+     * Obtener el id de Rol
+     * @access public
+     * @return integer $idRol
+     */
     public function getIdRol()
     {
         return $this->idRol;
     }
+    
+    /**
+     * Colocar el id al Rol
+     * @access public
+     * @param mixed $idRol
+     * @return void
+     */
     public function setIdRol($idRol)
     {
         $this->idRol = $idRol;
     }
-
-    //descripcion
+    
+    /**
+     * Obtener la descripcion de Rol
+     * @access public
+     * @return string $descripcion
+     */
     public function getDescripcion()
     {
         return $this->descripcion;
     }
+    
+    /**
+     * Colocar la descripcion al Rol
+     * @access public
+     * @param mixed $descripcion
+     * @return void
+     */
     public function setDescripcion($descripcion)
     {
         $this->descripcion = $descripcion;
     }
-
-    //estado
+    
+    /**
+     * Obtener el estado de Rol
+     * @access public
+     * @return mixed $estado
+     */
     public function getEstado()
     {
         return $this->estado;
     }
+    
+    /**
+     * Colocar el estado al Rol
+     * @access public
+     * @param mixed $estado
+     * @return void
+     */
     public function setEstado($estado)
     {
         $this->estado = $estado;
     }
-
-    //fechaCreacion
+    
+    /**
+     * Obtener la fecha de creación del Rol
+     * @access public
+     * @return mixed $fechaCreacion
+     */
     public function getfechaCreacion()
     {
         return $this->fechaCreacion;
     }
+        
+    /**
+     * Colocar la fecha de creación al Rol
+     * @access public
+     * @param mixed $fechaCreacion
+     * @return void
+     */
     public function setfechaCreacion($fechaCreacion)
     {
         $this->fechaCreacion = $fechaCreacion;
     }
-
-    //fechaModificacion
+    
+    /**
+     * Obtener la fecha de modificación del Rol
+     * @access public
+     * @return mixed $fechaModificacion
+     */
     public function getfechaModificacion()
     {
         return $this->fechaModificacion;
     }
+    
+    /**
+     * Coloca la fecha de modificación del Rol
+     * @access public
+     * @param mixed $fechaModificacion
+     * @return void
+     */
     public function setfechaModificacion($fechaModificacion)
     {
         $this->fechaModificacion = $fechaModificacion;
     }
 
-
-    //idUsuarioCreacion
+    
+    /**
+     * Obtiene el id del usuario que hizo la iteración de Rol
+     * @access public
+     * @return integer $idUsuarioCreacion
+     */
     public function getIdUsuarioCreacion()
     {
         return $this->idUsuarioCreacion;
     }
+    
+    /**
+     * Coloca el id del usuario que hizo la iteración de Rol
+     * @access public
+     * @param $idUsuarioCreacion
+     * @return void
+     */
     public function setIdUsuarioCreacion($idUsuarioCreacion = 1)
     {
         $this->idUsuarioCreacion = $idUsuarioCreacion;
     }
-
-    //idUsuarioModificacion
+    
+    /**
+     * Obtener el id del usuario que modificó el objeto Rol
+     * @access public
+     * @return interger $idUsuarioModificacion
+     */
     public function getIdUsuarioModificacion()
     {
         return $this->idUsuarioModificacion;
     }
+    
+    /**
+     * setIdUsuarioModificacion
+     * @access public
+     * @param $idUsuarioModificacion
+     * @return void
+     */
     public function setIdUsuarioModificacion($idUsuarioModificacion = 1)
     {
         $this->idUsuarioModificacion = $idUsuarioModificacion;
     }
-
-    //conexion
+    
+    /**
+     * Constructor para realizar la conexión a la base de datos
+     * @access public
+     * @return void
+     */
     public function __construct()
     {
         $this->conn = new Conexion();
@@ -142,24 +225,10 @@ class Rol
                 $condicion=$condicion.$whereAnd." descripcion LIKE '%$this->descripcion%' ";
                 $whereAnd = ' AND ';
         }        
-        // if($this->estado!=''){
-        //         if ($whereAnd == ' AND '){
-        //         $condicion=$condicion.$whereAnd." seg_usu.estado = '$this->estado'";
-        //         $whereAnd = ' AND ';
-        //         }
-        //         else{
-        //         $condicion=$whereAnd.$condicion." seg_usu.estado = '$this->estado'";
-        //         $whereAnd = ' AND ';
-        //         }
-        //     }
-        // if($this->fechaActivacion!=''){
-        //         $condicion=$condicion.$whereAnd." seg_usu.fecha_activacion = '$this->fechaActivacion' ";
-        //         $whereAnd = ' AND ';
-        // }
-        // if($this->fechaExpiracion!=''){
-        //         $condicion=$condicion.$whereAnd." seg_usu.fecha_expiracion = '$this->fechaExpiracion' ";
-        //         $whereAnd = ' AND ';
-        // }
+        if($this->estado !=''){
+            $condicion=$condicion.$whereAnd." estado = '$this->estado' ";
+            $whereAnd = ' AND ';
+        }
         return $condicion;
     }
 

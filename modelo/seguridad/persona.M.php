@@ -93,6 +93,7 @@ class Persona
 
     /**
      * Coloca el tipo de ducumento a persona
+     * @access public
      * @param mixed $tipoDocumento
      * @return void
      */
@@ -111,90 +112,181 @@ class Persona
     {
         return $this->documento;
     }
-
+    
+    /**
+     * Coloca documento a persona
+     * @access public
+     * @param integer $documento
+     * @return void
+     */
     public function setDocumento($documento)
     {
         $this->documento = $documento;
     }
-
-    //edad
+    
+    /**
+     * Obtiene la edad de persona
+     * @access public
+     * @return void
+     */
     public function getEdad()
     {
         return $this->edad;
     }
+
+    /**
+     * Coloca la edad de persona
+     * @access public
+     * @param integer $edad
+     * @return void
+     */
     public function setEdad($edad)
     {
         $this->edad = $edad;
     }
-
-    //genero
+    
+    /**
+     * Obtiene el genero de persona
+     * @access public
+     * @return mixed $genero
+     */
     public function getGenero()
     {
         return $this->genero;
     }
+    
+    /**
+     * Obtiene el genero de persona
+     * @access public
+     * @param mixed $genero
+     * @return void
+     */
     public function setGenero($genero)
     {
         $this->genero = $genero;
     }
-
-    //estado
+    
+    /**
+     * Obtiene el estado de persona
+     * @access public
+     * @return mixed $estado
+     */
     public function getEstado()
     {
         return $this->estado;
     }
+    
+    /**
+     * Coloca el estado a persona
+     * @access public
+     * @param mixed $estado
+     * @return void
+     */
     public function setEstado($estado)
     {
         $this->estado = $estado;
     }
 
-
-    //fechaCreacion
+    
+    /**
+     * Obtiene la fecha de creación de persona
+     * @access public
+     * @return mixed $fechaCreacion
+     */
     public function getfechaCreacion()
     {
         return $this->fechaCreacion;
     }
+    
+    /**
+     * Coloca la fecha de creación a persona
+     * @access public
+     * @param mixed $fechaCreacion
+     * @return void
+     */
     public function setfechaCreacion($fechaCreacion)
     {
         $this->fechaCreacion = $fechaCreacion;
     }
-
-    //fechaModificacion
+    
+    /**
+     * Obtiene la fecha de modificación de persona
+     * @access public
+     * @return mixed $fechaModificacion
+     */
     public function getfechaModificacion()
     {
         return $this->fechaModificacion;
     }
+        
+    /**
+     * Coloca la fecha de modificación a persona
+     * @access public
+     * @param mixed $fechaModificacion
+     * @return void
+     */
     public function setfechaModificacion($fechaModificacion)
     {
         $this->fechaModificacion = $fechaModificacion;
     }
-
-
-    //idUsuarioCreacion
+    
+    /**
+     * Obtiene el id del usuario que crea el objeto persona
+     * @access public
+     * @return integer $idUsuarioCreacion
+     */
     public function getIdUsuarioCreacion()
     {
         return $this->idUsuarioCreacion;
     }
+    
+    /**
+     * Coloca el id del usuario que crea el objeto persona
+     * @access public
+     * @param mixed $idUsuarioCreacion
+     * @return void
+     */
     public function setIdUsuarioCreacion($idUsuarioCreacion)
     {
         $this->idUsuarioCreacion = $idUsuarioCreacion;
     }
-
-    //idUsuarioModificacion
+    
+    /**
+     * Obtiene el id del usuario que modifica el objeto persona
+     * @access public
+     * @return integer $idUsuarioModificacion
+     */
     public function getIdUsuarioModificacion()
     {
         return $this->idUsuarioModificacion;
     }
+    
+    /**
+     * Coloca el id del usuario que modifica el objeto persona
+     * @access public
+     * @param mixed $idUsuarioModificacion
+     * @return void
+     */
     public function setIdUsuarioModificacion($idUsuarioModificacion)
     {
         $this->idUsuarioModificacion = $idUsuarioModificacion;
     }
-
-    //conexion
+    
+    /**
+     * constructor para realizar la conexion a la base de datos
+     * @access public
+     * @return void
+     */
     public function __construct()
     {
         $this->conn = new Conexion();
     }
-
+    
+    /**
+     * Agregar persona a la base de datos
+     * @ access public
+     * @return true
+     */
     public function Agregar()
     {
         $sentenciaSql = "CALL Agregar_persona(
@@ -211,7 +303,12 @@ class Persona
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Modificar persona en la base de datos
+     * @access public
+     * @return true
+     */
     public function Modificar()
     {
         $sentenciaSql = "CALL Modificar_persona(
@@ -228,7 +325,12 @@ class Persona
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Eliminar persona de la base de datos
+     * @access public
+     * @return true
+     */
     public function Eliminar()
     {
         $sentenciaSql = "DELETE FROM persona 
@@ -237,7 +339,12 @@ class Persona
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Consultar persona en la base de datos
+     * @access public
+     * @return true
+     */
     public function Consultar()
     {
         $condicion = $this->obtenerCondicion();
@@ -246,7 +353,12 @@ class Persona
         $this->conn->ejecutar();
         return true;
     }
-    
+        
+    /**
+     * Obtiene la condición WHERE sql para la búsqueda de persona en la base de datos
+     * @access private
+     * @return mixed $condicion
+     */
     private function obtenerCondicion()
     {
         $whereAnd = " WHERE ";
@@ -284,27 +396,14 @@ class Persona
             $condicion=$condicion.$whereAnd." estado = '$this->estado' ";
             $whereAnd = ' AND ';
         }
-        // if($this->estado!=''){
-        //         if ($whereAnd == ' AND '){
-        //         $condicion=$condicion.$whereAnd." seg_usu.estado = '$this->estado'";
-        //         $whereAnd = ' AND ';
-        //         }
-        //         else{
-        //         $condicion=$whereAnd.$condicion." seg_usu.estado = '$this->estado'";
-        //         $whereAnd = ' AND ';
-        //         }
-        //     }
-        // if($this->fechaActivacion!=''){
-        //         $condicion=$condicion.$whereAnd." seg_usu.fecha_activacion = '$this->fechaActivacion' ";
-        //         $whereAnd = ' AND ';
-        // }
-        // if($this->fechaExpiracion!=''){
-        //         $condicion=$condicion.$whereAnd." seg_usu.fecha_expiracion = '$this->fechaExpiracion' ";
-        //         $whereAnd = ' AND ';
-        // }
         return $condicion;
     }
-
+    
+    /**
+     * Destruye los atributos de persona
+     * @access public
+     * @return void
+     */
     public function __destruct()
     {
         unset($this->idPersona);

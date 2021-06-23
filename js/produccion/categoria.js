@@ -71,39 +71,53 @@ function Enviar(accion, id) {
           $('#divEliminar').html(respuesta['eliminar']);
           $('#txtDescripcion').focus();
         }
-
-        //Respuesta modificar
-        if(respuesta['accion']=='MODIFICAR'){
-          alert(respuesta['respuesta']);
-          Limpiar();
-          $("#btnBuscar").trigger("click");
-        }    
       }
     });
 
 }
-// function modificar(accion,id){
-//   // console.log(modificar)
-//   Swal.fire({
-//     title: '¿Quieres guardar los cambios?',
-//     showDenyButton: true,
-//     // showCancelButton: true,
-//     confirmButtonText: `Guardar`,
-//     denyButtonText: `No guardar`,
-//   }).then((result) => {
-//     /* Actuliza los datos */
-//     if (result.isConfirmed) {
-//       Enviar('MODIFICAR',id)
-//       Swal.fire('Registro actualizado', '', 'success')
-//       Limpiar();          
-//       $("#btnBuscar").trigger("click");
-//     } else if (result.isDenied) {
-//       Swal.fire('Acción cancelada', '', 'info')
-//       Limpiar(); 
-//       $("#btnBuscar").trigger("click");
-//     }
-//   })
-// }
+function modificar(accion,id){
+  // console.log(modificar)
+  if (id === null) {
+    id = $('#hidIdCategoria').val();
+  }
+  var parametros = {
+    "id": id,
+    "descripcion": $('#txtDescripcion').val(),
+    "estado": $('#cmbEstado').val(),
+    "accion": accion
+  };
+  console.log(modificar); 
+  $.ajax({
+    data: parametros, //datos que se van a enviar al ajax
+    url: '../../controlador/produccion/categoria.C.php', //archivo php que recibe los datos
+    type: 'post', //método para enviar los datos
+    dataType: 'json',//Recibe el array desde php
+
+    success: function (id) { //procesa y devuelve la respuesta
+
+      Swal.fire({
+      title: '¿Quieres guardar los cambios?',
+      showDenyButton: true,
+      // showCancelButton: true,
+      confirmButtonText: `Guardar`,
+      denyButtonText: `No guardar`,
+      }).then((result) => {
+      /* Actuliza los datos */
+      if (result.isConfirmed) {
+        Enviar('MODIFICAR',id)
+        Swal.fire('Registro actualizado', '', 'success')
+        Limpiar();          
+        $("#btnBuscar").trigger("click");
+      } else if (result.isDenied) {
+        Swal.fire('Acción cancelada', '', 'info')
+        Limpiar(); 
+        $("#btnBuscar").trigger("click");
+        }
+      })
+    }
+  });
+}
+
 function eliminar(id) {
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {

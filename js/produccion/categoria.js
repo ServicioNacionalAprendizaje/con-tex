@@ -73,7 +73,6 @@ function Enviar(accion, id) {
         }
       }
     });
-
 }
 function modificar(accion,id){
 

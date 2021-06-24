@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * Categoria
+ */
 class Categoria
 {
     private $idCategoria;
@@ -8,80 +12,172 @@ class Categoria
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
-
-    //idCategoria
+    
+    /**
+     * Obtener el id de Categoria
+     * @access public
+     * @return integer $idCategoria
+     */
     public function getIdCategoria()
     {
         return $this->idCategoria;
     }
+    
+    /**
+     * Colocar el id de Categoria
+     * @access public
+     * @param mixed $idCategoria
+     * @return void
+     */
     public function setIdCategoria($idCategoria)
     {
         $this->idCategoria = $idCategoria;
     }
-    //descripcion
+        
+    /**
+     * Obtener la descripción de Categoria
+     * @access public
+     * @return string $descripcion
+     */
     public function getDescripcion()
     {
         return $this->descripcion;
     }
+        
+    /**
+     * Colocar la descipcion de Categoria
+     * @access public
+     * @param mixed $descripcion
+     * @return void
+     */
     public function setDescripcion($descripcion)
     {
         $this->descripcion = $descripcion;
     }
-    
-    //estado
+        
+    /**
+     * Obtener el estado de Categoria
+     * @access public
+     * @return mixed $estado
+     */
     public function getEstado()
     {
         return $this->estado;
     }
+    
+    /**
+     * Colocar estado en Categoria
+     * @access public
+     * @param mixed $estado
+     * @return void
+     */
     public function setEstado($estado)
     {
         $this->estado = $estado;
     }
-    //fechaCreacion
+        
+    /**
+     * Obtener la fecha de creación de Categoria
+     * @access public
+     * @return mixed $fechaCreacion
+     */
     public function getFechaCreacion()
     {
         return $this->fechaCreacion;
     }
+    
+    /**
+     * Colocar la fecha de creación de Categoria
+     * @access public
+     * @param mixed $fechaCreacion
+     * @return void
+     */
     public function setFechaCreacion($fechaCreacion)
     {
         $this->fechaCreacion = $fechaCreacion;
     }
-    //fechaModificacion
+        
+    /**
+     * Obtener la fecha de modificación de Categoria
+     * @access public
+     * @return mixed $fechaModificacion
+     */
     public function getFechaModificacion()
     {
         return $this->fechaModificacion;
     }
+    
+    /**
+     * Colocar la fecha de modificación de Categoria
+     * @access public
+     * @param mixed $fechaModificacion
+     * @return void
+     */
     public function setFechaModificacion($fechaModificacion)
     {
         $this->fechaModificacion = $fechaModificacion;
     }
-    //idUsuarioCreacion
+        
+    /**
+     * Obtener el id del usuario que hizo la iteración del objeto Categoria
+     * @access public
+     * @return integer $idUsuarioCreacion
+     */
     public function getIdUsuarioCreacion()
     {
         return $this->idUsuarioCreacion;
     }
+    
+    /**
+     * Colocar el id del usuario que hizo la iteración del objeto Categoria
+     * @access public
+     * @param mixed $idUsuarioCreacion
+     * @return void
+     */
     public function setIdUsuarioCreacion($idUsuarioCreacion)
     {
         $this->idUsuarioCreacion = $idUsuarioCreacion;
     }
-    //idUsuarioModificacion
+        
+    /**
+     * Obtener el id del usuario que hizo la modificación de Categoria
+     * @access public
+     * @return integer $idUsuarioModificacion
+     */
     public function getIdUsuarioModificacion()
     {
         return $this->idUsuarioModificacion;
     }
+    
+    /**
+     * Colocar el id del usuario que hizo la modificación de Categoria
+     * @access public
+     * @param mixed $idUsuarioModificacion
+     * @return void
+     */
     public function setIdUsuarioModificacion($idUsuarioModificacion)
     {
         $this->idUsuarioModificacion = $idUsuarioModificacion;
     }
-    //conexion
+        
+    /**
+     * Constructor para realizar la conexión a la base de datos
+     * @access public
+     * @return void
+     */
     public function __construct()
     {
         $this->conn = new Conexion();
     }
-
-public function Agregar()
+    
+    /**
+     * Agregar Categoria a la base de datos
+     * @access public
+     * @return true
+     */
+    public function Agregar()
     {
-$sentenciaSql = "CALL Agregar_categoria(
+        $sentenciaSql = "CALL Agregar_categoria(
                             '$this->descripcion'
                             ,'$this->estado'
                             ,$this->idUsuarioCreacion
@@ -89,7 +185,12 @@ $sentenciaSql = "CALL Agregar_categoria(
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
-    }
+    }    
+    /**
+     * Modificar Categoria en la base de datos
+     * @access public
+     * @return true
+     */
     public function Modificar()
     {
         $sentenciaSql = "CALL Modificar_categoria(
@@ -101,6 +202,12 @@ $sentenciaSql = "CALL Agregar_categoria(
         $this->conn->ejecutar();
         return true;
     }
+        
+    /**
+     * Eliminar Categoria de la base de datos
+     * @access public
+     * @return true
+     */
     public function Eliminar()
     {
         $sentenciaSql = "DELETE FROM categoria 
@@ -108,7 +215,12 @@ $sentenciaSql = "CALL Agregar_categoria(
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
-    }
+    }    
+    /**
+     * Consultar Categoria en la base de datos
+     * @access public
+     * @return true
+     */
     public function Consultar()
     {
         $condicion = $this->obtenerCondicion();
@@ -121,7 +233,12 @@ $sentenciaSql = "CALL Agregar_categoria(
         $this->conn->ejecutar();
         return true;
     }
-    
+        
+    /**
+     * Obtener la condicón WHERE para añadirle en la $sentenciaSql
+     * @access private
+     * @return mixed $condicion
+     */
     private function obtenerCondicion()
     {
         $whereAnd = " WHERE ";
@@ -134,26 +251,14 @@ $sentenciaSql = "CALL Agregar_categoria(
             $condicion=$condicion.$whereAnd." descripcion LIKE '%$this->descripcion%' ";
             $whereAnd = ' AND ';
         }        
-        // if($this->estado!=''){
-        //         if ($whereAnd == ' AND '){
-        //         $condicion=$condicion.$whereAnd." seg_usu.estado = '$this->estado'";
-        //         $whereAnd = ' AND ';
-        //         }
-        //         else{
-        //         $condicion=$whereAnd.$condicion." seg_usu.estado = '$this->estado'";
-        //         $whereAnd = ' AND ';
-        //         }
-        //     }
-        // if($this->fechaActivacion!=''){
-        //         $condicion=$condicion.$whereAnd." seg_usu.fecha_activacion = '$this->fechaActivacion' ";
-        //         $whereAnd = ' AND ';
-        // }
-        // if($this->fechaExpiracion!=''){
-        //         $condicion=$condicion.$whereAnd." seg_usu.fecha_expiracion = '$this->fechaExpiracion' ";
-        //         $whereAnd = ' AND ';
-        // }
         return $condicion;
     }
+        
+    /**
+     * Destruye los atributos de Categoria
+     * @access public
+     * @return void
+     */
     public function __destruct()
     {
         unset($this->idCategoria);

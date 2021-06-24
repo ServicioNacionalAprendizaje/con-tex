@@ -219,7 +219,7 @@ class Usuario
     /**
      * Colocar el id del usuario que hizo la iteración del objeto usuario
      * @access public
-     * @param $idUsuarioCreacion =1
+     * @param $idUsuarioCreacion
      * @return void
      */
     public function setIdUsuarioCreacion($idUsuarioCreacion =1)
@@ -240,7 +240,7 @@ class Usuario
     /**
      * Colocar el id del usuario que modificó el objeto usuario
      * @access public
-     * @param mixed $idUsuarioModificacion=1
+     * @param mixed $idUsuarioModificacion
      * @return void
      */
     public function setIdUsuarioModificacion($idUsuarioModificacion=1)

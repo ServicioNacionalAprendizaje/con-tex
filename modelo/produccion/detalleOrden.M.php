@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * DetalleOrden
+ */
 class DetalleOrden
 {
     private $idDetalleOrden;
@@ -13,127 +16,253 @@ class DetalleOrden
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
-    
-    //idDetalleOrden
+        
+    /**
+     * Obtener el id de DetalleOrden
+     * @access public
+     * @return integer $idDetalleOrden
+     */
     public function getIdDetalleOrden()
     {
         return $this->idDetalleOrden;
     }
-
+    
+    /**
+     * Colocar el id de DetalleOrden
+     * @param mixed $idDetalleOrden
+     * @access public
+     * @return void
+     */
     public function setIdDetalleOrden($idDetalleOrden)
     {
         return $this->idDetalleOrden=$idDetalleOrden;
     }
-
-    //valorInventario
+    
+    /**
+     * Obtener el valor de inventario de DetalleOrden
+     * @access public
+     * @return double $valorInventario
+     */
     public function getValorInventario()
     {
         return $this->valorInventario;
     }
-    
+        
+    /**
+     * setValorInventario
+     * @access public
+     * @param double $valorInventario
+     * @return void
+     */
     public function setValorInventario($valorInventario)
     {
         return $this->valorInventario=$valorInventario;
     }
-
-    //valorVenta
+    
+    /**
+     * Obtener el valor de venta de DetalleOrden
+     * @access public
+     * @return double $valorVenta
+     */
     public function getValorVenta()
     {
         return $this->valorVenta;
     }
+    
+    /**
+     * Colocar el valor de venta de DetalleOrden
+     * @access public
+     * @param mixed $valorVenta
+     * @return double $valorVenta
+     */
     public function setValorVenta($valorVenta)
     {
         return $this->valorVenta=$valorVenta;
     }
-
-    //cantidad
+    
+    /**
+     * Obtener la cantidad de DetalleOrden
+     * @access public
+     * @return void
+     */
     public function getCantidad()
     {
         return $this->cantidad;
     }
+    
+    /**
+     * Colocar la cantidad de DetalleOrden
+     * @access public
+     * @param mixed $cantidad
+     * @return void
+     */
     public function setCantidad($cantidad)
     {
         return $this->cantidad=$cantidad;
     }
-
-    //idOrden
+    
+    /**
+     * Obtener el idOrden de DetalleOrden
+     * @access public
+     * @return void
+     */
     public function getIdOrden()
     {
         return $this->idOrden;
     }
+    
+    /**
+     * Colocar el idOrden de DetalleOrden
+     * @access public
+     * @param mixed $idOrden
+     * @return void
+     */
     public function setIdOrden($idOrden)
     {
         return $this->idOrden=$idOrden;
     }
-
-    //idProducto
+    
+    /**
+     * Obtener el idProducto de DetalleOrden
+     * @access public
+     * @return integer $idProducto
+     */
     public function getIdProducto()
     {
         return $this->idProducto;
     }
+    
+    /**
+     * Colcoar el idProducto de DetalleOrden
+     * @access public
+     * @param mixed $idProducto
+     * @return void
+     */
     public function setIdProducto($idProducto)
     {
         return $this->idProducto=$idProducto;
     }
-
-    //estado
+    
+    /**
+     * Obtener el estado de DetalleOrden
+     * @access public
+     * @return void
+     */
     public function getEstado()
     {
         return $this->estado;
     }
+    
+    /**
+     * Colocar el estado de DetalleOrden
+     * @access public
+     * @param mixed $estado
+     * @return void
+     */
     public function setEstado($estado)
     {
         $this->estado =$estado;
     }
-
-
-    //fechaCreacion
+    
+    /**
+     * Obtener la fecha de creación de DetalleOrden
+     * @access public
+     * @return mixed $fechaCreacion
+     */
     public function getfechaCreacion()
     {
         return $this->fechaCreacion;
     }
+    
+    /**
+     * Colocar la fecha de creación de DetalleOrden
+     * @access public
+     * @param mixed $fechaCreacion
+     * @return void
+     */
     public function setfechaCreacion($fechaCreacion)
     {
         $this->fechaCreacion =$fechaCreacion;
     }
-
-    //fechaModificacion
+    
+    /**
+     * Obtener la fecha de modificación de DetalleOrden
+     * @access public
+     * @return mixed $fechaModificacion
+     */
     public function getfechaModificacion()
     {
         return $this->fechaModificacion;
     }
+    
+    /**
+     * Colocar la fecha de modificación de DetalleOrden
+     * @access public
+     * @param mixed $fechaModificacion
+     * @return void
+     */
     public function setfechaModificacion($fechaModificacion)
     {
         $this->fechaModificacion =$fechaModificacion;
     }
-
-
-    //idUsuarioCreacion
+    
+    /**
+     * Obtener el id del usuario que hizo la iteración del objeto DetalleOrden
+     * @access public
+     * @return integer $idUsuarioCreacion
+     */
     public function getIdUsuarioCreacion()
     {
         return $this->idUsuarioCreacion;
     }
+    
+    /**
+     * Colocar el id del ususario que hizo la iteración del objeto DetalleOrden
+     * @access public
+     * @param mixed $idUsuarioCreacion
+     * @return void
+     */
     public function setIdUsuarioCreacion($idUsuarioCreacion)
     {
         $this->idUsuarioCreacion =$idUsuarioCreacion;
     }
-
-    //idUsuarioModificacion
+    
+    /**
+     * Obtener el id del usuario que hizo la modificación de DetalleOrden
+     * @access public
+     * @return void
+     */
     public function getIdUsuarioModificacion()
     {
         return $this->idUsuarioModificacion;
     }
+    
+    /**
+     * Colocar el id del usuario que hizo la modificación de DetalleOrden
+     * @access public
+     * @param mixed $idUsuarioModificacion
+     * @return void
+     */
     public function setIdUsuarioModificacion($idUsuarioModificacion)
     {
         $this->idUsuarioModificacion =$idUsuarioModificacion;
     }
-
-    //conexion
+    
+    /**
+     * Constructor para realizar la conexion con la base de datos
+     * @access public
+     * @return void
+     */
     public function __construct()
     {
         $this->conn = new Conexion;
     }
-
+    
+    /**
+     * Agregar DetalleOrden a la base de datos
+     * @access public
+     * @return true
+     */
     public function Agregar()
     {
         $sentenciaSql = "CALL Agregar_detalle_orden($this->valorInventario
@@ -149,7 +278,12 @@ class DetalleOrden
         return true;
     }
 
-    
+        
+    /**
+     * Modificar DetalleoRden de la base de datos
+     * @access public
+     * @return true
+     */
     public function Modificar()
     {
         $sentenciaSql = "CALL Modificar_detalle_orden($this->valorInventario
@@ -165,7 +299,12 @@ class DetalleOrden
         return true;
     }
     
-
+    
+    /**
+     * Eliminar DetalleOrden de la base de datos
+     * @access public
+     * @return void
+     */
     public function Eliminar()
     {
         $sentenciaSql = "DELETE FROM 
@@ -175,7 +314,12 @@ class DetalleOrden
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }
-
+    
+    /**
+     * Consultar DetalleOrden de la base de datos
+     * @access public
+     * @return true
+     */
     public function Consultar()
     {
         $condicion = $this->obtenerCondicion();
@@ -195,20 +339,29 @@ class DetalleOrden
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Buscar productos para añadir a DetalleOrden
+     * @access public
+     * @return true
+     */
     public function BuscarProducto()
     {
         $sentenciaSql = "SELECT 
                             p.descripcion 
                             ,p.id_producto 
                         FROM producto AS p 
-                        WHERE p.estado = '1' AND p.descripcion LIKE '%$this->idProducto%'
-                        -- GROUP BY p.id_persona;";
+                        WHERE p.estado = '1' AND p.descripcion LIKE '%$this->idProducto%'";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Obtener condición WHERE para añadir a la $sentenciaSql
+     * @access private
+     * @return $condicion
+     */
     private function obtenerCondicion()
     {
         $whereAnd = " WHERE ";
@@ -264,7 +417,12 @@ class DetalleOrden
         }
         return $condicion;
     }
-
+    
+    /**
+     * Destruye los atributos de DetalleOrden
+     * @access public
+     * @return void
+     */
     public function __destruct()
     {
         unset($this->idDetalleOrden);

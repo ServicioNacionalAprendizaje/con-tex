@@ -142,7 +142,7 @@ class FormularioRol
     }
     
     /**
-     * Obtener el id del usuario que hizó la iteración del objeto FormularioRol
+     * Obtener el id del usuario que hizo la iteración del objeto FormularioRol
      * @access
      * @return void
      */
@@ -152,31 +152,52 @@ class FormularioRol
     }
     
     /**
-     * Colocar el id del usuario que 
+     * Colocar el id del usuario que hizo la iteración del objeto FormularioRol
      * @access public
-     * @param  mixed $idUsuarioCreacion
+     * @param  integer $idUsuarioCreacion
      * @return void
      */
     public function setIdUsuarioCreacion($idUsuarioCreacion =1)
     {
         $this->idUsuarioCreacion = $idUsuarioCreacion;
     }
-
+    
+    /**
+     * Obtener el id del usuario que modificó el objeto FormularioRol
+     * @access public
+     * @return integer $idUsuarioModificacion
+     */
     public function getIdUsuarioModificacion()
     {
         return $this->idUsuarioModificacion;
     }
-    
+        
+    /**
+     * Colocar el id del usuario que modificó al objeto FormularioRol
+     * @access public
+     * @param integer $idUsuarioModificacion=1
+     * @return void
+     */
     public function setIdUsuarioModificacion($idUsuarioModificacion=1)
     {
         $this->idUsuarioModificacion = $idUsuarioModificacion;
     }
-
+    
+    /**
+     * Constructor para realizar la conexion a la base de datos
+     * @access public
+     * @return void
+     */
     public function __construct()
     {
         $this->conn = new Conexion();
     }
-
+    
+    /**
+     * Agregar FormularioRol a la base de datos
+     * @access public
+     * @return true
+     */
     public function Agregar()
     {
         $sentenciaSql = "CALL Agregar_formulario_rol('$this->idRol'
@@ -188,7 +209,12 @@ class FormularioRol
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Modificar FormularioRol en la base de datos
+     * @access public
+     * @return true
+     */
     public function Modificar()
     {
         $sentenciaSql = "CALL Modificar_formulario_rol('$this->idRol'
@@ -200,7 +226,12 @@ class FormularioRol
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Eliminar FormularioRol de la base de datos
+     * @access public
+     * @return void
+     */
     public function Eliminar()
     {
         $sentenciaSql = "DELETE FROM formulario_rol 
@@ -209,7 +240,12 @@ class FormularioRol
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Consultar FormularioRol en la base de datos
+     * @access public
+     * @return void
+     */
     public function Consultar()
     {
         $condicion = $this->obtenerCondicion();
@@ -233,24 +269,29 @@ class FormularioRol
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Obtener la condición WHERE para añadirla a la $sentenciaSql
+     * @access public
+     * @return mixed $condicion
+     */
     private function obtenerCondicion()
     {
         $whereAnd = " WHERE ";
         $condicion = " ";
 
-        if($this->idFormularioRol !=''){
+        if ($this->idFormularioRol !='') {
             $condicion=$whereAnd.$condicion." id_formulario_rol  = $this->idFormularioRol";
             $whereAnd = ' AND ';
         }
-        // if($this->formularioRol !=''){
-        //     $condicion=$condicion.$whereAnd." formularioRol LIKE '%$this->formularioRol%' ";
-        //     $whereAnd = ' AND ';
-        //     return $condicion;
-        // }
         return $condicion;
     }
-
+    
+    /**
+     * Destruye los atributos de FormularioRol
+     * @access public
+     * @return void
+     */
     public function __destruct()
     {
         unset($this->idFormularioRol);

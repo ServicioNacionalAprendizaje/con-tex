@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Insumo
+ */
 class Insumo
 {
     private $idInsumo;
@@ -12,108 +15,112 @@ class Insumo
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
-
-    //idInsumo
+    
+    /**
+     * Obtener el id de Insumo
+     * @access public
+     * @return void
+     */
     public function getIdInsumo()
     {
         return $this->idInsumo;
     }
+
     public function setIdInsumo($idInsumo)
     {
         $this->idInsumo = $idInsumo;
     }
 
-    //descripcion
     public function getDescripcion()
     {
         return $this->descripcion;
     }
+
     public function setDescripcion($descripcion)
     {
         $this->descripcion = $descripcion;
     }
 
-    //talla
     public function getCantidad()
     {
         return $this->cantidad;
     }
+
     public function setCantidad($cantidad)
     {
         $this->cantidad = $cantidad;
     }
 
-    //idCategoria
     public function getIdCategoria()
     {
         return $this->idCategoria;
     }
+
     public function setIdCategoria($idCategoria)
     {
         $this->idCategoria = $idCategoria;
     }
 
-    //categoria
     public function getCategoria()
     {
         return $this->categoria;
     }
+
     public function setCategoria($categoria)
     {
         $this->categoria = $categoria;
     }
 
-    //estado
     public function getEstado()
     {
         return $this->estado;
     }
+
     public function setEstado($estado)
     {
         $this->estado = $estado;
     }
 
-    //fechaCreacion
     public function getfechaCreacion()
     {
         return $this->fechaCreacion;
     }
+
     public function setfechaCreacion($fechaCreacion)
     {
         $this->fechaCreacion = $fechaCreacion;
     }
 
-    //fechaModificacion
     public function getfechaModificacion()
     {
         return $this->fechaModificacion;
     }
+
     public function setfechaModificacion($fechaModificacion)
     {
         $this->fechaModificacion = $fechaModificacion;
     }
 
-    //idUsuarioCreacion
     public function getIdUsuarioCreacion()
     {
         return $this->idUsuarioCreacion;
     }
+
     public function setIdUsuarioCreacion($idUsuarioCreacion)
     {
         $this->idUsuarioCreacion = $idUsuarioCreacion;
     }
 
-    //idUsuarioModificacion
     public function getIdUsuarioModificacion()
     {
         return $this->idUsuarioModificacion;
     }
+
     public function setIdUsuarioModificacion($idUsuarioModificacion)
     {
         $this->idUsuarioModificacion = $idUsuarioModificacion;
     }
 
-    //conexion
     public function __construct()
     {
         $this->conn = new Conexion();

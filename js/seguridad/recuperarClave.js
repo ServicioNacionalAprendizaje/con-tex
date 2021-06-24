@@ -10,6 +10,7 @@ function Enviar(accion, id) {
     $.ajax({
         data: parametros, //datos que se van a enviar al ajax
         url: '../../con-tex/controlador/seguridad/usuario.C.php', //archivo php que recibe los datos
+        // url: '../../controlador/seguridad/usuario.C.php', //archivo php que recibe los datos
         type: 'post', //método para enviar los datos
         dataType: 'json', //Recibe el array desde php
 

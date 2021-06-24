@@ -164,12 +164,17 @@ class Rol
      * Constructor para realizar la conexión a la base de datos
      * @access public
      * @return void
-     */
+     */    
     public function __construct()
     {
         $this->conn = new Conexion();
     }
-
+    
+    /**
+     * Agregar rol a la base datos
+     * @access public
+     * @return true
+     */
     public function Agregar()
     {
         $sentenciaSql = "CALL Agregar_rol(
@@ -181,7 +186,12 @@ class Rol
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Modificar el rol en la base de datos
+     * @access public
+     * @return true
+     */
     public function Modificar()
     {
         $sentenciaSql = "CALL Modificar_rol(
@@ -193,7 +203,12 @@ class Rol
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Eliminar rol de la base de datos
+     * @access public
+     * @return void
+     */
     public function Eliminar()
     {
         $sentenciaSql = "DELETE FROM rol 
@@ -201,7 +216,12 @@ class Rol
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }
-
+    
+    /**
+     * Consultar rol en la base de datos
+     * @access public
+     * @return void
+     */
     public function Consultar()
     {
         $condicion = $this->obtenerCondicion();
@@ -211,7 +231,12 @@ class Rol
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Obtiene la condicion WHERE para añadir a la $sentenciaSql
+     * @access public
+     * @return mixed $condicion
+     */
     private function obtenerCondicion()
     {
         $whereAnd = " WHERE ";
@@ -231,7 +256,12 @@ class Rol
         }
         return $condicion;
     }
-
+    
+    /**
+     * Destruye los atributos de Rol
+     * @access public
+     * @return void
+     */
     public function __destruct()
     {
         unset($this->idRol);

@@ -1,6 +1,8 @@
 <?php
-//Eduardo A. Peña
 
+/**
+ * FormularioRol
+ */
 class FormularioRol
 {
     private $idFormularioRol;
@@ -12,88 +14,164 @@ class FormularioRol
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
    
-
-    //idFormularioRol
+    
+    /**
+     * Obtener el id de FormularioRol
+     * @access public
+     * @return integer $idFormularioRol
+     */
     public function getIdFormularioRol()
     {
         return $this->idFormularioRol;
     }
+    
+    /**
+     * Colocar el id de FormularioRol
+     * @access public
+     * @param  integer $idFormularioRol
+     * @return void
+     */
     public function setIdFormularioRol($idFormularioRol)
     {
         $this->idFormularioRol = $idFormularioRol;
     }
-
-    //idRol
+    
+    /**
+     * Obtiene el idRol de FormularioRol
+     * @access public
+     * @return integer idRol
+     */
     public function getIdRol()
     {
         return $this->idRol;
     }
+    
+    /**
+     * Colocar el idRol de FormularioRol
+     * @access public
+     * @param  mixed $idRol
+     * @return void
+     */
     public function setIdRol($idRol)
     {
         $this->idRol = $idRol;
     }
-
-    //idFormulario
+    
+    /**
+     * Obtener idFormulario de FormularioRol
+     * @access public
+     * @return integer $idFormulario
+     */
     public function getIdFormulario()
     {
         return $this->idFormulario;
     }
+    
+    /**
+     * Colocar el idFormulario de FormularioRol
+     * @access public
+     * @param  mixed $idFormulario
+     * @return void
+     */
     public function setIdFormulario($idFormulario)
     {
         $this->idFormulario = $idFormulario;
     }
-
-    //estado
+    
+    /**
+     * Obtener el estado de FormularioRol
+     * @access public
+     * @return mixed $estado
+     */
     public function getEstado()
     {
         return $this->estado;
     }
+    
+    /**
+     * Colocar el estado a FormularioRol
+     * @access public
+     * @param  mixed $estado
+     * @return void
+     */
     public function setEstado($estado)
     {
         $this->estado = $estado;
     }
-
-    //fechaCreacion
+    
+    /**
+     * Obtener la fecha de creación de FormularioRol
+     * @access public
+     * @return mixed $idFormularioRol
+     */
     public function getFechaCreacion()
     {
         return $this->fechaCreacion;
     }
+    
+    /**
+     * Colocar la fecha de creación de FormularioRol
+     * @access public
+     * @param  mixed $fechaCreacion
+     * @return void
+     */
     public function setFechaCreacion($fechaCreacion)
     {
         $this->fechaCreacion = $fechaCreacion;
     }
-
-    //fechaModificacion
+    
+    /**
+     * Obtener la fecha de modificación de FormularioRol
+     * @access public
+     * @return void
+     */
     public function getFechaModificacion()
     {
         return $this->fechaModificacion;
     }
+    
+    /**
+     * Colocar la fecha de modificación de FormularioRol
+     * @access public
+     * @param  mixed $fechaModificacion
+     * @return void
+     */
     public function setFechaModificacion($fechaModificacion)
     {
         $this->fechaModificacion = $fechaModificacion;
     }
-
-    //idUsuarioCreacion
+    
+    /**
+     * Obtener el id del usuario que hizó la iteración del objeto FormularioRol
+     * @access
+     * @return void
+     */
     public function getIdUsuarioCreacion()
     {
         return $this->idUsuarioCreacion;
     }
+    
+    /**
+     * Colocar el id del usuario que 
+     * @access public
+     * @param  mixed $idUsuarioCreacion
+     * @return void
+     */
     public function setIdUsuarioCreacion($idUsuarioCreacion =1)
     {
         $this->idUsuarioCreacion = $idUsuarioCreacion;
     }
 
-    //idUsuarioModificacion
     public function getIdUsuarioModificacion()
     {
         return $this->idUsuarioModificacion;
     }
+    
     public function setIdUsuarioModificacion($idUsuarioModificacion=1)
     {
         $this->idUsuarioModificacion = $idUsuarioModificacion;
     }
 
-    //conexion
     public function __construct()
     {
         $this->conn = new Conexion();

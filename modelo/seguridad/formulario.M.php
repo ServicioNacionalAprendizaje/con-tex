@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Formulario
+ */
 class Formulario
 {
     private $idFormulario;
@@ -12,103 +15,211 @@ class Formulario
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
     public $conn = null;
-
-    //idFormulario
+    
+    /**
+     * Obtener el id de Formulario
+     * @access public
+     * @return integer $idFormulario
+     */
     public function getIdFormulario()
     {
         return $this->idFormulario;
     }
+
+    /**
+     * Colocar el id de Formulario
+     * @access public
+     * @param  mixed $idFormulario
+     * @return void
+     */
     public function setIdFormulario($idFormulario)
     {
         $this->idFormulario = $idFormulario;
     }
 
-    //descripcion
+    /**
+     * Obtener la descripcion de Formulario
+     * @access public
+     * @return string $descripcion
+     */
     public function getDescripcion()
     {
         return $this->descripcion;
-    }
+    }   
+
+    /**
+     * Colocar la descripcion de Formulario
+     * @access public
+     * @param  mixed $descripcion
+     * @return void
+     */
     public function setDescripcion($descripcion)
     {
         $this->descripcion = $descripcion;
     }
-
-    //etiqueta
+   
+    /**
+     * Obtener etiqueta de Formulario
+     * @access public
+     * @return string $etiqueta
+     */
     public function getEtiqueta()
     {
         return $this->etiqueta;
-    }
+    } 
+
+    /**
+     * Colocar etiqueta a Formulario
+     * @access public
+     * @param  string $etiqueta
+     * @return void
+     */
     public function setEtiqueta($etiqueta)
     {
         $this->etiqueta = $etiqueta;
     }
-
-    //ubicacion
+    
+    /**
+     * Obtiene ubicacion de Formulario
+     * @access public
+     * @return void
+     */
     public function getUbicacion()
     {
         return $this->ubicacion;
-    }
+    } 
+
+    /**
+     * Coloca ubicacion a Formulario
+     * @access public
+     * @param  mixed $ubicacion
+     * @return void
+     */
     public function setUbicacion($ubicacion)
     {
         $this->ubicacion = $ubicacion;
     }
-
-    //estado
+     
+    /**
+     * Obtener estado a Formulario
+     * @access public
+     * @return void
+     */
     public function getEstado()
     {
         return $this->estado;
     }
+    
+    /**
+     * Colocar estado a Formulario
+     * @access public
+     * @param  mixed $estado
+     * @return void
+     */
     public function setEstado($estado)
     {
         $this->estado = $estado;
     }
-
-    //fechaCreacion
+    
+    /**
+     * Obtener la fecha de creación de Formulario
+     * @access public
+     * @return mixed $fechaCreacion
+     */
     public function getFechaCreacion()
     {
         return $this->fechaCreacion;
     }
+    
+    /**
+     * Colocar la fecha de creación de Formulario
+     * @access public
+     * @param  mixed $fechaCreacion
+     * @return void
+     */
     public function setFechaCreacion($fechaCreacion)
     {
         $this->fechaCreacion = $fechaCreacion;
     }
-
-    //fechaModificacion
+    
+    /**
+     * Obtener la fecha de modificación de Formulario
+     * @access public
+     * @return mixed $fechaModificacion
+     */
     public function getFechaModificacion()
     {
         return $this->fechaModificacion;
     }
+    
+    /**
+     * Colocar la fecha de modificación de Formulario
+     * @access public
+     * @param  mixed $fechaModificacion
+     * @return void
+     */
     public function setFechaModificacion($fechaModificacion)
     {
         $this->fechaModificacion = $fechaModificacion;
     }
-
-    //idUsuarioCreacion
+     
+    /**
+     * Obtener el id del usuario que hizo la iteración de Formulario
+     * @access public
+     * @return integer $idUsuarioCreacion
+     */
     public function getIdUsuarioCreacion()
     {
         return $this->idUsuarioCreacion;
     }
+    
+    /**
+     * Colocar el id del usuario que hizo la iteración de Formulario
+     * @access public
+     * @param  mixed $idUsuarioCreacion
+     * @return void
+     */
     public function setIdUsuarioCreacion($idUsuarioCreacion)
     {
         $this->idUsuarioCreacion = $idUsuarioCreacion;
     }
-
-    //idUsuarioModificacion
+        
+    /**
+     * Obtener el id del usuario que modificó el objeto Formulario
+     * @access public
+     * @return void
+     */
     public function getIdUsuarioModificacion()
     {
         return $this->idUsuarioModificacion;
     }
+    
+    /**
+     * Colocar el id del usuario que modificó el objeto Formulario
+     * @access public
+     * @param  mixed $idUsuarioModificacion
+     * @return void
+     */
     public function setIdUsuarioModificacion($idUsuarioModificacion)
     {
         $this->idUsuarioModificacion = $idUsuarioModificacion;
     }
-
-    //conexion
+     
+    /**
+     * Construir para la hacer la conexion a la base de datos
+     * @access public
+     * @return void
+     */
     public function __construct()
     {
         $this->conn = new Conexion();
     }
-
+    
+    /**
+     * Agregar Formulario a la base de datos
+     * @access public
+     * @return true
+     */
     public function Agregar()
     {
         $sentenciaSql = "CALL Agregar_formulario(
@@ -122,7 +233,12 @@ class Formulario
         $this->conn->Ejecutar();
         return true;
     }
-
+    
+    /**
+     * Modificar Formulario en la base de datos
+     * @access public
+     * @return true
+     */
     public function Modificar()
     {
         $sentenciaSql = "CALL Modificar_formulario(
@@ -136,7 +252,12 @@ class Formulario
         $this->conn->Ejecutar();
         return true;
     }
-
+    
+    /**
+     * Eliminar Formulario en la base de datos
+     * @access public
+     * @return true
+     */
     public function Eliminar()
     {
         $sentenciaSql = "DELETE FROM formulario 
@@ -145,7 +266,12 @@ class Formulario
         $this->conn->Ejecutar();
         return true;
     }
-
+    
+    /**
+     * Consultar Formulario en la base de datos
+     * @access public
+     * @return true
+     */
     public function Consultar()
     {
         $condicion = $this->obtenerCondicion();
@@ -157,7 +283,12 @@ class Formulario
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Validar la ubicacion del formulario
+     * @access public
+     * @return true
+     */
     public function validarFormulario()
     {        
         $sentenciaSql = "SELECT 
@@ -174,7 +305,12 @@ class Formulario
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Construir el dashboard para seleccionar los formularios
+     * @access public
+     * @return true
+     */
     public function construirDashboard()
     {      
         $id_usuario = $_SESSION['id_login'];  
@@ -183,7 +319,12 @@ class Formulario
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Obtiene la condicion WHERE para agregarla a la $sentenciaSql
+     * @access public
+     * @return $condicion
+     */
     private function obtenerCondicion()
     {
         $whereAnd = " WHERE ";
@@ -207,7 +348,12 @@ class Formulario
         }                
         return $condicion;
     }
-
+    
+    /**
+     * Destruye los atributos de Formulario
+     * @access public
+     * @return void
+     */
     public function __destruct()
     {
         unset($this->formulario);

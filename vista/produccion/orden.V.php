@@ -50,8 +50,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 col-sm-2">
+            <div class="row justify-content-sm-center">
+                <div>
                     <input type="hidden" class="boton form-control btn-light btn-outline-primary" name="btnBuscar"
                         id="btnBuscar" value="BUSCAR"
                         onclick="Enviar1('CONSULTAR',null);">
@@ -70,7 +70,7 @@
                     <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnLimpiar"
                         value="LIMPIAR" id="btnLimpiar" onclick=" Limpiar1();">
                 </div>
-                <div class="col-12 col-sm-2">
+                <div class="col-12 col-sm-3">
                     <!-- Button trigger modal -->
                     <button type="button" class="boton form-control btn-light btn-outline-primary"
                     data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="Enviar('CONSULTAR',null)">DETALLE DE ORDEN</button>
@@ -136,13 +136,13 @@
                                         <div>
                                           <input type="hidden" class="boton form-control btn-light btn-outline-primary" name="btnBuscar" id="btnBuscar" value="BUSCAR" onclick="Enviar('CONSULTAR',null);">
                                         </div>
-                                        <div class="col-12 col-sm-2">
+                                        <div class="col-12 col-sm-3">
                                             <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnRegistrar" value="REGISTRAR" id="btnRegistrar" onclick=" Enviar('ADICIONAR',null);">
                                         </div>
-                                        <div class="col-12 col-sm-2">
+                                        <div class="col-12 col-sm-3">
                                             <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnModificar" value="MODIFICAR" id="btnModificar" onclick=" Enviar('MODIFICAR',null);">
                                         </div>
-                                        <div class="col-12 col-sm-2">
+                                        <div class="col-12 col-sm-3">
                                             <input type="button" class="boton form-control btn-light btn-outline-primary" name="btnLimpiar" value="LIMPIAR" id="btnLimpiar" onclick=" Limpiar();">
                                         </div>
                                     </div>

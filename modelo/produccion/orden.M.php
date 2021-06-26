@@ -14,7 +14,6 @@ class Orden
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
     
-    //idOrden
     public function getIdOrden()
     {
         return $this->idOrden;
@@ -24,7 +23,6 @@ class Orden
         return $this->idOrden=$idOrden;
     }
 
-    //fechaOrden
     public function getFechaOrden()
     {
         return $this->fechaOrden;
@@ -34,7 +32,6 @@ class Orden
         return $this->fechaOrden=$fechaOrden;
     }
 
-    //fechaEntrega
     public function getFechaEntrega()
     {
         return $this->fechaEntrega;
@@ -44,7 +41,6 @@ class Orden
         return $this->fechaEntrega=$fechaEntrega;
     }
 
-    //descripcion
     public function getDescripcion()
     {
         return $this->descripcion;
@@ -54,7 +50,6 @@ class Orden
         return $this->descripcion = $descripcion;
     }
 
-    //idCcliente
     public function getIdCliente()
     {
         return $this->idCliente;
@@ -64,7 +59,6 @@ class Orden
         return $this->idCliente=$idCliente;
     }
 
-    //idEmpleado
     public function getIdEmpleado()
     {
         return $this->idEmpleado;
@@ -74,7 +68,6 @@ class Orden
         return $this->idEmpleado = $idEmpleado;
     }
 
-    //estado
     public function getEstado()
     {
         return $this->estado;
@@ -84,8 +77,6 @@ class Orden
         $this->estado =$estado;
     }
 
-
-    //fechaCreacion
     public function getfechaCreacion()
     {
         return $this->fechaCreacion;
@@ -95,7 +86,6 @@ class Orden
         $this->fechaCreacion =$fechaCreacion;
     }
 
-    //fechaModificacion
     public function getfechaModificacion()
     {
         return $this->fechaModificacion;
@@ -105,8 +95,6 @@ class Orden
         $this->fechaModificacion =$fechaModificacion;
     }
 
-
-    //idUsuarioCreacion
     public function getIdUsuarioCreacion()
     {
         return $this->idUsuarioCreacion;
@@ -116,7 +104,6 @@ class Orden
         $this->idUsuarioCreacion =$idUsuarioCreacion;
     }
 
-    //idUsuarioModificacion
     public function getIdUsuarioModificacion()
     {
         return $this->idUsuarioModificacion;
@@ -126,7 +113,6 @@ class Orden
         $this->idUsuarioModificacion =$idUsuarioModificacion;
     }
 
-    //conexion
     public function __construct()
     {
         $this->conn = new Conexion;

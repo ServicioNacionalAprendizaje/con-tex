@@ -28,10 +28,10 @@ if (isset($accion)) {
                 $generarPago = new GenerarPago();
                 $generarPago->setIdGenerarPago($_POST['id']);
                 $generarPago->setIdEmpleado($_POST['idEmpleado']);
-                $generarPago->setFechaInicio($_POST['fechaInicio']);
-                $generarPago->setFechaFin($_POST['fechaFin']);
+                $generarPago->setFechaInicio(str_replace('-', '', $_POST['fechaInicio']));
+                $generarPago->setFechaFin(str_replace('-', '', $_POST['fechaFin']));
                 $generarPago->setValorPago($_POST['valorPago']);
-                $generarPago->setFechaPago($_POST['fechaPago']);
+                $generarPago->setFechaPago(str_replace('-', '', $_POST['fechaPago']));
                 $generarPago->setIdUsuarioCreacion(1); // Obtener id del cargo con la variable session
                 $generarPago->setIdUsuarioModificacion(1); // Obtener id del cargo con la variable session
                 $resultado = $generarPago->Agregar();

@@ -147,14 +147,28 @@ class GenerarPago
 
     public function Agregar()
     {
-        $sentenciaSql = "CALL Agregar_generar_pago(
-                            '$this->idEmpleado'
-                            ,'$this->fechaInicio'
-                            ,'$this->fechaFin'
-                            ,'$this->fechaPago'
-                            ,'$this->valorPago'
-                            ,'$this->idUsuarioCreacion'
-                            ,'$this->idUsuarioModificacion')";
+        $sentenciaSql = "INSERT INTO generar_pago(
+                            id_empleado
+                            ,fecha_inicio
+                            ,fecha_fin
+                            ,fecha_pago
+                            ,valor_pago
+                            ,fecha_creacion
+                            ,fecha_modificacion
+                            ,id_usuario_creacion
+                            ,id_usuario_modificacion
+                            ) 
+                        VALUES (
+                            $this->idEmpleado
+                            ,$this->fechaInicio
+                            ,$this->fechaFin
+                            ,$this->fechaPago
+                            ,$this->valorPago
+                            ,NOW()
+                            ,NOW()
+                            ,$this->idUsuarioCreacion
+                            ,$this->idUsuarioModificacion
+                            )";
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
         return true;

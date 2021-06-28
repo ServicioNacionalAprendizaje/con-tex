@@ -314,7 +314,7 @@ class Insumo
     
     /**
      * Obtener la condición WHERE para añadirla a la $sentenciaSql
-     * @access public
+     * @access private
      * @return mixed $condición
      */
     private function obtenerCondicion()

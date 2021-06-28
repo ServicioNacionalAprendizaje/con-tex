@@ -1,4 +1,7 @@
 <?php
+/**
+ * Empleado
+ */
 class Empleado
 {
     private $idEmpleado;
@@ -15,142 +18,319 @@ class Empleado
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
-
-    //idEmpleado
+    
+    /**
+     * Obtener el id de Empleado
+     * @access public
+     * @return integer $idEmpleado
+     */
     public function getIdEmpleado()
     {
-        return $this->idFormulario;
+        return $this->idEmpleado;
     }
+    
+    /**
+     * Colocar el id de Empleado
+     * @access public
+     * @param integer $idEmpleado
+     * @return void
+     */
     public function setIdEmpleado($idEmpleado)
     {
         $this->idEmpleado = $idEmpleado;
     }
-    //idCargo
+        
+    /**
+     * Obtener idCargo de Empleado
+     * @access public
+     * @return integer $idCargo
+     */
     public function getIdCargo()
     {
         return $this->idCargo;
     }
+    
+    /**
+     * Colocar idCargo de Empleado
+     * @access public
+     * @param integer $idCargo
+     * @return void
+     */
     public function setIdCargo($idCargo)
     {
         $this->idCargo = $idCargo;
     }
-    //correoInstitucional
+        
+    /**
+     * Obtener el correo institucional de Empleado
+     * @access public
+     * @return string $correoInstitucional
+     */
     public function getCorreoInstitucional()
     {
         return $this->correoInstitucional;
     }
+    
+    /**
+     * Colocar el correo institucional de Empleado
+     * @access public
+     * @param string $correoInstitucional
+     * @return void
+     */
     public function setCorreoInstitucional($correoInstitucional)
     {
         $this->correoInstitucional = $correoInstitucional;
     }
-    //fechaIngreso
+        
+    /**
+     * Obtener la fecha de ingreso de Empleado
+     * @access public
+     * @return mixed $fechaIngreso
+     */
     public function getFechaIngreso()
     {
         return $this->fechaIngreso;
     }
+    
+    /**
+     * Colocar la fecha de ingreso de Empleado
+     * @access public
+     * @param mixed $fechaIngreso
+     * @return void
+     */
     public function setFechaIngreso($fechaIngreso)
     {
         $this->fechaIngreso = $fechaIngreso;
     }
-    //arl
+        
+    /**
+     * Obtener la ARL de Empleado
+     * @access public
+     * @return string $arl
+     */
     public function getArl()
     {
         return $this->arl;
     }
+    
+    /**
+     * Colocar la ARL de Empleado
+     * @access public
+     * @param string $arl
+     * @return void
+     */
     public function setArl($arl)
     {
         $this->arl = $arl;
     }
-    //salud
+        
+    /**
+     * Obtener la EPS  de Emplado
+     * @access public
+     * @return string $salud
+     */
     public function getSalud()
     {
         return $this->salud;
     }
+    
+    /**
+     * Colocar la EPS de Empleado
+     * @access public
+     * @param string $salud
+     * @return void
+     */
     public function setSalud($salud)
     {
         $this->salud = $salud;
     }
-    //pension
+        
+    /**
+     * Obtener la pensión de Empleado
+     * @access public
+     * @return string $pension
+     */
     public function getPension()
     {
         return $this->pension;
     }
+    
+    /**
+     * Colocar la pensión de Empleado
+     * @access public
+     * @param string $pension
+     * @return void
+     */
     public function setPension($pension)
     {
         $this->pension = $pension;
     }
-    //idPersona
+        
+    /**
+     * Obtener el idPersona de Empleado
+     * @access public
+     * @return integer $idPersona
+     */
     public function getIdPersona()
     {
         return $this->idPersona;
     }
+    
+    /**
+     * Colocar el idPersona a Empleado
+     * @access public
+     * @param integer $idPersona
+     * @return void
+     */
     public function setIdPersona($idPersona)
     {
         $this->idPersona = $idPersona;
     }
-    //sueldoBasico
+        
+    /**
+     * Obtener el sueldo básico de Empleado
+     * @access public
+     * @return double $sueldoBasico
+     */
     public function getSueldoBasico()
     {
         return $this->sueldoBasico;
     }
+    
+    /**
+     * Colocar el sueldo básico a Empleado
+     * @access public
+     * @param double $sueldoBasico
+     * @return void
+     */
     public function setSueldoBasico($sueldoBasico)
     {
         $this->sueldoBasico = $sueldoBasico;
     }
-    //estado
+        
+    /**
+     * Obtener el estado de Empleado
+     * @access public
+     * @return mixed $estado
+     */
     public function getEstado()
     {
         return $this->estado;
     }
+    
+    /**
+     * Colocar el estado a Empleado
+     * @access public
+     * @param mixed $estado
+     * @return void
+     */
     public function setEstado($estado)
     {
         $this->estado = $estado;
     }
-    //fechaCreacion
+        
+    /**
+     * Obtener la fecha de creación de Empleado
+     * @access public
+     * @return mixed $fechaCreacion
+     */
     public function getFechaCreacion()
     {
         return $this->fechaCreacion;
     }
+    
+    /**
+     * Colocar la fecha de creación de Empleado
+     * @access public
+     * @param mixed $fechaCreacion
+     * @return void
+     */
     public function setFechaCreacion($fechaCreacion)
     {
         $this->fechaCreacion = $fechaCreacion;
     }
-    //fechaModificacion
+        
+    /**
+     * Obtener la fecha de modificación de Empleado
+     * @access public
+     * @return mixed $fechaModificacion
+     */
     public function getFechaModificacion()
     {
         return $this->fechaModificacion;
     }
+    
+    /**
+     * Colocar la fecha de modificación de Empleado
+     * @access public
+     * @param mixed $fechaModificacion
+     * @return void
+     */
     public function setFechaModificacion($fechaModificacion)
     {
         $this->fechaModificacion = $fechaModificacion;
     }
-    //idUsuarioCreacion
+        
+    /**
+     * Obtener el id del ususario que crea a Empleado
+     * @access public
+     * @return integer $idUsuarioCreacion
+     */
     public function getIdUsuarioCreacion()
     {
         return $this->idUsuarioCreacion;
     }
+    
+    /**
+     * Colocar el id del usario que crea a Empleado
+     * @access public
+     * @param integer $idUsuarioCreacion
+     * @return void
+     */
     public function setIdUsuarioCreacion($idUsuarioCreacion)
     {
         $this->idUsuarioCreacion = $idUsuarioCreacion;
     }
-    //idUsuarioModificacion
+        
+    /**
+     * Obtener el id del usuario que modifica a Empleado
+     * @access public
+     * @return integer $idUsuarioModificacion
+     */
     public function getIdUsuarioModificacion()
     {
         return $this->idUsuarioModificacion;
     }
+    
+    /**
+     * Colocar el id del usuario que modificó a Empleado
+     * @access public
+     * @param integer $idUsuarioModificacion
+     * @return void
+     */
     public function setIdUsuarioModificacion($idUsuarioModificacion)
     {
         $this->idUsuarioModificacion = $idUsuarioModificacion;
     }
-    //conexion
+        
+    /**
+     * Constructor para realizar la conexión a la base de datos
+     * @access public
+     * @return void
+     */
     public function __construct()
     {
         $this->conn = new Conexion();
     }
-
-public function Agregar()
+    
+    /**
+     * Agregar Empleado a la base de datos
+     * @access public
+     * @return true
+     */
+    public function Agregar()
     {
-$sentenciaSql = "CALL Agregar_empleado(
+    $sentenciaSql = "CALL Agregar_empleado(
                             $this->idCargo
                             ,'$this->correoInstitucional'
                             ,'$this->fechaIngreso'
@@ -166,6 +346,12 @@ $sentenciaSql = "CALL Agregar_empleado(
         $this->conn->ejecutar();
         return true;
     }
+    
+    /**
+     * Modificar Empleado en la base de datos
+     * @access public
+     * @return true
+     */
     public function Modificar()
     {
         $sentenciaSql = "CALL Modificar_empleado('$this->idCargo'
@@ -183,6 +369,12 @@ $sentenciaSql = "CALL Agregar_empleado(
         $this->conn->ejecutar();
         return true;
     }
+    
+    /**
+     * Eliminar Empleado de la base de datos
+     * @access public
+     * @return true
+     */
     public function Eliminar()
     {
         $sentenciaSql = "DELETE FROM empleado 
@@ -191,6 +383,12 @@ $sentenciaSql = "CALL Agregar_empleado(
         $this->conn->ejecutar();
         return true;
     }
+    
+    /**
+     * Consultar Empleado en la base de datos
+     * @access public
+     * @return true
+     */
     public function Consultar()
     {
         $condicion = $this->obtenerCondicion();
@@ -216,7 +414,12 @@ $sentenciaSql = "CALL Agregar_empleado(
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Buscar Correo de Empleado
+     * @access public
+     * @return void
+     */
     public function BuscarCorreo(){
         $sentenciaSql = "SELECT e.correo_institucional, u.id_usuario 
                         FROM empleado AS e 
@@ -227,7 +430,12 @@ $sentenciaSql = "CALL Agregar_empleado(
         $this->conn->ejecutar();
         return true;
     }
-    
+        
+    /**
+     * Obtener la condicion WHERE para añadirla a la $sentenciaSql
+     * @access private
+     * @return mixed $condicion
+     */
     private function obtenerCondicion()
     {
         $whereAnd = " WHERE ";
@@ -236,30 +444,14 @@ $sentenciaSql = "CALL Agregar_empleado(
             $condicion=$whereAnd.$condicion." id_empleado  = $this->idEmpleado";
             $whereAnd = ' AND ';
         }
-        // if($this->idCargo !=''){
-        //         $condicion=$condicion.$whereAnd." descripcion LIKE '%$this->idCargo%' ";
-        //         $whereAnd = ' AND ';
-        // }        
-        // if($this->estado!=''){
-        //         if ($whereAnd == ' AND '){
-        //         $condicion=$condicion.$whereAnd." seg_usu.estado = '$this->estado'";
-        //         $whereAnd = ' AND ';
-        //         }
-        //         else{
-        //         $condicion=$whereAnd.$condicion." seg_usu.estado = '$this->estado'";
-        //         $whereAnd = ' AND ';
-        //         }
-        //     }
-        // if($this->fechaActivacion!=''){
-        //         $condicion=$condicion.$whereAnd." seg_usu.fecha_activacion = '$this->fechaActivacion' ";
-        //         $whereAnd = ' AND ';
-        // }
-        // if($this->fechaExpiracion!=''){
-        //         $condicion=$condicion.$whereAnd." seg_usu.fecha_expiracion = '$this->fechaExpiracion' ";
-        //         $whereAnd = ' AND ';
-        // }
         return $condicion;
     }
+    
+    /**
+     * Destruye los atributos de Empleado y la conexión a la base de datos
+     * @access public
+     * @return void
+     */
     public function __destruct()
     {
         unset($this->idEmpleado);

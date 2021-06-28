@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Producto
+ */
 class Producto
 {
     private $idProducto;
@@ -12,113 +15,232 @@ class Producto
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
-
-    //idProducto
+    
+    /**
+     * Obtener el id de Producto
+     * @access public
+     * @return interger $idProducto
+     */
     public function getIdProducto()
     {
         return $this->idProducto;
     }
+    
+    /**
+     * Colocar el id de Producto
+     * @access public
+     * @param integer $idProducto
+     * @return void
+     */
     public function setIdProducto($idProducto)
     {
         $this->idProducto = $idProducto;
     }
-
-    //descripcion
+    
+    /**
+     * Obtener la descripción de Producto
+     * @access public
+     * @return string $descripcion
+     */
     public function getDescripcion()
     {
         return $this->descripcion;
     }
+    
+    /**
+     * Colocar la descripción de Producto
+     * @access public
+     * @param string $descripcion
+     * @return void
+     */
     public function setDescripcion($descripcion)
     {
         $this->descripcion = $descripcion;
     }
-
-    //talla
+    
+    /**
+     * Obtener la talla de producto
+     * @access public
+     * @return mixed $talla
+     */
     public function getTalla()
     {
         return $this->talla;
     }
+    
+    /**
+     * Colocar la talla a Producto
+     * @access public
+     * @param mixed $talla
+     * @return void
+     */
     public function setTalla($talla)
     {
         $this->talla = $talla;
     }
-
-    //estado
+    
+    /**
+     * Obtener el estado de Producto
+     * @access public
+     * @return mixed $estado
+     */
     public function getEstado()
     {
         return $this->estado;
     }
+    
+    /**
+     * Colocar el estado a Producto
+     * @access public
+     * @param mixed $estado
+     * @return void
+     */
     public function setEstado($estado)
     {
         $this->estado = $estado;
     }
-
-    //idCategoria
+    
+    /**
+     * Obtener el idCategoria de Producto
+     * @access public
+     * @return integer $idCategoria
+     */
     public function getIdCategoria()
     {
         return $this->idCategoria;
     }
+    
+    /**
+     * Colocar idCategoria a Producto
+     * @access public
+     * @param integer $idCategoria
+     * @return void
+     */
     public function setIdCategoria($idCategoria)
     {
         $this->idCategoria = $idCategoria;
     }
-
-    //categoria
+    
+    /**
+     * Obtener la categoria de Producto
+     * @access public
+     * @return string $categoria
+     */
     public function getCategoria()
     {
         return $this->categoria;
     }
+    
+    /**
+     * Colocar la categoria a Producto
+     * @access public
+     * @param mixed $categoria
+     * @return void
+     */
     public function setCategoria($categoria)
     {
         $this->categoria = $categoria;
     }
-
-    //fechaCreacion
+    
+    /**
+     * Obtener la fecha de creación de Producto
+     * @access public
+     * @return void
+     */
     public function getfechaCreacion()
     {
         return $this->fechaCreacion;
     }
-    public function setfechaCreacion($fechaCreacion = 1)
+    
+    /**
+     * Colocar la fecha de creación de Producto
+     * @access public
+     * @param mixed $fechaCreacion
+     * @return void
+     */
+    public function setfechaCreacion($fechaCreacion)
     {
         $this->fechaCreacion = $fechaCreacion;
     }
-
-    //fechaModificacion
+    
+    /**
+     * Obtener la fecha de modificación de Producto
+     * @access public
+     * @return mixed $fechaModificación
+     */
     public function getfechaModificacion()
     {
         return $this->fechaModificacion;
     }
+    
+    /**
+     * Colocar la fecha de modificación de Producto
+     * @access public
+     * @param mixed $fechaModificacion
+     * @return void
+     */
     public function setfechaModificacion($fechaModificacion = 1)
     {
         $this->fechaModificacion = $fechaModificacion;
     }
-
-    //idUsuarioCreacion
+    
+    /**
+     * Colocar el id del usuario que crea a Prodcuto
+     * @access public
+     * @return integer $idUsuarioCreacion
+     */
     public function getIdUsuarioCreacion()
     {
         return $this->idUsuarioCreacion;
     }
+    
+    /**
+     * Colocar el id del usuario que crea a Producto
+     * @access public
+     * @param integer $idUsuarioCreacion
+     * @return void
+     */
     public function setIdUsuarioCreacion($idUsuarioCreacion = 1)
     {
         $this->idUsuarioCreacion = $idUsuarioCreacion;
     }
-
-    //idUsuarioModificacion
+    
+    /**
+     * Obtener el id del usuario que modifica a Producto
+     * @access public
+     * @return integer $idUsuarioModificacion
+     */
     public function getIdUsuarioModificacion()
     {
         return $this->idUsuarioModificacion;
     }
+    
+    /**
+     * Colocar el id del usuario que modifica a Producto
+     * @access public
+     * @param integer $idUsuarioModificacion
+     * @return void
+     */
     public function setIdUsuarioModificacion($idUsuarioModificacion = 1)
     {
         $this->idUsuarioModificacion = $idUsuarioModificacion;
     }
-
-    //conexion
+    
+    /**
+     * Constructor para realizar la conexión a la base de datos
+     * @access public
+     * @return void
+     */
     public function __construct()
     {
         $this->conn = new Conexion();
     }
-
+    
+    /**
+     * Agregar Producto a la base de datos
+     * @access public
+     * @return true
+     */
     public function Agregar()
     {
         $sentenciaSql = "CALL Agregar_producto(
@@ -132,7 +254,12 @@ class Producto
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Modificar Producto en la base de datos
+     * @access public
+     * @return true
+     */
     public function Modificar()
     {
         $sentenciaSql = "CALL Modificar_producto(
@@ -146,7 +273,12 @@ class Producto
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Eliminar Producto de la base de datos
+     * @access public
+     * @return void
+     */
     public function Eliminar()
     {
         $sentenciaSql = "DELETE FROM producto 
@@ -154,7 +286,12 @@ class Producto
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }
-
+    
+    /**
+     * Consultar Producto de la base de datos
+     * @access public
+     * @return true
+     */
     public function Consultar()
     {
         $condicion = $this->obtenerCondicion();
@@ -174,7 +311,12 @@ class Producto
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Obtiene la condición WHERE para añadirla a la $sentenciaSql
+     * @access private
+     * @return mixed $condicion
+     */
     private function obtenerCondicion()
     {
         $whereAnd = " WHERE ";
@@ -202,7 +344,12 @@ class Producto
         }
         return $condicion;
     }
-
+    
+    /**
+     * Destruye los atributos de Producto
+     * @access public
+     * @return void
+     */
     public function __destruct()
     {
         unset($this->idProducto);        

@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * GenerarPago
+ */
 class GenerarPago
 {
     private $idGenerarPago;
@@ -12,113 +14,232 @@ class GenerarPago
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
-
-    //idPagoDia
+    
+    /**
+     * Obtener el id de GenerarPago
+     * @access public
+     * @return integer $idGenerarPago
+     */
     public function getIdGenerarPago()
     {
         return $this->IdGenerarPago;
     }
+    
+    /**
+     * Colocar el id de GenerarPago
+     * @access public
+     * @param integer $idGenerarPago
+     * @return void
+     */
     public function setIdGenerarPago($idGenerarPago)
     {
         $this->idGenerarPago = $idGenerarPago;
     }
-
-    //idEmpleado
+    
+    /**
+     * Obtener el idEmpleado de GenerarPago
+     * @access public
+     * @return integer $idEmpleado
+     */
     public function getIdEmpleado()
     {
         return $this->idEmpleado;
     }
+    
+    /**
+     * Colocar el idEmpleado de GenerarPago
+     * @access public
+     * @param integer $idEmpleado
+     * @return void
+     */
     public function setIdEmpleado($idEmpleado)
     {
         $this->idEmpleado = $idEmpleado;
     }
-
-    //pagoInicio
+    
+    /**
+     * Obtener la fecha de inicio de GenerarPago
+     * @access public
+     * @return mixed $fechaInicio
+     */
     public function getFechaInicio()
     {
         return $this->fechaInicio;
     }
+    
+    /**
+     * Colocar la fecha de inicio de GenerarPago
+     * @access public
+     * @param mixed $fechaInicio
+     * @return void
+     */
     public function setFechaInicio($fechaInicio)
     {
         $this->fechaInicio = $fechaInicio;
     }
-
-    //fechaFin
+    
+    /**
+     * Obtener la fecha final de GenerarPago
+     * @access public
+     * @return mixed $fechaFin
+     */
     public function getFechaFin()
     {
         return $this->fechaFin;
     }
+    
+    /**
+     * Colocar la fecha final de GenerarPago
+     * @access public
+     * @param mixed $fechaFin
+     * @return void
+     */
     public function setFechaFin($fechaFin)
     {
         $this->fechaFin = $fechaFin;
     }
-
-    //fechaPago
+    
+    /**
+     * Obtener la fecha de pago de GenerarPago
+     * @access public
+     * @return mixed $fechaPago
+     */
     public function getFechaPago()
     {
         return $this->fechaPago;
     }
+    
+    /**
+     * Colocar la fecha de pago de GenerarPago
+     * @access public
+     * @param mixed $fechaPago
+     * @return void
+     */
     public function setFechaPago($fechaPago)
     {
         $this->fechaPago = $fechaPago;
     }
-
-    //valorPago
-    public function getValorPago()
+    
+    /**
+     * Obtener el valor del pago de GenerarPago
+     * @access public
+     * @return double $valorPago
+     */
+    public function getValorIPago()
     {
         return $this->valorPago;
     }
+    
+    /**
+     * Colocar el valor del pago de GenerarPago
+     * @access public
+     * @param double $valorPago
+     * @return void
+     */
     public function setValorPago($valorPago)
     {
         $this->valorPago = $valorPago;
     }
-
-    //fechaCreacion
+    
+    /**
+     * Obtener la fecha de creación de GenerarPago
+     * @access public
+     * @return mixed $fechaCreacion
+     */
     public function getFechaCreacion()
     {
         return $this->fechaCreacion;
     }
+    
+    /**
+     * Colocar la fecha de creación de GenerarPago
+     * @access public
+     * @param mixed $fechaCreacion
+     * @return void
+     */
     public function setFechaCreacion($fechaCreacion)
     {
         $this->fechaCreacion = $fechaCreacion;
     }
-
-    //fechaModificacion
+    
+    /**
+     * Obtener la fecha de modificación de GenerarPago
+     * @access public
+     * @return mixed $fechaModificacion
+     */
     public function getFechaModificacion()
     {
         return $this->fechaModificacion;
     }
+    
+    /**
+     * Colocar la fecha de modificación de GenerarPago
+     * @access public
+     * @param mixed $fechaModificacion
+     * @return void
+     */
     public function setFechaModificacion($fechaModificacion)
     {
         $this->fechaModificacion = $fechaModificacion;
     }
-
-    //idUsuarioCreacion
+    
+    /**
+     * Obtener el id del usuario que crea a GenerarPago
+     * @access public
+     * @return integer $idUsuarioCreacion
+     */
     public function getIdUsuarioCreacion()
     {
         return $this->idUsuarioCreacion;
     }
+    
+    /**
+     * Colocar el id del usuario que crea a GenerarPago
+     * @access public
+     * @param integer $idUsuarioCreacion
+     * @return void
+     */
     public function setIdUsuarioCreacion($idUsuarioCreacion = 1)
     {
         $this->idUsuarioCreacion = $idUsuarioCreacion;
     }
-
-    //idUsuarioModificacion
+    
+    /**
+     * Obtener el id del usuairo que hizo la modificación de GenerarPago
+     * @access public
+     * @return integer $idUsuarioModificacion
+     */
     public function getIdUsuarioModificacion()
     {
         return $this->idUsuarioModificacion;
     }
+    
+    /**
+     * setIdUsuarioModificacion
+     * @access public
+     * @param $idUsuarioModificacion
+     * @return void
+     */
     public function setIdUsuarioModificacion($idUsuarioModificacion = 1)
     {
         $this->idUsuarioModificacion = $idUsuarioModificacion;
     }
-
-    //conexion
+    
+    /**
+     * Contructor para realizar la conexión a la base de datos
+     * @access public
+     * @return void
+     */
     public function __construct()
     {
         $this->conn = new Conexion();
     }
-
+    
+    /**
+     * Generar pago entre fechas = fecha inicio y fecha final
+     * @access public
+     * @return true
+     */
     public function GenerarPago()
     {
         $sentenciaSql = "SELECT
@@ -132,7 +253,14 @@ class GenerarPago
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Pagar los dias sin pagar en PagoDia entre las fechas = fecha inicio y fecha final
+     * @access public
+     * @param mixed $fechaInicio
+     * @param mixed $fechaFin
+     * @return void
+     */
     public function pagarDias($fechaInicio, $fechaFin)
     {
         $sentenciaSql = "UPDATE
@@ -144,7 +272,12 @@ class GenerarPago
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }
-
+    
+    /**
+     * Agregar GenerarPago a la base de datos
+     * @access public
+     * @return true
+     */
     public function Agregar()
     {
         $sentenciaSql = "INSERT INTO generar_pago(
@@ -173,7 +306,12 @@ class GenerarPago
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Modificar GenerarPago en la base de datos
+     * @access public
+     * @return void
+     */
     public function Modificar()
     {
         $sentenciaSql = "CALL Modificar_generar_pago(
@@ -187,7 +325,12 @@ class GenerarPago
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }
-
+    
+    /**
+     * Eliminar GenerarPago de la base de datos
+     * @access public
+     * @return void
+     */
     public function Eliminar()
     {
         $sentenciaSql = "DELETE FROM generar_pago 
@@ -195,7 +338,12 @@ class GenerarPago
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }
-
+    
+    /**
+     * Consultar GenerarPago en la base de datos
+     * @access public
+     * @return true
+     */
     public function Consultar()
     {
         $condicion = $this->obtenerCondicion();
@@ -218,7 +366,13 @@ class GenerarPago
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Buscar Empleado en la base de datos
+     * @access public
+     * @param mixed $nombre
+     * @return true
+     */
     public function BuscarEmpleado($nombre)
     {
         $sentenciaSql = "SELECT 
@@ -231,7 +385,12 @@ class GenerarPago
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Obtener la condición WHERE para añadirla a la $sentenciaSql
+     * @access private
+     * @return mixed $condicion
+     */
     private function obtenerCondicion()
     {
         $whereAnd = " WHERE ";
@@ -262,7 +421,12 @@ class GenerarPago
         }
         return $condicion;
     }
-
+    
+    /**
+     * Destruye los atributos de GenerarPago y la conexión a la base de datos
+     * @access public
+     * @return void
+     */
     public function __destruct()
     {
         unset($this->idPagoDia);

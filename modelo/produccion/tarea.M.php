@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Tarea
+ */
 class Tarea
 {
     private $idTarea;
@@ -14,133 +17,273 @@ class Tarea
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
-
-    //idTarea
+    
+    /**
+     * Obtener el id de Tarea
+     * @access public
+     * @return integer $idTarea
+     */
     public function getIdTarea()
     {
         return $this->idTarea;
-    }
+    }    
+    /**
+     * Colocar el id de Tarea
+     * @access public
+     * @param integer $idTarea
+     * @return void
+     */
     public function setIdTarea($idTarea)
     {
         return $this->idTarea=$idTarea;
     }
-
-    //descripcion
+    
+    /**
+     * Cbtener la descripcion de Tarea
+     * @access public
+     * @return string $descripcion
+     */
     public function getDescripcion()
     {
         return $this->descripcion;
     }
+    
+    /**
+     * Colocar la descripción de Tarea
+     * @access public
+     * @param string $descripcion
+     * @return void
+     */
     public function setDescripcion($descripcion)
     {
         return $this->descripcion=$descripcion;
     }
-
-    //valorUnitario
+    
+    /**
+     * Obtener el valor unitario de la Tarea
+     * @access public
+     * @return double $valorUnitario
+     */
     public function getValorUnitario()
     {
         return $this->valorUnitario;
     }
+    
+    /**
+     * Colocar el valor unitario de la Tarea
+     * @access public
+     * @param double $valorUnitario
+     * @return void
+     */
     public function setValorUnitario($valorUnitario)
     {
         return $this->valorUnitario=$valorUnitario;
     }
-
-    //cantidad
+    
+    /**
+     * Obtener la cantidad de Tarea
+     * @access public
+     * @return integer $cantidad
+     */
     public function getCantidad()
     {
         return $this->cantidad;
     }
+    
+    /**
+     * Colocar la cantidad de Tarea
+     * @access public
+     * @param integer $cantidad
+     * @return void
+     */
     public function setCantidad($cantidad)
     {
         return $this->cantidad=$cantidad;
     }
-
-    //idEmpleado
+    
+    /**
+     * Obtener el idEmpleado de Tarea
+     * @access public
+     * @return integer $idEmpleado
+     */
     public function getIdEmpleado()
     {
         return $this->idEmpleado;
     }
+    
+    /**
+     * Colocar el idEmpleado de Tarea
+     * @access public
+     * @param integer $idEmpleado
+     * @return void
+     */
     public function setIdEmpleado($idEmpleado)
     {
         return $this->idEmpleado=$idEmpleado;
     }
-
-    //fecha
+    
+    /**
+     * Obtener la fecha de la Tarea
+     * @access public
+     * @return mixed $fecha
+     */
     public function getFecha()
     {
         return $this->fecha;
     }
+    
+    /**
+     * Colocar la fecha de la Tarea
+     * @access public
+     * @param mixed $fecha
+     * @return void
+     */
     public function setFecha($fecha)
     {
         return $this->fecha=$fecha;
     }
-
-    //estadoPago
+    
+    /**
+     * Obtiene el estado del pagp de la Tarea
+     * @access public
+     * @return mixed $estadoPago
+     */
     public function getEstadoPago()
     {
         return $this->estadoPago;
     }
+    
+    /**
+     * Colocar el estado del pago de la Tarea
+     * @access public
+     * @param mixed $estadoPago
+     * @return void
+     */
     public function setEstadoPago($estadoPago)
     {
         return $this->estadoPago=$estadoPago;
     }
-
-    //Estado
+    
+    /**
+     * Obtener el estado de Tarea
+     * @access public
+     * @return mixed $estado
+     */
     public function getEstado()
     {
         return $this->estado;
     }
+    
+    /**
+     * Colocar el estado de Tarea
+     * @access public
+     * @param mixed $estado
+     * @return void
+     */
     public function setEstado($estado)
     {
         $this->estado =$estado;
     }
-
-    //FechaCreacion
+    
+    /**
+     * Obtener la fecha de creación de Tarea
+     * @access public
+     * @return mixed $fechaCreacion
+     */
     public function getFechaCreacion()
     {
         return $this->fechaCreacion;
     }
+    
+    /**
+     * Colocar la fecha de creación de Tarea
+     * @access public
+     * @param mixed $fechaCreacion
+     * @return void
+     */
     public function setFechaCreacion($fechaCreacion)
     {
         $this->fechaCreacion =$fechaCreacion;
     }
-
-    //FechaModificacion
+    
+    /**
+     * Obtener la fecha de modificación de Tarea
+     * @access public
+     * @return mixed $fechaModificacion
+     */
     public function getFechaModificacion()
     {
         return $this->fechaModificacion;
     }
+    
+    /**
+     * Colocar la fecha de modificación de Tarea
+     * @access public
+     * @param mixed $fechaModificacion
+     * @return void
+     */
     public function setFechaModificacion($fechaModificacion)
     {
         $this->fechaModificacion =$fechaModificacion;
     }
-
-    //IdUsuarioCreacion
+    
+    /**
+     * Obtener el id del susario que crea a Tarea
+     * @access public
+     * @return integer $idUsuarioCreacion
+     */
     public function getIdUsuarioCreacion()
     {
         return $this->idUsuarioCreacion;
     }
+    
+    /**
+     * Colocar el id del usuario que crea a Tarea
+     * @access public
+     * @param integer $idUsuarioCreacion
+     * @return void
+     */
     public function setIdUsuarioCreacion($idUsuarioCreacion = 1)
     {
         $this->idUsuarioCreacion =$idUsuarioCreacion;
     }
-
-    //IdUsuarioModificacion
+    
+    /**
+     * Obtener el id del usuario que modifica a Tarea
+     * @access public
+     * @return integer $idUsuarioModificacion
+     */
     public function getIdUsuarioModificacion()
     {
         return $this->idUsuarioModificacion;
     }
+        
+    /**
+     * Colcoar el id del usuario que modifica a Tarea
+     * @access public
+     * @param integer $idUsuarioModificacion
+     * @return void
+     */
     public function setIdUsuarioModificacion($idUsuarioModificacion = 1)
     {
         $this->idUsuarioModificacion =$idUsuarioModificacion;
     }
-
-    //conexion
+    
+    /**
+     * Constructor para relizar la conexión a la base de datos
+     * @access public
+     * @return void
+     */
     public function __construct()
     {
         $this->conn = new Conexion;
     }
-
+    
+    /**
+     * Agregar Tarea a la base de datos
+     * @access public
+     * @return true
+     */
     public function Agregar()
     {
         $sentenciaSql = "CALL Agregar_tarea(
@@ -158,7 +301,12 @@ class Tarea
         return true;
     }
 
-    
+        
+    /**
+     * Modificar Tarea en la base de datos
+     * @access public
+     * @return true
+     */
     public function Modificar()
     {
         $sentenciaSql = "CALL Modificar_tarea(
@@ -176,7 +324,12 @@ class Tarea
         return true;
     }
     
-
+    
+    /**
+     * Eliminar Tarea de la base de datos
+     * @access public
+     * @return void
+     */
     public function Eliminar()
     {
         $sentenciaSql = "DELETE FROM 
@@ -186,7 +339,12 @@ class Tarea
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }
-
+    
+    /**
+     * Consultar Tarea en la base de datos
+     * @access public
+     * @return true
+     */
     public function Consultar()
     {
         $condicion = $this->obtenerCondicion();
@@ -211,7 +369,12 @@ class Tarea
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Buscar empleado en la base de datos
+     * @access public
+     * @return true
+     */
     public function BuscarEmpleado()
     {
         $sentenciaSql = "SELECT 
@@ -224,6 +387,12 @@ class Tarea
         $this->conn->ejecutar();
         return true;
     }
+        
+    /**
+     * Obtener condicion WHERE para añadirla a la $sentenciaSql
+     * @access private
+     * @return mixed $condicion
+     */
     private function obtenerCondicion()
     {
         $whereAnd = " WHERE ";
@@ -267,7 +436,12 @@ class Tarea
         }
         return $condicion;
     }
-
+    
+    /**
+     * Destruye los atributos de Tarea
+     * @access public
+     * @return void
+     */
     public function __destruct()
     {
         unset($this->idTarea);

@@ -1,23 +1,72 @@
 <?php
+
+/**
+ * Autenticacion
+ */
 class Autenticacion{
     private $usuario;
     private $contrasenia;
     public $conn = null;
-    
-    //usuario
-    public function getUsuario(){return $this->usuario;}
-    public function setUsuario($usuario){$this->usuario = $usuario;}
-    
-    //contrasenia
-    public function getContrasenia(){return $this->contrasenia;}
-    public function setContrasenia($contrasenia){
-        $this->contrasenia = md5($contrasenia);
+        
+    /**
+     * Obtener el usuario de Autentication
+     * @access public
+     * @return string $usuario
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
     
-    //Conexion
-    public function __construct(){$this->conn = new Conexion();}
+    /**
+     * Colocar el usuario en Autentication
+     * @access public
+     * @param mixed $usuario
+     * @return void
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    }
+        
+    /**
+     * Obtener la contrasena de Autentication
+     * @access public
+     * @return mixed $contrasenia
+     */
+    public function getContrasenia()
+    {
+        return $this->contrasenia;
+    }
     
-    public function autenticar(){
+    /**
+     * Colocar la contraseña en Autentication
+     * @access public
+     * @param mixed $contrasenia
+     * @return void
+     */
+    public function setContrasenia($contrasenia)
+    {
+        $this->contrasenia = md5($contrasenia);
+    }
+        
+    /**
+     * Contructor para relizar la conexión a la base de datos
+     * @access public
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->conn = new Conexion();
+    }
+        
+    /**
+     * Autenticación en la base de datos
+     * @access public
+     * @return mixed $this->conn->ObtenerObjeto()
+     */
+    public function autenticar()
+    {
         $sentenciaSql = "
                         SELECT * FROM seguridad.fnt_autenticar('$this->usuario', '$this->contrasenia')
                         ";
@@ -26,9 +75,16 @@ class Autenticacion{
         return $this->conn->obtenerObjeto();
     }
     
-    
-    
-          public function obtenerAccioFormuUsuar($idUsuario, $ubicacionFormulario ){
+        
+    /**
+     * Obtener el acceso del usuario al formulario
+     * @access public
+     * @param integer $idUsuario
+     * @param mixed $ubicacionFormulario
+     * @return mixed $reultado or 0
+     */
+    public function obtenerAccioFormuUsuar($idUsuario, $ubicacionFormulario )
+    {
         $sentenciaSql = "
                          SELECT contratacion.fne_obtener_accio_form_usuar    ($idUsuario , '$ubicacionFormulario') AS reultado;
                         ";
@@ -40,8 +96,15 @@ class Autenticacion{
             return 0;
         }
     }
-    
-    public function obtenerPermCentrForma($idUsuario){
+        
+    /**
+     * obtenerPermiso Centro Formación
+     * @access public
+     * @param integer $idUsuario
+     * @return mixed $_SESSION['centroFormacion']
+     */
+    public function obtenerPermCentrForma($idUsuario)
+    {
         $idCentroFormacion = '';
         $sentenciaSql = "
                         SELECT * FROM seguridad.fnt_obtener_permi_centr_forma    ('$idUsuario') AS reultado;

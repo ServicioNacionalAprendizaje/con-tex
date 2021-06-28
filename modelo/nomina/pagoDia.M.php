@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * PagoDia
+ */
 class PagoDia
 {
 
@@ -12,103 +14,211 @@ class PagoDia
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
-
-    //idPagoDia
+    
+    /**
+     * Obtener el id de PagoDia
+     * @access public
+     * @return integer $idPagoDia
+     */
     public function getIdPagoDia()
     {
         return $this->idPagoDia;
     }
+    
+    /**
+     * Colocar el id de PagoDia
+     * @access public
+     * @param mixed $idPagoDia
+     * @return void
+     */
     public function setIdPagoDia($idPagoDia)
     {
         $this->idPagoDia = $idPagoDia;
     }
-
-    //idEmpleado
+    
+    /**
+     * Obtener el idEmpleado de PagoDia
+     * @access public
+     * @return integer $idEmpleado
+     */
     public function getIdEmpleado()
     {
         return $this->idEmpleado;
     }
+    
+    /**
+     * Colocar el idEmpleado de PagoDia
+     * @access public
+     * @param mixed $idEmpleado
+     * @return void
+     */
     public function setIdEmpleado($idEmpleado)
     {
         $this->idEmpleado = $idEmpleado;
     }
-
-    //pagoDia
+    
+    /**
+     * Obtener el valor del pago del día
+     * @access public
+     * @return void
+     */
     public function getPagoDia()
     {
         return $this->pagoDia;
     }
+    
+    /**
+     * Colocar el valor del pago del día
+     * @access public
+     * @param mixed $pagoDia
+     * @return void
+     */
     public function setPagoDia($pagoDia)
     {
         $this->pagoDia = $pagoDia;
     }
-
-    //fechaPago
+    
+    /**
+     * Obtener la fecha de pago
+     * @access public
+     * @return mixed $fechaPago
+     */
     public function getFechaPago()
     {
         return $this->fechaPago;
     }
+    
+    /**
+     * Colacar la fecha de pago
+     * @access public
+     * @param mixed $fechaPago
+     * @return void
+     */
     public function setFechaPago($fechaPago)
     {
         $this->fechaPago = $fechaPago;
     }
-
-    //fechaPago
+    
+    /**
+     * Obtener el estado de PagoDia
+     * @access public
+     * @return mixed $estado
+     */
     public function getEstado()
     {
         return $this->estado;
     }
+    
+    /**
+     * Colocar el estado de PagoDia
+     * @access public
+     * @param mixed $estado
+     * @return void
+     */
     public function setEstado($estado)
     {
         $this->estado = $estado;
     }
-
-    //fechaCreacion
+    
+    /**
+     * Obtener la fecha de creación de Pago Día
+     * @access public
+     * @return mixed $fechaCreacion
+     */
     public function getFechaCreacion()
     {
         return $this->fechaCreacion;
     }
+    
+    /**
+     * Colocar la fecha de creación de PagoDía
+     * @access public
+     * @param mixed $fechaCreacion
+     * @return void
+     */
     public function setFechaCreacion($fechaCreacion)
     {
         $this->fechaCreacion = $fechaCreacion;
     }
-
-    //fechaModificacion
+    
+    /**
+     * Obtener la fecha de modificación de PagoDía
+     * @access public
+     * @return mixed $fechaModificacion
+     */
     public function getFechaModificacion()
     {
         return $this->fechaModificacion;
     }
+    
+    /**
+     * Colocar la fecha de modificación de PagoDía
+     * @access public
+     * @param mixed $fechaModificacion
+     * @return void
+     */
     public function setFechaModificacion($fechaModificacion)
     {
         $this->fechaModificacion = $fechaModificacion;
     }
-
-    //idUsuarioCreacion
+    
+    /**
+     * Obtener el id del usuario que crea PagoDía
+     * @access public
+     * @return integer $idUsuarioCreacion
+     */
     public function getIdUsuarioCreacion()
     {
         return $this->idUsuarioCreacion;
     }
+    
+    /**
+     * Colocar el id del usuario que crea PagoDía
+     * @access public
+     * @param integer $idUsuarioCreacion
+     * @return void
+     */
     public function setIdUsuarioCreacion($idUsuarioCreacion = 1)
     {
         $this->idUsuarioCreacion = $idUsuarioCreacion;
     }
-
-    //idUsuarioModificacion
+    
+    /**
+     * Obtener la fecha de modificación de PagoDía
+     * @access public
+     * @return integer $idUsuarioModificación
+     */
     public function getIdUsuarioModificacion()
     {
         return $this->idUsuarioModificacion;
     }
+    
+    /**
+     * Colocar el id del usuario que modifica a PagoDía
+     * @access public
+     * @param integer $idUsuarioModificacion
+     * @return void
+     */
     public function setIdUsuarioModificacion($idUsuarioModificacion = 1)
     {
         $this->idUsuarioModificacion = $idUsuarioModificacion;
     }
-
-    //conexion
+    
+    /**
+     * Constructor para realizar la conexión a la base de datos
+     * @access public
+     * @return void
+     */
     public function __construct()
     {
         $this->conn = new Conexion();
     }
-
+    
+    /**
+     * Agregar PagoDía a la base de datos
+     * @access public
+     * @return true
+     */
     public function Agregar()
     {
         $sentenciaSql = "CALL Agregar_pago_dia(
@@ -122,7 +232,12 @@ class PagoDia
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Modificar PagoDía en la base de datos
+     * @access public
+     * @return void
+     */
     public function Modificar()
     {
         $sentenciaSql = "CALL Modificar_pago_dia(
@@ -135,7 +250,12 @@ class PagoDia
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }
-
+    
+    /**
+     * Eliminar PagoDia de la base de datos
+     * @access public
+     * @return void
+     */
     public function Eliminar()
     {
         $sentenciaSql = "DELETE FROM pago_dia 
@@ -143,7 +263,12 @@ class PagoDia
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }
-
+    
+    /**
+     * Consultar PagoDia en la base de datos
+     * @access public
+     * @return true
+     */
     public function Consultar()
     {
         $condicion = $this->obtenerCondicion();
@@ -165,7 +290,13 @@ class PagoDia
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Buscar Empleado en la base de datos
+     * @access public
+     * @param mixed $nombre
+     * @return void
+     */
     public function BuscarEmpleado($nombre)
     {
         $sentenciaSql = "SELECT 
@@ -178,7 +309,12 @@ class PagoDia
         $this->conn->ejecutar();
         return true;
     }
-    
+        
+    /**
+     * Obntener la condición WHERE para añadirlo a la $sentenciaSql
+     * @access private
+     * @return mixed $condicion
+     */
     private function obtenerCondicion()
     {
         $whereAnd = " WHERE ";
@@ -201,7 +337,12 @@ class PagoDia
         }
         return $condicion;
     }
-
+    
+    /**
+     * Destruye los atributos de PagoDia y la conexión a la base de datos
+     * @access public
+     * @return void
+     */
     public function __destruct()
     {
         unset($this->idPagoDia);

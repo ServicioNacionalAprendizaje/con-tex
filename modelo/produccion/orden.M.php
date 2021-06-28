@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Orden
+ */
 class Orden
 {
     private $idOrden;
@@ -13,111 +16,253 @@ class Orden
     private $fechaModificacion;
     private $idUsuarioCreacion;
     private $idUsuarioModificacion;
-    
+        
+    /**
+     * Obtener el id de Orden
+     * @access public
+     * @return integer $idOrden
+     */
     public function getIdOrden()
     {
         return $this->idOrden;
     }
+    
+    /**
+     * Coloar el id a Orden
+     * @access public
+     * @param mixed $idOrden
+     * @return void
+     */
     public function setIdOrden($idOrden)
     {
         return $this->idOrden=$idOrden;
     }
-
+    
+    /**
+     * Obtener la feca de Orden
+     * @access public
+     * @return mixed $fechaOrden
+     */
     public function getFechaOrden()
     {
         return $this->fechaOrden;
     }
+    
+    /**
+     * Colocar la fecha de Orden
+     * @access public
+     * @param mixed $fechaOrden
+     * @return void
+     */
     public function setFechaOrden($fechaOrden)
     {
         return $this->fechaOrden=$fechaOrden;
     }
-
+    
+    /**
+     * Obtener la fecha de entraga de Orden
+     * @access public
+     * @return mixed $fechaEntrega
+     */
     public function getFechaEntrega()
     {
         return $this->fechaEntrega;
     }
+    
+    /**
+     * Colocar la fecha de entrega de Orden
+     * @access public
+     * @param mixed $fechaEntrega
+     * @return void
+     */
     public function setFechaEntrega($fechaEntrega)
     {
         return $this->fechaEntrega=$fechaEntrega;
     }
-
+    
+    /**
+     * Obtener la descripcion de Orden
+     * @access public
+     * @return string $descripcion
+     */
     public function getDescripcion()
     {
         return $this->descripcion;
     }
+    
+    /**
+     * Colocar la descripcion de Orden
+     * @access public
+     * @param mixed $descripcion
+     * @return void
+     */
     public function setDescripcion($descripcion)
     {
         return $this->descripcion = $descripcion;
     }
-
+    
+    /**
+     * Obtener el idCliente de Orden
+     * @access public
+     * @return integer $idCliente
+     */
     public function getIdCliente()
     {
         return $this->idCliente;
     }
+    
+    /**
+     * Colocar el idCliente a Orden
+     * @access public
+     * @param integer $idCliente
+     * @return void
+     */
     public function setIdCliente($idCliente)
     {
         return $this->idCliente=$idCliente;
     }
-
+    
+    /**
+     * Ibtener idEmpleado de Orden
+     * @access public
+     * @return integer $idEmpleado
+     */
     public function getIdEmpleado()
     {
         return $this->idEmpleado;
     }
+    
+    /**
+     * Colocar idEmpleado de Orden
+     * @access public
+     * @param mixed $idEmpleado
+     * @return void
+     */
     public function setIdEmpleado($idEmpleado)
     {
         return $this->idEmpleado = $idEmpleado;
     }
-
+    
+    /**
+     * Obtener es estado de Orden
+     * @access public
+     * @return mixed $estado
+     */
     public function getEstado()
     {
         return $this->estado;
     }
+    
+    /**
+     * Colocar el estado de Orden
+     * @access public
+     * @param mixed $estado
+     * @return void
+     */
     public function setEstado($estado)
     {
         $this->estado =$estado;
     }
-
+    
+    /**
+     * Obtener la fecha de creación de Orden
+     * @access public
+     * @return mixed $fechaCreacion
+     */
     public function getfechaCreacion()
     {
         return $this->fechaCreacion;
     }
+    
+    /**
+     * Colocar la fecha de creación de Orden
+     * @access public
+     * @param mixed $fechaCreacion
+     * @return void
+     */
     public function setfechaCreacion($fechaCreacion)
     {
         $this->fechaCreacion =$fechaCreacion;
     }
-
+    
+    /**
+     * Obtener la fecha de modificación de Orden
+     * @access public
+     * @return mixed $fechaModificacion
+     */
     public function getfechaModificacion()
     {
         return $this->fechaModificacion;
     }
+    
+    /**
+     * Colocar la fecha de modificación de Orden
+     * @access public
+     * @param mixed $fechaModificacion
+     * @return void
+     */
     public function setfechaModificacion($fechaModificacion)
     {
         $this->fechaModificacion =$fechaModificacion;
     }
-
+    
+    /**
+     * Obtener el id del Usuario que creó la Orden
+     * @access public
+     * @return integer $idUsuarioCreacion
+     */
     public function getIdUsuarioCreacion()
     {
         return $this->idUsuarioCreacion;
     }
+    
+    /**
+     * Colocar el id del usuario que creó la Orden
+     * @access public
+     * @param mixed $idUsuarioCreacion
+     * @return void
+     */
     public function setIdUsuarioCreacion($idUsuarioCreacion)
     {
         $this->idUsuarioCreacion =$idUsuarioCreacion;
     }
-
+    
+    /**
+     * Obtener el id del usuario que modificó la Orden
+     * @access public
+     * @return void
+     */
     public function getIdUsuarioModificacion()
     {
         return $this->idUsuarioModificacion;
     }
+    
+    /**
+     * Colocar el id del usuario que modificó la Orden
+     * @access public
+     * @param mixed $idUsuarioModificacion
+     * @return void
+     */
     public function setIdUsuarioModificacion($idUsuarioModificacion)
     {
         $this->idUsuarioModificacion =$idUsuarioModificacion;
     }
-
+    
+    /**
+     * Constructor para realizar la conexión a la base de datos
+     * @access public
+     * @return void
+     */
     public function __construct()
     {
         $this->conn = new Conexion;
     }
-
+    
+    /**
+     * Agregar Orden a la base de datos
+     * @access public
+     * @return true
+     */
     public function Agregar()
     {
         $ordenDate = date("Y-m-d H:i:s", strtotime($this->fechaOrden));
@@ -134,8 +279,12 @@ class Orden
         $this->conn->ejecutar();
         return true;
     }
-
     
+    /**
+     * Modificar Orden en la base de datos
+     * @access public
+     * @return true
+     */
     public function Modificar()
     {
         $ordenDate = date("Y-m-d H:i:s", strtotime($this->fechaOrden));
@@ -152,8 +301,12 @@ class Orden
         $this->conn->ejecutar();
         return true;
     }
-    
-
+        
+    /**
+     * Eliminar Orden de la base de datos
+     * @access public
+     * @return void
+     */
     public function Eliminar()
     {
         $sentenciaSql = "DELETE FROM 
@@ -163,7 +316,12 @@ class Orden
         $this->conn->preparar($sentenciaSql);
         $this->conn->ejecutar();
     }
-
+    
+    /**
+     * Consultar Orden en la base de datos
+     * @access public
+     * @return true
+     */
     public function Consultar()
     {
         $condicion = $this->obtenerCondicion();
@@ -187,7 +345,12 @@ class Orden
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Buscar empleado encargado de la Orden
+     * @access public
+     * @return true
+     */
     public function BuscarEmpleado()
     {
         $sentenciaSql = "SELECT 
@@ -200,7 +363,12 @@ class Orden
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Buscar cliente para la Orden
+     * @access public
+     * @return true
+     */
     public function BuscarCliente()
     {
         $sentenciaSql = "SELECT 
@@ -213,7 +381,12 @@ class Orden
         $this->conn->ejecutar();
         return true;
     }
-
+    
+    /**
+     * Obtener la condicón WHERE para añadirla a la $sentenciaSql
+     * @access private
+     * @return mixed $condicion
+     */
     private function obtenerCondicion()
     {
         $whereAnd = " WHERE ";
@@ -271,7 +444,12 @@ class Orden
         }
         return $condicion;
     }
-
+    
+    /**
+     * Destrue los atributos de Orden
+     * @access public
+     * @return void
+     */
     public function __destruct()
     {
         unset($this->idOrden);

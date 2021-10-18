@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Con-tex</title>
-    <link rel="icon" type="image/jpg" href="componente/img/CONTEX4.png">
+    <link rel="icon" type="image/jpg" href="componente/img/arinco.jpg">
     <link rel='stylesheet' type='text/css' media='screen' href='componente/css/dashboard.css'>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
@@ -17,10 +17,10 @@
 </head>
 <body id="page-top">
     <div id="wrapper">
-        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-white p-0">
             <div class="container-fluid d-flex flex-column p-0">
                 <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-                    <div class="sidebar-brand-text mx-3"><span><img src ="componente\img\CONTEX4.png"/></span> CON-TEX</div>
+                    <div class="sidebar-brand-text mx-3"><span><img src ="componente\img\arinco3.jpg"/></span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
                 <div id="cargarDashboard" name="cargarDashboard"><a class='dropdown-item' href='/vista/seguridad/rol.V.html' target='_parent'></a></div>
